@@ -18,6 +18,12 @@
   flex-direction: column;
   justify-content: center;
 
+  //& h2,
+  //& h5,
+  //& p {
+  //  opacity: 0;
+  //}
+
   & h2 {
     margin: 0;
     font-size: 64px;
@@ -35,5 +41,63 @@
     color: #ccc;
     font-weight: 100;
     font-family: 'Source Sans 3', sans-serif
+  }
+}
+
+.inRight {
+  & h2 {
+    animation-duration: 0.5s;
+    animation-name: fadeInRight;
+  }
+
+  & h5 {
+    animation-duration: 0.75s;
+    animation-name: fadeInRight;
+  }
+
+  & p {
+    animation-duration: 1s;
+    animation-name: fadeInRight;
+  }
+}
+
+.inLeft {
+  & h2 {
+    animation-duration: 0.5s;
+    animation-name: fadeInLeft;
+  }
+
+  & h5 {
+    animation-duration: 0.75s;
+    animation-name: fadeInLeft;
+  }
+
+  & p {
+    animation-duration: 1s;
+    animation-name: fadeInLeft;
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate(100px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate(-100px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }

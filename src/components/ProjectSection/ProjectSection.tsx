@@ -22,23 +22,22 @@ const ProjectSection = ({
   content
 }: ProjectSectionType) => {
   const classes = cn(styles.projectText, alignment === 'left' ? styles.textLeft : styles.textRight)
-  const textClasses = cn('animate__animated', alignment === 'left' ? 'animate__fadeInRight' : 'animate__fadeInLeft');
 
   return (
-    // <Controller>
-    //   <Scene duration={2000} pin triggerHook={0} classToggle="TEST" pushFollowers={true}>
+    <Controller>
+      <Scene triggerHook={0.5} classToggle={alignment === 'left' ? styles.inRight : styles.inLeft}>
         <Grid container className={styles.projects} spacing={2}>
           {alignment === 'left' && (<Screen image={image} alignment={alignment} />)}
           <Grid item xs={6} className={classes}>
-            <h2 className={textClasses}>{title}</h2>
-            <h5 className={textClasses}>{description}</h5>
+            <h2>{title}</h2>
+            <h5>{description}</h5>
 
-            <p className={textClasses}>{content}</p>
+            <p>{content}</p>
           </Grid>
           {alignment === 'right' && (<Screen image={image} alignment={alignment} />)}
         </Grid>
-    //   </Scene>
-    // </Controller>
+      </Scene>
+    </Controller>
   )
 }
 

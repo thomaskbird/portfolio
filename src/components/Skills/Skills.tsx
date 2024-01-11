@@ -11,7 +11,7 @@ const Skills = ({}: SkillsType) => {
   return (
     <Grid textAlign="center">
       {skills.map(skill => (
-        <Chip label={skill} size="medium" className={styles.chip} />
+        <Chip key={skill} label={skill} size="medium" className={styles.chip} />
       ))}
     </Grid>
   )

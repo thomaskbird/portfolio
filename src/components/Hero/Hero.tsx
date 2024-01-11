@@ -1,10 +1,8 @@
-import styles from "@/app/page.module.scss";
 import {Button, Container, Grid} from "@mui/material";
 import cn from "classnames";
+import styles from './Hero.module.scss';
 
-type HeroType = {}
-
-const Hero = ({}: HeroType) => {
+const Hero = () => {
   return (
     <Container maxWidth={false} disableGutters className={styles.hero}>
       <Container>

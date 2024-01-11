@@ -7,7 +7,7 @@ import Hero from "@/components/Hero/Hero";
 
 export default function Home() {
   return (
-    <>
+    <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
       <Hero />
 
       <Container maxWidth={false} disableGutters>
@@ -43,6 +43,6 @@ export default function Home() {
           />
         </Container>
       </Container>
-    </>
+    </Container>
   )
 }
