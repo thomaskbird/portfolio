@@ -3,29 +3,12 @@ import {Button, Container, Grid} from "@mui/material";
 import PageSectionTitle from "@/components/PageSectionTitle/PageSectionTitle";
 import ProjectSection from "@/components/ProjectSection/ProjectSection";
 import Skills from "@/components/Skills/Skills";
+import Hero from "@/components/Hero/Hero";
 
 export default function Home() {
   return (
     <>
-      <Container maxWidth={false} disableGutters className={styles.hero}>
-        <Container>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={6} className={styles.heroImage}>
-              <img src="/thomas-bird.png" className={styles.heroImageItem} />
-            </Grid>
-            <Grid item xs={12} md={6} className={styles.heroText}>
-              <h1 className={styles.heroTextTitle}>I'm Tom,<br/> Nice to meet you!</h1>
-              <p className={styles.heroSubText}>I am a passionate engineer and people leader who thrives in fast paced and collaborative environments!</p>
-
-              <Grid>
-                <Button className={styles.heroButtonPrimary} variant="contained" disableElevation>Send a message!</Button>
-                <Button className={styles.heroButtonSecondary} variant="text" disableElevation>Resume</Button>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Container>
-      </Container>
-
+      <Hero />
 
       <Container maxWidth={false} disableGutters>
         <Container>

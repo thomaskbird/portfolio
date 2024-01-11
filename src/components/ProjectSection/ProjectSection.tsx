@@ -22,6 +22,7 @@ const ProjectSection = ({
   content
 }: ProjectSectionType) => {
   const classes = cn(styles.projectText, alignment === 'left' ? styles.textLeft : styles.textRight)
+  const textClasses = cn('animate__animated', alignment === 'left' ? 'animate__fadeInRight' : 'animate__fadeInLeft');
 
   return (
     // <Controller>
@@ -29,10 +30,10 @@ const ProjectSection = ({
         <Grid container className={styles.projects} spacing={2}>
           {alignment === 'left' && (<Screen image={image} alignment={alignment} />)}
           <Grid item xs={6} className={classes}>
-            <h2>{title}</h2>
-            <h5>{description}</h5>
+            <h2 className={textClasses}>{title}</h2>
+            <h5 className={textClasses}>{description}</h5>
 
-            <p>{content}</p>
+            <p className={textClasses}>{content}</p>
           </Grid>
           {alignment === 'right' && (<Screen image={image} alignment={alignment} />)}
         </Grid>
