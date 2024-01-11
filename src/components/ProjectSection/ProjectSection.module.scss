@@ -1,0 +1,39 @@
+.projects {
+  height: 600px;
+  margin: 100px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.textLeft {
+  text-align: left;
+}
+
+.textRight {
+  text-align: right;
+}
+
+.projectText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  & h2 {
+    margin: 0;
+    font-size: 64px;
+    margin-bottom: 10px;
+  }
+
+  & h5 {
+    margin: 0;
+    color: #666;
+    font-weight: 100;
+    font-size: 32px;
+  }
+
+  & p {
+    color: #ccc;
+    font-weight: 100;
+    font-family: 'Source Sans 3', sans-serif
+  }
+}
