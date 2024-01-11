@@ -2,6 +2,7 @@ import styles from './page.module.scss'
 import {Button, Container, Grid} from "@mui/material";
 import PageSectionTitle from "@/components/PageSectionTitle/PageSectionTitle";
 import ProjectSection from "@/components/ProjectSection/ProjectSection";
+import Skills from "@/components/Skills/Skills";
 
 export default function Home() {
   return (
@@ -28,6 +29,10 @@ export default function Home() {
 
       <Container maxWidth={false} disableGutters>
         <Container>
+          <PageSectionTitle title="Skills" />
+
+          <Skills />
+
           <PageSectionTitle title="Project Work" />
 
           <ProjectSection

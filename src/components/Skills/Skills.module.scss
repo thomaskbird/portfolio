@@ -1,0 +1,13 @@
+.chip {
+  color: rgba(41, 60, 86, 1);
+  font-size: 18px;
+  border-radius: 5px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  font-family: 'Roboto Mono', monospace;
+
+  &:hover {
+    color: #fff;
+    background: rgba(41, 60, 86, 1);
+  }
+}
