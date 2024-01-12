@@ -11,7 +11,7 @@ const Screen = ({ image, alignment }: ScreenType) => {
   const transformClasses = cn(styles.innerMacbookWrap, alignment === 'left' ? styles.innerMacbookWrapLeft : styles.innerMacbookWrapRight);
 
   return (
-    <Grid item xs={12} md={6} className={styles.projectMacbook}>
+    <Grid item xs={12} md={6} className={cn(styles.projectMacbook, 'projectMacbookInitial', 'projectMacbookAnimation')}>
       <div className={transformClasses}>
         <img src="/macbook-pro.png" className={styles.macbookImage} />
         <div className={styles.screen}>

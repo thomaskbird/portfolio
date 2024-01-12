@@ -27,14 +27,14 @@ const ProjectSection = ({
     <Controller>
       <Scene triggerHook={0.5} classToggle={alignment === 'left' ? styles.inRight : styles.inLeft}>
         <Grid container className={styles.projects} spacing={2}>
-          {alignment === 'left' && (<Screen image={image} alignment={alignment} />)}
+          {alignment === 'left' && <Screen image={image} alignment={alignment} />}
           <Grid item xs={6} className={classes}>
             <h2>{title}</h2>
             <h5>{description}</h5>
 
             <p>{content}</p>
           </Grid>
-          {alignment === 'right' && (<Screen image={image} alignment={alignment} />)}
+          {alignment === 'right' && <Screen image={image} alignment={alignment} />}
         </Grid>
       </Scene>
     </Controller>

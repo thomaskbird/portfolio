@@ -48,18 +48,29 @@
 .heroButtonSecondary {
   font-size: 18px;
   text-shadow: none;
+  padding: 15px 30px;
 }
 
 .heroButtonPrimary {
-  background: #000;
+  background: rgba(0,0,0, 1);
   border-radius: 0;
   margin-right: 20px;
   text-transform: none;
+  transition: all ease-in .25s;
   font-family: 'Roboto Mono', monospace;
+
+  &:hover {
+    background: rgba(0,0,0, 0.5);
+  }
 }
 
 .heroButtonSecondary {
   color: #fff;
   text-transform: none;
+  transition: all ease-in .25s;
   font-family: 'Roboto Mono', monospace;
+
+  &:hover {
+    background: rgba(0,0,0, 0.25);
+  }
 }

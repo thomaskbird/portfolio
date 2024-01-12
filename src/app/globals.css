@@ -22,7 +22,3 @@ h6 {
   font-weight: 900;
   font-family: 'Source Sans 3', sans-serif;
 }
-
-.animate__delay-0s {
-  --animate-delay: 0.5s;
-}

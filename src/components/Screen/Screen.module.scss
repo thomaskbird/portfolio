@@ -19,12 +19,13 @@
 
 .macbookImage {
   width: 100%;
+  z-index: 2;
   position: absolute;
 }
 
 .screen {
   top: 6px;
-  z-index: 2;
+  z-index: 1;
   left: 60px;
   width: 78.8%;
   height: 287px;

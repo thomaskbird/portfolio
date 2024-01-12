@@ -3,6 +3,12 @@
   margin: 100px 0;
   display: flex;
   justify-content: center;
+
+  :global {
+    .projectMacbookInitial {
+      opacity: 0;
+    }
+  }
 }
 
 .textLeft {
@@ -18,16 +24,15 @@
   flex-direction: column;
   justify-content: center;
 
-  //& h2,
-  //& h5,
-  //& p {
-  //  opacity: 0;
-  //}
+  & h2,
+  & h5,
+  & p {
+    opacity: 0;
+  }
 
   & h2 {
-    margin: 0;
     font-size: 64px;
-    margin-bottom: 10px;
+    margin: 0 0 10px 0;
   }
 
   & h5 {
@@ -44,37 +49,63 @@
   }
 }
 
+// todo: at some point revisit animations and separate text and screen animations
+
 .inRight {
+  & h2,
+  & h5,
+  & p {
+    opacity: 1.0;
+    animation-name: fadeInRight;
+  }
+
+  :global {
+    .projectMacbookAnimation {
+      opacity: 1.0;
+      animation-name: fadeInLeft;
+      animation-duration: 0.5s;
+    }
+  }
+
   & h2 {
     animation-duration: 0.5s;
-    animation-name: fadeInRight;
   }
 
   & h5 {
     animation-duration: 0.75s;
-    animation-name: fadeInRight;
   }
 
   & p {
     animation-duration: 1s;
-    animation-name: fadeInRight;
   }
 }
 
 .inLeft {
+  & h2,
+  & h5,
+  & p {
+    opacity: 1.0;
+    animation-name: fadeInLeft;
+  }
+
+  :global {
+    .projectMacbookAnimation {
+      opacity: 1.0;
+      animation-name: fadeInRight;
+      animation-duration: 0.5s;
+    }
+  }
+
   & h2 {
     animation-duration: 0.5s;
-    animation-name: fadeInLeft;
   }
 
   & h5 {
     animation-duration: 0.75s;
-    animation-name: fadeInLeft;
   }
 
   & p {
     animation-duration: 1s;
-    animation-name: fadeInLeft;
   }
 }
 
