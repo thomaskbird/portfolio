@@ -1,9 +1,12 @@
+'use client';
+
 import styles from './page.module.scss'
 import {Button, Container, Grid} from "@mui/material";
 import PageSectionTitle from "@/components/PageSectionTitle/PageSectionTitle";
 import ProjectSection from "@/components/ProjectSection/ProjectSection";
 import Skills from "@/components/Skills/Skills";
 import Hero from "@/components/Hero/Hero";
+import {Controller} from "react-scrollmagic";
 
 export default function Home() {
   return (

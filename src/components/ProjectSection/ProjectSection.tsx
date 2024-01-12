@@ -14,6 +14,10 @@ type ProjectSectionType = {
   content: string;
 };
 
+// todo: research how to implement this https://gsap.com/community/forums/topic/34484-scrolltrigger-combined-with-div-that-has-inner-scroll/
+// https://gsap.com/resources/React/
+// https://stackoverflow.com/a/52028461
+
 const ProjectSection = ({
   alignment,
   image,
@@ -25,7 +29,10 @@ const ProjectSection = ({
 
   return (
     <Controller>
-      <Scene triggerHook={0.5} classToggle={alignment === 'left' ? styles.inRight : styles.inLeft}>
+      <Scene
+        triggerHook={0.5}
+        classToggle={alignment === 'left' ? styles.inRight : styles.inLeft}
+      >
         <Grid container className={styles.projects} spacing={2}>
           {alignment === 'left' && <Screen image={image} alignment={alignment} />}
           <Grid item xs={6} className={classes}>
