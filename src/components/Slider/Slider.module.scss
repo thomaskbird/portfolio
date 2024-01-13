@@ -1,5 +1,6 @@
 .sliderWrap {
   display: flex;
+  height: 250px;
   padding: 100px;
   background: #fff;
   position: relative;
@@ -10,8 +11,16 @@
 
 .slide {
   z-index: 1;
+  opacity: 0;
   padding: 0 100px;
-  position: relative;
+  position: absolute;
+  transition: all ease-in .5s;
+  transform: translate(0, -50px);
+}
+
+.active {
+  opacity: 1;
+  transform: translate(0, 0);
 }
 
 .slideText {
@@ -35,6 +44,11 @@
   right: 300px;
   bottom: -25px;
   transform: rotate(180deg);
+}
+
+.slidesWrap {
+  flex: 1;
+  position: relative;
 }
 
 .badge {

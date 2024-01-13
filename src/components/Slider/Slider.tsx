@@ -1,37 +1,42 @@
 import styles from './Slider.module.scss';
+import MOCK_TESTIMONIALS from "@/mocks/mockTestimonials";
+import Slide from "@/components/Slider/Slide";
+import {useState} from "react";
 
 type SliderType = {
 
 };
 
 const Slider = ({}: SliderType) => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleDotClick = (idx: number) => {
+    setActiveIndex(idx);
+  }
+
   return (
     <div className={styles.sliderWrap}>
       <img src="/quote.png" className={styles.quoteLeft}/>
       <img src="/quote.png" className={styles.quoteRight}/>
-      <div className={styles.slide}>
-        <div className={styles.badge}>
-          <div className={styles.avatar}>
-            <img src="/testimonials/tony-baez.jpg" />
-          </div>
-          <div className={styles.badgeText}>
-            <h3>Guarionex Baez</h3>
-            <h5>Director of Customer Success</h5>
-          </div>
-        </div>
-        <p className={styles.slideText}>It is with great enthusiasm that I recommend Thomas Bird, who
-          serves as the Chief Technology Officer at Livegistics. Thomas
-          possesses a rare blend of technical acumen and strategic vision,
-          which has been pivotal in driving our technological
-          advancements.</p>
+
+      <div className={styles.slidesWrap}>
+        {MOCK_TESTIMONIALS.map((testimonial, idx) => (
+          <Slide
+            key={testimonial.id}
+            {...testimonial}
+            active={activeIndex === idx}
+          />
+        ))}
       </div>
+
       <div className={styles.pagination}>
-        <div className={styles.dot}></div>
-        <div className={styles.dot}></div>
-        <div className={styles.dot}></div>
-        <div className={styles.dotActive}></div>
-        <div className={styles.dot}></div>
-        <div className={styles.dot}></div>
+        {MOCK_TESTIMONIALS.map((testimonial, iDot) => (
+          <div
+            key={testimonial.id}
+            className={activeIndex === iDot ? styles.dotActive : styles.dot}
+            onClick={() => handleDotClick(iDot)}
+          ></div>
+        ))}
       </div>
     </div>
   )
