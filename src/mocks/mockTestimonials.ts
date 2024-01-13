@@ -32,6 +32,14 @@ const MOCK_TESTIMONIALS: Testimonial[] = [
     content: 'Tom always seemed to amaze me with his work ethic. He would go above and beyond the call of duty for his clients. His knowledge of computer programming blows me away! A true role model, I always enjoyed working with Tom and talking about future leads and projects. A true team player!',
     image: '/testimonials/stefan-munck.jpg'
   },
+  {
+    id: 4,
+    firstName: 'Andrew',
+    lastName: 'Devich',
+    title: 'Sales Analyst',
+    content: 'Working alongside Thomas was an exceptional and consistently engaging experience. Thomas truly embodies the ideal coworker, always ready to provide assistance and share knowledge, even when our roles didn\'t directly align. His dedication to uplifting those around him goes above and beyond. \n\n Whenever I entrusted a sale to Thomas and his development team, the process proceeded seamlessly. Our clients held Thomas in high esteem for the positive impact he had on their teams through his interactions. The significant growth of the team under his leadership cannot be overstated. Thanks to him, Livegistics has made remarkable progress in improving its position.',
+    image: '/testimonials/andrew-devich.jpg'
+  }
 ];
 
 export default MOCK_TESTIMONIALS;

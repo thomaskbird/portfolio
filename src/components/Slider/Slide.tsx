@@ -21,8 +21,8 @@ const Slide = ({
           <img src={image} alt={`${firstName} ${lastName}`} />
         </div>
         <div className={styles.badgeText}>
-          <h3>{firstName} {lastName}</h3>
           <h5>{title}</h5>
+          <h3>{firstName} {lastName}</h3>
         </div>
       </div>
       <p className={styles.slideText}>
