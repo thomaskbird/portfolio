@@ -8,7 +8,7 @@ const Hero = () => {
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12} md={6} className={styles.heroImage}>
-            <img src="/thomas-bird.png" className={cn(styles.heroImageItem, 'animate__animated animate__fadeIn animate__delay-1s')} alt="Thomas Bird" />
+            <img src="/thomas-bird.png" className={cn(styles.heroImageItem, 'animate__animated animate__slow animate__fadeIn ')} alt="Thomas Bird" />
           </Grid>
           <Grid item xs={12} md={6} className={styles.heroText}>
             <h1 className={cn(styles.heroTextTitle, 'animate__animated animate__fadeInDown')}>
@@ -19,8 +19,8 @@ const Hero = () => {
             </p>
 
             <Grid>
-              <Button className={cn(styles.heroButtonPrimary, 'animate__animated animate__fadeInDown animate__delay-1s')} variant="contained" disableElevation>Send a message!</Button>
-              <Button className={cn(styles.heroButtonSecondary, 'animate__animated animate__fadeInDown animate__delay-2s')} variant="text" disableElevation>Resume</Button>
+              <Button className={cn(styles.heroButtonPrimary, 'animate__animated animate__fadeInDown animate__slow')} variant="contained" disableElevation>Send a message!</Button>
+              <Button className={cn(styles.heroButtonSecondary, 'animate__animated animate__fadeInDown animate__slow')} variant="text" disableElevation>Resume</Button>
             </Grid>
           </Grid>
         </Grid>

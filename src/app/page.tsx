@@ -1,12 +1,12 @@
 'use client';
 
 import styles from './page.module.scss'
-import {Button, Container, Grid} from "@mui/material";
+import {Container} from "@mui/material";
 import PageSectionTitle from "@/components/PageSectionTitle/PageSectionTitle";
 import ProjectSection from "@/components/ProjectSection/ProjectSection";
 import Skills from "@/components/Skills/Skills";
 import Hero from "@/components/Hero/Hero";
-import {Controller} from "react-scrollmagic";
+import Slider from "@/components/Slider/Slider";
 
 export default function Home() {
   return (
@@ -44,6 +44,13 @@ export default function Home() {
             description="iOT that makes peoples lives better through great software and cost cutting savings"
             content="Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam commodi consectetur deserunt, facere harum labore laudantium maiores, odio perferendis perspiciatis possimus quaerat sit. Aliquam atque deleniti eveniet laudantium ratione."
           />
+        </Container>
+      </Container>
+      <Container maxWidth={false} disableGutters className={styles.testimonialWrapper}>
+        <Container>
+          <PageSectionTitle title="People Are Talking" />
+
+          <Slider />
         </Container>
       </Container>
     </Container>

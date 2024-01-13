@@ -8,7 +8,7 @@ body {
 p,
 a,
 button {
-  font-weight: 100 !important;
+  font-weight: 200 !important;
   line-height: 160% !important;
   font-family: 'Roboto Mono', monospace;
 }

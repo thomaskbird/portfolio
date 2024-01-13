@@ -1,0 +1,111 @@
+.sliderWrap {
+  display: flex;
+  padding: 100px;
+  background: #fff;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0,0,0,.05);
+}
+
+.slide {
+  z-index: 1;
+  padding: 0 100px;
+  position: relative;
+}
+
+.slideText {
+  color: #ccc;
+  font-weight: 100 !important;
+  line-height: 200% !important;
+  padding-right: 100px;
+}
+
+.quoteLeft,
+.quoteRight {
+  position: absolute;
+}
+
+.quoteLeft {
+  top: -25px;
+  left: 50px;
+}
+
+.quoteRight {
+  right: 300px;
+  bottom: -25px;
+  transform: rotate(180deg);
+}
+
+.badge {
+  display: flex;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  border-radius: 100px;
+
+  img {
+    width: 100%;
+  }
+}
+
+.badgeText {
+  display: flex;
+  margin-left: 30px;
+  flex-direction: column;
+  justify-content: center;
+
+  h3,
+  h5 {
+    margin: 0;
+    text-transform: uppercase;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  h3 {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 2px;
+  }
+
+  h5 {
+    color: #aaa;
+    font-size: 16px;
+    font-weight: 400;
+  }
+}
+
+.pagination {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dot,
+.dotActive {
+  margin: 10px 0;
+  align-self: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+  background: #ddd;
+  border-radius: 100px;
+  transition: all ease-in .25s;
+
+  &:hover {
+    background: #aaa;
+  }
+}
+
+.dotActive {
+  width: 20px;
+  height: 20px;
+  background: #566e8f;
+  border-radius: 100px;
+}
