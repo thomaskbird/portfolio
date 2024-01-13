@@ -18,7 +18,7 @@ const Hero = () => {
               I am a passionate engineer and people leader who thrives in fast paced and collaborative environments!
             </p>
 
-            <Grid>
+            <Grid className={styles.heroCtas}>
               <Button className={cn(styles.heroButtonPrimary, 'animate__animated animate__fadeInDown animate__slow')} variant="contained" disableElevation>Send a message!</Button>
               <Button className={cn(styles.heroButtonSecondary, 'animate__animated animate__fadeInDown animate__slow')} variant="text" disableElevation>Resume</Button>
             </Grid>
