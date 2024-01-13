@@ -7,6 +7,8 @@ type SliderType = {
 
 };
 
+// todo: consider only triggering autoplay when the section is within the viewport and disabling when not in view
+
 const Slider = ({}: SliderType) => {
   const testimonialsTotal = MOCK_TESTIMONIALS.length;
   const [activeIndex, setActiveIndex] = useState(0);
