@@ -30,7 +30,7 @@ const ProjectSection = ({
   return (
     <Controller>
       <Scene
-        triggerHook={0.5}
+        triggerHook={0.25}
         classToggle={alignment === 'left' ? styles.inRight : styles.inLeft}
       >
         <Grid container className={styles.projects} spacing={2}>
