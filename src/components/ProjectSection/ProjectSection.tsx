@@ -25,7 +25,8 @@ const ProjectSection = ({
   description,
   content
 }: ProjectSectionType) => {
-  const classes = cn(styles.projectText, alignment === 'left' ? styles.textLeft : styles.textRight)
+  const projectClasses = cn(styles.projects, alignment === 'left' ? styles.projectsLeft : styles.projectsRight);
+  const classes = cn(styles.projectText, alignment === 'left' ? styles.textLeft : styles.textRight);
 
   return (
     <Controller>
@@ -33,7 +34,7 @@ const ProjectSection = ({
         triggerHook={0.25}
         classToggle={alignment === 'left' ? styles.inRight : styles.inLeft}
       >
-        <Grid container className={styles.projects} spacing={2}>
+        <Grid container className={projectClasses} spacing={2}>
           {alignment === 'left' && <Screen image={image} alignment={alignment} />}
           <Grid item xs={6} className={classes}>
             <h2>{title}</h2>
