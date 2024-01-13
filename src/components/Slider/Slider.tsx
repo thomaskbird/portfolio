@@ -1,17 +1,37 @@
 import styles from './Slider.module.scss';
 import MOCK_TESTIMONIALS from "@/mocks/mockTestimonials";
 import Slide from "@/components/Slider/Slide";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 type SliderType = {
 
 };
 
 const Slider = ({}: SliderType) => {
+  const testimonialsTotal = MOCK_TESTIMONIALS.length;
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleDotClick = (idx: number) => {
-    setActiveIndex(idx);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleDotClick();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [activeIndex]);
+
+  const handleDotClick = (idx?: number) => {
+    if(idx) {
+      setActiveIndex(idx);
+    } else {
+      setActiveIndex(prevState => {
+        const next = prevState + 1;
+        if(next < testimonialsTotal) {
+          return next;
+        } else {
+          return 0;
+        }
+      })
+    }
   }
 
   return (
@@ -34,7 +54,7 @@ const Slider = ({}: SliderType) => {
           <div
             key={testimonial.id}
             className={activeIndex === iDot ? styles.dotActive : styles.dot}
-            onClick={() => handleDotClick(iDot)}
+            onClick={() => activeIndex === iDot ? false : handleDotClick(iDot)}
           ></div>
         ))}
       </div>

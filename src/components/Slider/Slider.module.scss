@@ -113,6 +113,8 @@
   transition: all ease-in .25s;
 
   &:hover {
+    width: 15px;
+    height: 15px;
     background: #aaa;
   }
 }

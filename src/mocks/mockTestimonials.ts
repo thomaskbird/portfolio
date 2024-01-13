@@ -18,6 +18,14 @@ const MOCK_TESTIMONIALS: Testimonial[] = [
   },
   {
     id: 2,
+    firstName: 'Andrew',
+    lastName: 'Devich',
+    title: 'Sales Analyst',
+    content: 'Working alongside Thomas was an exceptional and consistently engaging experience. Thomas truly embodies the ideal coworker, always ready to provide assistance and share knowledge, even when our roles didn\'t directly align. His dedication to uplifting those around him goes above and beyond. \n\n Whenever I entrusted a sale to Thomas and his development team, the process proceeded seamlessly. Our clients held Thomas in high esteem for the positive impact he had on their teams through his interactions. The significant growth of the team under his leadership cannot be overstated. Thanks to him, Livegistics has made remarkable progress in improving its position.',
+    image: '/testimonials/andrew-devich.jpg'
+  },
+  {
+    id: 3,
     firstName: 'George',
     lastName: 'Apostolopoulos',
     title: 'Product Leader',
@@ -25,7 +33,7 @@ const MOCK_TESTIMONIALS: Testimonial[] = [
     image: '/testimonials/george-apostolopoulos.jpg'
   },
   {
-    id: 3,
+    id: 4,
     firstName: 'Stefan',
     lastName: 'Munck',
     title: 'SR Graphic Designer',
@@ -33,13 +41,21 @@ const MOCK_TESTIMONIALS: Testimonial[] = [
     image: '/testimonials/stefan-munck.jpg'
   },
   {
-    id: 4,
-    firstName: 'Andrew',
-    lastName: 'Devich',
-    title: 'Sales Analyst',
-    content: 'Working alongside Thomas was an exceptional and consistently engaging experience. Thomas truly embodies the ideal coworker, always ready to provide assistance and share knowledge, even when our roles didn\'t directly align. His dedication to uplifting those around him goes above and beyond. \n\n Whenever I entrusted a sale to Thomas and his development team, the process proceeded seamlessly. Our clients held Thomas in high esteem for the positive impact he had on their teams through his interactions. The significant growth of the team under his leadership cannot be overstated. Thanks to him, Livegistics has made remarkable progress in improving its position.',
-    image: '/testimonials/andrew-devich.jpg'
-  }
+    id: 5,
+    firstName: 'Dan',
+    lastName: 'Panu-Misailescu',
+    title: 'Innovative AI Software Architect',
+    content: 'Tom is a very organized, calm, pleasant to work with and technically strong CTO who provides guidance to our organization. Besides doing managerial work he also jumps in to help with urgent tech problems or leads brainstorming sessions about our software architecture. I recommend Tom as a great professional!',
+    image: '/testimonials/dan-misailescu.jpg'
+  },
+  {
+    id: 6,
+    firstName: 'Gary',
+    lastName: 'Biggs',
+    title: 'AI Strategy & Implementation',
+    content: 'Worked with Tom at Vestrics and later at Ultimate Software after Ultimate acquired Vestrics. At Vestrics Tom was tasked with creating dynamic visualizations for some fairly complex analytics, and his work was critical to us being able to successfully deliver results. Vestrics was a start-up and Tom had to work alone. He produced excellent results under very tight deadlines, in many cases with only sketches on paper and an Excel spreadsheet for the specifications. No wireframe, no sample data. That’s a tough assignment and Tom delivered. ',
+    image: '/testimonials/gary-biggs.jpg'
+  },
 ];
 
 export default MOCK_TESTIMONIALS;
