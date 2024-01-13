@@ -7,36 +7,40 @@ import PauseIcon from '@mui/icons-material/Pause';
 import {IconButton} from "@mui/material";
 
 type SliderType = {
-  slideDuration?: number;
+  duration?: number;
   autoPlay?: boolean;
   startAt?: number;
 };
 
 // todo: consider only triggering autoplay when the section is within the viewport and disabling when not in view
 const Slider = ({
-  slideDuration = 3000,
+  duration = 3000,
   autoPlay = true,
   startAt = 0
 }: SliderType) => {
   const testimonialsTotal = MOCK_TESTIMONIALS.length;
   const interval: MutableRefObject<any> = useRef();
   const [activeIndex, setActiveIndex] = useState<number>(startAt);
-  const [isRunning, setIsRunning] = useState<boolean>(autoPlay);
+  const [isRunning, setIsRunning] = useState<boolean>(false);
 
+  // trigger autoplay
   useEffect(() => {
-    if(autoPlay) {
+    if(!isRunning && autoPlay) {
+      setIsRunning(true);
       startInterval();
     }
 
     return () => clearInterval(interval.current);
-  }, [activeIndex]);
+  }, []);
 
+  // trigger the interval to start
   const startInterval = () => {
     interval.current = setInterval(() => {
-      handleDotClick();
-    }, slideDuration);
+      handleAuto();
+    }, duration);
   };
 
+  // handle pause play
   const handleTogglePlaying = () => {
     if(isRunning) {
       clearInterval(interval.current);
@@ -47,19 +51,21 @@ const Slider = ({
     setIsRunning(prevState => !prevState);
   }
 
-  const handleDotClick = (idx?: number) => {
-    if(idx) {
-      setActiveIndex(idx);
-    } else {
-      setActiveIndex(prevState => {
-        const next = prevState + 1;
-        if(next < testimonialsTotal) {
-          return next;
-        } else {
-          return 0;
-        }
-      })
-    }
+  // when a pagination item is clicked navigate to it
+  const handleDotClick = (idx: number) => {
+    setActiveIndex(idx);
+  }
+
+  // handle next when autoplaying
+  const handleAuto = () => {
+    setActiveIndex(prevState => {
+      const next = prevState + 1;
+      if(next < testimonialsTotal) {
+        return next;
+      } else {
+        return 0;
+      }
+    })
   }
 
   return (
