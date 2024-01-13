@@ -15,7 +15,12 @@
 }
 
 .icons {
-  color: #fff;
+  color: rgb(41, 60, 86);
+  transition: color ease-in .5s;
+
+  &:hover {
+    color: #fff;
+  }
 }
 
 .heroImage {
