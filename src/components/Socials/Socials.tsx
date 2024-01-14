@@ -10,41 +10,42 @@ import XIcon from "@mui/icons-material/X";
 
 const Socials = () => {
   return (
-    <Grid container>
+    <Grid container className={styles.socialWrap}>
+      <img src="/logo.png" alt="Thomas K Bird" className={styles.logo}/>
       <div className={styles.socials}>
         <Tooltip title="LinkedIn">
           <IconButton className={styles.icons}>
-            <LinkedInIcon />
+            <LinkedInIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip title="Resume">
           <IconButton className={styles.icons}>
-            <ContactPageIcon />
+            <ContactPageIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip title="Contact me">
           <IconButton className={styles.icons}>
-            <MailOutlineIcon />
+            <MailOutlineIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip title="Github">
           <IconButton className={styles.icons}>
-            <GitHubIcon />
+            <GitHubIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip title="Calendly">
           <IconButton className={styles.icons}>
-            <EventIcon />
+            <EventIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip title="Instagram">
           <IconButton className={styles.icons}>
-            <InstagramIcon />
+            <InstagramIcon/>
           </IconButton>
         </Tooltip>
         <Tooltip title="Twitter/X">
           <IconButton className={styles.icons}>
-            <XIcon />
+            <XIcon/>
           </IconButton>
         </Tooltip>
       </div>

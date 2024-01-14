@@ -1,8 +1,18 @@
-.socials {
-  width: 100%;
+.socialWrap {
   display: flex;
-  padding: 10px 0;
+  display: none;
+}
+
+.logo {
+  height: 20px;
+  margin: 10px 0;
+}
+
+.socials {
+  flex: 1;
+  display: flex;
   justify-content: flex-end;
+  margin: 0;
 }
 
 .icons {

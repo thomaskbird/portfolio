@@ -74,13 +74,11 @@
     text-decoration: none;
     margin-bottom: 10px;
     transition: all ease-in .25s;
-    line-height: 100% !important;
-    border-left: 1px solid transparent;
+    line-height: 150% !important;
 
     &:hover {
       color: #fff;
       padding-left: 10px;
-      border-left: 1px solid #fff;
     }
   }
 }
