@@ -38,21 +38,22 @@ const Slider = ({
       startInterval();
     }
 
-    return () => clearInterval(interval.current);
+    return () => stopInterval();
   }, []);
 
-  // useEffect(() => {
-  //   if(autoPlayOnlyWhenVisible && !autoPlay) {
-  //     if(isVisible && !isRunning) {
-  //       setIsRunning(true);
-  //       startInterval();
-  //     } else {
-  //       setIsRunning(false);
-  //     }
-  //   } else {
-  //     console.warn('You must set autoPlay to false if autoPlayOnlyWhenVisible is true');
-  //   }
-  // }, [isVisible]);
+  useEffect(() => {
+    if(autoPlayOnlyWhenVisible && !autoPlay) {
+      if(isVisible && !isRunning) {
+        startInterval();
+        setIsRunning(true);
+      } else {
+        stopInterval();
+        setIsRunning(false);
+      }
+    } else {
+      console.warn('You must set autoPlay to false if autoPlayOnlyWhenVisible is true');
+    }
+  }, [isVisible]);
 
   // trigger the interval to start
   const startInterval = () => {
@@ -61,10 +62,12 @@ const Slider = ({
     }, duration);
   };
 
+  const stopInterval = () => clearInterval(interval.current);
+
   // handle pause play
   const handleTogglePlaying = () => {
     if(isRunning) {
-      clearInterval(interval.current);
+      stopInterval();
     } else {
       startInterval();
     }
