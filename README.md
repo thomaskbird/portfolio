@@ -22,4 +22,6 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ### Todo
 1. Implement react-loading-skeleton
-2. Framer Motion - Figure out how to reverse animation whileInView 
+2. Framer Motion - 
+   1. Figure out how to reverse animation whileInView 
+   2. Consider converting project sections from magic scroll to motion and using useScroll
