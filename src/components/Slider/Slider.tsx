@@ -14,7 +14,6 @@ type SliderType = {
   autoPlayOnlyWhenVisible?: boolean;
 };
 
-// todo: consider only triggering autoplay when the section is within the viewport and disabling when not in view
 const Slider = ({
   duration = 3000,
   autoPlay = true,
