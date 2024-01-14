@@ -5,7 +5,7 @@ import {MutableRefObject, useEffect, useRef, useState} from "react";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import {IconButton} from "@mui/material";
-import useIsVisible from "@/hooks/useIsVisible";
+import {useInView} from "framer-motion";
 
 type SliderType = {
   duration?: number;
@@ -25,7 +25,7 @@ const Slider = ({
   const interval: MutableRefObject<any> = useRef();
   const sliderRef: MutableRefObject<any> = useRef();
 
-  const isVisible = useIsVisible(sliderRef);
+  const isVisible = useInView(sliderRef);
 
   const [activeIndex, setActiveIndex] = useState<number>(startAt);
   const [isRunning, setIsRunning] = useState<boolean>(false);

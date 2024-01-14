@@ -1,13 +1,25 @@
+.container {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .chip {
-  color: rgba(41, 60, 86, 1);
   font-size: 18px;
+  padding: 5px 15px;
+  width: fit-content;
   border-radius: 5px;
   margin-right: 20px;
   margin-bottom: 20px;
+  background: #eee;
+  color: rgba(41, 60, 86, 1);
+  transition: all ease-in 0.3s;
   font-family: 'Roboto Mono', monospace;
 
   &:hover {
     color: #fff;
+    cursor: pointer;
     background: rgba(41, 60, 86, 1);
   }
 }

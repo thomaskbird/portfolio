@@ -2,6 +2,7 @@
 
 import {Chip, Grid} from "@mui/material";
 import styles from './Skills.module.scss';
+import { motion } from 'framer-motion';
 
 type SkillsType = {};
 
@@ -25,13 +26,34 @@ const skills = {
 
 const consolidatedSkills = [skills.code.skills, skills.soft.skills, skills.design.skills].flat();
 
+const container = {
+  initial: 'offscreen',
+  whileInView: 'onscreen',
+  viewport: {},
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.0,
+      staggerChildren: 0.1
+    }
+  }
+};
+
+const item = {
+  hidden: { y: 10, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1
+  }
+};
+
 const Skills = ({}: SkillsType) => {
   return (
-    <Grid textAlign="center">
+    <motion.div className={styles.container} variants={container} initial="hidden" animate="visible">
       {consolidatedSkills.map(skill => (
-        <Chip key={skill} label={skill} size="medium" className={styles.chip} />
+        <motion.div variants={item} key={skill} className={styles.chip}>{skill}</motion.div>
       ))}
-    </Grid>
+    </motion.div>
   )
 };
 
