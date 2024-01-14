@@ -4,7 +4,8 @@ import styles from './ProjectSection.module.scss';
 import {Grid} from "@mui/material";
 import Screen from "@/components/Screen/Screen";
 import cn from 'classnames';
-import { Controller, Scene } from 'react-scrollmagic';
+import {motion, useScroll} from 'framer-motion';
+import {MutableRefObject, useEffect, useRef, useState} from "react";
 
 type ProjectSectionType = {
   alignment: 'left' | 'right';
@@ -25,27 +26,68 @@ const ProjectSection = ({
   description,
   content
 }: ProjectSectionType) => {
-  const projectClasses = cn(styles.projects, alignment === 'left' ? styles.projectsLeft : styles.projectsRight);
-  const classes = cn(styles.projectText, alignment === 'left' ? styles.textLeft : styles.textRight);
+  const wrapperRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
+  const [scrollValueCalculated, setScrollValueCalculated] = useState(0);
+  const [opacity, setOpacity] = useState(0);
+  const { scrollYProgress, scrollY } = useScroll({
+    target: wrapperRef,
+    offset: ['0.5 1', '1.33 1'],
+  });
+
+  const isLeft = alignment === 'left';
+  const projectClasses = cn(styles.projects, isLeft ? styles.projectsLeft : styles.projectsRight);
+  const classes = cn(styles.projectText, isLeft ? styles.textLeft : styles.textRight);
+
+  useEffect(() => {
+    scrollYProgress.on('change', (num) => {
+      setScrollValueCalculated(100 - Math.round(num * 100));
+      setOpacity(num);
+    });
+
+    return () => scrollYProgress.destroy();
+  }, []);
+
+  useEffect(() => {
+    console.log('scrollValueCalculated', 100 - scrollValueCalculated);
+  }, [scrollValueCalculated]);
 
   return (
-    <Controller>
-      <Scene
-        triggerHook={0.25}
-        classToggle={alignment === 'left' ? styles.inRight : styles.inLeft}
-      >
-        <Grid container className={projectClasses} spacing={2}>
-          {alignment === 'left' && <Screen image={image} alignment={alignment} />}
-          <Grid item xs={6} className={classes}>
-            <h2>{title}</h2>
-            <h5>{description}</h5>
+    <motion.div
+      ref={wrapperRef}
+    >
+      <Grid container className={projectClasses} spacing={2}>
+        {alignment === 'left' && <Screen image={image} alignment={alignment} opacity={opacity} scrollValueCalculated={scrollValueCalculated} />}
+        <Grid item xs={6} className={classes}>
+          <motion.h2
+            style={{
+              transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated * .25}px, 0)`,
+              opacity: opacity
+            }}
+          >
+            {title}
+          </motion.h2>
 
-            <p>{content}</p>
-          </Grid>
-          {alignment === 'right' && <Screen image={image} alignment={alignment} />}
+          <motion.h5
+            style={{
+              transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated * .5}px, 0)`,
+              opacity: opacity
+            }}
+          >
+            {description}
+          </motion.h5>
+
+          <motion.p
+            style={{
+              transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated}px, 0)`,
+              opacity: opacity
+            }}
+          >
+            {content}
+          </motion.p>
         </Grid>
-      </Scene>
-    </Controller>
+        {alignment === 'right' && <Screen image={image} alignment={alignment} opacity={opacity} scrollValueCalculated={scrollValueCalculated} />}
+      </Grid>
+    </motion.div>
   )
 }
 

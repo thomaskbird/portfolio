@@ -41,16 +41,18 @@ const Slider = ({
   }, []);
 
   useEffect(() => {
-    if(autoPlayOnlyWhenVisible && !autoPlay) {
-      if(isVisible && !isRunning) {
-        startInterval();
-        setIsRunning(true);
+    if(autoPlayOnlyWhenVisible) {
+      if(autoPlay) {
+        console.warn('You must set autoPlay to false if autoPlayOnlyWhenVisible is true');
       } else {
-        stopInterval();
-        setIsRunning(false);
+        if(isVisible && !isRunning) {
+          startInterval();
+          setIsRunning(true);
+        } else {
+          stopInterval();
+          setIsRunning(false);
+        }
       }
-    } else {
-      console.warn('You must set autoPlay to false if autoPlayOnlyWhenVisible is true');
     }
   }, [isVisible]);
 
