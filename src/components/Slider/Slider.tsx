@@ -5,33 +5,54 @@ import {MutableRefObject, useEffect, useRef, useState} from "react";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import {IconButton} from "@mui/material";
+import useIsVisible from "@/hooks/useIsVisible";
 
 type SliderType = {
   duration?: number;
   autoPlay?: boolean;
   startAt?: number;
+  autoPlayOnlyWhenVisible?: boolean;
 };
 
 // todo: consider only triggering autoplay when the section is within the viewport and disabling when not in view
 const Slider = ({
   duration = 3000,
   autoPlay = true,
-  startAt = 0
+  startAt = 0,
+  autoPlayOnlyWhenVisible = false
 }: SliderType) => {
   const testimonialsTotal = MOCK_TESTIMONIALS.length;
+
   const interval: MutableRefObject<any> = useRef();
+  const sliderRef: MutableRefObject<any> = useRef();
+
+  const isVisible = useIsVisible(sliderRef);
+
   const [activeIndex, setActiveIndex] = useState<number>(startAt);
   const [isRunning, setIsRunning] = useState<boolean>(false);
 
   // trigger autoplay
   useEffect(() => {
-    if(!isRunning && autoPlay) {
+    if(!isRunning && autoPlay && !autoPlayOnlyWhenVisible) {
       setIsRunning(true);
       startInterval();
     }
 
     return () => clearInterval(interval.current);
   }, []);
+
+  // useEffect(() => {
+  //   if(autoPlayOnlyWhenVisible && !autoPlay) {
+  //     if(isVisible && !isRunning) {
+  //       setIsRunning(true);
+  //       startInterval();
+  //     } else {
+  //       setIsRunning(false);
+  //     }
+  //   } else {
+  //     console.warn('You must set autoPlay to false if autoPlayOnlyWhenVisible is true');
+  //   }
+  // }, [isVisible]);
 
   // trigger the interval to start
   const startInterval = () => {
@@ -73,7 +94,7 @@ const Slider = ({
       <img src="/quote.png" className={styles.quoteLeft}/>
       <img src="/quote.png" className={styles.quoteRight}/>
 
-      <div className={styles.slidesWrap}>
+      <div className={styles.slidesWrap} ref={sliderRef}>
         {MOCK_TESTIMONIALS.map((testimonial, idx) => (
           <Slide
             key={testimonial.id}

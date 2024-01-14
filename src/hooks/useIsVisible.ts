@@ -13,7 +13,7 @@ const useIsVisible = (ref: RefObject<any>) => {
     return () => observer.current.disconnect();
   }, []);
 
-  return isIntersecting;
+  return useMemo(() => isIntersecting, [isIntersecting]);
 }
 
 export default useIsVisible;

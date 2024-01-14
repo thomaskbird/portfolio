@@ -50,7 +50,7 @@ export default function Home() {
         <Container>
           <PageSectionTitle title="People Are Talking" />
 
-          <Slider />
+          <Slider duration={1000} autoPlayOnlyWhenVisible={true} autoPlay={false} />
         </Container>
       </Container>
     </Container>
