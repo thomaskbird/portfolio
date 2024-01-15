@@ -36,7 +36,7 @@ const Hero = () => {
     <Container maxWidth={false} disableGutters className={styles.hero}>
       <Container>
         <Socials />
-        <motion.div initial="hidden" whileInView="visible">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
           <Grid container spacing={2}>
             <Grid item xs={12} md={6} className={styles.heroImage}>
               <motion.img custom={2} variants={imageTransition} src="/thomas-bird.png" className={cn(styles.heroImageItem, 'animate__animated animate__slow animate__fadeIn ')} alt="Thomas Bird" />
