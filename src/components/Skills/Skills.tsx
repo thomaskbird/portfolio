@@ -31,7 +31,8 @@ const item = {
     y: 0,
     opacity: 1,
     transition: {
-      delay: i * 0.3
+      delay: i * 0.3,
+      duration: 0.1
     }
   }),
 };
@@ -49,7 +50,6 @@ const Skills = ({}: SkillsType) => {
           key={skill}
           className={styles.chip}
           variants={item}
-          transition={{ duration: 0.1, ease: 'easeOut' }}
         >
           {skill}
         </motion.div>
