@@ -5,6 +5,7 @@ type PageSectionTitleProps = {
   title: string;
 }
 
+// todo: add motion to here
 const PageSectionTitle = ({ title }: PageSectionTitleProps) => (
   <Grid className={styles.pageTitle}>
     <h2 className={styles.title}>

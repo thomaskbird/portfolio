@@ -1,9 +1,7 @@
 'use client';
 
-import {Chip, Grid} from "@mui/material";
 import styles from './Skills.module.scss';
-import {motion, useInView, useScroll} from 'framer-motion';
-import {useEffect, useRef, useState} from "react";
+import {motion} from 'framer-motion';
 
 type SkillsType = {};
 
@@ -27,37 +25,27 @@ const skills = {
 
 const consolidatedSkills = [skills.code.skills, skills.soft.skills, skills.design.skills].flat();
 
-const container = {
-  hidden: {},
-  visible: {
-    transition: {
-      delayChildren: 0,
-      staggerChildren: 0.1
-    }
-  }
-};
-
 const item = {
   hidden: { y: 25, opacity: 0 },
-  visible: {
+  visible: (i: number) => ({
     y: 0,
-    opacity: 1
-  },
+    opacity: 1,
+    transition: {
+      delay: i * 0.3
+    }
+  }),
 };
 
 const Skills = ({}: SkillsType) => {
-  const wrapperRef = useRef<HTMLDivElement | null>(null);
-
   return (
     <motion.div
       className={styles.container}
-      ref={wrapperRef}
-      variants={container}
       initial="hidden"
       whileInView="visible"
     >
       {consolidatedSkills.map(((skill, idx) => (
         <motion.div
+          custom={idx}
           key={skill}
           className={styles.chip}
           variants={item}
