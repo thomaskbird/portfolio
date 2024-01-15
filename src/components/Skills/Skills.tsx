@@ -2,7 +2,8 @@
 
 import {Chip, Grid} from "@mui/material";
 import styles from './Skills.module.scss';
-import { motion } from 'framer-motion';
+import {motion, useInView, useScroll} from 'framer-motion';
+import {useEffect, useRef, useState} from "react";
 
 type SkillsType = {};
 
@@ -27,32 +28,44 @@ const skills = {
 const consolidatedSkills = [skills.code.skills, skills.soft.skills, skills.design.skills].flat();
 
 const container = {
-  initial: 'offscreen',
-  whileInView: 'onscreen',
-  viewport: {},
+  hidden: {},
   visible: {
-    opacity: 1,
     transition: {
-      delayChildren: 0.0,
+      delayChildren: 0,
       staggerChildren: 0.1
     }
   }
 };
 
 const item = {
-  hidden: { y: 10, opacity: 0 },
+  hidden: { y: 25, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1
-  }
+  },
 };
 
 const Skills = ({}: SkillsType) => {
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+
   return (
-    <motion.div className={styles.container} variants={container} initial="hidden" animate="visible">
-      {consolidatedSkills.map(skill => (
-        <motion.div variants={item} key={skill} className={styles.chip}>{skill}</motion.div>
-      ))}
+    <motion.div
+      className={styles.container}
+      ref={wrapperRef}
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+    >
+      {consolidatedSkills.map(((skill, idx) => (
+        <motion.div
+          key={skill}
+          className={styles.chip}
+          variants={item}
+          transition={{ duration: 0.1, ease: 'easeOut' }}
+        >
+          {skill}
+        </motion.div>
+      )))}
     </motion.div>
   )
 };

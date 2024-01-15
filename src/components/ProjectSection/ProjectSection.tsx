@@ -29,7 +29,7 @@ const ProjectSection = ({
   const wrapperRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const [scrollValueCalculated, setScrollValueCalculated] = useState(0);
   const [opacity, setOpacity] = useState(0);
-  const { scrollYProgress, scrollY } = useScroll({
+  const { scrollYProgress } = useScroll({
     target: wrapperRef,
     offset: ['0.5 1', '1.33 1'],
   });
@@ -46,10 +46,6 @@ const ProjectSection = ({
 
     return () => scrollYProgress.destroy();
   }, []);
-
-  useEffect(() => {
-    console.log('scrollValueCalculated', 100 - scrollValueCalculated);
-  }, [scrollValueCalculated]);
 
   return (
     <motion.div

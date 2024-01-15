@@ -5,16 +5,14 @@
 
 .innerMacbookWrap {
   width: 100%;
-  align-self: center;
-  position: relative;
 }
 
 .innerMacbookWrapLeft {
-  transform: scale(1.75) translate(-25%, 0);
+  transform: scale(1.75) translate(-25%, 20%);
 }
 
 .innerMacbookWrapRight {
-  transform: scale(1.75) translate(25%, 0);
+  transform: scale(1.75) translate(25%, 20%);
 }
 
 .macbookImage {
