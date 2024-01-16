@@ -1,32 +1,35 @@
 .projectMacbook {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 
 .innerMacbookWrap {
   width: 100%;
+  position: absolute;
 }
 
 .innerMacbookWrapLeft {
-  transform: scale(1.75) translate(-25%, 20%);
+  right: 75%;
+  //transform: scale(1.75) translate(-25%, 20%);
 }
 
 .innerMacbookWrapRight {
-  transform: scale(1.75) translate(25%, 20%);
+  //transform: scale(1.75) translate(25%, 20%);
 }
 
 .macbookImage {
-  width: 100%;
+  width: 992px;
   z-index: 2;
   position: absolute;
 }
 
 .screen {
-  top: 6px;
+  top: 9px;
   z-index: 1;
-  left: 60px;
-  width: 78.8%;
-  height: 287px;
+  left: 104px;
+  width: 786px;
+  height: 506px;
   overflow-y: auto;
   position: relative;
   overflow-x: hidden;

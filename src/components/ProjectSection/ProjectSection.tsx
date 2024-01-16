@@ -15,10 +15,6 @@ type ProjectSectionType = {
   content: string;
 };
 
-// todo: research how to implement this https://gsap.com/community/forums/topic/34484-scrolltrigger-combined-with-div-that-has-inner-scroll/
-// https://gsap.com/resources/React/
-// https://stackoverflow.com/a/52028461
-
 const ProjectSection = ({
   alignment,
   image,
@@ -28,6 +24,7 @@ const ProjectSection = ({
 }: ProjectSectionType) => {
   const wrapperRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const [scrollValueCalculated, setScrollValueCalculated] = useState(0);
+  const [screenPosition, setScreenPosition] = useState(0);
   const [opacity, setOpacity] = useState(0);
   const { scrollYProgress } = useScroll({
     target: wrapperRef,
@@ -40,6 +37,7 @@ const ProjectSection = ({
 
   useEffect(() => {
     scrollYProgress.on('change', (num) => {
+      setScreenPosition(num);
       setScrollValueCalculated(100 - Math.round(num * 100));
       setOpacity(num);
     });
@@ -50,7 +48,16 @@ const ProjectSection = ({
   return (
     <motion.div ref={wrapperRef}>
       <Grid container className={projectClasses} spacing={2}>
-        {alignment === 'left' && <Screen image={image} alignment={alignment} opacity={opacity} scrollValueCalculated={scrollValueCalculated} />}
+        {alignment === 'left' && (
+          <Screen
+            title={title}
+            image={image}
+            alignment={alignment}
+            opacity={opacity}
+            scrollValueCalculated={scrollValueCalculated}
+            screenPosition={screenPosition}
+          />
+        )}
         <Grid item xs={6} className={classes}>
           <motion.h2
             style={{
@@ -79,7 +86,16 @@ const ProjectSection = ({
             {content}
           </motion.p>
         </Grid>
-        {alignment === 'right' && <Screen image={image} alignment={alignment} opacity={opacity} scrollValueCalculated={scrollValueCalculated} />}
+        {alignment === 'right' && (
+          <Screen
+            title={title}
+            image={image}
+            alignment={alignment}
+            opacity={opacity}
+            scrollValueCalculated={scrollValueCalculated}
+            screenPosition={screenPosition}
+          />
+        )}
       </Grid>
     </motion.div>
   )
