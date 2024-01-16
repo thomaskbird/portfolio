@@ -14,6 +14,8 @@ const Screen = ({ image, alignment, scrollValueCalculated, opacity }: ScreenType
   const isLeft = alignment === 'left';
   const transformClasses = cn(styles.innerMacbookWrap, isLeft ? styles.innerMacbookWrapLeft : styles.innerMacbookWrapRight);
 
+  console.log('scrollValueCalculated', 100 - scrollValueCalculated);
+
   return (
     <Grid item xs={12} md={6} className={cn(styles.projectMacbook, 'projectMacbookInitial', 'projectMacbookAnimation')}>
       <motion.div
@@ -25,7 +27,13 @@ const Screen = ({ image, alignment, scrollValueCalculated, opacity }: ScreenType
         <div className={transformClasses}>
           <img src="/macbook-pro.png" className={styles.macbookImage} />
           <div className={styles.screen}>
-            <img src={image} className={styles.screenView} />
+            <motion.img
+              src={image}
+              className={styles.screenView}
+              style={{
+                transform: `translateY(-${scrollValueCalculated}%)`
+              }}
+            />
           </div>
         </div>
       </motion.div>
