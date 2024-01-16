@@ -14,6 +14,9 @@ type SliderType = {
   autoPlayOnlyWhenVisible?: boolean;
 };
 
+// todo: look at converting slider to something like this so we don't have so many styling issues with responsiveness and absolute positioning
+// todo: https://codesandbox.io/p/sandbox/framer-motion-layout-animations-snxgv?file=%2Fsrc%2Findex.tsx
+
 const Slider = ({
   duration = 3000,
   autoPlay = true,

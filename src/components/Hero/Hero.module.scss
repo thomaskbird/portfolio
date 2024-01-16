@@ -10,6 +10,10 @@
 .heroImage {
   display: flex;
   justify-content: center;
+
+  img {
+    padding-top: 50px;
+  }
 }
 
 .heroImageItem {

@@ -11,7 +11,7 @@ const MOCK_PROJECTS: Project[] = [
   {
     id: 1,
     alignment: 'left',
-    title: 'NBC Sports Next | SportsEngine Play',
+    title: 'NBC Sports Next',
     image: '/projects/nbc-web-homepage.jpg',
     description: 'Building next generation web apps for streaming todays youth sports!',
     content: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam commodi consectetur deserunt, facere harum labore laudantium maiores, odio perferendis perspiciatis possimus quaerat sit. Aliquam atque deleniti eveniet laudantium ratione.'

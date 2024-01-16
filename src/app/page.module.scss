@@ -3,13 +3,25 @@
 }
 
 .testimonialWrapper {
-  padding: 0 0 100px 0;
   display: flex;
   background: #f5f5f5;
+  padding: 0 0 100px 0;
+
+  @media (max-width: 900px) {
+    height: 1280px;
+  }
+
+  @media(min-width: 769px) and (max-width: 900px) {
+    height: 975px;
+  }
+
+  @media(max-width: 600px) {
+    height: 1600px;
+  }
 }
 
 .footerWrapper {
-  background: rgb(7,14,23);
   padding-bottom: 50px;
+  background: rgb(7,14,23);
   background: linear-gradient(45deg, rgba(7,14,23,1) 0%, rgba(39,62,93,1) 100%);
 }

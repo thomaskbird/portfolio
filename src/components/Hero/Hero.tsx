@@ -1,4 +1,4 @@
-import {Button, Container, Grid} from '@mui/material';
+import {Container, Grid} from '@mui/material';
 import cn from 'classnames';
 import styles from './Hero.module.scss';
 import Socials from '@/components/Socials/Socials';

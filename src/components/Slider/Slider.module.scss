@@ -1,12 +1,27 @@
 .sliderWrap {
   display: flex;
-  height: 250px;
   padding: 100px;
   background: #fff;
   position: relative;
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 25px 50px rgba(0,0,0,.05);
+
+  @media(max-width: 900px) {
+    flex-direction: column;
+  }
+
+  @media(min-width: 769px) and (max-width: 900px) {
+    height: 65%;
+  }
+
+  @media(min-width: 601px) and (max-width: 768px) {
+    height: 65%;
+  }
+
+  @media(max-width: 600px) {
+    height: 70%;
+  }
 }
 
 .slide {
@@ -16,6 +31,10 @@
   position: absolute;
   transition: all ease-in .5s;
   transform: translate(0, -50px);
+
+  @media(max-width: 1200px) {
+    padding: 0;
+  }
 }
 
 .active {
@@ -28,6 +47,10 @@
   font-weight: 100 !important;
   line-height: 200% !important;
   padding-right: 100px;
+
+  @media (max-width: 900px) {
+    padding-right: 0;
+  }
 }
 
 .quoteLeft,
@@ -44,6 +67,10 @@
   right: 300px;
   bottom: -25px;
   transform: rotate(180deg);
+
+  @media (max-width: 900px) {
+    right: 30px;
+  }
 }
 
 .slidesWrap {
@@ -53,6 +80,11 @@
 
 .badge {
   display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .avatar {
@@ -63,6 +95,10 @@
 
   img {
     width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
   }
 }
 
@@ -90,12 +126,22 @@
     font-size: 16px;
     font-weight: 400;
   }
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    text-align: center;
+  }
 }
 
 .pagination {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media(max-width: 900px) {
+    z-index: 2;
+    flex-direction: row;
+  }
 }
 
 .icons {
@@ -110,6 +156,10 @@
 .dotActive {
   margin: 10px 0;
   align-self: center;
+
+  @media(max-width: 900px) {
+    margin: 0 10px;
+  }
 }
 
 .dot {

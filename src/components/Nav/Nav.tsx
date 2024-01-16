@@ -15,6 +15,8 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import {Container, Slide, useScrollTrigger} from "@mui/material";
 import styles from "@/components/Socials/Socials.module.scss";
+import Link from "next/link";
+import MOCK_NAVITEMS from "@/mocks/mockNavigation";
 
 interface Props {
   /**
@@ -34,7 +36,6 @@ interface HideOnScrollProps {
 }
 
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
 
 const Nav = (props: Props) => {
   const { window } = props;
@@ -63,10 +64,10 @@ const Nav = (props: Props) => {
       </Typography>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
+        {MOCK_NAVITEMS.map((item) => (
+          <ListItem key={item.id} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={item.label} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -100,10 +101,12 @@ const Nav = (props: Props) => {
               <img src="/logo.png" alt="Thomas K Bird" className={styles.logo} />
             </Typography>
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-              {navItems.map((item) => (
-                <Button key={item} sx={{ color: '#fff' }}>
-                  {item}
-                </Button>
+              {MOCK_NAVITEMS.map((item) => (
+                <Link href={item.link} key={item.id} passHref>
+                  <Button sx={{ color: '#fff' }}>
+                    {item.label}
+                  </Button>
+                </Link>
               ))}
             </Box>
           </Toolbar>
