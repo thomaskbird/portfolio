@@ -48,9 +48,7 @@ const ProjectSection = ({
   }, []);
 
   return (
-    <motion.div
-      ref={wrapperRef}
-    >
+    <motion.div ref={wrapperRef}>
       <Grid container className={projectClasses} spacing={2}>
         {alignment === 'left' && <Screen image={image} alignment={alignment} opacity={opacity} scrollValueCalculated={scrollValueCalculated} />}
         <Grid item xs={6} className={classes}>

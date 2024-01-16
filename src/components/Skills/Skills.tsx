@@ -37,6 +37,8 @@ const item = {
   }),
 };
 
+// todo: rework this to use `useScroll`, I want the animations faster
+
 const Skills = ({}: SkillsType) => {
   return (
     <motion.div
