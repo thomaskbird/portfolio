@@ -3,6 +3,7 @@ import cn from 'classnames';
 import styles from './Hero.module.scss';
 import Socials from '@/components/Socials/Socials';
 import { motion } from 'framer-motion';
+import Nav from "@/components/Nav/Nav";
 
 const items = {
   hidden: (i: number) => ({
@@ -35,6 +36,7 @@ const Hero = () => {
   return (
     <Container maxWidth={false} disableGutters className={styles.hero}>
       <Container>
+        <Nav />
         <Socials />
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
           <Grid container spacing={2}>

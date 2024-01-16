@@ -25,3 +25,5 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 2. Framer Motion - 
    1. Figure out how to reverse animation whileInView 
    2. Consider converting project sections from magic scroll to motion and using useScroll
+3. Override theme defaults
+   4. https://mui.com/material-ui/customization/theme-components/#theme-default-props
