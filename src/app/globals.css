@@ -5,9 +5,7 @@ body {
   font-family: 'Roboto Mono', monospace;
 }
 
-p,
-a,
-button {
+a {
   font-weight: 200 !important;
   line-height: 160% !important;
   font-family: 'Roboto Mono', monospace;

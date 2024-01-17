@@ -15,6 +15,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import {Container, Slide, useScrollTrigger} from "@mui/material";
 import styles from "@/components/Socials/Socials.module.scss";
+import navStyles from './Nav.module.scss';
 import Link from "next/link";
 import MOCK_NAVITEMS from "@/mocks/mockNavigation";
 
@@ -24,6 +25,7 @@ interface Props {
    * You won't need it on your project.
    */
   window?: () => Window;
+  navOnly?: boolean;
 }
 
 interface HideOnScrollProps {
@@ -37,8 +39,8 @@ interface HideOnScrollProps {
 
 const drawerWidth = 240;
 
-const Nav = (props: Props) => {
-  const { window } = props;
+const Nav = ({ window, navOnly = false }: Props) => {
+  console.log('navOnly', navOnly);
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -78,10 +80,17 @@ const Nav = (props: Props) => {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box className={navStyles.navWrapper}>
       <CssBaseline />
-      <HideOnScroll {...props}>
-        <AppBar component="nav" color="transparent" elevation={0}>
+      <HideOnScroll window={window}>
+        <AppBar
+          component="nav"
+          color={navOnly ? 'primary' : 'transparent'}
+          elevation={0}
+          sx={{
+            bgcolor: 'linear-gradient(45deg, rgba(7,14,23,1) 0%, rgba(39,62,93,1) 100%)'
+          }}
+        >
           <Container>
           <Toolbar>
             <IconButton

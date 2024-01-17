@@ -50,40 +50,45 @@
 }
 
 .heroCtas {
+  display: flex;
   margin-top: 20px;
 }
 
-.heroButton {
-  font-size: 16px;
-  text-shadow: none;
-  padding: 10px 25px;
-  border: none;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
+//.heroButton {
+//  font-size: 16px;
+//  text-shadow: none;
+//  padding: 10px 25px;
+//  border: none;
+//
+//  &:hover {
+//    cursor: pointer;
+//  }
+//}
 
 .heroButtonPrimary {
-  color: #fff;
-  border-radius: 0;
   margin-right: 20px;
-  text-transform: none;
-  background: rgba(0,0,0, 1);
-  font-family: 'Roboto Mono', monospace;
-
-  &:hover {
-    background: rgba(0,0,0, 0.5);
-  }
 }
 
-.heroButtonSecondary {
-  color: #fff;
-  background: none;
-  text-transform: none;
-  font-family: 'Roboto Mono', monospace;
-
-  &:hover {
-    background: rgba(0,0,0, 0.25);
-  }
-}
+//.heroButtonPrimary {
+//  color: #fff;
+//  border-radius: 0;
+//  margin-right: 20px;
+//  text-transform: none;
+//  background: rgba(0,0,0, 1);
+//  font-family: 'Roboto Mono', monospace;
+//
+//  &:hover {
+//    background: rgba(0,0,0, 0.5);
+//  }
+//}
+//
+//.heroButtonSecondary {
+//  color: #fff;
+//  background: none;
+//  text-transform: none;
+//  font-family: 'Roboto Mono', monospace;
+//
+//  &:hover {
+//    background: rgba(0,0,0, 0.25);
+//  }
+//}

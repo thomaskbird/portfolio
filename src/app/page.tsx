@@ -10,7 +10,7 @@ import Slider from "@/components/Slider/Slider";
 import Footer from "@/components/Footer/Footer";
 import MockProjects from "@/mocks/mockProjects";
 
-export default function Home() {
+const Home = () => {
   return (
     <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
       <Hero />
@@ -46,3 +46,5 @@ export default function Home() {
     </Container>
   )
 }
+
+export default Home;

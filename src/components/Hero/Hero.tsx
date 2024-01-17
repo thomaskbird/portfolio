@@ -4,6 +4,12 @@ import styles from './Hero.module.scss';
 import Socials from '@/components/Socials/Socials';
 import { motion } from 'framer-motion';
 import Nav from "@/components/Nav/Nav";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+
+type HeroType = {
+  navOnly?: boolean;
+}
 
 const items = {
   hidden: (i: number) => ({
@@ -32,40 +38,58 @@ const imageTransition = {
   })
 }
 
-const Hero = () => {
+const Hero = ({ navOnly = false }: HeroType) => {
   return (
     <Container maxWidth={false} disableGutters className={styles.hero}>
       <Container>
-        <Nav />
+        <Nav navOnly={navOnly} />
         <Socials />
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }}>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={6} className={styles.heroImage}>
-              <motion.img custom={2} variants={imageTransition} src="/thomas-bird.png" className={cn(styles.heroImageItem, 'animate__animated animate__slow animate__fadeIn ')} alt="Thomas Bird" />
-            </Grid>
-            <Grid item xs={12} md={6} className={styles.heroText}>
-              <motion.h1
-                custom={1}
-                variants={items}
-                className={cn(styles.heroTextTitle)}
-              >
-                I&apos;m Tom,<br/> Nice to meet you!
-              </motion.h1>
-              <motion.p
-                custom={2}
-                variants={items}
-                className={cn(styles.heroSubText)}
-              >
-                I am a passionate engineer and people leader who thrives in fast paced and collaborative environments!
-              </motion.p>
 
-              <div className={styles.heroCtas}>
-                <motion.button custom={3} variants={items} className={cn(styles.heroButton, styles.heroButtonPrimary)}>Send a message!</motion.button>
-                <motion.button custom={4} variants={items} className={cn(styles.heroButton, styles.heroButtonSecondary)}>Resume</motion.button>
-              </div>
+        {!navOnly && (
+          <motion.div initial="hidden" whileInView="visible" viewport={{once: true}}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={6} className={styles.heroImage}>
+                <motion.img
+                  custom={2}
+                  variants={imageTransition}
+                  src="/thomas-bird.png"
+                  className={cn(styles.heroImageItem, 'animate__animated animate__slow animate__fadeIn ')}
+                  alt="Thomas Bird"
+                />
+              </Grid>
+              <Grid item xs={12} md={6} className={styles.heroText}>
+                <motion.h1
+                  custom={1}
+                  variants={items}
+                  className={cn(styles.heroTextTitle)}
+                >
+                  I&apos;m Tom,<br/> Nice to meet you!
+                </motion.h1>
+                <motion.div
+                  custom={2}
+                  variants={items}
+                >
+                  <Typography variant="body1" color="white">
+                    I am a passionate engineer and people leader who thrives in fast paced and collaborative environments!
+                  </Typography>
+                </motion.div>
+
+                <div className={styles.heroCtas}>
+                  <motion.div custom={3} variants={items}>
+                    <Button className={cn(styles.heroButton, styles.heroButtonPrimary)} variant="contained" color="hero" disableElevation>
+                      Send a message!
+                    </Button>
+                  </motion.div>
+                  <motion.div custom={4} variants={items}>
+                    <Button className={cn(styles.heroButton, styles.heroButtonSecondary)} variant="text" color="transparent" disableElevation>
+                      Resume
+                    </Button>
+                  </motion.div>
+                </div>
+              </Grid>
             </Grid>
-          </Grid>
-        </motion.div>
+          </motion.div>
+        )}
       </Container>
     </Container>
   )
