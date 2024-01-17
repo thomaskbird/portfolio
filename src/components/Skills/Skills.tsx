@@ -1,7 +1,8 @@
 'use client';
 
 import styles from './Skills.module.scss';
-import {motion} from 'framer-motion';
+import {motion, useScroll, useTransform} from 'framer-motion';
+import {useEffect, useRef, useState} from "react";
 
 type SkillsType = {};
 
@@ -37,21 +38,36 @@ const item = {
   }),
 };
 
-// todo: rework this to use `useScroll`, I want the animations faster
-
 const Skills = ({}: SkillsType) => {
+  const [vertical, setVertical] = useState(0);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: wrapperRef,
+    offset: ['0.5 1', '1.33 1'],
+  });
+
+  useEffect(() => {
+    scrollYProgress.on('change', (num) => {
+      const calculated = 60 - (num * 60);
+      setVertical(calculated);
+    });
+
+    return () => scrollYProgress.destroy();
+  }, []);
+
   return (
     <motion.div
+      ref={wrapperRef}
       className={styles.container}
-      initial="hidden"
-      whileInView="visible"
+      style={{ transform: `translateY(${vertical}px)` }}
     >
       {consolidatedSkills.map(((skill, idx) => (
         <motion.div
-          custom={idx}
           key={skill}
           className={styles.chip}
-          variants={item}
+          style={{
+            opacity: scrollYProgress,
+          }}
         >
           {skill}
         </motion.div>

@@ -40,7 +40,6 @@ interface HideOnScrollProps {
 const drawerWidth = 240;
 
 const Nav = ({ window, navOnly = false }: Props) => {
-  console.log('navOnly', navOnly);
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
