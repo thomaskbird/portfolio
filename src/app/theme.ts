@@ -4,12 +4,12 @@ import {Theme} from "@mui/system";
 declare module '@mui/material/styles' {
   interface Palette {
     hero: Palette['primary']
-    transparent: Palette['primary']
+    clear: Palette['primary']
   }
 
   interface PaletteOptions {
     hero?: PaletteOptions['primary'];
-    transparent?: PaletteOptions['primary']
+    clear?: PaletteOptions['primary']
   }
 
   interface Theme {
@@ -24,6 +24,7 @@ declare module '@mui/material/styles' {
 declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
     hero: true;
+    clear: true;
   }
 }
 
@@ -33,7 +34,7 @@ const theme: Theme = createTheme({
       main: '#000',
       contrastText: '#fff'
     },
-    transparent: {
+    clear: {
       main: '#fff',
     },
     primary: {
@@ -60,7 +61,7 @@ const theme: Theme = createTheme({
               backgroundColor: 'rgba(0,0,0,0.75)'
             }
           }),
-          ...(ownerState.color === 'transparent' && {
+          ...(ownerState.color === 'clear' && {
             ':hover': {
               backgroundColor: 'rgba(255,255,255,0.1)'
             }

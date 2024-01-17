@@ -69,19 +69,19 @@ const Hero = ({ navOnly = false }: HeroType) => {
                   custom={2}
                   variants={items}
                 >
-                  <Typography variant="body1" color="white">
+                  <Typography variant="body1" color="white" className={styles.heroSubText}>
                     I am a passionate engineer and people leader who thrives in fast paced and collaborative environments!
                   </Typography>
                 </motion.div>
 
                 <div className={styles.heroCtas}>
                   <motion.div custom={3} variants={items}>
-                    <Button className={cn(styles.heroButton, styles.heroButtonPrimary)} variant="contained" color="hero" disableElevation>
+                    <Button variant="contained" color="hero" disableElevation>
                       Send a message!
                     </Button>
                   </motion.div>
                   <motion.div custom={4} variants={items}>
-                    <Button className={cn(styles.heroButton, styles.heroButtonSecondary)} variant="text" color="transparent" disableElevation>
+                    <Button variant="text" color="clear" disableElevation>
                       Resume
                     </Button>
                   </motion.div>
