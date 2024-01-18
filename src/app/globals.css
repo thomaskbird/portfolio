@@ -5,11 +5,11 @@ body {
   font-family: 'Roboto Mono', monospace;
 }
 
+p,
 a {
-  font-weight: 200 !important;
-  line-height: 160% !important;
   font-family: 'Roboto Mono', monospace;
 }
+
 
 h1,
 h2,
