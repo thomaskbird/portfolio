@@ -15,8 +15,10 @@ const Resume = () => {
       <Container maxWidth={false} disableGutters className={styles.insideContainer}>
         <Container>
 
+          <div className={styles.divider}></div>
+
           <div className={styles.resumeContainer}>
-            {MOCK_RESUME.map(item => <ResumeItem key={item.id} item={item} />)}
+            {MOCK_RESUME.map(item => <ResumeItem key={item.id} item={item}/>)}
           </div>
 
         </Container>

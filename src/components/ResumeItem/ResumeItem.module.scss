@@ -1,5 +1,5 @@
 .resumeItem {
-  height: 100vh;
+  height: 200vh;
 
   h2,
   h4 {
@@ -20,8 +20,14 @@
   h4 {
     color: #aaa;
     font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 25px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  h5 {
+    font-size: 24px;
   }
 
   ul {
@@ -30,10 +36,14 @@
     font-size: 16px;
     list-style: none;
     line-height: 150%;
+
+    //max-height: 20vh;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   li {
-    color: #aaa;
+    color: #fff;
     font-size: 14px;
     margin-bottom: 10px;
   }
@@ -51,26 +61,23 @@
   position: sticky;
 }
 
-.divider {
-  width: 5px;
-}
-
 .resumeItemOdd {
   text-align: right;
   .sticky {
     .resumeItemLeft {
-      background: #000;
+      background: rgb(44, 68, 101);
       margin-right: 30px;
 
       &::before {
-        right: auto;
-        left: 100%;
         width: 0;
         height: 0;
-        border: 15px solid transparent;
-        border-left-color: #000;
+        left: 100%;
+        right: auto;
         content: '';
         position: absolute;
+        top: calc(50% - 30px / 2);
+        border: 15px solid transparent;
+        border-left-color: rgba(39,62,93,1);
       }
     }
 
@@ -82,7 +89,7 @@
 
       h5 {
         color: #fff;
-        background: #000;
+        background: rgba(39,62,93,1);
         padding: 10px 20px;
         position: relative;
 
@@ -93,7 +100,7 @@
           width: 0;
           height: 0;
           border: 28px solid transparent;
-          border-right-color: #000;
+          border-right-color: rgba(39,62,93,1);
           content: '';
           position: absolute;
         }
@@ -105,8 +112,9 @@
 .resumeItemEven {
   .sticky {
     flex-direction: row-reverse;
+
     .resumeItemLeft {
-      background: #000;
+      background: rgba(39,62,93,1);
       margin-left: 30px;
 
       &::before {
@@ -114,8 +122,9 @@
         left: auto;
         width: 0;
         height: 0;
+        top: calc(50% - 30px / 2);
         border: 15px solid transparent;
-        border-right-color: #000;
+        border-right-color: rgba(39,62,93,1);
         content: '';
         position: absolute;
       }
@@ -129,7 +138,7 @@
 
       h5 {
         color: #fff;
-        background: #000;
+        background: rgba(39,62,93,1);
         padding: 10px 20px;
         position: relative;
 
@@ -140,7 +149,7 @@
           width: 0;
           height: 0;
           border: 28px solid transparent;
-          border-left-color: #000;
+          border-left-color: rgba(39,62,93,1);
           content: '';
           position: absolute;
         }
@@ -152,7 +161,7 @@
 .resumeItemLeft,
 .resumeItemRight {
   flex: 1;
-  padding: 30px;
+  padding: 50px 50px;
   position: relative;
   box-sizing: border-box;
 }

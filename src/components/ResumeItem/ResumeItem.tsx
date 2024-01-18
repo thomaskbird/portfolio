@@ -18,7 +18,7 @@ const ResumeItem = ({
           <h2>{item.company}</h2>
           <h4>{item.title}</h4>
 
-          <ul>
+          <ul className={styles.bullets}>
             {item.bullets.map((bullet, i) => (
               <li key={i}>{bullet}</li>
             ))}
@@ -26,7 +26,6 @@ const ResumeItem = ({
 
           <p>Skills: {item.skills.join(', ')}</p>
         </div>
-        <div className={styles.divider}></div>
         <div className={styles.resumeItemRight}>
           <h5>{item.from} to {item.to}</h5>
         </div>
