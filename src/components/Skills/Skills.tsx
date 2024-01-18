@@ -43,7 +43,7 @@ const Skills = ({}: SkillsType) => {
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
     target: wrapperRef,
-    offset: ['0.5 1', '1.33 1'],
+    offset: ['0.25 1', '1.33 1'],
   });
 
   useEffect(() => {

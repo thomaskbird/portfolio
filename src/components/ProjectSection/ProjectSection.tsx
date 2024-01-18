@@ -28,7 +28,7 @@ const ProjectSection = ({
   const [opacity, setOpacity] = useState(0);
   const { scrollYProgress } = useScroll({
     target: wrapperRef,
-    offset: ['0.5 1', '1.33 1'],
+    offset: ['start end', 'end end'],
   });
 
   const isLeft = alignment === 'left';
@@ -46,59 +46,61 @@ const ProjectSection = ({
   }, []);
 
   return (
-    <motion.div ref={wrapperRef}>
-      <Grid container className={projectClasses} spacing={2}>
-        {alignment === 'left' && (
-          <Screen
-            title={title}
-            image={image}
-            alignment={alignment}
-            opacity={opacity}
-            scrollValueCalculated={scrollValueCalculated}
-            screenPosition={screenPosition}
-          />
-        )}
-        <Grid item xs={6} className={classes}>
-          <motion.h2
-            style={{
-              transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated * .25}px, 0)`,
-              opacity: opacity
-            }}
-          >
-            {title}
-          </motion.h2>
+    <div className={styles.stickyWrapper} ref={wrapperRef}>
+      <div className={styles.stuck}>
+        <Grid container className={projectClasses} spacing={2}>
+          {alignment === 'left' && (
+            <Screen
+              title={title}
+              image={image}
+              alignment={alignment}
+              opacity={opacity}
+              scrollValueCalculated={scrollValueCalculated}
+              screenPosition={screenPosition}
+            />
+          )}
+          <Grid item xs={6} className={classes}>
+            <motion.h2
+              style={{
+                transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated * .25}px, 0)`,
+                opacity: opacity
+              }}
+            >
+              {title}
+            </motion.h2>
 
-          <motion.h5
-            style={{
-              transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated * .5}px, 0)`,
-              opacity: opacity
-            }}
-          >
-            {description}
-          </motion.h5>
+            <motion.h5
+              style={{
+                transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated * .5}px, 0)`,
+                opacity: opacity
+              }}
+            >
+              {description}
+            </motion.h5>
 
-          <motion.p
-            style={{
-              transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated}px, 0)`,
-              opacity: opacity
-            }}
-          >
-            {content}
-          </motion.p>
+            <motion.p
+              style={{
+                transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated}px, 0)`,
+                opacity: opacity
+              }}
+            >
+              {content}
+            </motion.p>
+          </Grid>
+          {alignment === 'right' && (
+            <Screen
+              title={title}
+              image={image}
+              alignment={alignment}
+              opacity={opacity}
+              scrollValueCalculated={scrollValueCalculated}
+              screenPosition={screenPosition}
+            />
+          )}
         </Grid>
-        {alignment === 'right' && (
-          <Screen
-            title={title}
-            image={image}
-            alignment={alignment}
-            opacity={opacity}
-            scrollValueCalculated={scrollValueCalculated}
-            screenPosition={screenPosition}
-          />
-        )}
-      </Grid>
-    </motion.div>
-  )
+      </div>
+    </div>
+)
 }
 
 export default ProjectSection;

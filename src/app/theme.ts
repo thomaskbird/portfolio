@@ -42,6 +42,24 @@ const theme: Theme = createTheme({
     }
   },
   typography: {
+    h1: {
+      fontFamily: 'Source Sans 3',
+    },
+    h2: {
+      fontFamily: 'Source Sans 3',
+    },
+    h3: {
+      fontFamily: 'Source Sans 3',
+    },
+    h4: {
+      fontFamily: 'Source Sans 3',
+    },
+    h5: {
+      fontFamily: 'Source Sans 3',
+    },
+    h6: {
+      fontFamily: 'Source Sans 3',
+    },
     body1: {
       fontSize: 18,
       fontWeight: 400,
