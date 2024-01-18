@@ -1,5 +1,5 @@
 .resumeItem {
-  height: 200vh;
+  height: 150vh;
 
   h2,
   h4 {
@@ -27,7 +27,10 @@
   }
 
   h5 {
+    color: #fff;
     font-size: 24px;
+    padding: 10px 20px;
+    background: rgba(39,62,93,1);
   }
 
   ul {
@@ -49,9 +52,26 @@
   }
 
   p {
-    color: #fff;
+    color: #ccc;
     font-size: 14px;
     line-height: 150%;
+  }
+}
+
+.indicator {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+
+  .dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    background: rgba(39,62,93,1);
+    box-shadow: 0 1px 20px rgba(0,0,0,0.25);
+    border: 5px solid rgba(255,255,255,1);
   }
 }
 
@@ -88,11 +108,6 @@
       align-items: center;
 
       h5 {
-        color: #fff;
-        background: rgba(39,62,93,1);
-        padding: 10px 20px;
-        position: relative;
-
         &::before {
           top: 0;
           right: 100%;
@@ -137,11 +152,6 @@
       align-items: center;
 
       h5 {
-        color: #fff;
-        background: rgba(39,62,93,1);
-        padding: 10px 20px;
-        position: relative;
-
         &::before {
           top: 0;
           right: auto;
