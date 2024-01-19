@@ -91,17 +91,17 @@ const theme: Theme = createTheme({
           padding: '10px 20px',
           ...(ownerState.color === 'nav' && {
             background: 'linear-gradient(180deg,#999,#666)',
-            '-webkit-background-clip': 'text',
-            '-webkit-text-fill-color': 'transparent',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
             ':hover': {
               background: 'linear-gradient(180deg,#ccc,#aaa)',
-              '-webkit-background-clip': 'text',
-              '-webkit-text-fill-color': 'transparent',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
             },
             ':active': {
               background: 'linear-gradient(180deg,#fff,#fff)',
-              '-webkit-background-clip': 'text',
-              '-webkit-text-fill-color': 'transparent',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
             }
           }),
           ...(ownerState.color === 'hero' && ownerState.variant === 'outlined' && {
