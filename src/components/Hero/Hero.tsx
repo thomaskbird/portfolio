@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import Nav from "@/components/Nav/Nav";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import GradientButton from "@/components/GradientButton/GradientButton";
 
 type HeroType = {
   navOnly?: boolean;
@@ -70,14 +71,20 @@ const Hero = ({ navOnly = false }: HeroType) => {
                   variants={items}
                 >
                   <Typography variant="body1" color="white" className={styles.heroSubText}>
-                    I am a passionate engineer and people leader who thrives in fast paced and collaborative environments!
+                    I am a <span className="emphasis">passionate</span> engineer and people <span className="emphasis">leader</span> who <span
+                    className={styles.emphasis}>thrives</span> in <span className="emphasis">fast paced</span> and <span className="emphasis">collaborative</span> environments!
                   </Typography>
                 </motion.div>
 
                 <div className={styles.heroCtas}>
                   <motion.div custom={3} variants={items}>
-                    <Button variant="contained" color="hero" disableElevation>
-                      Send a message!
+                    <Button
+                      color="hero"
+                      disableElevation
+                      variant="outlined"
+                      className={styles.heroCtaPrimary}
+                    >
+                      Contact me
                     </Button>
                   </motion.div>
                   <motion.div custom={4} variants={items}>

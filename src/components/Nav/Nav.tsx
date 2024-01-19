@@ -106,12 +106,14 @@ const Nav = ({ window, navOnly = false }: Props) => {
               component="div"
               sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
             >
-              <img src="/logo.png" alt="Thomas K Bird" className={styles.logo} />
+              <Link href="/">
+                <img src="/logo.png" alt="Thomas K Bird" className={styles.logo} />
+              </Link>
             </Typography>
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
               {MOCK_NAVITEMS.map((item) => (
                 <Link href={item.link} key={item.id} passHref>
-                  <Button sx={{ color: '#fff' }}>
+                  <Button color="nav">
                     {item.label}
                   </Button>
                 </Link>

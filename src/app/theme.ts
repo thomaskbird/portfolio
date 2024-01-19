@@ -5,11 +5,13 @@ declare module '@mui/material/styles' {
   interface Palette {
     hero: Palette['primary']
     clear: Palette['primary']
+    nav: Palette['primary']
   }
 
   interface PaletteOptions {
     hero?: PaletteOptions['primary'];
     clear?: PaletteOptions['primary']
+    nav?: PaletteOptions['primary'];
   }
 
   interface Theme {
@@ -25,6 +27,7 @@ declare module '@mui/material/Button' {
   interface ButtonPropsColorOverrides {
     hero: true;
     clear: true;
+    nav: true;
   }
 }
 
@@ -36,6 +39,9 @@ const theme: Theme = createTheme({
     },
     clear: {
       main: '#fff',
+    },
+    nav: {
+      main: 'rgba(255,255,255,0.75)',
     },
     primary: {
       main: 'rgba(39,62,93,1)',
@@ -73,24 +79,39 @@ const theme: Theme = createTheme({
     button: {
       fontFamily: 'Roboto Mono',
       textTransform: 'none',
-      fontWeight: 400,
+      fontWeight: 500,
+      fontSize: '16px'
     }
   },
   components: {
     MuiButton: {
       styleOverrides: {
         root: ({ ownerState }) => ({
-          ...(ownerState.color === 'hero' && {
+          boxSizing: 'border-box',
+          padding: '10px 20px',
+          ...(ownerState.color === 'nav' && {
+            background: 'linear-gradient(180deg,#999,#666)',
+            '-webkit-background-clip': 'text',
+            '-webkit-text-fill-color': 'transparent',
             ':hover': {
-              backgroundColor: 'rgba(0,0,0,0.75)'
+              background: 'linear-gradient(180deg,#ccc,#aaa)',
+              '-webkit-background-clip': 'text',
+              '-webkit-text-fill-color': 'transparent',
+            },
+            ':active': {
+              background: 'linear-gradient(180deg,#fff,#fff)',
+              '-webkit-background-clip': 'text',
+              '-webkit-text-fill-color': 'transparent',
             }
           }),
-          ...(ownerState.color === 'clear' && {
+          ...(ownerState.color === 'hero' && ownerState.variant === 'outlined' && {
+            color: 'rgba(255,255,255,0.5)',
+            border: '1px solid rgba(255,255,255,0.5)',
             ':hover': {
-              backgroundColor: 'rgba(255,255,255,0.1)'
+              color: 'rgba(255,255,255,1)',
+              border: '1px solid rgba(255,255,255,0.85)',
             }
           }),
-          padding: '10px 25px'
         })
       }
     }

@@ -5,10 +5,6 @@
   h4 {
     margin: 0;
     line-height: 100%;
-  }
-
-  h2,
-  h4 {
     text-transform: uppercase;
   }
 
@@ -19,11 +15,16 @@
 
   h4 {
     color: #aaa;
-    font-size: 24px;
+    font-size: 16px;
     font-weight: 500;
     margin-bottom: 30px;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
     border-bottom: 1px solid rgba(255,255,255,0.05);
+
+    .subtitle {
+      color: #ddd;
+      font-weight: 400;
+    }
   }
 
   h5 {
@@ -38,17 +39,13 @@
     padding: 0;
     font-size: 16px;
     list-style: none;
-    line-height: 150%;
-
-    //max-height: 20vh;
-    overflow-y: auto;
-    overflow-x: hidden;
+    line-height: 125%;
   }
 
   li {
     color: #fff;
     font-size: 14px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   p {
@@ -61,17 +58,17 @@
 .indicator {
   width: 30px;
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
   align-content: center;
+  justify-content: center;
 
   .dot {
     width: 30px;
     height: 30px;
     border-radius: 100px;
     background: rgba(39,62,93,1);
-    box-shadow: 0 1px 20px rgba(0,0,0,0.25);
     border: 5px solid rgba(255,255,255,1);
+    box-shadow: 0 1px 20px rgba(0,0,0,0.25);
   }
 }
 
@@ -83,10 +80,15 @@
 
 .resumeItemOdd {
   text-align: right;
+
+  .indicator {
+    margin-left: -24px;
+  }
+
   .sticky {
     .resumeItemLeft {
-      background: rgb(44, 68, 101);
       margin-right: 30px;
+      background: rgb(44, 68, 101);
 
       &::before {
         width: 0;
@@ -102,22 +104,22 @@
     }
 
     .resumeItemRight {
-      margin-left: 30px;
       display: flex;
-      justify-content: flex-start;
+      margin-left: 0px;
       align-items: center;
+      justify-content: flex-start;
 
       h5 {
         &::before {
           top: 0;
-          right: 100%;
-          left: auto;
           width: 0;
           height: 0;
-          border: 28px solid transparent;
-          border-right-color: rgba(39,62,93,1);
+          left: auto;
+          right: 100%;
           content: '';
           position: absolute;
+          border: 28px solid transparent;
+          border-right-color: rgba(39,62,93,1);
         }
       }
     }
@@ -125,43 +127,46 @@
 }
 
 .resumeItemEven {
+  .indicator {
+    margin-left: 35px;
+  }
+
   .sticky {
     flex-direction: row-reverse;
 
     .resumeItemLeft {
-      background: rgba(39,62,93,1);
       margin-left: 30px;
+      background: rgba(39,62,93,1);
 
       &::before {
-        right: 100%;
-        left: auto;
         width: 0;
         height: 0;
+        left: auto;
+        content: '';
+        right: 100%;
+        position: absolute;
         top: calc(50% - 30px / 2);
         border: 15px solid transparent;
         border-right-color: rgba(39,62,93,1);
-        content: '';
-        position: absolute;
       }
     }
 
     .resumeItemRight {
-      margin-right: 30px;
       display: flex;
-      justify-content: flex-end;
       align-items: center;
+      justify-content: flex-end;
 
       h5 {
         &::before {
           top: 0;
-          right: auto;
-          left: 100%;
           width: 0;
           height: 0;
-          border: 28px solid transparent;
-          border-left-color: rgba(39,62,93,1);
+          left: 100%;
+          right: auto;
           content: '';
           position: absolute;
+          border: 28px solid transparent;
+          border-left-color: rgba(39,62,93,1);
         }
       }
     }
@@ -171,7 +176,7 @@
 .resumeItemLeft,
 .resumeItemRight {
   flex: 1;
-  padding: 50px 50px;
+  padding: 50px 25px;
   position: relative;
   box-sizing: border-box;
 }

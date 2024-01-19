@@ -20,12 +20,10 @@ const ResumeItem = ({
   });
 
   const [scrollValueCalculated, setScrollValueCalculated] = useState(0);
-  const [screenPosition, setScreenPosition] = useState(0);
   const [opacity, setOpacity] = useState(0);
 
   useEffect(() => {
     scrollYProgress.on('change', (num) => {
-      setScreenPosition(num);
       setScrollValueCalculated(150 - Math.round(num * 100));
       setOpacity(num);
     });
@@ -49,7 +47,7 @@ const ResumeItem = ({
           <h2>
             {item.company}
           </h2>
-          <h4>{item.title}</h4>
+          <h4><span className={styles.subtitle}>{item.type}</span> {item.title}</h4>
 
           <ul>
             {item.bullets.map((bullet, i) => (
@@ -60,7 +58,7 @@ const ResumeItem = ({
           <p><b>Skills:</b> {item.skills.join(', ')}</p>
         </motion.div>
         <div className={styles.indicator}>
-          <div className={styles.dot}></div>
+        <div className={styles.dot}></div>
         </div>
         <div className={styles.resumeItemRight}>
           <motion.h5

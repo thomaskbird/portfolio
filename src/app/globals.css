@@ -3,6 +3,9 @@
 body {
   margin: 0;
   font-family: 'Roboto Mono', monospace;
+  background: #111;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 p,
@@ -19,4 +22,13 @@ h5,
 h6 {
   font-weight: 900;
   font-family: 'Source Sans 3', sans-serif;
+  background: linear-gradient(180deg,#fff,#bbb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 150%;
+}
+
+.emphasis {
+  color: #fff;
+  font-weight: bold;
 }

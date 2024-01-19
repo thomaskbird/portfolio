@@ -15,7 +15,7 @@ const Home = () => {
     <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
       <Hero />
 
-      <Container maxWidth={false} disableGutters>
+      <Container maxWidth={false} disableGutters className={styles.mainContent}>
         <Container>
           <PageSectionTitle title="Skills" />
 
