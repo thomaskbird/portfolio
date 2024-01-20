@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import Nav from "@/components/Nav/Nav";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import GradientButton from "@/components/GradientButton/GradientButton";
 
 type HeroType = {
   navOnly?: boolean;

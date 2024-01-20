@@ -5,7 +5,7 @@
 .blurbs {
   display: flex;
   padding: 50px 0 20px;
-  border-bottom: 1px solid rgba(39,62,93,1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .blurb {
@@ -40,7 +40,7 @@
   color: #888;
   font-size: 12px;
   display: flex;
-  padding: 100px 0 50px;
+  padding: 75px 0 50px;
 }
 
 .footerLogo {
@@ -52,10 +52,9 @@
   padding: 20px 30px;
 
   h5 {
-    margin: 0;
     color: #fff;
     font-size: 20px;
-    margin-bottom: 10px;
+    margin: 0 0 10px;
     text-transform: uppercase;
   }
 
@@ -65,6 +64,10 @@
     list-style: none;
     display: flex;
     flex-direction: column;
+  }
+
+  p {
+    margin: 0;
   }
 
   a {
@@ -84,8 +87,8 @@
 }
 
 .footerTitleDivider {
-  width: 50px;
+  width: 40px;
   height: 2px;
-  background: #fff;
+  background: rgba(255,255,255,0.25);
   margin-bottom: 20px;
 }

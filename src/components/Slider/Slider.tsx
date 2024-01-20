@@ -97,31 +97,33 @@ const Slider = ({
   }
 
   return (
-    <div className={styles.sliderWrap}>
-      <img src="/quote.png" className={styles.quoteLeft}/>
-      <img src="/quote.png" className={styles.quoteRight}/>
+    <div className={styles.sliderBorder}>
+      <div className={styles.sliderWrap}>
+        <img src="/quote.png" className={styles.quoteLeft}/>
+        <img src="/quote.png" className={styles.quoteRight}/>
 
-      <div className={styles.slidesWrap} ref={sliderRef}>
-        {MOCK_TESTIMONIALS.map((testimonial, idx) => (
-          <Slide
-            key={testimonial.id}
-            {...testimonial}
-            active={activeIndex === idx}
-          />
-        ))}
-      </div>
+        <div className={styles.slidesWrap} ref={sliderRef}>
+          {MOCK_TESTIMONIALS.map((testimonial, idx) => (
+            <Slide
+              key={testimonial.id}
+              {...testimonial}
+              active={activeIndex === idx}
+            />
+          ))}
+        </div>
 
-      <div className={styles.pagination}>
-        <IconButton className={styles.icons} onClick={handleTogglePlaying}>
-          {isRunning ? <PauseIcon fontSize="large" /> : <PlayArrowIcon fontSize="large" />}
-        </IconButton>
-        {MOCK_TESTIMONIALS.map((testimonial, iDot) => (
-          <div
-            key={testimonial.id}
-            className={activeIndex === iDot ? styles.dotActive : styles.dot}
-            onClick={() => activeIndex === iDot ? false : handleDotClick(iDot)}
-          ></div>
-        ))}
+        <div className={styles.pagination}>
+          <IconButton className={styles.icons} onClick={handleTogglePlaying}>
+            {isRunning ? <PauseIcon fontSize="large" /> : <PlayArrowIcon fontSize="large" />}
+          </IconButton>
+          {MOCK_TESTIMONIALS.map((testimonial, iDot) => (
+            <div
+              key={testimonial.id}
+              className={activeIndex === iDot ? styles.dotActive : styles.dot}
+              onClick={() => activeIndex === iDot ? false : handleDotClick(iDot)}
+            ></div>
+          ))}
+        </div>
       </div>
     </div>
   )

@@ -38,7 +38,7 @@ const theme: Theme = createTheme({
       contrastText: '#fff'
     },
     clear: {
-      main: '#fff',
+      main: 'rgba(255,255,255,0.25)',
     },
     nav: {
       main: 'rgba(255,255,255,0.75)',
@@ -89,6 +89,11 @@ const theme: Theme = createTheme({
         root: ({ ownerState }) => ({
           boxSizing: 'border-box',
           padding: '10px 20px',
+          ...(ownerState.color === 'clear' && {
+            ':hover': {
+              color: 'rgba(255,255,255,0.75)',
+            }
+          }),
           ...(ownerState.color === 'nav' && {
             background: 'linear-gradient(180deg,#999,#666)',
             WebkitBackgroundClip: 'text',
