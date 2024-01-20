@@ -61,14 +61,15 @@ const ResumeItem = ({
         <div className={styles.dot}></div>
         </div>
         <div className={styles.resumeItemRight}>
-          <motion.h5
+          <motion.div
             style={{
               opacity: opacity,
               transform: `translate(${!isEven ? '' : '-'}${scrollValueCalculated}px, 0)`,
             }}
+            className={styles.dates}
           >
-            {item.from} to {item.to}
-          </motion.h5>
+            <h5>{item.from} to {item.to}</h5>
+          </motion.div>
         </div>
       </div>
     </div>

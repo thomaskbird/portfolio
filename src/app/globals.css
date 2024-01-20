@@ -2,14 +2,15 @@
 
 body {
   margin: 0;
-  font-family: 'Roboto Mono', monospace;
   background: #111;
   overflow-x: hidden;
   overflow-y: auto;
+  font-family: 'Roboto Mono', monospace;
 }
 
 p,
 a {
+  font-weight: 300;
   font-family: 'Roboto Mono', monospace;
 }
 
@@ -28,6 +29,7 @@ h6 {
   line-height: 150%;
 }
 
+em,
 .emphasis {
   color: #fff;
   font-weight: bold;

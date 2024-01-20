@@ -22,16 +22,23 @@
     border-bottom: 1px solid rgba(255,255,255,0.05);
 
     .subtitle {
-      color: #ddd;
+      color: #aaa;
       font-weight: 400;
+      background: unset;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
     }
   }
 
-  h5 {
-    color: #fff;
-    font-size: 24px;
+  .dates {
     padding: 10px 20px;
-    background: rgba(39,62,93,1);
+    position: absolute;
+    background: rgb(9, 9, 9);
+  }
+
+  h5 {
+    margin: 0;
+    font-size: 24px;
   }
 
   ul {
@@ -43,13 +50,13 @@
   }
 
   li {
-    color: #fff;
+    color: #aaa;
     font-size: 14px;
     margin-bottom: 20px;
   }
 
   p {
-    color: #ccc;
+    color: #fff;
     font-size: 14px;
     line-height: 150%;
   }
@@ -66,7 +73,7 @@
     width: 30px;
     height: 30px;
     border-radius: 100px;
-    background: rgba(39,62,93,1);
+    background: rgb(51, 51, 51, 1);
     border: 5px solid rgba(255,255,255,1);
     box-shadow: 0 1px 20px rgba(0,0,0,0.25);
   }
@@ -88,7 +95,7 @@
   .sticky {
     .resumeItemLeft {
       margin-right: 30px;
-      background: rgb(44, 68, 101);
+      background: linear-gradient(180deg,#000,#111);
 
       &::before {
         width: 0;
@@ -99,7 +106,7 @@
         position: absolute;
         top: calc(50% - 30px / 2);
         border: 15px solid transparent;
-        border-left-color: rgba(39,62,93,1);
+        border-left-color: rgb(9, 9, 9);
       }
     }
 
@@ -109,7 +116,7 @@
       align-items: center;
       justify-content: flex-start;
 
-      h5 {
+      .dates {
         &::before {
           top: 0;
           width: 0;
@@ -119,7 +126,7 @@
           content: '';
           position: absolute;
           border: 28px solid transparent;
-          border-right-color: rgba(39,62,93,1);
+          border-right-color: rgba(9,9,9,1);
         }
       }
     }
@@ -136,7 +143,7 @@
 
     .resumeItemLeft {
       margin-left: 30px;
-      background: rgba(39,62,93,1);
+      background: linear-gradient(180deg,#000,#111);
 
       &::before {
         width: 0;
@@ -147,7 +154,7 @@
         position: absolute;
         top: calc(50% - 30px / 2);
         border: 15px solid transparent;
-        border-right-color: rgba(39,62,93,1);
+        border-right-color: rgb(9, 9, 9);
       }
     }
 
@@ -156,7 +163,7 @@
       align-items: center;
       justify-content: flex-end;
 
-      h5 {
+      .dates {
         &::before {
           top: 0;
           width: 0;
@@ -166,7 +173,7 @@
           content: '';
           position: absolute;
           border: 28px solid transparent;
-          border-left-color: rgba(39,62,93,1);
+          border-left-color: rgb(9, 9, 9);
         }
       }
     }
