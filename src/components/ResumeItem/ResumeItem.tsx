@@ -51,7 +51,7 @@ const ResumeItem = ({
 
           <ul>
             {item.bullets.map((bullet, i) => (
-              <li key={i}>{bullet}</li>
+              <li key={i} dangerouslySetInnerHTML={{ __html: bullet }}></li>
             ))}
           </ul>
 

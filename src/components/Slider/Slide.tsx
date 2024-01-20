@@ -6,6 +6,8 @@ type SlideType = {
   active: boolean;
 }
 
+const wordLimit = 30;
+
 const Slide = ({
   firstName,
   lastName,
@@ -25,9 +27,12 @@ const Slide = ({
           <h3>{firstName} {lastName}</h3>
         </div>
       </div>
-      <p className={styles.slideText}>
-        {content.length > 250 ? `${content.substring(0, 250)}...` : content}
-      </p>
+      <p
+        className={styles.slideText}
+        dangerouslySetInnerHTML={{
+          __html: content.split(' ').length > wordLimit ? `${content.split(' ').splice(0, wordLimit).join(' ')}...` : content
+      }}
+      />
     </div>
   )
 }

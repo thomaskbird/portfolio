@@ -18,11 +18,11 @@ const MOCK_RESUME: ResumeType[] = [
     from: '4/2023',
     to: 'Present',
     bullets: [
-      'Led offshore team building next generation of digital video streaming apps for web, mobile and other device platforms such as smart tv’s, embeddable widgets and more...',
-      'Built high volume e-commerce payments and checkout flows for SportsEngine Play application that increased sales by 7%.',
-      'Led analytics effort to collect and test existing ui to provide better engagement and conversions. Increasing analytics by 25% across the app, giving the business crucial info needed to make decisions.',
-      'Analyzed mongodb performance and provided support that led to increased performance reducing query times by 30%.',
-      'Planned and implemented strategy for promotional codes including logic and technical flow that increased conversions by 20%.'
+      'Led offshore team building <em>next generation</em> of digital video streaming apps for web, mobile and other device platforms such as smart tv’s, embeddable widgets and more...',
+      'Built <em>high volume</em> e-commerce payments and checkout flows for SportsEngine Play application that <em>increased sales</em> by 7%.',
+      'Led analytics effort to collect and test existing ui to provide better engagement and conversions. Increasing analytics by <em>25%</em> across the app, giving the business crucial info needed to make decisions.',
+      'Analyzed mongodb performance and provided support that led to <em>increased performance</em> reducing query times by 30%.',
+      'Planned and implemented strategy for promotional codes including logic and technical flow that <em>increased conversions</em> by 20%.'
     ],
     skills: ['nextjs', 'react', 'graphql', 'apollo', 'mongodb'],
   },

@@ -74,18 +74,16 @@ const ProjectSection = ({
                 transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated * .5}px, 0)`,
                 opacity: opacity
               }}
-            >
-              {description}
-            </motion.h5>
+              dangerouslySetInnerHTML={{ __html: description}}
+            />
 
             <motion.p
               style={{
                 transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated}px, 0)`,
                 opacity: opacity
               }}
-            >
-              {content}
-            </motion.p>
+              dangerouslySetInnerHTML={{ __html: content}}
+            />
           </Grid>
           {alignment === 'right' && (
             <Screen

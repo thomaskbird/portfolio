@@ -36,11 +36,11 @@ const Resume = () => {
             </Typography>
 
             <Typography variant="body2">
-              I&apos;ve had a diverse background in many industries, sizes of companies and roles. This has given me a top notch ability to anticipate and deliver on a higher level by being ready for what’s coming next. It gives me a strong intuition that helps prepare me for future problems and the inevitable curve balls.
+              I&apos;ve had a <em>diverse</em> background in many industries, sizes of companies and roles. This has given me a top notch ability to anticipate and deliver on a higher level by being ready for what’s coming next. It gives me a <em>strong intuition</em> that helps prepare me for future problems and the inevitable curve balls.
             </Typography>
 
             <Typography variant="body2">
-              My passion is building and creating amazing pieces of software that are not only cool, but make my clients and customers lives better!
+              My <em>passion</em> is building and creating <em>amazing</em> pieces of software that are not only cool, but make my clients and customers lives better!
             </Typography>
 
             <Typography variant="h3" sx={{ margin: '50px 0' }}>Skills</Typography>

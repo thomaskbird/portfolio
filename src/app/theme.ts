@@ -155,7 +155,7 @@ const theme: Theme = createTheme({
     }
   },
   shape: {
-    borderRadius: 100
+    borderRadius: 0
   },
 });
 
