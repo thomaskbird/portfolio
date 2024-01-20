@@ -18,6 +18,7 @@ import styles from "@/components/Socials/Socials.module.scss";
 import navStyles from './Nav.module.scss';
 import Link from "next/link";
 import MOCK_NAVITEMS from "@/mocks/mockNavigation";
+import {usePathname, useRouter} from "next/navigation";
 
 interface Props {
   /**
@@ -40,6 +41,8 @@ interface HideOnScrollProps {
 const drawerWidth = 240;
 
 const Nav = ({ window, navOnly = false }: Props) => {
+  const pathname = usePathname();
+  const isHome = pathname === '/';
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -85,10 +88,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
         <AppBar
           component="nav"
           color={navOnly ? 'primary' : 'transparent'}
-          elevation={0}
-          sx={{
-            bgcolor: 'linear-gradient(45deg, rgba(7,14,23,1) 0%, rgba(39,62,93,1) 100%)'
-          }}
+          elevation={isHome ? 0 : 3}
         >
           <Container>
           <Toolbar>
@@ -107,13 +107,13 @@ const Nav = ({ window, navOnly = false }: Props) => {
               sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
             >
               <Link href="/">
-                <img src="/logo.png" alt="Thomas K Bird" className={styles.logo} />
+                <img src={isHome ? '/thomas-bird-light.png' : '/thomas-bird-dark.png'} alt="Thomas K Bird" className={styles.logo} />
               </Link>
             </Typography>
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
               {MOCK_NAVITEMS.map((item) => (
-                <Link href={item.link} key={item.id} passHref>
-                  <Button color="nav">
+                <Link href={item.link} key={item.id}>
+                  <Button color="nav" component={isHome ? 'span' : 'button'}>
                     {item.label}
                   </Button>
                 </Link>

@@ -44,8 +44,8 @@ const theme: Theme = createTheme({
       main: 'rgba(255,255,255,0.75)',
     },
     primary: {
-      main: 'rgba(39,62,93,1)',
-    }
+      main: 'rgba(255,255,255,0.8)',
+    },
   },
   typography: {
     h1: {
@@ -84,22 +84,56 @@ const theme: Theme = createTheme({
     }
   },
   components: {
-    MuiButton: {
+    MuiAppBar: {
       styleOverrides: {
         root: ({ ownerState }) => ({
+          ...(ownerState.color === 'primary' && {
+            ':hover': {
+              background: 'rgba(255,255,255,1)'
+            }
+          }),
+          ...(ownerState.color === 'transparent' && {
+            background: 'transparent',
+            ':hover': {
+              background: 'transparent'
+            }
+          }),
+        }),
+      },
+    },
+    MuiButton: {
+      styleOverrides: {
+        root: ({ ownerState}) => ({
           boxSizing: 'border-box',
-          padding: '10px 20px',
+          padding: '10px 30px',
           ...(ownerState.color === 'clear' && {
             ':hover': {
               color: 'rgba(255,255,255,0.75)',
             }
           }),
-          ...(ownerState.color === 'nav' && {
+          ...(ownerState.color === 'nav' && ownerState.component === 'button' && {
+            borderRadius: 0,
             background: 'linear-gradient(180deg,#999,#666)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             ':hover': {
-              background: 'linear-gradient(180deg,#ccc,#aaa)',
+              background: 'linear-gradient(180deg,#666,#333)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            },
+            ':active': {
+              background: 'linear-gradient(180deg,#000,#000)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }
+          }),
+          ...(ownerState.color === 'nav' && ownerState.component === 'span' && {
+            borderRadius: 0,
+            background: 'linear-gradient(180deg,#999,#666)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            ':hover': {
+              background: 'linear-gradient(180deg,#aaa,#ccc)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             },
@@ -110,8 +144,9 @@ const theme: Theme = createTheme({
             }
           }),
           ...(ownerState.color === 'hero' && ownerState.variant === 'outlined' && {
-            color: 'rgba(255,255,255,0.5)',
-            border: '1px solid rgba(255,255,255,0.5)',
+            color: 'rgba(000,000,000,0.75)',
+            background: 'linear-gradient(180deg,#fff,#ddd)',
+            border: '1px solid rgba(255,255,255,1)',
             ':hover': {
               color: 'rgba(255,255,255,1)',
               border: '1px solid rgba(255,255,255,0.85)',
@@ -122,7 +157,7 @@ const theme: Theme = createTheme({
     }
   },
   shape: {
-    borderRadius: 0
+    borderRadius: 100
   },
 });
 
