@@ -88,7 +88,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
         <AppBar
           component="nav"
           color={navOnly ? 'primary' : 'transparent'}
-          elevation={isHome ? 0 : 3}
+          elevation={0}
         >
           <Container>
           <Toolbar>
@@ -107,7 +107,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
               sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
             >
               <Link href="/">
-                <img src={isHome ? '/thomas-bird-light.png' : '/thomas-bird-dark.png'} alt="Thomas K Bird" className={styles.logo} />
+                <img src={'/thomas-bird-light.png'} alt="Thomas K Bird" className={styles.logo} />
               </Link>
             </Typography>
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>

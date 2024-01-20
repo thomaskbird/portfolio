@@ -1,6 +1,6 @@
 .insideContainer {
   padding-top: 65px;
-  background: #333;
+  background: #222;
 }
 
 .blurb {
@@ -21,17 +21,8 @@
     text-transform: uppercase;
   }
 
-  h3 {
-    font-weight: 800;
-    margin-bottom: 30px;
-    color: rgba(39,62,93,1);
-    text-transform: uppercase;
-  }
-
-  h5 {
-    font-weight: 500;
-    color: #ccc;
-    margin-bottom: 10px;
+  p {
+    margin-bottom: 20px;
   }
 }
 
@@ -48,7 +39,7 @@
   right: 0;
   width: 5px;
   height: 100%;
-  background: #eee;
+  background: #333;
   margin-left: 50%;
   margin-right: 50%;
   position: absolute;

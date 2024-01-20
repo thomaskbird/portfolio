@@ -44,7 +44,7 @@ const theme: Theme = createTheme({
       main: 'rgba(255,255,255,0.75)',
     },
     primary: {
-      main: 'rgba(255,255,255,0.8)',
+      main: 'rgba(0,0,0, 0.2)',
     },
   },
   typography: {
@@ -73,8 +73,10 @@ const theme: Theme = createTheme({
       lineHeight: '200%',
     },
     body2: {
+      color: '#666',
+      fontSize: 18,
       fontFamily: 'Roboto Mono',
-      lineHeight: '200%',
+      lineHeight: '150%',
     },
     button: {
       fontFamily: 'Roboto Mono',
@@ -89,7 +91,7 @@ const theme: Theme = createTheme({
         root: ({ ownerState }) => ({
           ...(ownerState.color === 'primary' && {
             ':hover': {
-              background: 'rgba(255,255,255,1)'
+              background: 'rgba(0,0,0,0.85)'
             }
           }),
           ...(ownerState.color === 'transparent' && {
@@ -113,16 +115,12 @@ const theme: Theme = createTheme({
           }),
           ...(ownerState.color === 'nav' && ownerState.component === 'button' && {
             borderRadius: 0,
-            background: 'linear-gradient(180deg,#999,#666)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
             ':hover': {
-              background: 'linear-gradient(180deg,#666,#333)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
+              color: '#eee',
+              background: 'none',
             },
             ':active': {
-              background: 'linear-gradient(180deg,#000,#000)',
+              background: 'linear-gradient(180deg,#fff,#ccc)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }
