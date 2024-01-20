@@ -9,28 +9,27 @@ import Hero from "@/components/Hero/Hero";
 import Slider from "@/components/Slider/Slider";
 import Footer from "@/components/Footer/Footer";
 import MockProjects from "@/mocks/mockProjects";
+import SectionContainer from "@/components/SectionContainer/SectionContainer";
 
 const Home = () => {
   return (
     <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
       <Hero />
 
-      <Container maxWidth={false} disableGutters className={styles.mainContent}>
-        <Container>
-          <PageSectionTitle title="Skills" />
+      <SectionContainer styleName={styles.mainContent}>
+        <PageSectionTitle title="Skills" />
 
-          <Skills />
+        <Skills />
 
-          <PageSectionTitle title="Project Work" />
+        <PageSectionTitle title="Project Work" />
 
-          {MockProjects.map(project => (
-            <ProjectSection
-              {...project}
-              key={project.id}
-            />
-          ))}
-        </Container>
-      </Container>
+        {MockProjects.map(project => (
+          <ProjectSection
+            {...project}
+            key={project.id}
+          />
+        ))}
+      </SectionContainer>
       <Container maxWidth={false} disableGutters className={styles.testimonialWrapper}>
         <Container>
           <PageSectionTitle title="People Are Talking" />
