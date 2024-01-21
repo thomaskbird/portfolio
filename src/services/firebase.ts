@@ -34,11 +34,12 @@ try {
 const collectionJobs = collection(firestoreDb, "jobs");
 const collectionPortfolio = collection(firestoreDb, "portfolio");
 const collectionContent = collection(firestoreDb, "content");
+const collectionServices = collection(firestoreDb, 'services');
 
 const queryAllPortfolioOrdered = query(collectionPortfolio);
 const queryAllJobsOrdered = query(collectionJobs, orderBy("endAt", "desc"));
-
 const queryAllContentOrdered = query(collectionContent, where('version_of', '==', '0'), where('status', '==', 'published'), where('deleted_at', '==', null), orderBy("created_at", "desc"));
+const queryAllServicesOrdered = query(collectionServices, orderBy('created_at', 'desc'));
 
 export {
   firestoreDb,
@@ -49,4 +50,5 @@ export {
   queryAllJobsOrdered,
   queryAllPortfolioOrdered,
   queryAllContentOrdered,
+  queryAllServicesOrdered,
 };

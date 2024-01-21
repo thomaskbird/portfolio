@@ -8,6 +8,7 @@ import {Container, ThemeProvider} from "@mui/material";
 import theme from "@/app/theme";
 import styles from "@/app/page.module.scss";
 import Hero from "@/components/Hero/Hero";
+import Footer from "@/components/Footer/Footer";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -24,6 +25,8 @@ export default function RootLayout({
             <Hero navOnly={true} />
             {children}
           </Container>
+          
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

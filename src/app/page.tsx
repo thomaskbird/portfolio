@@ -7,7 +7,6 @@ import ProjectSection from "@/components/ProjectSection/ProjectSection";
 import Skills from "@/components/Skills/Skills";
 import Hero from "@/components/Hero/Hero";
 import Slider from "@/components/Slider/Slider";
-import Footer from "@/components/Footer/Footer";
 import MockProjects from "@/mocks/mockProjects";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 
@@ -35,11 +34,6 @@ const Home = () => {
           <PageSectionTitle title="People Are Talking" />
 
           <Slider />
-        </Container>
-      </Container>
-      <Container maxWidth={false} disableGutters className={styles.footerWrapper}>
-        <Container>
-          <Footer />
         </Container>
       </Container>
     </Container>

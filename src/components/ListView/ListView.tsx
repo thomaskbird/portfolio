@@ -1,9 +1,4 @@
-import Typography from "@mui/material/Typography";
 import styles from './ListView.module.scss';
-import {getDocs, QuerySnapshot} from "@firebase/firestore";
-import {queryAllContentOrdered, queryAllJobsOrdered} from "@/services/firebase";
-import {makeArrayFromSnapshot} from "@/utils/makeArrayFromSnapshot";
-import {ResumeType} from "@/types/ResumeType";
 import {useEffect, useState} from "react";
 import PostType from "@/types/PostType";
 import ListItem from "@/components/ListItem/ListItem";
