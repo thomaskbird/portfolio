@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import Nav from "@/components/Nav/Nav";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Link from "next/link";
 
 type HeroType = {
   navOnly?: boolean;
@@ -77,19 +78,23 @@ const Hero = ({ navOnly = false }: HeroType) => {
 
                 <div className={styles.heroCtas}>
                   <motion.div custom={3} variants={items}>
-                    <Button
-                      color="hero"
-                      disableElevation
-                      variant="outlined"
-                      className={styles.heroCtaPrimary}
-                    >
-                      Contact me
-                    </Button>
+                    <Link href="/contact">
+                      <Button
+                        color="hero"
+                        disableElevation
+                        variant="outlined"
+                        className={styles.heroCtaPrimary}
+                      >
+                        Contact me
+                      </Button>
+                    </Link>
                   </motion.div>
                   <motion.div custom={4} variants={items}>
-                    <Button variant="text" color="clear" disableElevation>
-                      Resume
-                    </Button>
+                    <Link href="/resume">
+                      <Button variant="text" color="clear" disableElevation>
+                        Resume
+                      </Button>
+                    </Link>
                   </motion.div>
                 </div>
               </Grid>
