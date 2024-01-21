@@ -49,25 +49,34 @@ const theme: Theme = createTheme({
     primary: {
       main: 'rgba(0,0,0, 0.2)',
     },
+    secondary: {
+      main: 'rgba(255,255,255,0.5)'
+    }
   },
   typography: {
     h1: {
       fontFamily: 'Source Sans 3',
+      fontWeight: '600'
     },
     h2: {
       fontFamily: 'Source Sans 3',
+      fontWeight: '600'
     },
     h3: {
       fontFamily: 'Source Sans 3',
+      fontWeight: '600'
     },
     h4: {
       fontFamily: 'Source Sans 3',
+      fontWeight: '600'
     },
     h5: {
       fontFamily: 'Source Sans 3',
+      fontWeight: '600'
     },
     h6: {
       fontFamily: 'Source Sans 3',
+      fontWeight: '600'
     },
     body1: {
       fontSize: 18,
@@ -79,7 +88,7 @@ const theme: Theme = createTheme({
       color: '#666',
       fontSize: 18,
       fontFamily: 'Roboto Mono',
-      lineHeight: '150%',
+      lineHeight: '125%',
     },
     button: {
       fontFamily: 'Roboto Mono',

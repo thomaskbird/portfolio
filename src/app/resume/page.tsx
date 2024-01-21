@@ -2,7 +2,6 @@
 
 import styles from './page.module.scss'
 import {Container, Fab} from "@mui/material";
-import Hero from "@/components/Hero/Hero";
 import ResumeItem from "@/components/ResumeItem/ResumeItem";
 import Typography from "@mui/material/Typography";
 import Skills from "@/components/Skills/Skills";
@@ -37,9 +36,7 @@ const Resume = () => {
   }
 
   return (
-    <Container maxWidth={false} disableGutters>
-      <Hero navOnly={true} />
-
+    <>
       <Container maxWidth={false} disableGutters className={styles.insideContainer}>
         <Container>
           <div className={styles.blurb}>
@@ -91,7 +88,7 @@ const Resume = () => {
 
         </Container>
       </Container>
-    </Container>
+    </>
   )
 }
 

@@ -2,14 +2,14 @@
 
 import styles from '../page.module.scss'
 import pageStyles from './page.module.scss';
-import {Container, Grid, TextField} from "@mui/material";
-import Hero from "@/components/Hero/Hero";
+import {Grid} from "@mui/material";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Button from "@mui/material/Button";
 import {SubmitHandler, useForm} from "react-hook-form";
 import HookFormTextField from "@/components/HookFormTextField/HookFormTextField";
 import contactFormSchema, {ContactFormType} from "@/app/contact/contactFormSchema";
 import {yupResolver} from "@hookform/resolvers/yup";
+import Typography from "@mui/material/Typography";
 
 const defaultVals: ContactFormType = {
   name: '',
@@ -33,19 +33,25 @@ const Contact = () => {
   };
 
   return (
-    <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
-      <Hero navOnly={true} />
-
+    <>
       <SectionContainer styleName={styles.mainContent}>
 
-        <Grid container>
+        <Grid container spacing={2}>
           <Grid item xs={12} md={8}>
-            TEST
+            <Typography variant="h2" sx={{ marginBottom: '20px' }}>What am I looking for?</Typography>
+            <Typography variant="body1" color="secondary" sx={{ marginBottom: '20px' }}>
+              I&apos;m an engineer with a <em>passion</em> for working with people and creating <em>amazing products</em>, that said my goal is to find a team working with the <em>latest</em> cutting edge technology, that fosters <em>creative thinking</em> and embraces new ideas.
+            </Typography>
+            <Typography variant="body1" color="secondary">
+              Beyond just that I strongly believe good <em>company culture</em> can make or break a team, without it the best all stars won&apos;t be as effective.
+            </Typography>
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <h2>Thomas Bird</h2>
-            <h5>Email: Thomas.bird1984@gmail.com</h5>
+            <Typography variant="h3" sx={{ marginBottom: '20px' }}>Send a message</Typography>
+
+            <Typography variant="body1" color="secondary">Thanks for stopping by and showing interest, use the form below and I would be happy to get back to you at my earliest convenience! Thanks</Typography>
+
             <form className={pageStyles.form} onSubmit={handleSubmit(onSubmit)}>
               <div className={pageStyles.fieldWrapper}>
                 <HookFormTextField
@@ -89,8 +95,7 @@ const Contact = () => {
           </Grid>
         </Grid>
       </SectionContainer>
-
-    </Container>
+    </>
   )
 }
 

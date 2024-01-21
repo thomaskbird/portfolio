@@ -4,8 +4,10 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import 'animate.css'
-import {ThemeProvider} from "@mui/material";
+import {Container, ThemeProvider} from "@mui/material";
 import theme from "@/app/theme";
+import styles from "@/app/page.module.scss";
+import Hero from "@/components/Hero/Hero";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,7 +20,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <ThemeProvider theme={theme}>
-          {children}
+          <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
+            <Hero navOnly={true} />
+            {children}
+          </Container>
         </ThemeProvider>
       </body>
     </html>

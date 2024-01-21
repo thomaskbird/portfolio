@@ -1,5 +1,5 @@
 import { getApp, getApps, initializeApp } from "@firebase/app";
-import {collection, Firestore, getFirestore, orderBy} from "@firebase/firestore";
+import {collection, Firestore, getFirestore, orderBy, where} from "@firebase/firestore";
 import moment from "moment";
 import config from "../config/sites";
 import { query } from "@firebase/database";
@@ -33,15 +33,20 @@ try {
 
 const collectionJobs = collection(firestoreDb, "jobs");
 const collectionPortfolio = collection(firestoreDb, "portfolio");
+const collectionContent = collection(firestoreDb, "content");
 
 const queryAllPortfolioOrdered = query(collectionPortfolio);
 const queryAllJobsOrdered = query(collectionJobs, orderBy("endAt", "desc"));
+
+const queryAllContentOrdered = query(collectionContent, where('version_of', '==', '0'), where('status', '==', 'published'), where('deleted_at', '==', null), orderBy("created_at", "desc"));
 
 export {
   firestoreDb,
   thomaskbird,
   renderFirestoreTimestamp,
   collectionPortfolio,
+  collectionContent,
   queryAllJobsOrdered,
   queryAllPortfolioOrdered,
+  queryAllContentOrdered,
 };
