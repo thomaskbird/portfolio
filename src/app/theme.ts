@@ -88,7 +88,7 @@ const theme: Theme = createTheme({
       color: '#666',
       fontSize: 18,
       fontFamily: 'Roboto Mono',
-      lineHeight: '125%',
+      lineHeight: '200%',
     },
     button: {
       fontFamily: 'Roboto Mono',
