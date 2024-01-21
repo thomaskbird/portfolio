@@ -70,9 +70,11 @@ const Nav = ({ window, navOnly = false }: Props) => {
       <List>
         {MOCK_NAVITEMS.map((item) => (
           <ListItem key={item.id} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item.label} />
-            </ListItemButton>
+            <Link href={item.link}>
+              <ListItemButton sx={{ textAlign: 'center' }}>
+                <ListItemText primary={item.label} />
+              </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>
