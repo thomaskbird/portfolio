@@ -1,18 +1,23 @@
-import {ResumeType} from "@/mocks/mockResume";
 import styles from './ResumeItem.module.scss';
 import cn from "classnames";
 import {useScroll} from "framer-motion";
 import {MutableRefObject, useEffect, useRef, useState} from "react";
 import { motion } from "framer-motion";
+import {ResumeType} from "@/types/ResumeType";
+import moment from "moment";
 
 type ResumeItemType = {
   item: ResumeType
+  idx: number;
 };
 
+// todo: pass index so that we can compare if it is even
+
 const ResumeItem = ({
-  item
+  item,
+  idx,
 }: ResumeItemType) => {
-  const isEven = item.id % 2 === 0;
+  const isEven = idx % 2 === 0;
   const wrapperRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const { scrollYProgress } = useScroll({
     target: wrapperRef,
@@ -34,14 +39,14 @@ const ResumeItem = ({
   return (
     <div
       ref={wrapperRef}
-      className={cn(styles.resumeItem, isEven ? styles.resumeItemEven : styles.resumeItemOdd)}
+      className={cn(styles.resumeItem, !isEven ? styles.resumeItemEven : styles.resumeItemOdd)}
     >
       <div className={styles.sticky}>
         <motion.div
           className={styles.resumeItemLeft}
           style={{
             opacity: opacity,
-            transform: `scale(${opacity}) translate(${isEven ? '' : '-'}${scrollValueCalculated}px, 0)`,
+            transform: `scale(${opacity}) translate(${!isEven ? '' : '-'}${scrollValueCalculated}px, 0)`,
           }}
         >
           <h2>
@@ -64,11 +69,11 @@ const ResumeItem = ({
           <motion.div
             style={{
               opacity: opacity,
-              transform: `translate(${!isEven ? '' : '-'}${scrollValueCalculated}px, 0)`,
+              transform: `translate(${isEven ? '' : '-'}${scrollValueCalculated}px, 0)`,
             }}
             className={styles.dates}
           >
-            <h5>{item.from} to {item.to}</h5>
+            <h5>{moment(item.startAt).format("MMM, YYYY")} to {moment(item.endAt).format("MMM, YYYY")}</h5>
           </motion.div>
         </div>
       </div>

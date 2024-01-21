@@ -33,6 +33,9 @@ declare module '@mui/material/Button' {
 
 const theme: Theme = createTheme({
   palette: {
+    error: {
+      main: '#5e1b1b',
+    },
     hero: {
       main: '#000',
       contrastText: '#fff'
@@ -152,7 +155,39 @@ const theme: Theme = createTheme({
           }),
         })
       }
-    }
+    },
+    // MuiFormControl: {
+    //   styleOverrides: {
+    //     root: ({ ownerState }) => ({
+    //     })
+    //   }
+    // },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          ...(ownerState.color === 'primary' && {
+            background: '#000',
+          }),
+          ':focused': {
+            color: '#ccc !important'
+          },
+          color: '#aaa',
+          fontSize: '14px'
+        })
+      }
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          ...(ownerState.color === 'primary' && {
+            background: '#000',
+          }),
+          color: '#aaa',
+          fontSize: '14px',
+          padding: '10px 15px'
+        })
+      }
+    },
   },
   shape: {
     borderRadius: 0

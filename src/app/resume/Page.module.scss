@@ -8,7 +8,14 @@
   padding: 100px;
   background: #111;
   text-align: center;
+  position: relative;
   margin: 100px auto 0;
+
+  .downloadButton {
+    top: 40px;
+    right: 40px;
+    position: absolute;
+  }
 
   .blurbImage {
     height: 400px;

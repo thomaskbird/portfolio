@@ -12,7 +12,7 @@ export type ResumeType = {
 const MOCK_RESUME: ResumeType[] = [
   {
     id: 1,
-    company: 'NBC Sports',
+    company: 'NBC Sports Next',
     title: 'Lead Engineer',
     type: 'Contract',
     from: '4/2023',
@@ -128,7 +128,7 @@ const MOCK_RESUME: ResumeType[] = [
   },
   {
     id: 9,
-    company: 'Dominos Pizza',
+    company: 'Dominos Pizza Enterprises Ltd',
     title: 'Senior Developer',
     type: 'Contract',
     from: '02/2014',
@@ -247,7 +247,7 @@ const MOCK_RESUME: ResumeType[] = [
   },
   {
     id: 18,
-    company: 'Revize Software Systems',
+    company: 'Revize Software LLC',
     title: 'Creative Director',
     type: 'Contract',
     from: '10/2010',
@@ -260,7 +260,7 @@ const MOCK_RESUME: ResumeType[] = [
   },
   {
     id: 19,
-    company: 'RLM Industries Inc',
+    company: 'RLM Industries',
     title: 'Sales Executive & Webmaster',
     type: 'Direct',
     from: '02/2008',
