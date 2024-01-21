@@ -64,7 +64,7 @@ const Footer = ({}: FooterType) => {
 
               <ul>
                 {MOCK_NAVITEMS.map((item) => (
-                  <li><Link href={item.link}>{item.label}</Link></li>
+                  <li key={item.id}><Link href={item.link}>{item.label}</Link></li>
                 ))}
               </ul>
             </div>
