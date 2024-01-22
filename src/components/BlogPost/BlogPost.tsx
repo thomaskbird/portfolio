@@ -1,6 +1,5 @@
 import Typography from "@mui/material/Typography";
-import styles from './ListItem.module.scss';
-import SectionContainer from "@/components/SectionContainer/SectionContainer";
+import styles from './BlogPost.module.scss';
 import PostType from "@/types/PostType";
 import Link from "next/link";
 import Button from "@mui/material/Button";
@@ -9,7 +8,7 @@ type ListItemType = {
   post: PostType
 };
 
-const ListItem = ({
+const BlogPost = ({
   post,
 }: ListItemType) => {
   return (
@@ -28,4 +27,4 @@ const ListItem = ({
   )
 }
 
-export default ListItem;
+export default BlogPost;

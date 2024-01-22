@@ -1,11 +1,9 @@
 import styles from './ListView.module.scss';
-import PostType from "@/types/PostType";
-import ListItem from "@/components/ListItem/ListItem";
 import {ReactNode} from "react";
 
 type ListViewType = {
-  posts: PostType[],
-  renderItem(item: PostType): ReactNode;
+  posts: any[],
+  renderItem(item: any): ReactNode;
 };
 
 const ListView = ({

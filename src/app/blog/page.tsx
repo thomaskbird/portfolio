@@ -9,8 +9,9 @@ import {selectSetIsLoading} from "@/store/selectors/globalStore";
 import {useEffect, useState} from "react";
 import PostType from "@/types/PostType";
 import retrieveAllPosts from "@/components/ListView/contentHelpers";
-import ListItem from "@/components/ListItem/ListItem";
+import BlogPost from "@/components/BlogPost/BlogPost";
 import { motion } from 'framer-motion';
+import ItemAnimation from "@/components/ItemAnimation/ItemAnimation";
 const Blog = () => {
   const setIsLoading = useGlobalStore(selectSetIsLoading);
 
@@ -33,27 +34,9 @@ const Blog = () => {
         <ListView
           posts={posts}
           renderItem={(item) => (
-            <motion.div
-              key={item.id}
-              initial={{
-                opacity: 0,
-                scale: 0.9,
-                y: 20,
-              }}
-              whileInView={{
-                opacity: 1,
-                scale: 1,
-                y: 0
-              }}
-              viewport={{
-                amount: 0.5,
-              }}
-              transition={{
-                duration: 0.5
-              }}
-            >
-              <ListItem post={item} />
-            </motion.div>
+            <ItemAnimation key={item.id}>
+              <BlogPost post={item} />
+            </ItemAnimation>
           )}
         />
       </SectionContainer>
