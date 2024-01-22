@@ -5,12 +5,30 @@ import EmailIcon from '@mui/icons-material/Email';
 import Link from "next/link";
 import MOCK_NAVITEMS from "@/mocks/mockNavigation";
 import {Container} from "@mui/material";
+import {useGlobalStore} from "@/store/useGlobalStore";
+import {selectSetIsLoading} from "@/store/selectors/globalStore";
+import {useEffect, useState} from "react";
+import PostType from "@/types/PostType";
+import retrieveLatestPosts from "@/services/retrieveLatestPosts";
 
 type FooterType = {};
 
 const iconSize = 'medium';
 
 const Footer = ({}: FooterType) => {
+  const setIsLoading = useGlobalStore(selectSetIsLoading);
+
+  const [posts, setPosts] = useState<PostType[]>([]);
+
+  useEffect(() => {
+    (async() => {
+      setIsLoading(true);
+      const postsFromDb = await retrieveLatestPosts();
+      setPosts(postsFromDb);
+      setIsLoading(false);
+    })();
+  }, []);
+
   return (
     <Container maxWidth={false} disableGutters className={styles.footerWrapper}>
       <Container>
@@ -51,11 +69,9 @@ const Footer = ({}: FooterType) => {
               <div className={styles.footerTitleDivider}></div>
 
               <ul>
-                <li><Link href="/post/something">Learning new css tricks</Link></li>
-                <li><Link href="/post/something">Using the new IntersectionObserver</Link></li>
-                <li><Link href="/post/something">Redux in a nutshell</Link></li>
-                <li><Link href="/post/something">Redux, Zustand, Mobx what to use for state management</Link></li>
-                <li><Link href="/post/something">Coding a simple slider</Link></li>
+                {posts.map(post => (
+                  <li key={post.id}><Link href={`/page/${post.slug}`}>{post.title}</Link></li>
+                ))}
               </ul>
             </div>
             <div className={styles.footerMainColumn}>

@@ -44,7 +44,6 @@ const Hero = ({ navOnly = false }: HeroType) => {
     <Container maxWidth={false} disableGutters className={styles.hero}>
       <Container>
         <Nav navOnly={navOnly} />
-        <Socials />
 
         {!navOnly && (
           <motion.div initial="hidden" whileInView="visible" viewport={{once: true}}>

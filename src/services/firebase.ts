@@ -1,5 +1,5 @@
 import { getApp, getApps, initializeApp } from "@firebase/app";
-import {collection, Firestore, getFirestore, orderBy, where} from "@firebase/firestore";
+import {collection, Firestore, getFirestore, limit, orderBy, where} from "@firebase/firestore";
 import moment from "moment";
 import config from "../config/sites";
 import { query } from "@firebase/database";
@@ -40,6 +40,7 @@ const queryAllPortfolioOrdered = query(collectionPortfolio);
 const queryAllJobsOrdered = query(collectionJobs, orderBy("endAt", "desc"));
 const queryAllContentOrdered = query(collectionContent, where('version_of', '==', '0'), where('status', '==', 'published'), where('deleted_at', '==', null), orderBy("created_at", "desc"));
 const queryAllServicesOrdered = query(collectionServices, orderBy('created_at', 'desc'));
+const queryLatestContentOrdered = query(collectionContent, where('version_of', '==', '0'), where('status', '==', 'published'), where('deleted_at', '==', null), orderBy("created_at", "desc"), limit(5));
 
 export {
   firestoreDb,
@@ -51,4 +52,5 @@ export {
   queryAllPortfolioOrdered,
   queryAllContentOrdered,
   queryAllServicesOrdered,
+  queryLatestContentOrdered,
 };
