@@ -15,6 +15,8 @@ type ProjectSectionType = {
   content: string;
 };
 
+// todo: @media(min-width: 900px) and (max-width: 1100px) {
+
 const ProjectSection = ({
   alignment,
   image,
@@ -59,7 +61,7 @@ const ProjectSection = ({
               screenPosition={screenPosition}
             />
           )}
-          <Grid item xs={6} className={classes}>
+          <Grid item xs={12} md={6} className={classes}>
             <motion.h2
               style={{
                 transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated * .25}px, 0)`,
