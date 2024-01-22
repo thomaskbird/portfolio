@@ -1,0 +1,29 @@
+.blurb {
+  width: 100%;
+  padding: 100px;
+  background: #111;
+  text-align: center;
+  position: relative;
+  margin: 100px auto 0;
+
+  .downloadButton {
+    top: 40px;
+    right: 40px;
+    position: absolute;
+  }
+
+  .blurbImage {
+    height: 400px;
+  }
+
+  h1 {
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: rgba(39,62,93,1);
+    text-transform: uppercase;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+}

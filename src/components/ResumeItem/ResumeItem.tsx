@@ -46,7 +46,8 @@ const ResumeItem = ({
           className={styles.resumeItemLeft}
           style={{
             opacity: opacity,
-            transform: `scale(${opacity}) translate(${!isEven ? '' : '-'}${scrollValueCalculated}px, 0)`,
+            transform: `scale(${opacity})`,
+            // transform: `scale(${opacity}) translate(${!isEven ? '' : '-'}${scrollValueCalculated}px, 0)`,
           }}
         >
           <h2>

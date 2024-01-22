@@ -3,15 +3,18 @@
 import { Inter } from 'next/font/google'
 import './globals.css'
 import 'animate.css'
-import {Backdrop, CircularProgress, Container, ThemeProvider} from "@mui/material";
+import {Backdrop, CircularProgress, Container, Fab, ThemeProvider} from "@mui/material";
 import theme from "@/app/theme";
 import styles from "@/app/page.module.scss";
 import Hero from "@/components/Hero/Hero";
 import Footer from "@/components/Footer/Footer";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectIsLoading} from "@/store/selectors/globalStore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
+import {usePathname} from "next/navigation";
 
 const inter = Inter({ subsets: ['latin'] })
+const pagesWithScrollToTop = ['/', 'work', 'blog', 'resume'];
 
 export default function RootLayout({
   children,
@@ -19,6 +22,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const isLoading = useGlobalStore(selectIsLoading);
+
+  const path = usePathname();
+  const hasScrollTop = pagesWithScrollToTop.includes(path);
+
+  const backToTop = () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }
 
   return (
     <html lang="en">
@@ -37,6 +47,12 @@ export default function RootLayout({
           </Container>
           
           <Footer />
+
+          {hasScrollTop && (
+            <Fab color="primary" className="backToTop" onClick={backToTop}>
+              <ExpandLessIcon/>
+            </Fab>
+          )}
         </ThemeProvider>
       </body>
     </html>

@@ -32,7 +32,7 @@
 
   .dates {
     padding: 10px 20px;
-    position: absolute;
+    width: fit-content;
     background: rgb(9, 9, 9);
   }
 
@@ -63,7 +63,7 @@
 }
 
 .indicator {
-  width: 30px;
+  flex: 1;
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -83,18 +83,17 @@
   top: 20vh;
   display: flex;
   position: sticky;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 }
 
 .resumeItemOdd {
   text-align: right;
 
-  .indicator {
-    margin-left: -24px;
-  }
-
   .sticky {
     .resumeItemLeft {
-      margin-right: 30px;
       background: linear-gradient(180deg,#000,#111);
 
       &::before {
@@ -112,8 +111,6 @@
 
     .resumeItemRight {
       display: flex;
-      margin-left: 0px;
-      align-items: center;
       justify-content: flex-start;
 
       .dates {
@@ -134,15 +131,10 @@
 }
 
 .resumeItemEven {
-  .indicator {
-    margin-left: 35px;
-  }
-
   .sticky {
     flex-direction: row-reverse;
 
     .resumeItemLeft {
-      margin-left: 30px;
       background: linear-gradient(180deg,#000,#111);
 
       &::before {
@@ -160,7 +152,6 @@
 
     .resumeItemRight {
       display: flex;
-      align-items: center;
       justify-content: flex-end;
 
       .dates {
@@ -182,8 +173,9 @@
 
 .resumeItemLeft,
 .resumeItemRight {
-  flex: 1;
+  flex: 4;
   padding: 50px 25px;
   position: relative;
   box-sizing: border-box;
+  align-items: center;
 }

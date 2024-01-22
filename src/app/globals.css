@@ -35,3 +35,9 @@ em,
   font-weight: bold;
   font-style: normal;
 }
+
+.backToTop {
+  right: 30px;
+  bottom: 30px;
+  position: fixed;
+}
