@@ -18,15 +18,26 @@
   }
 
   @media(min-width: 769px) and (max-width: 900px) {
-    height: 65%;
+    height: 450px;
+    padding: 50px;
   }
 
   @media(min-width: 601px) and (max-width: 768px) {
-    height: 65%;
+    height: 550px;
+    padding: 50px;
   }
 
   @media(max-width: 600px) {
-    height: 70%;
+    height: 700px;
+    padding: 25px;
+  }
+
+  @media(max-width: 500px) {
+    .badgeText {
+      h3 {
+        text-overflow: ellipsis;
+      }
+    }
   }
 }
 
@@ -40,6 +51,7 @@
 
   @media(max-width: 1200px) {
     padding: 0;
+    width: 100%;
   }
 }
 

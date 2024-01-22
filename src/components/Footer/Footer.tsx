@@ -38,7 +38,7 @@ const Footer = ({}: FooterType) => {
               <RoomIcon fontSize={iconSize} className={styles.blurbIcon}/>
               <div className={styles.blurbText}>
                 <h5>Location</h5>
-                <p>Bowling Green, OH</p>
+                <p><a target="_blank" href="https://maps.app.goo.gl/ZFKQYfNjj4kqwTyH7">Bowling Green, OH</a></p>
               </div>
             </div>
 
