@@ -26,4 +26,14 @@
   p {
     margin-bottom: 20px;
   }
+
+  @media(max-width: 600px) {
+    margin: 0 auto;
+    padding: 100px 30px;
+
+    .downloadButton {
+      top: 20px;
+      right: 20px;
+    }
+  }
 }

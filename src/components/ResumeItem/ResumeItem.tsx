@@ -57,14 +57,15 @@ const ResumeItem = ({
 
           <ul>
             {item.bullets.map((bullet, i) => (
-              <li key={i} dangerouslySetInnerHTML={{ __html: bullet }}></li>
+              <li key={i} dangerouslySetInnerHTML={{__html: bullet}}></li>
             ))}
           </ul>
 
           <p><b>Skills:</b> {item.skills.join(', ')}</p>
+          <p className={styles.smallDates}>{moment(item.startAt).format("MMM, YYYY")} to {moment(item.endAt).format("MMM, YYYY")}</p>
         </motion.div>
         <div className={styles.indicator}>
-        <div className={styles.dot}></div>
+          <div className={styles.dot}></div>
         </div>
         <div className={styles.resumeItemRight}>
           <motion.div

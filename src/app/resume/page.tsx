@@ -1,19 +1,12 @@
 'use client';
 
 import styles from './page.module.scss'
-import {Container, Fab} from "@mui/material";
 import ResumeItem from "@/components/ResumeItem/ResumeItem";
-import Typography from "@mui/material/Typography";
-import Skills from "@/components/Skills/Skills";
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import {useEffect, useRef, useState} from "react";
 import {getDocs, QuerySnapshot} from "@firebase/firestore";
 import {queryAllJobsOrdered} from "@/services/firebase";
 import {makeArrayFromSnapshot} from "@/utils/makeArrayFromSnapshot";
 import {ResumeType} from "@/types/ResumeType";
-import Button from "@mui/material/Button";
-import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
-import Link from "next/link";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import ResumeBlurb from "@/components/ResumeBlurb/ResumeBlurb";
 

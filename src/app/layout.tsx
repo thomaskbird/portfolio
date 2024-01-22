@@ -14,7 +14,7 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import {usePathname} from "next/navigation";
 
 const inter = Inter({ subsets: ['latin'] })
-const pagesWithScrollToTop = ['/', 'work', 'blog', 'resume'];
+const pagesWithScrollToTop = ['/', '/work', '/blog', '/resume'];
 
 export default function RootLayout({
   children,

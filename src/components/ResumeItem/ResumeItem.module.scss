@@ -30,6 +30,12 @@
     }
   }
 
+  .smallDates {
+    @media(min-width: 900px) {
+      display: none;
+    }
+  }
+
   .dates {
     padding: 10px 20px;
     width: fit-content;
@@ -59,6 +65,10 @@
     color: #fff;
     font-size: 14px;
     line-height: 150%;
+  }
+
+  @media(max-width: 900px) {
+    height: auto;
   }
 }
 
@@ -106,6 +116,16 @@
         top: calc(50% - 30px / 2);
         border: 15px solid transparent;
         border-left-color: rgb(9, 9, 9);
+
+        @media(max-width: 900px) {
+          display: none;
+        }
+      }
+    }
+
+    .indicator {
+      @media (max-width: 900px) {
+        display: none;
       }
     }
 
@@ -125,8 +145,16 @@
           border: 28px solid transparent;
           border-right-color: rgba(9,9,9,1);
         }
+
+        @media (max-width: 900px) {
+          display: none;
+        }
       }
     }
+  }
+
+  @media(max-width: 900px) {
+    text-align: left;
   }
 }
 
@@ -147,6 +175,10 @@
         top: calc(50% - 30px / 2);
         border: 15px solid transparent;
         border-right-color: rgb(9, 9, 9);
+
+        @media (max-width: 900px) {
+          display: none;
+        }
       }
     }
 
@@ -166,6 +198,20 @@
           border: 28px solid transparent;
           border-left-color: rgb(9, 9, 9);
         }
+
+        @media (max-width: 900px) {
+          display: none;
+        }
+      }
+    }
+
+    @media (max-width: 900px) {
+      flex-direction: column;
+    }
+
+    .indicator {
+      @media (max-width: 900px) {
+        display: none;
       }
     }
   }

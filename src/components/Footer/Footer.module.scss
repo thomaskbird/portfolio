@@ -98,3 +98,37 @@
   background: rgba(255,255,255,0.25);
   margin-bottom: 20px;
 }
+
+@media (max-width: 900px) {
+  .footerMain {
+    flex-direction: column;
+  }
+
+  .blurb {
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .blurbText {
+    margin-left: 0;
+
+    p {
+      margin-top: -10px;
+    }
+  }
+
+  .blurbIcon {
+    display: block;
+    margin: 0 auto 10px;
+  }
+}
+
+@media(max-width: 600px) {
+  .blurbs {
+    flex-direction: column;
+  }
+
+  .blurb {
+    margin-bottom: 20px;
+  }
+}
