@@ -1,30 +1,21 @@
 import styles from './ListView.module.scss';
-import {useEffect, useState} from "react";
 import PostType from "@/types/PostType";
 import ListItem from "@/components/ListItem/ListItem";
-import {usePathname} from "next/navigation";
-import retrieveAllPosts from "@/components/ListView/contentHelpers";
+import {ReactNode} from "react";
 
-type ListViewType = {};
+type ListViewType = {
+  posts: PostType[],
+  renderItem(item: PostType): ReactNode;
+};
 
-const ListView = ({}: ListViewType) => {
-  const pathname = usePathname();
-
-  const [posts, setPosts] = useState<PostType[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    (async() => {
-      const postsFromDb = await retrieveAllPosts();
-      setPosts(postsFromDb);
-      setIsLoading(false);
-    })();
-  }, []);
-
+const ListView = ({
+  posts,
+  renderItem
+}: ListViewType) => {
   return (
     <div className={styles.listViewWrapper}>
       <div className={styles.postsContainer}>
-        {posts.map(post => <ListItem key={post.id} post={post} />)}
+        {posts.map(post => renderItem(post))}
       </div>
     </div>
   )

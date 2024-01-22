@@ -21,9 +21,9 @@ const Resume = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   const retrieveAllJobs = async () => {
-    const jobsSnapshot: QuerySnapshot = await getDocs(queryAllJobsOrdered);
+    const jobsSnapshot: QuerySnapshot = await getDocs(queryAllJobsOrdered as any);
     setIsLoading(false);
-    const jobRecordsFromDb = makeArrayFromSnapshot<ResumeType>(jobsSnapshot);
+    const jobRecordsFromDb = makeArrayFromSnapshot<ResumeType>(jobsSnapshot as any);
     setJobs(jobRecordsFromDb);
   };
 

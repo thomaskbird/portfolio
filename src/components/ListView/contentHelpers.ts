@@ -4,8 +4,8 @@ import {makeArrayFromSnapshot} from "@/utils/makeArrayFromSnapshot";
 import PostType from "@/types/PostType";
 
 const retrieveAllPosts = async (): Promise<PostType[]> => {
-  const contentSnapshot: QuerySnapshot = await getDocs(queryAllContentOrdered);
-  const postsRecordsFromDb = makeArrayFromSnapshot<PostType>(contentSnapshot);
+  const contentSnapshot: QuerySnapshot = await getDocs(queryAllContentOrdered as any);
+  const postsRecordsFromDb = makeArrayFromSnapshot<PostType>(contentSnapshot as any);
 
   return postsRecordsFromDb;
 };
