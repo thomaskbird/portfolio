@@ -25,7 +25,7 @@
 .macbookImage {
   z-index: 2;
   width: 992px;
-  position: absolute;
+  position: relative;
 
   @media(max-width: 900px) {
     width: 730px;
@@ -39,7 +39,7 @@
   width: 786px;
   height: 506px;
   overflow-y: auto;
-  position: relative;
+  position: absolute;
   overflow-x: hidden;
 
   @media(max-width: 900px) {

@@ -38,7 +38,7 @@ const Footer = ({}: FooterType) => {
               <RoomIcon fontSize={iconSize} className={styles.blurbIcon}/>
               <div className={styles.blurbText}>
                 <h5>Location</h5>
-                <p><a target="_blank" href="https://maps.app.goo.gl/ZFKQYfNjj4kqwTyH7">Bowling Green, OH</a></p>
+                <p><Link target="_blank" href="https://maps.app.goo.gl/ZFKQYfNjj4kqwTyH7">Bowling Green, OH</Link></p>
               </div>
             </div>
 
@@ -46,7 +46,7 @@ const Footer = ({}: FooterType) => {
               <PhoneIcon fontSize={iconSize} className={styles.blurbIcon}/>
               <div className={styles.blurbText}>
                 <h5>Phone</h5>
-                <p>313-410-3709</p>
+                <p><Link href="tel:313-410-3709">313-410-3709</Link></p>
               </div>
             </div>
 
@@ -54,7 +54,7 @@ const Footer = ({}: FooterType) => {
               <EmailIcon fontSize={iconSize} className={styles.blurbIcon}/>
               <div className={styles.blurbText}>
                 <h5>Email:</h5>
-                <p><a href="mailto:thomaskbird@icloud.com">thomaskbird@icloud.com</a></p>
+                <p><Link href="mailto:thomaskbird@icloud.com">thomaskbird@icloud.com</Link></p>
               </div>
             </div>
           </div>
