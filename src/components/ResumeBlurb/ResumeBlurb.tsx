@@ -13,7 +13,7 @@ const ResumeBlurb = ({}: ResumeBlurbType) => {
       <Link
         href="https://docs.google.com/document/d/1gjkhy1ogLDcKIiUpiStgMHxc052bkdsn/edit?usp=sharing&ouid=101742124066617366377&rtpof=true&sd=true"
         target="_blank">
-        <Button component="label" variant="contained" startIcon={<CloudDownloadIcon/>} className={styles.downloadButton}>
+        <Button variant="contained" startIcon={<CloudDownloadIcon/>} className={styles.downloadButton}>
           Download Resume
         </Button>
       </Link>

@@ -9,11 +9,13 @@ import {makeArrayFromSnapshot} from "@/utils/makeArrayFromSnapshot";
 import {ResumeType} from "@/types/ResumeType";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import ResumeBlurb from "@/components/ResumeBlurb/ResumeBlurb";
+import {useGlobalStore} from "@/store/useGlobalStore";
+import {selectSetIsLoading} from "@/store/selectors/globalStore";
 
 const Resume = () => {
+  const setIsLoading = useGlobalStore(selectSetIsLoading);
   const resumeRef = useRef<HTMLDivElement | null>(null);
   const [jobs, setJobs] = useState<ResumeType[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   const retrieveAllJobs = async () => {
     const jobsSnapshot: QuerySnapshot = await getDocs(queryAllJobsOrdered as any);
