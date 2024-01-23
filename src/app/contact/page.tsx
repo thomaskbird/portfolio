@@ -10,6 +10,10 @@ import HookFormTextField from "@/components/HookFormTextField/HookFormTextField"
 import contactFormSchema, {ContactFormType} from "@/app/contact/contactFormSchema";
 import {yupResolver} from "@hookform/resolvers/yup";
 import Typography from "@mui/material/Typography";
+import addContact from "@/services/addContact";
+import {useGlobalStore} from "@/store/useGlobalStore";
+import {selectSetIsLoading} from "@/store/selectors/globalStore";
+import {useState} from "react";
 
 const defaultVals: ContactFormType = {
   name: '',
@@ -19,6 +23,7 @@ const defaultVals: ContactFormType = {
 }
 
 const Contact = () => {
+  const setIsLoading = useGlobalStore(selectSetIsLoading);
   const {
     handleSubmit,
     reset,
@@ -28,8 +33,18 @@ const Contact = () => {
     resolver: yupResolver(contactFormSchema),
     defaultValues: defaultVals
   });
-  const onSubmit: SubmitHandler<ContactFormType> = (data) => {
-    console.log('data', data);
+
+  const [success, setSuccess] = useState(false);
+
+  const onSubmit: SubmitHandler<ContactFormType> = async (data) => {
+    setIsLoading(true);
+    const submission = await addContact(data);
+
+    if(submission) {
+      reset();
+    }
+    setSuccess(true);
+    setIsLoading(false);
   };
 
   return (
@@ -50,7 +65,11 @@ const Contact = () => {
           <Grid item xs={12} md={4}>
             <Typography variant="h3" sx={{ marginBottom: '20px' }}>Send a message</Typography>
 
-            <Typography variant="body1" color="secondary">Thanks for stopping by and showing interest, use the form below and I would be happy to get back to you at my earliest convenience! Thanks</Typography>
+            {success ? (
+              <Typography variant="body1" color="success" sx={{ color: 'rgba(91,229,169,0.5)' }}>Your message has been submitted, I&apos;ll we be in contact as soon as possible! Thanks for stopping bye!</Typography>
+            ) : (
+              <Typography variant="body1" color="secondary">Thanks for stopping by and showing interest, use the form below and I would be happy to get back to you at my earliest convenience! Thanks</Typography>
+            )}
 
             <form className={pageStyles.form} onSubmit={handleSubmit(onSubmit)}>
               <div className={pageStyles.fieldWrapper}>

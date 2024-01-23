@@ -51,6 +51,9 @@ const theme: Theme = createTheme({
     },
     secondary: {
       main: 'rgba(255,255,255,0.5)'
+    },
+    success: {
+      main: 'rgba(29,194,123,0.5)'
     }
   },
   typography: {

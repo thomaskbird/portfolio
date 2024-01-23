@@ -35,6 +35,7 @@ const collectionJobs = collection(firestoreDb, "jobs");
 const collectionPortfolio = collection(firestoreDb, "portfolio");
 const collectionContent = collection(firestoreDb, "content");
 const collectionServices = collection(firestoreDb, 'services');
+const collectionContacts = collection(firestoreDb, 'contacts');
 
 const queryAllPortfolioOrdered = query(collectionPortfolio);
 const queryAllJobsOrdered = query(collectionJobs, orderBy("endAt", "desc"));
@@ -46,6 +47,7 @@ export {
   firestoreDb,
   thomaskbird,
   renderFirestoreTimestamp,
+  collectionContacts,
   collectionPortfolio,
   collectionContent,
   queryAllJobsOrdered,

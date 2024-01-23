@@ -13,18 +13,13 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Button from "@mui/material/Button";
 import {useRouter} from "next/navigation";
 import SkeletonSwitcher from "@/components/SkeletonSwitcher/SkeletonSwitcher";
-import {SkeletonOwnProps} from "@mui/material/Skeleton/Skeleton";
+import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
 
 export type PageType = {
   params: {
     slug: string,
   }
 }
-
-const baseSkeletonProps: Partial<SkeletonOwnProps> = {
-  variant: 'rectangular',
-  sx: { bgcolor: 'grey.800' }
-};
 
 // todo: put related posts widget here showing 3 related posts...
 // todo: eventually see about code highlighting
