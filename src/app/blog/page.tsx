@@ -8,12 +8,12 @@ import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectIsLoading, selectSetIsLoading} from "@/store/selectors/globalStore";
 import {useEffect, useState} from "react";
 import PostType from "@/types/PostType";
-import retrieveAllPosts from "@/components/ListView/contentHelpers";
 import BlogPost from "@/components/BlogPost/BlogPost";
-import { motion } from 'framer-motion';
 import ItemAnimation from "@/components/ItemAnimation/ItemAnimation";
 import {Skeleton, Stack} from "@mui/material";
 import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
+import retrieveAllBlogPosts from "@/services/retrieveAllBlogPosts";
+
 const Blog = () => {
   const isLoading = useGlobalStore(selectIsLoading);
   const setIsLoading = useGlobalStore(selectSetIsLoading);
@@ -23,7 +23,7 @@ const Blog = () => {
   useEffect(() => {
     (async() => {
       setIsLoading(true);
-      const postsFromDb = await retrieveAllPosts();
+      const postsFromDb = await retrieveAllBlogPosts();
       setPosts(postsFromDb);
       setIsLoading(false);
     })();
