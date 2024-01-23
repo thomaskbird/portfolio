@@ -18,12 +18,12 @@ const MOCK_NAVITEMS: NavItem[] = [
     label: 'Work',
     slug: 'work'
   },
-  {
-    id: 3,
-    link: '/services',
-    label: 'Services',
-    slug: 'services'
-  },
+  // {
+  //   id: 3,
+  //   link: '/services',
+  //   label: 'Services',
+  //   slug: 'services'
+  // },
   {
     id: 4,
     link: '/blog',

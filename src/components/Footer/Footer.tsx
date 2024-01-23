@@ -70,7 +70,7 @@ const Footer = ({}: FooterType) => {
 
               <ul>
                 {posts.map(post => (
-                  <li key={post.id}><Link href={`/page/${post.slug}`}>{post.title}</Link></li>
+                  <li key={post.id}><Link href={`/p/${post.slug}`}>{post.title}</Link></li>
                 ))}
               </ul>
             </div>

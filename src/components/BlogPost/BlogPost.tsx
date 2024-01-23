@@ -17,7 +17,7 @@ const BlogPost = ({
         <Typography variant="h5">{post.title} <span className={styles.listItemPosted}>{post.created_at}</span></Typography>
         <Typography variant="body2" dangerouslySetInnerHTML={{ __html: post.description }}></Typography>
 
-        <Link href={`/page/${post.slug}`}>
+        <Link href={`/p/${post.slug}`}>
           <Button variant="text" color="nav">
             View post...
           </Button>
