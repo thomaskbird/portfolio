@@ -9,11 +9,15 @@
 
 .title {
   margin: 0;
-  color: rgba(33, 57, 87, 1);
   font-size: 64px;
   font-weight: 900;
   text-transform: uppercase;
+  color: rgba(33, 57, 87, 1);
   font-family: 'Source Sans 3', sans-serif;
+
+  @media(max-width: 900px) {
+    font-size: 28px;
+  }
 }
 
 .titleBorder {
