@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './page.module.scss';
-import {Container, Grid} from "@mui/material";
+import {Container, Grid, Stack} from "@mui/material";
 import {useEffect, useState} from "react";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectSetIsLoading} from "@/store/selectors/globalStore";
@@ -12,6 +12,8 @@ import Typography from "@mui/material/Typography";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Button from "@mui/material/Button";
 import {useRouter} from "next/navigation";
+import SkeletonSwitcher from "@/components/SkeletonSwitcher/SkeletonSwitcher";
+import {SkeletonOwnProps} from "@mui/material/Skeleton/Skeleton";
 
 export type PageType = {
   params: {
@@ -19,9 +21,13 @@ export type PageType = {
   }
 }
 
-// todo: put related posts widget here showing 3 related posts...
-//
+const baseSkeletonProps: Partial<SkeletonOwnProps> = {
+  variant: 'rectangular',
+  sx: { bgcolor: 'grey.800' }
+};
 
+// todo: put related posts widget here showing 3 related posts...
+// todo: eventually see about code highlighting
 const Page = ({ params }: PageType) => {
   const { slug } = params;
   const setIsLoading = useGlobalStore(selectSetIsLoading);
@@ -53,13 +59,24 @@ const Page = ({ params }: PageType) => {
             </Button>
           </Grid>
           <Grid item xs={12} sm={6} className={styles.pageHeaderLeft}>
-            <Typography variant="body2">Posted: {post?.created_at}</Typography>
+            <SkeletonSwitcher
+              item={<Typography variant="body2">Posted: {post?.created_at}</Typography>}
+              skeletonProps={baseSkeletonProps}
+            />
           </Grid>
         </Grid>
 
-        <Typography variant="h2">{post?.title}</Typography>
+        <Stack spacing={2}>
+          <SkeletonSwitcher
+            item={<Typography variant="h2">{post?.title}</Typography>}
+            skeletonProps={baseSkeletonProps}
+          />
 
-        <div className={styles.postBody} dangerouslySetInnerHTML={{ __html: post?.body! }} />
+          <SkeletonSwitcher
+            item={<div className={styles.postBody} dangerouslySetInnerHTML={{__html: post?.body!}}/>}
+            skeletonProps={{ ...baseSkeletonProps, height: 200 }}
+          />
+        </Stack>
       </SectionContainer>
     </Container>
   )

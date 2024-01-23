@@ -41,3 +41,24 @@ em,
   bottom: 30px;
   position: fixed;
 }
+
+pre,
+code {
+  font-size: 12px;
+}
+
+pre {
+  background: #333;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 30px 60px;
+  border-left: 1px solid #666;
+  font-family: 'Source Sans 3', sans-serif !important;
+}
+
+code {
+  color: #aaa;
+  font-family: 'Source Sans 3', sans-serif !important;
+}
+
