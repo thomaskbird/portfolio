@@ -15,11 +15,11 @@ const BlogPost = ({
     <div className={styles.listItemWrapperBorder}>
       <div className={styles.listItemWrapper}>
         <div className={styles.listItemHeader}>
-          <Typography variant="h3">{post.title}</Typography>
-          <span className={styles.listItemPosted}>{post.created_at}</span>
+          <Typography variant="h4">{post.title}</Typography>
+          <span className={styles.listItemPosted}>{post.created_at.substring(0, 10)}</span>
         </div>
 
-        <Typography variant="body2" dangerouslySetInnerHTML={{ __html: post.description }}></Typography>
+        <Typography variant="body2" dangerouslySetInnerHTML={{ __html: post.description }} sx={{ marginBottom: 3 }}/>
 
         <Link href={`/p/${post.slug}`}>
           <Button variant="text" color="nav">
