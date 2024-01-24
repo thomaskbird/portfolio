@@ -11,6 +11,12 @@
   padding: 40px 60px;
 }
 
-.listItemPosted {
+.listItemHeader {
+  display: flex;
+  justify-content: space-between;
+}
 
+.listItemPosted {
+  color: #aaa;
+  align-self: center;
 }

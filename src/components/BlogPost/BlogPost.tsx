@@ -14,7 +14,11 @@ const BlogPost = ({
   return (
     <div className={styles.listItemWrapperBorder}>
       <div className={styles.listItemWrapper}>
-        <Typography variant="h5">{post.title} <span className={styles.listItemPosted}>{post.created_at}</span></Typography>
+        <div className={styles.listItemHeader}>
+          <Typography variant="h3">{post.title}</Typography>
+          <span className={styles.listItemPosted}>{post.created_at}</span>
+        </div>
+
         <Typography variant="body2" dangerouslySetInnerHTML={{ __html: post.description }}></Typography>
 
         <Link href={`/p/${post.slug}`}>

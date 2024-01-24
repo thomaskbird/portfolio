@@ -10,7 +10,7 @@ const retrieveAllBlogPosts = async (): Promise<PostType[]> => {
     where('version_of', '==', '0'),
     where('status', '==', 'published'),
     where('deleted_at', '==', null),
-    where('tags', 'array-contains-any', 'post'),
+    where('tags', 'array-contains', 'blog'),
     orderBy("created_at", "desc")
   );
 

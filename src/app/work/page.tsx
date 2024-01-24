@@ -13,6 +13,7 @@ import ListView from "@/components/ListView/ListView";
 import ItemAnimation from "@/components/ItemAnimation/ItemAnimation";
 import BlogPost from "@/components/BlogPost/BlogPost";
 import retrieveAllWork from "@/services/retrieveAllWork";
+import BlogPostSkeleton from "@/components/BlogPost/BlogPostSkeleton";
 
 const Work = () => {
   const isLoading = useGlobalStore(selectIsLoading);
@@ -32,43 +33,47 @@ const Work = () => {
   return (
     <>
       <SectionContainer styleName={styles.listItemWrapper}>
-        <Typography variant="h2">Work</Typography>
+        <Typography variant="h2" style={{ margin: '50px 0' }}>Work</Typography>
 
         {isLoading ? (
           <>
-            <Stack spacing={2} sx={{ margin: '50px 0 0' }}>
-              <Skeleton height={40} width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-            </Stack>
+            <BlogPostSkeleton>
+              <Stack spacing={2} sx={{ margin: '25px 0 0' }}>
+                <Skeleton height={40} width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />
+              </Stack>
 
-            <Stack spacing={2} sx={{ margin: '25px 0 40px' }}>
-              <Skeleton width="90%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-              <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
-              <Skeleton width="40%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-            </Stack>
+              <Stack spacing={2} sx={{ margin: '25px 0 40px' }}>
+                <Skeleton width="90%" variant="rectangular" {...{ ...baseSkeletonProps }} />
+                <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
+                <Skeleton width="40%" variant="rectangular" {...{ ...baseSkeletonProps }} />
+              </Stack>
 
-            <Stack spacing={2} sx={{ margin: '20px 0' }}>
-              <Skeleton width="95%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-              <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
-              <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
-              <Skeleton width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-            </Stack>
+              <Stack spacing={2} sx={{ margin: '20px 0' }}>
+                <Skeleton width="95%" variant="rectangular" {...{ ...baseSkeletonProps }} />
+                <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
+                <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
+                <Skeleton width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />
+              </Stack>
+            </BlogPostSkeleton>
 
-            <Stack spacing={2} sx={{ margin: '100px 0 0' }}>
-              <Skeleton height={40} width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-            </Stack>
+            <BlogPostSkeleton>
+              <Stack spacing={2} sx={{ margin: '25px 0 0' }}>
+                <Skeleton height={40} width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />
+              </Stack>
 
-            <Stack spacing={2} sx={{ margin: '25px 0 40px' }}>
-              <Skeleton width="90%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-              <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
-              <Skeleton width="40%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-            </Stack>
+              <Stack spacing={2} sx={{ margin: '25px 0 40px' }}>
+                <Skeleton width="90%" variant="rectangular" {...{ ...baseSkeletonProps }} />
+                <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
+                <Skeleton width="40%" variant="rectangular" {...{ ...baseSkeletonProps }} />
+              </Stack>
 
-            <Stack spacing={2} sx={{ margin: '20px 0 100px' }}>
-              <Skeleton width="95%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-              <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
-              <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
-              <Skeleton width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-            </Stack>
+              <Stack spacing={2} sx={{ margin: '20px 0 25px' }}>
+                <Skeleton width="95%" variant="rectangular" {...{ ...baseSkeletonProps }} />
+                <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
+                <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
+                <Skeleton width="20%" variant="rectangular" {...{ ...baseSkeletonProps }} />
+              </Stack>
+            </BlogPostSkeleton>
           </>
         ) : (
           <ListView
