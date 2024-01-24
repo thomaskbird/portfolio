@@ -15,9 +15,17 @@
   display: flex;
   margin-bottom: 30px;
   justify-content: space-between;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 }
 
 .listItemPosted {
   color: #aaa;
   align-self: center;
+
+  @media (max-width: 900px) {
+    align-self: flex-start;
+  }
 }
