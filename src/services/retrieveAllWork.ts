@@ -5,7 +5,7 @@ import PostType from "@/types/PostType";
 import {query} from "@firebase/database";
 
 const retrieveAllWork = async (): Promise<PostType[]> => {
-  const queryWork = query(
+  const queryWork = (query as any)(
     collectionContent,
     where('version_of', '==', '0'),
     where('status', '==', 'published'),

@@ -5,7 +5,7 @@ import {query} from "@firebase/database";
 import getSingleItemFromSnapshot from "@/services/getSingleItemFromSnapshot";
 
 const retrieveSinglePost = async (slug: string): Promise<PostType> => {
-  const getSinglePost = query(
+  const getSinglePost = (query as any)(
     collectionContent,
     where('version_of', '==', '0'),
     where('status', '==', 'published'),

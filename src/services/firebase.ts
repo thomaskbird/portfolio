@@ -16,7 +16,7 @@ const firebaseConfig = {
 const renderFirestoreTimestamp = (timestamp: any) =>
   moment(timestamp.toDate()).format(config.momentFormat);
 
-let firestoreDb: Firestore | null = null;
+let firestoreDb: any = null;
 let thomaskbird = null;
 
 try {
@@ -31,17 +31,17 @@ try {
   console.log("e", e);
 }
 
-const collectionJobs = collection(firestoreDb, "jobs");
-const collectionPortfolio = collection(firestoreDb, "portfolio");
-const collectionContent = collection(firestoreDb, "content");
-const collectionServices = collection(firestoreDb, 'services');
-const collectionContacts = collection(firestoreDb, 'contacts');
+const collectionJobs: any = collection(firestoreDb, "jobs");
+const collectionPortfolio: any = collection(firestoreDb, "portfolio");
+const collectionContent: any = collection(firestoreDb, "content");
+const collectionServices: any = collection(firestoreDb, 'services');
+const collectionContacts: any = collection(firestoreDb, 'contacts');
 
 const queryAllPortfolioOrdered = query(collectionPortfolio);
-const queryAllJobsOrdered = query(collectionJobs, orderBy("endAt", "desc"));
-const queryAllContentOrdered = query(collectionContent, where('version_of', '==', '0'), where('status', '==', 'published'), where('deleted_at', '==', null), orderBy("created_at", "desc"));
-const queryAllServicesOrdered = query(collectionServices, orderBy('created_at', 'desc'));
-const queryLatestContentOrdered = query(collectionContent, where('version_of', '==', '0'), where('status', '==', 'published'), where('deleted_at', '==', null), orderBy("created_at", "desc"), limit(5));
+const queryAllJobsOrdered = (query as any)(collectionJobs, orderBy("endAt", "desc"));
+const queryAllContentOrdered = (query as any)(collectionContent, where('version_of', '==', '0'), where('status', '==', 'published'), where('deleted_at', '==', null), orderBy("created_at", "desc"));
+const queryAllServicesOrdered = (query as any)(collectionServices, orderBy('created_at', 'desc'));
+const queryLatestContentOrdered = (query as any)(collectionContent, where('version_of', '==', '0'), where('status', '==', 'published'), where('deleted_at', '==', null), orderBy("created_at", "desc"), limit(5));
 
 export {
   firestoreDb,
