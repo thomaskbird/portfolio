@@ -13,13 +13,13 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import {Container, ListItemIcon, Slide, useScrollTrigger} from "@mui/material";
+import {Container, Slide, useScrollTrigger} from "@mui/material";
 import styles from "@/components/Socials/Socials.module.scss";
 import navStyles from './Nav.module.scss';
 import Link from "next/link";
 import MOCK_NAVITEMS from "@/mocks/mockNavigation";
 import {usePathname} from "next/navigation";
-import Socials from "@/components/Socials/Socials";
+import CloseIcon from '@mui/icons-material/Close';
 
 interface Props {
   /**
@@ -64,9 +64,14 @@ const Nav = ({ window, navOnly = false }: Props) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle}>
-      <Link href="/">
-        <img src="/thomas-bird-light.png" alt="Thomas K Bird" className={styles.logo} />
-      </Link>
+      <div className={styles.drawerHeaderItems}>
+        <Link href="/">
+          <img src="/thomas-bird-light.png" alt="Thomas K Bird" className={styles.logo} />
+        </Link>
+        <IconButton>
+          <CloseIcon className={styles.close} />
+        </IconButton>
+      </div>
       <Divider />
       <List>
         {MOCK_NAVITEMS.map((item) => (
