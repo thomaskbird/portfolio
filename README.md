@@ -27,3 +27,4 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
    2. Consider converting project sections from magic scroll to motion and using useScroll
 3. Override theme defaults
    4. https://mui.com/material-ui/customization/theme-components/#theme-default-props
+4. https://stackoverflow.com/questions/63518597/how-to-run-next-js-application-build-out-directory
