@@ -19,6 +19,7 @@ import navStyles from './Nav.module.scss';
 import Link from "next/link";
 import MOCK_NAVITEMS from "@/mocks/mockNavigation";
 import {usePathname} from "next/navigation";
+import Socials from "@/components/Socials/Socials";
 
 interface Props {
   /**
@@ -88,16 +89,16 @@ const Nav = ({ window, navOnly = false }: Props) => {
       <CssBaseline />
       <HideOnScroll window={window}>
         <AppBar
+          elevation={0}
           component="nav"
           color={navOnly ? 'primary' : 'transparent'}
-          elevation={0}
         >
           <Container>
           <Toolbar>
             <IconButton
+              edge="start"
               color="inherit"
               aria-label="open drawer"
-              edge="start"
               onClick={handleDrawerToggle}
               sx={{ mr: 2, display: { sm: 'none' } }}
             >
