@@ -13,12 +13,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import {Container, Slide, useScrollTrigger} from "@mui/material";
+import {Container, ListItemIcon, Slide, useScrollTrigger} from "@mui/material";
 import styles from "@/components/Socials/Socials.module.scss";
 import navStyles from './Nav.module.scss';
 import Link from "next/link";
 import MOCK_NAVITEMS from "@/mocks/mockNavigation";
-import {usePathname, useRouter} from "next/navigation";
+import {usePathname} from "next/navigation";
 
 interface Props {
   /**
@@ -62,16 +62,16 @@ const Nav = ({ window, navOnly = false }: Props) => {
   }
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-      <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
-      </Typography>
+    <Box onClick={handleDrawerToggle}>
+      <Link href="/">
+        <img src="/thomas-bird-light.png" alt="Thomas K Bird" className={styles.logo} />
+      </Link>
       <Divider />
       <List>
         {MOCK_NAVITEMS.map((item) => (
           <ListItem key={item.id} disablePadding>
             <Link href={item.link}>
-              <ListItemButton sx={{ textAlign: 'center' }}>
+              <ListItemButton>
                 <ListItemText primary={item.label} />
               </ListItemButton>
             </Link>
@@ -109,7 +109,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
               sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
             >
               <Link href="/">
-                <img src={'/thomas-bird-light.png'} alt="Thomas K Bird" className={styles.logo} />
+                <img src="/thomas-bird-light.png" alt="Thomas K Bird" className={styles.logo} />
               </Link>
             </Typography>
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
@@ -135,8 +135,8 @@ const Nav = ({ window, navOnly = false }: Props) => {
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            // display: { xs: 'block', sm: 'none' },
+            // '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
           }}
         >
           {drawer}

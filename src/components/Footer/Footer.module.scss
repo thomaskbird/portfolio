@@ -40,6 +40,12 @@
     color: #888;
     font-size: 12px;
   }
+
+  a {
+    &:hover {
+      color: #fff;
+    }
+  }
 }
 
 .footerMain {
