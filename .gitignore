@@ -37,3 +37,10 @@ next-env.d.ts
 
 # IDE
 .idea
+
+# firebase
+.firebase
+.firebaserc
+firebase*
+firestore*
+public/index.html

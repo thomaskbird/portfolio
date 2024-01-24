@@ -2,7 +2,7 @@ type ContactType = {
   created_at: string;
   deleted_at?: string | null;
   email: string;
-  id: string;
+  id?: string;
   message: string;
   name: string;
   phone: string;

@@ -3,8 +3,9 @@ import {addDoc, Timestamp} from "@firebase/firestore";
 import moment from "moment";
 import config from "@/config/sites";
 import {collectionContacts} from "@/services/firebase";
+import {ContactFormType} from "@/app/contact/contactFormSchema";
 
-const addContact = async (data: ContactType) => {
+const addContact = async (data: ContactFormType) => {
   const dateTimeStamp = moment(Timestamp.now().toDate()).format(config.momentFormat);
   const contact: ContactType = {
     ...data,
