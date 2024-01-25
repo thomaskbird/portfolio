@@ -2,7 +2,7 @@
 const path = require('path')
 
 const nextConfig = {
-  output: 'standalone',
+  output: 'export',
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
