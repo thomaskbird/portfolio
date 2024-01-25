@@ -1,8 +1,4 @@
-import Typography from "@mui/material/Typography";
-import styles from './BlogPost.module.scss';
-import PostType from "@/types/PostType";
-import Link from "next/link";
-import Button from "@mui/material/Button";
+import styles from '@/components/BlogPost/BlogPost.module.scss';
 import {ReactNode} from "react";
 
 type BlogPostSkeletonType = {
