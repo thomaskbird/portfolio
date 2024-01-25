@@ -13,7 +13,6 @@ import {selectIsLoading} from "@/store/selectors/globalStore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import {usePathname} from "next/navigation";
 
-const inter = Inter({ subsets: ['latin'] })
 const pagesWithScrollToTop = ['/', '/work', '/blog', '/resume'];
 
 export default function RootLayout({
@@ -32,7 +31,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <ThemeProvider theme={theme}>
           <Backdrop
             sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}

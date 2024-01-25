@@ -34,7 +34,7 @@ declare module '@mui/material/Button' {
 const theme: Theme = createTheme({
   palette: {
     error: {
-      main: '#5e1b1b',
+      main: '#916363',
     },
     hero: {
       main: '#000',
