@@ -9,7 +9,7 @@ body {
 p,
 a {
   font-weight: 400;
-  font-family: var(--font-roboto-mono)
+  font-family: var(--font-roboto-mono);
 }
 
 h1,
@@ -19,7 +19,7 @@ h4,
 h5,
 h6 {
   font-weight: 900;
-  var(--font-source-sans-3)
+  font-family: var(--font-source-sans-3);
   background: linear-gradient(180deg,#fff,#bbb);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
