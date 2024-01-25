@@ -15,7 +15,7 @@ const Socials = () => {
       <img src="/logo.png" alt="Thomas K Bird" className={styles.logo}/>
       <div className={styles.socials}>
         {socialItems.map(social => (
-          <Tooltip title={social.title}>
+          <Tooltip key={social.id} title={social.title}>
             <IconButton className={styles.icons}>
               {social.icon}
             </IconButton>
