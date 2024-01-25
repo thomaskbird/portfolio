@@ -2,20 +2,10 @@
 const path = require('path')
 
 const nextConfig = {
-  output: 'export',
+  output: 'standalone',
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
-  webpack: (config) => {
-    config.optimization.splitChunks.cacheGroups = {
-      common: {
-        name: 'common',
-        chunks: 'all',
-      }
-    }
-
-    return config;
-  }
 }
 
 module.exports = nextConfig

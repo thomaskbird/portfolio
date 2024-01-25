@@ -1,7 +1,6 @@
 'use client';
 
-import { Inter } from 'next/font/google'
-import './globals.css'
+import '@/app/globals.css'
 import 'animate.css'
 import {Backdrop, CircularProgress, Container, Fab, ThemeProvider} from "@mui/material";
 import theme from "@/app/theme";
@@ -12,6 +11,7 @@ import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectIsLoading} from "@/store/selectors/globalStore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import {usePathname} from "next/navigation";
+import GlobalCssPriority from "@/components/GlobalCssPriority/GlobalCssPriority";
 
 const pagesWithScrollToTop = ['/', '/work', '/blog', '/resume'];
 
@@ -33,25 +33,27 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeProvider theme={theme}>
-          <Backdrop
-            sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-            open={isLoading}
-          >
-            <CircularProgress color="inherit" />
-          </Backdrop>
+          <GlobalCssPriority>
+            <Backdrop
+              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+              open={isLoading}
+            >
+              <CircularProgress color="inherit" />
+            </Backdrop>
 
-          <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
-            <Hero navOnly={true} />
-            {children}
-          </Container>
-          
-          <Footer />
+            <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
+              <Hero navOnly={true} />
+              {children}
+            </Container>
 
-          {hasScrollTop && (
-            <Fab color="primary" className="backToTop" onClick={backToTop}>
-              <ExpandLessIcon/>
-            </Fab>
-          )}
+            <Footer />
+
+            {hasScrollTop && (
+              <Fab color="primary" className="backToTop" onClick={backToTop}>
+                <ExpandLessIcon/>
+              </Fab>
+            )}
+          </GlobalCssPriority>
         </ThemeProvider>
       </body>
     </html>
