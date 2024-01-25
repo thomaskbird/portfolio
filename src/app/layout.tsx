@@ -12,6 +12,8 @@ import {selectIsLoading} from "@/store/selectors/globalStore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import {usePathname} from "next/navigation";
 import GlobalCssPriority from "@/components/GlobalCssPriority/GlobalCssPriority";
+import { roboto_mono, source_sans } from "@/app/fonts";
+import cn from "classnames";
 
 const pagesWithScrollToTop = ['/', '/work', '/blog', '/resume'];
 
@@ -31,7 +33,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body>
+      <body className={cn(roboto_mono.variable, source_sans.variable)}>
         <GlobalCssPriority>
           <ThemeProvider theme={theme}>
             <Backdrop

@@ -1,17 +1,15 @@
-@import '//fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;400;500;700&family=Source+Sans+3:wght@200;300;400;700;900&display=swap';
-
 body {
   margin: 0;
   background: #111;
   overflow-x: hidden;
   overflow-y: auto;
-  font-family: 'Roboto Mono', monospace;
+  font-family: var(--font-roboto-mono);
 }
 
 p,
 a {
   font-weight: 400;
-  font-family: 'Roboto Mono', monospace;
+  font-family: var(--font-roboto-mono)
 }
 
 h1,
@@ -21,7 +19,7 @@ h4,
 h5,
 h6 {
   font-weight: 900;
-  font-family: 'Source Sans 3', sans-serif;
+  var(--font-source-sans-3)
   background: linear-gradient(180deg,#fff,#bbb);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
