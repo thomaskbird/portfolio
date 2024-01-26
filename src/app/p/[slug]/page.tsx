@@ -11,18 +11,20 @@ import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Typography from "@mui/material/Typography";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Button from "@mui/material/Button";
-import {usePathname, useRouter} from "next/navigation";
+import {useRouter} from "next/navigation";
 import SkeletonSwitcher from "@/components/SkeletonSwitcher/SkeletonSwitcher";
 import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
 
 export type PageType = {
+  params: {
+    slug: string,
+  }
 }
 
 // todo: put related posts widget here showing 3 related posts...
 // todo: eventually see about code highlighting
-const Page = ({}: PageType) => {
-  const path = usePathname();
-  const slug = path.replace('/p/', '');
+const Page = ({ params }: PageType) => {
+  const { slug } = params;
   const setIsLoading = useGlobalStore(selectSetIsLoading);
   const router = useRouter();
 
