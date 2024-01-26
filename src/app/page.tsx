@@ -9,18 +9,26 @@ import Hero from "@/components/Hero/Hero";
 import Slider from "@/components/Slider/Slider";
 import MockProjects from "@/mocks/mockProjects";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
+import {Helmet} from 'react-helmet';
+import config from "@/config/sites";
 
 const Home = () => {
+
   return (
     <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
-      <Hero />
+      <Helmet>
+        <title>Thomas K Bird | Home</title>
+        <meta property="description" content={config.meta.description} />
+      </Helmet>
+
+      <Hero/>
 
       <SectionContainer styleName={styles.mainContent}>
-        <PageSectionTitle title="Skills" />
+        <PageSectionTitle title="Skills"/>
 
-        <Skills />
+        <Skills/>
 
-        <PageSectionTitle title="Project Work" />
+        <PageSectionTitle title="Project Work"/>
 
         {MockProjects.map(project => (
           <ProjectSection
@@ -31,9 +39,9 @@ const Home = () => {
       </SectionContainer>
       <Container maxWidth={false} disableGutters className={styles.testimonialWrapper}>
         <Container>
-          <PageSectionTitle title="People Are Talking" />
+          <PageSectionTitle title="People Are Talking"/>
 
-          <Slider />
+          <Slider/>
         </Container>
       </Container>
     </Container>

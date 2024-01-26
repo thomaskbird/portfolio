@@ -14,6 +14,8 @@ import addContact from "@/services/addContact";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectSetIsLoading} from "@/store/selectors/globalStore";
 import {useState} from "react";
+import config from "@/config/sites";
+import {Helmet} from "react-helmet";
 
 const defaultVals: ContactFormType = {
   name: '',
@@ -28,7 +30,6 @@ const Contact = () => {
     handleSubmit,
     reset,
     control,
-    setValue,
   } = useForm<ContactFormType>({
     resolver: yupResolver(contactFormSchema),
     defaultValues: defaultVals
@@ -49,6 +50,11 @@ const Contact = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{config.meta.title} | Contact</title>
+        <meta property="description" content={config.meta.description} />
+      </Helmet>
+
       <SectionContainer styleName={styles.mainContent}>
 
         <Grid container spacing={2}>

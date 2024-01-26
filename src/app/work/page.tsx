@@ -14,6 +14,8 @@ import ItemAnimation from "@/components/ItemAnimation/ItemAnimation";
 import BlogPost from "@/components/BlogPost/BlogPost";
 import retrieveAllWork from "@/services/retrieveAllWork";
 import BlogPostSkeleton from "@/components/BlogPost/BlogPostSkeleton";
+import config from "@/config/sites";
+import {Helmet} from "react-helmet";
 
 const Work = () => {
   const isLoading = useGlobalStore(selectIsLoading);
@@ -32,6 +34,11 @@ const Work = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{config.meta.title} | Work</title>
+        <meta property="description" content={config.meta.description} />
+      </Helmet>
+
       <SectionContainer styleName={styles.listItemWrapper}>
         <Typography variant="h2" style={{ margin: '50px 0' }}>Work</Typography>
 

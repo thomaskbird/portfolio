@@ -14,6 +14,8 @@ import {Skeleton, Stack} from "@mui/material";
 import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
 import retrieveAllBlogPosts from "@/services/retrieveAllBlogPosts";
 import BlogPostSkeleton from "@/components/BlogPost/BlogPostSkeleton";
+import config from "@/config/sites";
+import {Helmet} from "react-helmet";
 
 const Blog = () => {
   const isLoading = useGlobalStore(selectIsLoading);
@@ -32,6 +34,10 @@ const Blog = () => {
 
   return (
     <>
+      <Helmet>
+        <title>{config.meta.title} | Blog</title>
+        <meta property="description" content={config.meta.description} />
+      </Helmet>
       <SectionContainer styleName={styles.listItemWrapper}>
         <Typography variant="h2" style={{margin: '50px 0'}}>Blog</Typography>
 

@@ -11,6 +11,8 @@ import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import ResumeBlurb from "@/components/ResumeBlurb/ResumeBlurb";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectSetIsLoading} from "@/store/selectors/globalStore";
+import config from "@/config/sites";
+import {Helmet} from "react-helmet";
 
 const Resume = () => {
   const setIsLoading = useGlobalStore(selectSetIsLoading);
@@ -30,6 +32,11 @@ const Resume = () => {
 
   return (
     <SectionContainer styleName={styles.insideContainer}>
+      <Helmet>
+        <title>{config.meta.title} | Resume</title>
+        <meta property="description" content={config.meta.description} />
+      </Helmet>
+
       <ResumeBlurb />
 
       <div className={styles.resumeWrapper} ref={resumeRef}>

@@ -14,6 +14,9 @@ import Button from "@mui/material/Button";
 import {useRouter} from "next/navigation";
 import SkeletonSwitcher from "@/components/SkeletonSwitcher/SkeletonSwitcher";
 import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
+import config from "@/config/sites";
+import {Helmet} from "react-helmet";
+import stripTags from "@/utils/stripTags";
 
 export type PageType = {
   params: {
@@ -39,8 +42,16 @@ const Page = ({ params }: PageType) => {
     })();
   }, []);
 
+  const title = post ? `${config.meta.title} | Blog | ${post.title}` : `${config.meta.title} | Blog`;
+  const desc = post ? stripTags(post.description) : '';
+
   return (
     <Container maxWidth={false} disableGutters>
+      <Helmet>
+        <title>{title}</title>
+        <meta property="description" content={desc} />
+      </Helmet>
+
       <SectionContainer styleName={styles.wrapper}>
         <Grid container className={styles.pageHeader}>
           <Grid item xs={12} sm={6}>
