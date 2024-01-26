@@ -159,10 +159,11 @@ const theme: Theme = createTheme({
           ...(ownerState.color === 'hero' && ownerState.variant === 'outlined' && {
             color: 'rgba(000,000,000,0.75)',
             background: 'linear-gradient(180deg,#fff,#ddd)',
-            border: '1px solid rgba(255,255,255,1)',
+            border: 'none',
             ':hover': {
-              color: 'rgba(255,255,255,1)',
-              border: '1px solid rgba(255,255,255,0.85)',
+              border: 'none',
+              color: 'rgba(0,0,0,1)',
+              background: 'linear-gradient(180deg,#fff,#fff)',
             }
           }),
         })

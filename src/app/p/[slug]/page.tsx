@@ -11,20 +11,18 @@ import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Typography from "@mui/material/Typography";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Button from "@mui/material/Button";
-import {useRouter} from "next/navigation";
+import {usePathname, useRouter} from "next/navigation";
 import SkeletonSwitcher from "@/components/SkeletonSwitcher/SkeletonSwitcher";
 import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
 
 export type PageType = {
-  params: {
-    slug: string,
-  }
 }
 
 // todo: put related posts widget here showing 3 related posts...
 // todo: eventually see about code highlighting
-const Page = ({ params }: PageType) => {
-  const { slug } = params;
+const Page = ({}: PageType) => {
+  const path = usePathname();
+  const slug = path.replace('/p/', '');
   const setIsLoading = useGlobalStore(selectSetIsLoading);
   const router = useRouter();
 
@@ -40,14 +38,13 @@ const Page = ({ params }: PageType) => {
   }, []);
 
   return (
-    <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
+    <Container maxWidth={false} disableGutters>
       <SectionContainer styleName={styles.wrapper}>
         <Grid container className={styles.pageHeader}>
           <Grid item xs={12} sm={6}>
             <Button
               variant="contained"
               startIcon={<ChevronLeftIcon/>}
-              className={styles.downloadButton}
               onClick={() => router.back()}
             >
               Back
