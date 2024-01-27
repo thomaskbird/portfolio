@@ -1,6 +1,6 @@
 import styles from "@/components/Slider/Slider.module.scss";
-import {Testimonial} from "@/mocks/mockTestimonials";
 import cn from "classnames";
+import {TestimonyType} from "@/types/TestimonyType";
 
 type SlideType = {
   active: boolean;
@@ -12,10 +12,10 @@ const Slide = ({
   firstName,
   lastName,
   title,
-  content,
+  body,
   image,
   active
-}: Testimonial & SlideType) => {
+}: TestimonyType & SlideType) => {
   return (
     <div className={cn(styles.slide, active ? styles.active : '')}>
       <div className={styles.badge}>
@@ -30,7 +30,7 @@ const Slide = ({
       <p
         className={styles.slideText}
         dangerouslySetInnerHTML={{
-          __html: content.split(' ').length > wordLimit ? `${content.split(' ').splice(0, wordLimit).join(' ')}...` : content
+          __html: body.split(' ').length > wordLimit ? `${body.split(' ').splice(0, wordLimit).join(' ')}...` : body
       }}
       />
     </div>

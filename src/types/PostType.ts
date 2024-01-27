@@ -5,6 +5,7 @@ type PostType = {
   deleted_at: string | null;
   description: string;
   id: string;
+  image?: string;
   keywords: string;
   nav_text: string;
   order: string;

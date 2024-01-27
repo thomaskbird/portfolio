@@ -169,12 +169,14 @@ const theme: Theme = createTheme({
         })
       }
     },
-    // MuiFormControl: {
-    //   styleOverrides: {
-    //     root: ({ ownerState }) => ({
-    //     })
-    //   }
-    // },
+    MuiFormControl: {
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          padding: '1px',
+          background: 'linear-gradient(45deg,#000 0,#333 50%, #111 100%);',
+        })
+      }
+    },
     MuiInputLabel: {
       styleOverrides: {
         root: ({ ownerState }) => ({
@@ -193,12 +195,17 @@ const theme: Theme = createTheme({
       styleOverrides: {
         root: ({ ownerState }) => ({
           ...(ownerState.color === 'primary' && {
-            background: '#000',
+            background: '#070707',
+            transition: 'all ease-in 0.5s',
+
+            ':hover': {
+              background: 'linear-gradient(45deg,#111 0, #000 100%);',
+            }
           }),
           color: '#aaa',
           fontSize: '14px',
           padding: '10px 15px'
-        })
+        }),
       }
     },
     MuiDrawer: {

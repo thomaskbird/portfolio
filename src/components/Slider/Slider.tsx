@@ -105,7 +105,7 @@ const Slider = ({
         <div className={styles.slidesWrap} ref={sliderRef}>
           {MOCK_TESTIMONIALS.map((testimonial, idx) => (
             <Slide
-              key={testimonial.id}
+              key={idx}
               {...testimonial}
               active={activeIndex === idx}
             />
@@ -118,7 +118,7 @@ const Slider = ({
           </IconButton>
           {MOCK_TESTIMONIALS.map((testimonial, iDot) => (
             <div
-              key={testimonial.id}
+              key={iDot}
               className={activeIndex === iDot ? styles.dotActive : styles.dot}
               onClick={() => activeIndex === iDot ? false : handleDotClick(iDot)}
             ></div>

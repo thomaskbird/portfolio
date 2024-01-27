@@ -74,7 +74,7 @@ const Contact = () => {
             {success ? (
               <Typography variant="body1" color="success" sx={{ color: 'rgba(91,229,169,0.5)' }}>Your message has been submitted, I&apos;ll we be in contact as soon as possible! Thanks for stopping bye!</Typography>
             ) : (
-              <Typography variant="body1" color="secondary">Thanks for stopping by and showing interest, use the form below and I would be happy to get back to you at my earliest convenience! Thanks</Typography>
+              <Typography variant="body1" color="secondary">Thanks for stopping by, just fill out the short form below and I will be in contact as soon as possible! Thanks.</Typography>
             )}
 
             <form className={pageStyles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -112,7 +112,6 @@ const Contact = () => {
                 type="submit"
                 disableElevation
                 variant="outlined"
-                className={styles.heroCtaPrimary}
               >
                 Contact me
               </Button>
