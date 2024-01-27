@@ -5,4 +5,7 @@ export type TestimonyType = {
   image: string;
   lastName: string;
   title: string;
+  createdAt: string;
+  updatedAt: string;
+  deletedAt: null | string;
 }

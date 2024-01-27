@@ -8,6 +8,7 @@ import {IconButton} from "@mui/material";
 import {useInView} from "framer-motion";
 
 type SliderType = {
+  items: any[];
   duration?: number;
   autoPlay?: boolean;
   startAt?: number;
@@ -18,12 +19,13 @@ type SliderType = {
 // todo: https://codesandbox.io/p/sandbox/framer-motion-layout-animations-snxgv?file=%2Fsrc%2Findex.tsx
 
 const Slider = ({
+  items,
   duration = 3000,
   autoPlay = true,
   startAt = 0,
   autoPlayOnlyWhenVisible = false
 }: SliderType) => {
-  const testimonialsTotal = MOCK_TESTIMONIALS.length;
+  const itemsTotal = items?.length ?? 0;
 
   const interval: MutableRefObject<any> = useRef();
   const sliderRef: MutableRefObject<any> = useRef();
@@ -88,7 +90,7 @@ const Slider = ({
   const handleAuto = () => {
     setActiveIndex(prevState => {
       const next = prevState + 1;
-      if(next < testimonialsTotal) {
+      if(next < itemsTotal) {
         return next;
       } else {
         return 0;
@@ -103,7 +105,7 @@ const Slider = ({
         <img src="/quote.png" className={styles.quoteRight}/>
 
         <div className={styles.slidesWrap} ref={sliderRef}>
-          {MOCK_TESTIMONIALS.map((testimonial, idx) => (
+          {(items ?? []).map((testimonial, idx) => (
             <Slide
               key={idx}
               {...testimonial}
@@ -116,7 +118,7 @@ const Slider = ({
           <IconButton className={styles.icons} onClick={handleTogglePlaying}>
             {isRunning ? <PauseIcon fontSize="large" /> : <PlayArrowIcon fontSize="large" />}
           </IconButton>
-          {MOCK_TESTIMONIALS.map((testimonial, iDot) => (
+          {(items ?? []).map((testimonial, iDot) => (
             <div
               key={iDot}
               className={activeIndex === iDot ? styles.dotActive : styles.dot}

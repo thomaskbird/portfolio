@@ -37,6 +37,7 @@ const collectionContent: any = collection(firestoreDb, "content");
 const collectionServices: any = collection(firestoreDb, 'services');
 const collectionContacts: any = collection(firestoreDb, 'contacts');
 const collectionProjects: any = collection(firestoreDb, 'projects');
+const collectionTestimonials: any = collection(firestoreDb, 'testimonials');
 
 const queryAllPortfolioOrdered = query(collectionPortfolio);
 const queryAllJobsOrdered = (query as any)(collectionJobs, orderBy("endAt", "desc"));
@@ -51,6 +52,7 @@ export {
   collectionContacts,
   collectionPortfolio,
   collectionContent,
+  collectionTestimonials,
   queryAllJobsOrdered,
   queryAllPortfolioOrdered,
   queryAllContentOrdered,

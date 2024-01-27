@@ -7,7 +7,6 @@ import ProjectSection from "@/components/ProjectSection/ProjectSection";
 import Skills from "@/components/Skills/Skills";
 import Hero from "@/components/Hero/Hero";
 import Slider from "@/components/Slider/Slider";
-import MockProjects from "@/mocks/mockProjects";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import {Helmet} from 'react-helmet';
 import config from "@/config/sites";
@@ -15,22 +14,26 @@ import {ProjectType} from "@/types/ProjectType";
 import {useEffect, useState} from "react";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectSetIsLoading} from "@/store/selectors/globalStore";
-import retrieveAllBlogPosts from "@/services/retrieveAllBlogPosts";
 import retrieveProjects from "@/services/retrieveProjects";
+import {TestimonyType} from "@/types/TestimonyType";
+import retrieveTestimonys from "@/services/retrieveTestimonys";
 
 const Home = () => {
   const setIsLoading = useGlobalStore(selectSetIsLoading);
 
   const [projects, setProjects] = useState<ProjectType[]>([]);
+  const [testimonials, setTestimonials] = useState<TestimonyType[]>([]);
 
   useEffect(() => {
     (async() => {
       try {
         setIsLoading(true);
         const projectsFromDb = await retrieveProjects();
-        console.log('projectsFromDb', projectsFromDb);
-        setProjects(projectsFromDb);
-        setIsLoading(false);
+        const testimonysFromDb = await retrieveTestimonys();
+
+        const data = await Promise.all([projectsFromDb, testimonysFromDb]);
+        setProjects(data[0] as ProjectType[]);
+        setTestimonials(data[1] as TestimonyType[])
       } catch (e) {
         console.error(e);
       } finally {
@@ -67,7 +70,7 @@ const Home = () => {
         <Container>
           <PageSectionTitle title="People Are Talking"/>
 
-          <Slider/>
+          <Slider items={testimonials} />
         </Container>
       </Container>
     </Container>
