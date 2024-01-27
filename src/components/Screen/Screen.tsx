@@ -7,27 +7,26 @@ import {useEffect, useRef, useState} from "react";
 type ScreenType = {
   image: string;
   title: string;
-  alignment: 'left' | 'right';
+  isLeft: boolean;
   scrollValueCalculated: number;
   screenPosition: number;
   opacity: number;
 }
 
 // todo: consider swapping native img for next image component
-const Screen = ({ image, title, alignment, scrollValueCalculated, opacity, screenPosition }: ScreenType) => {
+const Screen = ({ image, title, isLeft, scrollValueCalculated, opacity, screenPosition }: ScreenType) => {
   const imgRef = useRef<HTMLImageElement | null>(null);
   const screenContainerRef = useRef<HTMLDivElement | null>(null);
 
   const [imgHeight, setImgHeight] = useState(0);
 
-  const isLeft = alignment === 'left';
   const transformClasses = cn(styles.innerMacbookWrap, isLeft ? styles.innerMacbookWrapLeft : styles.innerMacbookWrapRight);
 
   useEffect(() => {
     if(imgRef.current) {
       setImgHeight(imgRef.current?.height - 500 - 2);
     }
-  }, [imgRef, screenContainerRef]);
+  }, [imgRef.current?.height, screenContainerRef]);
 
   return (
     <Grid item xs={12} md={6} className={cn(styles.projectMacbook, 'projectMacbookInitial', 'projectMacbookAnimation')}>

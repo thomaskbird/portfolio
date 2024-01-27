@@ -8,21 +8,21 @@ import {motion, useScroll} from 'framer-motion';
 import {MutableRefObject, useEffect, useRef, useState} from "react";
 
 type ProjectSectionType = {
-  alignment: 'left' | 'right';
+  idx: number;
   image: string;
   title: string;
+  subtitle: string;
   description: string;
-  content: string;
 };
 
 // todo: @media(min-width: 900px) and (max-width: 1100px) {
 
 const ProjectSection = ({
-  alignment,
+  idx,
   image,
   title,
-  description,
-  content
+  subtitle,
+  description
 }: ProjectSectionType) => {
   const wrapperRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const [scrollValueCalculated, setScrollValueCalculated] = useState(0);
@@ -33,7 +33,7 @@ const ProjectSection = ({
     offset: ['start end', 'end end'],
   });
 
-  const isLeft = alignment === 'left';
+  const isLeft = idx % 2 === 0;
   const projectClasses = cn(styles.projects, isLeft ? styles.projectsLeft : styles.projectsRight);
   const classes = cn(styles.projectText, isLeft ? styles.textLeft : styles.textRight);
 
@@ -51,11 +51,11 @@ const ProjectSection = ({
     <div className={styles.stickyWrapper} ref={wrapperRef}>
       <div className={styles.stuck}>
         <Grid container className={projectClasses} spacing={2}>
-          {alignment === 'left' && (
+          {isLeft && (
             <Screen
               title={title}
               image={image}
-              alignment={alignment}
+              isLeft={isLeft}
               opacity={opacity}
               scrollValueCalculated={scrollValueCalculated}
               screenPosition={screenPosition}
@@ -76,7 +76,7 @@ const ProjectSection = ({
                 transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated * .5}px, 0)`,
                 opacity: opacity
               }}
-              dangerouslySetInnerHTML={{ __html: description}}
+              dangerouslySetInnerHTML={{ __html: subtitle}}
             />
 
             <motion.p
@@ -84,14 +84,14 @@ const ProjectSection = ({
                 transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated}px, 0)`,
                 opacity: opacity
               }}
-              dangerouslySetInnerHTML={{ __html: content}}
+              dangerouslySetInnerHTML={{ __html: description}}
             />
           </Grid>
-          {alignment === 'right' && (
+          {!isLeft && (
             <Screen
               title={title}
               image={image}
-              alignment={alignment}
+              isLeft={isLeft}
               opacity={opacity}
               scrollValueCalculated={scrollValueCalculated}
               screenPosition={screenPosition}

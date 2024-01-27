@@ -11,8 +11,33 @@ import MockProjects from "@/mocks/mockProjects";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import {Helmet} from 'react-helmet';
 import config from "@/config/sites";
+import {ProjectType} from "@/types/ProjectType";
+import {useEffect, useState} from "react";
+import {useGlobalStore} from "@/store/useGlobalStore";
+import {selectSetIsLoading} from "@/store/selectors/globalStore";
+import retrieveAllBlogPosts from "@/services/retrieveAllBlogPosts";
+import retrieveProjects from "@/services/retrieveProjects";
 
 const Home = () => {
+  const setIsLoading = useGlobalStore(selectSetIsLoading);
+
+  const [projects, setProjects] = useState<ProjectType[]>([]);
+
+  useEffect(() => {
+    (async() => {
+      try {
+        setIsLoading(true);
+        const projectsFromDb = await retrieveProjects();
+        console.log('projectsFromDb', projectsFromDb);
+        setProjects(projectsFromDb);
+        setIsLoading(false);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, []);
 
   return (
     <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
@@ -30,9 +55,10 @@ const Home = () => {
 
         <PageSectionTitle title="Project Work"/>
 
-        {MockProjects.map(project => (
+        {projects.map((project, idx) => (
           <ProjectSection
             {...project}
+            idx={idx}
             key={project.id}
           />
         ))}
