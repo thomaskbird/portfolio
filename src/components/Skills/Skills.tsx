@@ -1,16 +1,20 @@
 'use client';
 
 import styles from './Skills.module.scss';
-import {motion, useScroll, useTransform} from 'framer-motion';
+import {motion, useScroll} from 'framer-motion';
 import {useEffect, useRef, useState} from "react";
+import {SkillType} from "@/types/SkillType";
+import retrieveSkills from "@/services/retrieveSkills";
+import {useGlobalStore} from "@/store/useGlobalStore";
+import {selectSetIsLoading} from "@/store/selectors/globalStore";
 
 type SkillsType = {
-  items: any[];
 };
 
-const Skills = ({
-  items
-}: SkillsType) => {
+const Skills = ({}: SkillsType) => {
+  const setIsLoading = useGlobalStore(selectSetIsLoading);
+
+  const [skills, setSkills] = useState<SkillType[]>([]);
   const [vertical, setVertical] = useState(0);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
@@ -27,13 +31,28 @@ const Skills = ({
     return () => scrollYProgress.destroy();
   }, []);
 
+  useEffect(() => {
+    (async() => {
+      try {
+        setIsLoading(true);
+        const skillsFromDb = await retrieveSkills();
+
+        setSkills(skillsFromDb);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
+  }, []);
+
   return (
     <motion.div
       ref={wrapperRef}
       className={styles.container}
       style={{ transform: `translateY(${vertical}px)` }}
     >
-      {(items ?? []).map(skill => (
+      {(skills ?? []).map(skill => (
         <motion.div
           key={skill.id}
           className={styles.chip}
