@@ -15,7 +15,9 @@ const BlogPost = ({
     <div className={styles.listItemWrapperBorder}>
       <div className={styles.listItemWrapper}>
         <div className={styles.listItemHeader}>
-          <Typography variant="h4">{post.title}</Typography>
+          <Link href={`/p/${post.slug}`}>
+            <Typography variant="h4">{post.title}</Typography>
+          </Link>
           <span className={styles.listItemPosted}>{post.created_at.substring(0, 10)}</span>
         </div>
 

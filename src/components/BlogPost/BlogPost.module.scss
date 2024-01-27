@@ -16,6 +16,10 @@
   margin-bottom: 30px;
   justify-content: space-between;
 
+  a {
+    text-decoration: none;
+  }
+
   @media (max-width: 900px) {
     flex-direction: column;
   }

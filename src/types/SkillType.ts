@@ -1,4 +1,4 @@
-type SkillType = {
+export type SkillType = {
   body: string;
   created_at: string;
   deleted_at: string | null;
