@@ -52,29 +52,34 @@ const Contact = () => {
     <>
       <Helmet>
         <title>{config.meta.title} | Contact</title>
-        <meta property="description" content={config.meta.description} />
+        <meta property="description" content={config.meta.description}/>
       </Helmet>
 
       <SectionContainer styleName={styles.mainContent}>
 
         <Grid container spacing={2}>
           <Grid item xs={12} md={8}>
-            <Typography variant="h2" sx={{ marginBottom: '20px' }}>What am I looking for?</Typography>
-            <Typography variant="body1" color="secondary" sx={{ marginBottom: '20px' }}>
-              I&apos;m an engineer with a <em>passion</em> for working with people and creating <em>amazing products</em>, that said my goal is to find a team working with the <em>latest</em> cutting edge technology, that fosters <em>creative thinking</em> and embraces new ideas.
+            <Typography variant="h2" sx={{marginBottom: '20px'}}>What am I looking for?</Typography>
+            <Typography variant="body1" color="secondary" sx={{marginBottom: '20px'}}>
+              I&apos;m an engineer with a <em>passion</em> for working with people and creating <em>amazing
+              products</em>, that said my goal is to find a team working with the <em>latest</em> cutting edge
+              technology, that fosters <em>creative thinking</em> and embraces new ideas.
             </Typography>
             <Typography variant="body1" color="secondary">
-              Beyond just that I strongly believe good <em>company culture</em> can make or break a team, without it the best all stars won&apos;t be as effective.
+              Beyond just that I strongly believe good <em>company culture</em> can make or break a team, without it the
+              best all stars won&apos;t be as effective.
             </Typography>
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <Typography variant="h3" sx={{ marginBottom: '20px' }}>Send a message</Typography>
+            <Typography variant="h3" sx={{marginBottom: '20px'}}>Send a message</Typography>
 
             {success ? (
-              <Typography variant="body1" color="success" sx={{ color: 'rgba(91,229,169,0.5)' }}>Your message has been submitted, I&apos;ll we be in contact as soon as possible! Thanks for stopping bye!</Typography>
+              <Typography variant="body1" color="success" sx={{color: 'rgba(91,229,169,0.5)'}}>Your message has been
+                submitted, I&apos;ll we be in contact as soon as possible! Thanks for stopping bye!</Typography>
             ) : (
-              <Typography variant="body1" color="secondary">Thanks for stopping by, just fill out the short form below and I will be in contact as soon as possible! Thanks.</Typography>
+              <Typography variant="body1" color="secondary">Thanks for stopping by, just fill out the short form below
+                and I will be in contact as soon as possible! Thanks.</Typography>
             )}
 
             <form className={pageStyles.form} onSubmit={handleSubmit(onSubmit)}>

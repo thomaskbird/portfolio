@@ -14,6 +14,7 @@ import {usePathname} from "next/navigation";
 import GlobalCssPriority from "@/components/GlobalCssPriority/GlobalCssPriority";
 import { roboto_mono, source_sans } from "@/app/fonts";
 import cn from "classnames";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const pagesWithScrollToTop = ['/', '/work', '/blog', '/resume'];
 
@@ -58,6 +59,7 @@ export default function RootLayout({
           </ThemeProvider>
         </GlobalCssPriority>
       </body>
+      <GoogleAnalytics gaId="383345066" />
     </html>
   )
 }
