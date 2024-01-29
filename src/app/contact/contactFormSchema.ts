@@ -10,6 +10,7 @@ const contactFormSchema = yup
     email: yup.string().email().required(),
     phone: yup.string().matches(phoneRegExp, { message: 'Your phone number must be in the following format xxx-xxx-xxxx' }).required(),
     message: yup.string().required(),
+    captcha: yup.number().required(),
   })
   .required();
 

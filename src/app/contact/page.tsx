@@ -16,13 +16,18 @@ import {selectSetIsLoading} from "@/store/selectors/globalStore";
 import {useState} from "react";
 import config from "@/config/sites";
 import {Helmet} from "react-helmet";
+import WordSlider from "@/components/WordSlider/WordSlider";
 
 const defaultVals: ContactFormType = {
   name: '',
   email: '',
   phone: '',
-  message: ''
+  message: '',
+  captcha: 0,
 }
+
+// todo: https://www.frontend.fyi/v/staggered-text-animations-with-framer-motion
+// todo: https://codesandbox.io/p/sandbox/text-typing-animation-forked-mgzgdj
 
 const Contact = () => {
   const setIsLoading = useGlobalStore(selectSetIsLoading);
@@ -39,13 +44,19 @@ const Contact = () => {
 
   const onSubmit: SubmitHandler<ContactFormType> = async (data) => {
     setIsLoading(true);
-    const submission = await addContact(data);
 
-    if(submission) {
-      reset();
+    try {
+      const submission = await addContact(data);
+
+      if(submission) {
+        reset();
+      }
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setSuccess(true);
+      setIsLoading(false);
     }
-    setSuccess(true);
-    setIsLoading(false);
   };
 
   return (
@@ -59,15 +70,27 @@ const Contact = () => {
 
         <Grid container spacing={2}>
           <Grid item xs={12} md={8}>
-            <Typography variant="h2" sx={{marginBottom: '20px'}}>What am I looking for?</Typography>
+            <WordSlider
+              sentence="What am I?"
+              slideWords={[
+                'Bold',
+                'Creative',
+                'Collaborative',
+                'Driven',
+                'Relentless',
+                'Curious',
+                'Analytical',
+                'Attentive',
+              ]}
+            />
+
             <Typography variant="body1" color="secondary" sx={{marginBottom: '20px'}}>
               I&apos;m an engineer with a <em>passion</em> for working with people and creating <em>amazing
-              products</em>, that said my goal is to find a team working with the <em>latest</em> cutting edge
-              technology, that fosters <em>creative thinking</em> and embraces new ideas.
+              products</em>, my goal is to find a team working with the <em>latest</em> and greatest
+              technology, that fosters <em>creative thinking</em> and embraces <em>new ideas</em>.
             </Typography>
             <Typography variant="body1" color="secondary">
-              Beyond just that I strongly believe good <em>company culture</em> can make or break a team, without it the
-              best all stars won&apos;t be as effective.
+              I'm looking for a company that understands its only as good as the culture it creates!
             </Typography>
           </Grid>
 
@@ -78,7 +101,7 @@ const Contact = () => {
               <Typography variant="body1" color="success" sx={{color: 'rgba(91,229,169,0.5)'}}>Your message has been
                 submitted, I&apos;ll we be in contact as soon as possible! Thanks for stopping bye!</Typography>
             ) : (
-              <Typography variant="body1" color="secondary">Thanks for stopping by, just fill out the short form below
+              <Typography variant="body1" color="secondary">Thanks for stopping by, fill out the short form below
                 and I will be in contact as soon as possible! Thanks.</Typography>
             )}
 

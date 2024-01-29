@@ -1,5 +1,4 @@
 import styles from './Slider.module.scss';
-import MOCK_TESTIMONIALS from "@/mocks/mockTestimonials";
 import Slide from "@/components/Slider/Slide";
 import {MutableRefObject, useEffect, useRef, useState} from "react";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';

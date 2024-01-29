@@ -38,6 +38,8 @@ const imageTransition = {
   })
 }
 
+const headline = "I'm Tom, Nice to meet you!".split(' ');
+
 const Hero = ({ navOnly = false }: HeroType) => {
   return (
     <Container maxWidth={false} disableGutters className={styles.hero}>
@@ -62,7 +64,19 @@ const Hero = ({ navOnly = false }: HeroType) => {
                   variants={items}
                   className={cn(styles.heroTextTitle)}
                 >
-                  I&apos;m Tom,<br/> Nice to meet you!
+                  {headline.map((el, i) => (
+                    <motion.span
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{
+                        duration: 1,
+                        delay: i / 50,
+                      }}
+                      key={i}
+                    >
+                      {el}{' '}
+                    </motion.span>
+                  ))}
                 </motion.h1>
                 <motion.div
                   custom={2}

@@ -1,0 +1,37 @@
+.wrapper {
+
+  h3 {
+    display: flex;
+    color: #aaa;
+    font-size: 52px;
+    position: relative;
+    font-weight: 500;
+    text-transform: uppercase;
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+  }
+
+  .sentence {
+
+  }
+
+  .mask {
+    flex: 1;
+    position: relative;
+  }
+
+  .word {
+    color: #fff;
+    opacity: 0;
+    font-weight: 600;
+    position: absolute;
+    transform: translateY(-25px);
+    transition: all ease-in 0.5s;
+  }
+
+  .active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
