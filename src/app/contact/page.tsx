@@ -91,7 +91,7 @@ const Contact = () => {
               technology, that fosters <em>creative thinking</em> and embraces <em>new ideas</em>.
             </Typography>
             <Typography variant="body1" color="secondary">
-              I'm looking for a company that understands its only as good as the culture it creates!
+              I&apos;m looking for a company that understands its only as good as the culture it creates!
             </Typography>
           </Grid>
 

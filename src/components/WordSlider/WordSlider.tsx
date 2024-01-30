@@ -13,7 +13,7 @@ const WordSlider = ({
   duration = 2000,
   slideWords,
 }: WordSliderType) => {
-  const interval = useRef<MutableRefObject<any>>();
+  const interval: MutableRefObject<any> = useRef();
   const [activeIndex, setActiveIndex] = useState(0);
 
   const itemsTotal = (slideWords ?? []).length;
