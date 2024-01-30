@@ -10,6 +10,11 @@
     background: none;
     -webkit-background-clip: unset;
     -webkit-text-fill-color: unset;
+
+    @media (max-width: 600px) {
+      flex-direction: column;
+      margin-bottom: 70px;
+    }
   }
 
   .sentence {
@@ -28,6 +33,10 @@
     position: absolute;
     transform: translateY(-25px);
     transition: all ease-in 0.5s;
+
+    @media (max-width: 600px) {
+      margin-top: -20px;
+    }
   }
 
   .active {

@@ -21,6 +21,10 @@
     margin-bottom: 30px;
     color: rgba(39,62,93,1);
     text-transform: uppercase;
+
+    @media (max-width: 600px) {
+      font-size: 44px;
+    }
   }
 
   p {

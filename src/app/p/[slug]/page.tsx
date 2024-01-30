@@ -73,7 +73,7 @@ const Page = ({ params }: PageType) => {
 
         <Stack spacing={2}>
           <SkeletonSwitcher
-            item={<Typography variant="h2">{post?.title}</Typography>}
+            item={<Typography variant="h2" className={styles.postTitle}>{post?.title}</Typography>}
             skeletonProps={baseSkeletonProps}
           />
 

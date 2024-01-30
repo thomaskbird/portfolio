@@ -50,6 +50,9 @@ const ResumeItem = ({
             // transform: `scale(${opacity}) translate(${!isEven ? '' : '-'}${scrollValueCalculated}px, 0)`,
           }}
         >
+          <p
+            className={styles.smallDates}>{moment(item.startAt).format("MMM, YYYY")} to {moment(item.endAt).format("MMM, YYYY")}</p>
+
           <h2>
             {item.company}
           </h2>
@@ -62,7 +65,6 @@ const ResumeItem = ({
           </ul>
 
           <p><b>Skills:</b> {item.skills.join(', ')}</p>
-          <p className={styles.smallDates}>{moment(item.startAt).format("MMM, YYYY")} to {moment(item.endAt).format("MMM, YYYY")}</p>
         </motion.div>
         <div className={styles.indicator}>
           <div className={styles.dot}></div>

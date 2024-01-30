@@ -9,6 +9,10 @@
   border-radius: 20px;
   background: rgba(0,0,0,.9);
   padding: 40px 60px;
+
+  @media(max-width: 600px) {
+    padding: 30px 30px;
+  }
 }
 
 .listItemHeader {
@@ -22,6 +26,12 @@
 
   @media (max-width: 900px) {
     flex-direction: column;
+  }
+
+  @media(max-width: 600px) {
+    h4 {
+      font-size: 32px;
+    }
   }
 }
 

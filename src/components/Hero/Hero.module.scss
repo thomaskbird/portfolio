@@ -38,6 +38,10 @@
     background: linear-gradient(180deg,#fff,#ddd);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    @media(max-width: 600px) {
+      font-size: 44px;
+    }
   }
 
   .heroSubText {

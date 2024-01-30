@@ -17,6 +17,7 @@ import {useState} from "react";
 import config from "@/config/sites";
 import {Helmet} from "react-helmet";
 import WordSlider from "@/components/WordSlider/WordSlider";
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const defaultVals: ContactFormType = {
   name: '',
@@ -98,7 +99,9 @@ const Contact = () => {
             <Typography variant="h3" sx={{marginBottom: '20px'}}>Send a message</Typography>
 
             {success ? (
-              <Typography variant="body1" color="success" sx={{color: 'rgba(91,229,169,0.5)'}}>Your message has been
+              <Typography variant="body1" color="success" sx={{color: 'rgba(91,229,169,0.5)'}}>
+                <CheckCircleOutlineIcon className={pageStyles.icon} />
+                Your message has been
                 submitted, I&apos;ll we be in contact as soon as possible! Thanks for stopping bye!</Typography>
             ) : (
               <Typography variant="body1" color="secondary">Thanks for stopping by, fill out the short form below

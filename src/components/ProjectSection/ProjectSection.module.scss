@@ -48,6 +48,10 @@
   & h2 {
     font-size: 64px;
     margin: 0 0 10px 0;
+
+    @media(max-width: 600px) {
+      font-size: 44px;
+    }
   }
 
   & h5 {
@@ -55,6 +59,10 @@
     font-size: 32px;
     font-weight: 300;
     margin: -20px 0 0;
+
+    @media(max-width: 600px) {
+      font-size: 26px;
+    }
   }
 
   & p {
