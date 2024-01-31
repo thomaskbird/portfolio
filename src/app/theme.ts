@@ -84,17 +84,17 @@ const theme: Theme = createTheme({
     body1: {
       fontSize: 18,
       fontWeight: 400,
-      fontFamily: 'Roboto Mono',
+      fontFamily: 'var(--font-roboto-mono);',
       lineHeight: '200%',
     },
     body2: {
       color: '#666',
       fontSize: 18,
-      fontFamily: 'Roboto Mono',
+      fontFamily: 'var(--font-roboto-mono);',
       lineHeight: '200%',
     },
     button: {
-      fontFamily: 'Roboto Mono',
+      fontFamily: 'var(--font-roboto-mono);',
       textTransform: 'none',
       fontWeight: 500,
       fontSize: '16px'
