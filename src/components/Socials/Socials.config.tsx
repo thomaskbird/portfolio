@@ -11,44 +11,52 @@ import XIcon from "@mui/icons-material/X";
 export type SocialItem = {
   id: number;
   title: string;
-  icon: ReactNode,
+  icon: ReactNode;
+  url: string;
 };
 
 const socialItems: SocialItem[] = [
   {
     id: 1,
     title: 'LinkedIn',
-    icon: <LinkedInIcon />
+    icon: <LinkedInIcon />,
+    url: 'https://linkedin.com/in/thomaskbird',
   },
   {
     id: 2,
     title: 'Resume',
-    icon: <ContactPageIcon />
+    icon: <ContactPageIcon />,
+    url: 'https://docs.google.com/document/d/1gjkhy1ogLDcKIiUpiStgMHxc052bkdsn/edit',
   },
   {
     id: 3,
     title: 'Contact me',
-    icon: <MailOutlineIcon />
+    icon: <MailOutlineIcon />,
+    url: 'mailto:thomaskbird@icloud.com',
   },
   {
     id: 4,
     title: 'Github',
-    icon: <GitHubIcon />
+    icon: <GitHubIcon />,
+    url: 'https://github.com/thomaskbird',
   },
   {
     id: 5,
     title: 'Calendly',
-    icon: <EventIcon />
+    icon: <EventIcon />,
+    url: 'https://calendly.com/thomasbird',
   },
   {
     id: 6,
     title: 'Instagram',
-    icon: <InstagramIcon />
+    icon: <InstagramIcon />,
+    url: 'https://www.instagram.com/airborneartists1/',
   },
   {
     id: 7,
     title: 'Twitter',
-    icon: <XIcon />
+    icon: <XIcon />,
+    url: 'https://twitter.com/thomaskbird',
   },
 ];
 

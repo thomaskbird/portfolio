@@ -2,16 +2,13 @@
   padding-bottom: 50px;
   background: rgb(7,14,23);
   background: linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 100%);
-}
-
-.wrap {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .blurbs {
   display: flex;
   padding: 50px 0 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .blurb {
@@ -38,10 +35,15 @@
   a {
     margin: 0;
     color: #888;
-    font-size: 12px;
+  }
+
+  p {
+    line-height: 100%;
   }
 
   a {
+    font-size: 16px;
+
     &:hover {
       color: #fff;
     }
@@ -50,13 +52,16 @@
 
 .footerMain {
   color: #888;
-  font-size: 12px;
   display: flex;
   padding: 75px 0 50px;
 }
 
 .footerLogo {
   width: 250px;
+}
+
+.copyright {
+  margin: 0;
 }
 
 .footerMainColumn {
@@ -80,12 +85,14 @@
 
   p {
     margin: 0;
+    font-size: 14px;
   }
 
   a {
     width: 100%;
     color: #888;
     display: block;
+    font-size: 14px;
     text-decoration: none;
     margin-bottom: 10px;
     transition: all ease-in .25s;

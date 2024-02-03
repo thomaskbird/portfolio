@@ -51,10 +51,12 @@ const Home = () => {
 
       <Hero/>
 
-      <SectionContainer styleName={styles.mainContent}>
-        <PageSectionTitle title="Skills"/>
-
+      <SectionContainer styleName={styles.skillsContainer}>
+        <PageSectionTitle title="Skills" />
         <Skills />
+      </SectionContainer>
+
+      <SectionContainer styleName={styles.mainContent}>
 
         <PageSectionTitle title="Project Work"/>
 

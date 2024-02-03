@@ -58,43 +58,58 @@ const theme: Theme = createTheme({
   },
   typography: {
     h1: {
-      fontFamily: 'Source Sans 3',
-      fontWeight: '600'
+      fontSize: '74px',
+      fontFamily: 'var(--font-source-sans-3)',
+      fontWeight: '700'
     },
     h2: {
-      fontFamily: 'Source Sans 3',
-      fontWeight: '600'
+      fontSize: '64px',
+      fontFamily: 'var(--font-source-sans-3)',
+      fontWeight: '700'
     },
     h3: {
-      fontFamily: 'Source Sans 3',
-      fontWeight: '600'
+      fontSize: '54px',
+      fontFamily: 'var(--font-source-sans-3)',
+      fontWeight: '700'
     },
     h4: {
-      fontFamily: 'Source Sans 3',
-      fontWeight: '600'
+      fontSize: '44px',
+      fontFamily: 'var(--font-source-sans-3)',
+      fontWeight: '700'
     },
     h5: {
-      fontFamily: 'Source Sans 3',
-      fontWeight: '600'
+      fontSize: '32px',
+      fontFamily: 'var(--font-source-sans-3)',
+      fontWeight: '700'
     },
     h6: {
-      fontFamily: 'Source Sans 3',
-      fontWeight: '600'
+      fontSize: '26px',
+      fontFamily: 'var(--font-source-sans-3)',
+      fontWeight: '700'
     },
     body1: {
-      fontSize: 18,
+      color: '#999',
+      fontSize: 32,
       fontWeight: 400,
-      fontFamily: 'var(--font-roboto-mono);',
+      fontFamily: 'var(--font-source-sans-3)',
       lineHeight: '200%',
     },
     body2: {
-      color: '#666',
-      fontSize: 18,
-      fontFamily: 'var(--font-roboto-mono);',
+      color: '#999',
+      fontSize: 24,
+      fontWeight: 400,
+      fontFamily: 'var(--font-source-sans-3)',
+      lineHeight: '200%',
+    },
+    body3: {
+      color: '#999',
+      fontWeight: 400,
+      fontFamily: 'var(--font-source-sans-3)',
+      fontSize: 16,
       lineHeight: '200%',
     },
     button: {
-      fontFamily: 'var(--font-roboto-mono);',
+      fontFamily: 'var(--font-source-sans-3)',
       textTransform: 'none',
       fontWeight: 500,
       fontSize: '16px'
@@ -126,6 +141,7 @@ const theme: Theme = createTheme({
           ...(ownerState.color === 'clear' && {
             ':hover': {
               color: 'rgba(255,255,255,0.75)',
+              background: 'transparent',
             }
           }),
           ...(ownerState.color === 'nav' && ownerState.component === 'button' && {

@@ -6,6 +6,7 @@ import Screen from "@/components/Screen/Screen";
 import cn from 'classnames';
 import {motion, useScroll} from 'framer-motion';
 import {MutableRefObject, useEffect, useRef, useState} from "react";
+import Typography from "@mui/material/Typography";
 
 type ProjectSectionType = {
   idx: number;
@@ -62,16 +63,16 @@ const ProjectSection = ({
             />
           )}
           <Grid item xs={12} md={6} className={classes}>
-            <motion.h2
+            <motion.h1
               style={{
                 transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated * .25}px, 0)`,
                 opacity: opacity
               }}
             >
               {title}
-            </motion.h2>
+            </motion.h1>
 
-            <motion.h5
+            <motion.h4
               style={{
                 transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated * .5}px, 0)`,
                 opacity: opacity
@@ -79,13 +80,14 @@ const ProjectSection = ({
               dangerouslySetInnerHTML={{ __html: subtitle}}
             />
 
-            <motion.p
+            <motion.div
               style={{
                 transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated}px, 0)`,
                 opacity: opacity
               }}
-              dangerouslySetInnerHTML={{ __html: description}}
-            />
+            >
+              <Typography variant="body2" dangerouslySetInnerHTML={{ __html: description }} />
+            </motion.div>
           </Grid>
           {!isLeft && (
             <Screen

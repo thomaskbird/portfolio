@@ -1,6 +1,6 @@
 .socialWrap {
-  //display: flex;
-  display: none;
+  display: flex;
+  //display: none;
 }
 
 .drawerHeaderItems {
@@ -24,18 +24,17 @@
 
 .logo {
   width: 200px;
-  margin: 20px;
 }
 
 .socials {
   flex: 1;
   margin: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .icons {
-  color: rgb(41, 60, 86);
+  color: rgba(255, 255, 255, 1);
   transition: color ease-in .5s;
 
   &:hover {

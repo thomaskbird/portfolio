@@ -32,7 +32,7 @@ const Footer = ({}: FooterType) => {
   return (
     <Container maxWidth={false} disableGutters className={styles.footerWrapper}>
       <Container>
-        <div className={styles.wrap}>
+        <div>
           <div className={styles.blurbs}>
             <div className={styles.blurb}>
               <RoomIcon fontSize={iconSize} className={styles.blurbIcon}/>
@@ -62,7 +62,7 @@ const Footer = ({}: FooterType) => {
           <div className={styles.footerMain}>
             <div className={styles.footerMainColumn}>
               <img src="/logo.png" alt="Thomas K Bird" className={styles.footerLogo} />
-              <p>&copy; {new Date().getFullYear()} All Rights Reserved</p>
+              <p className={styles.copyright}>&copy; {new Date().getFullYear()} All Rights Reserved</p>
             </div>
             <div className={styles.footerMainColumn}>
               <h5>Blog Posts</h5>

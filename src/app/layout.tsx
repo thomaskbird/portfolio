@@ -34,7 +34,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={cn(roboto_mono.variable, source_sans.variable)}>
+      <body className={cn(source_sans.variable)}>
         <GlobalCssPriority>
           <ThemeProvider theme={theme}>
             <Backdrop

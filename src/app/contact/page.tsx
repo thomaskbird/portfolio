@@ -18,6 +18,8 @@ import config from "@/config/sites";
 import {Helmet} from "react-helmet";
 import WordSlider from "@/components/WordSlider/WordSlider";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import PageSectionTitle from "@/components/PageSectionTitle/PageSectionTitle";
+import Socials from "@/components/Socials/Socials";
 
 const defaultVals: ContactFormType = {
   name: '',
@@ -26,6 +28,49 @@ const defaultVals: ContactFormType = {
   message: '',
   captcha: 0,
 }
+
+const logos = [
+  {
+    id: 1,
+    title: 'NBC Sports',
+    src: '/logos/nbc.png'
+  },
+  {
+    id: 2,
+    title: 'Powerley',
+    src: '/logos/powerley.png'
+  },
+  {
+    id: 3,
+    title: 'Ford',
+    src: '/logos/ford.png'
+  },
+  {
+    id: 4,
+    title: 'GM',
+    src: '/logos/gm.png'
+  },
+  {
+    id: 5,
+    title: 'Livegistics',
+    src: '/logos/livegistics.png'
+  },
+  {
+    id: 6,
+    title: 'Dominos',
+    src: '/logos/dominos.png'
+  },
+  {
+    id: 7,
+    title: 'Ultimate Software',
+    src: '/logos/ultimate-software.png'
+  },
+  {
+    id: 8,
+    title: 'UnitedHealth Group',
+    src: '/logos/unitedhealth-group.png'
+  },
+]
 
 // todo: https://www.frontend.fyi/v/staggered-text-animations-with-framer-motion
 // todo: https://codesandbox.io/p/sandbox/text-typing-animation-forked-mgzgdj
@@ -70,6 +115,23 @@ const Contact = () => {
       <SectionContainer styleName={styles.mainContent}>
 
         <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <div className={pageStyles.horizontalScrollSnapper}>
+              {logos.map(logo => (
+                <img
+                  key={logo.id}
+                  src={logo.src}
+                  alt={logo.title}
+                  title={logo.title}
+                  className={pageStyles.logo}
+                />
+              ))}
+            </div>
+
+          </Grid>
+        </Grid>
+
+        <Grid container spacing={2}>
           <Grid item xs={12} md={8}>
             <WordSlider
               sentence="What am I?"
@@ -96,7 +158,10 @@ const Contact = () => {
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <Typography variant="h3" sx={{marginBottom: '20px'}}>Send a message</Typography>
+            <Typography variant="h3" sx={{marginBottom: '20px', marginTop: '0px'}}>Find me online</Typography>
+            <Socials />
+
+            <Typography variant="h3" sx={{marginBottom: '20px', marginTop: '50px'}}>Send a message</Typography>
 
             {success ? (
               <Typography variant="body1" color="success" sx={{color: 'rgba(91,229,169,0.5)'}}>

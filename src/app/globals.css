@@ -3,13 +3,11 @@ body {
   background: #111;
   overflow-x: hidden;
   overflow-y: auto;
-  font-family: var(--font-roboto-mono);
 }
 
 p,
 a {
   font-weight: 400;
-  font-family: var(--font-roboto-mono);
 }
 
 h1,
@@ -18,18 +16,14 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 900;
-  font-family: var(--font-source-sans-3);
   background: linear-gradient(180deg,#fff,#bbb);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 150%;
 }
 
-em,
-.emphasis {
-  color: #eee;
-  font-weight: bold;
+em {
+  color: #fff;
   font-style: normal;
 }
 
@@ -57,5 +51,9 @@ pre {
 code {
   color: #aaa;
   font-family: 'Source Sans 3', sans-serif !important;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 

@@ -59,11 +59,12 @@ const Hero = ({ navOnly = false }: HeroType) => {
                 />
               </Grid>
               <Grid item xs={12} md={6} className={styles.heroText}>
-                <motion.h1
+                <motion.div
                   custom={1}
                   variants={items}
                   className={cn(styles.heroTextTitle)}
                 >
+                  <Typography variant="h2">
                   {headline.map((el, i) => (
                     <motion.span
                       initial={{ opacity: 0 }}
@@ -77,14 +78,14 @@ const Hero = ({ navOnly = false }: HeroType) => {
                       {el}{' '}
                     </motion.span>
                   ))}
-                </motion.h1>
+                  </Typography>
+                </motion.div>
                 <motion.div
                   custom={2}
                   variants={items}
                 >
-                  <Typography variant="body1" color="white" className={styles.heroSubText}>
-                    I am a <span className="emphasis">passionate</span> engineer and people <span className="emphasis">leader</span> who <span
-                    className={styles.emphasis}>thrives</span> in <span className="emphasis">fast paced</span> and <span className="emphasis">collaborative</span> environments!
+                  <Typography variant="body2" color="white" className={styles.heroSubText}>
+                    I am a <em>passionate</em> engineer and people <em>leader</em> who <em>thrives</em> in <em>fast paced</em> and <em>collaborative</em> environments!
                   </Typography>
                 </motion.div>
 
@@ -103,7 +104,7 @@ const Hero = ({ navOnly = false }: HeroType) => {
                   </motion.div>
                   <motion.div custom={4} variants={items}>
                     <Link href="/resume">
-                      <Button variant="text" color="clear" disableElevation>
+                      <Button variant="text" color="clear" className={styles.heroCtaSecondary} disableElevation disableRipple>
                         Resume
                       </Button>
                     </Link>

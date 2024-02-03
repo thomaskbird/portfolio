@@ -1,6 +1,7 @@
 import styles from "@/components/Slider/Slider.module.scss";
 import cn from "classnames";
 import {TestimonyType} from "@/types/TestimonyType";
+import Typography from "@mui/material/Typography";
 
 type SlideType = {
   active: boolean;
@@ -27,11 +28,12 @@ const Slide = ({
           <h3>{firstName} {lastName}</h3>
         </div>
       </div>
-      <p
+      <Typography
+        variant="body2"
         className={styles.slideText}
         dangerouslySetInnerHTML={{
           __html: body.split(' ').length > wordLimit ? `${body.split(' ').splice(0, wordLimit).join(' ')}...` : body
-      }}
+        }}
       />
     </div>
   )

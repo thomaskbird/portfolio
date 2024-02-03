@@ -1,24 +1,20 @@
 import styles from './Socials.module.scss';
 import {Grid, IconButton, Tooltip} from "@mui/material";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import ContactPageIcon from "@mui/icons-material/ContactPage";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import EventIcon from "@mui/icons-material/Event";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import XIcon from "@mui/icons-material/X";
 import socialItems from "@/components/Socials/Socials.config";
+import Link from "next/link";
 
 const Socials = () => {
   return (
     <Grid container className={styles.socialWrap}>
-      <img src="/logo.png" alt="Thomas K Bird" className={styles.logo}/>
+      {/*<img src="/logo.png" alt="Thomas K Bird" className={styles.logo}/>*/}
       <div className={styles.socials}>
         {socialItems.map(social => (
           <Tooltip key={social.id} title={social.title}>
-            <IconButton className={styles.icons}>
-              {social.icon}
-            </IconButton>
+            <Link href={social.url} target="_blank">
+              <IconButton className={styles.icons}>
+                {social.icon}
+              </IconButton>
+            </Link>
           </Tooltip>
         ))}
       </div>

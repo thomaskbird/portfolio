@@ -77,7 +77,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
         {MOCK_NAVITEMS.map((item) => (
           <ListItem key={item.id} disablePadding>
             <Link href={item.link}>
-              <ListItemButton>
+              <ListItemButton disableRipple>
                 <ListItemText primary={item.label} />
               </ListItemButton>
             </Link>
@@ -121,7 +121,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
               {MOCK_NAVITEMS.map((item) => (
                 <Link href={item.link} key={item.id}>
-                  <Button color="nav" component={isHome ? 'span' : 'button'}>
+                  <Button color="nav" component={isHome ? 'span' : 'button'} disableRipple>
                     {item.label}
                   </Button>
                 </Link>
