@@ -65,7 +65,7 @@ const Page = ({ params }: PageType) => {
           </Grid>
           <Grid item xs={12} sm={6} className={styles.pageHeaderLeft}>
             <SkeletonSwitcher
-              item={<Typography variant="body2">Posted: {post?.created_at}</Typography>}
+              item={<Typography variant="body3">Posted: {post?.created_at.substring(0, 10)}</Typography>}
               skeletonProps={baseSkeletonProps}
             />
           </Grid>
@@ -78,7 +78,7 @@ const Page = ({ params }: PageType) => {
           />
 
           <SkeletonSwitcher
-            item={<div className={styles.postBody} dangerouslySetInnerHTML={{__html: post?.body!}}/>}
+            item={<Typography variant="body2" className={styles.postBody} dangerouslySetInnerHTML={{__html: post?.body!}}/>}
             skeletonProps={{ ...baseSkeletonProps, height: 200 }}
           />
         </Stack>

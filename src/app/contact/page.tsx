@@ -70,6 +70,21 @@ const logos = [
     title: 'UnitedHealth Group',
     src: '/logos/unitedhealth-group.png'
   },
+  {
+    id: 9,
+    title: 'Belle Tire',
+    src: '/logos/belle.png'
+  },
+  {
+    id: 10,
+    title: 'Brogan & Partners',
+    src: '/logos/brogan.png',
+  },
+  {
+    id: 11,
+    title: 'Media Genesis',
+    src: '/logos/mediag.png',
+  }
 ]
 
 // todo: https://www.frontend.fyi/v/staggered-text-animations-with-framer-motion
@@ -112,25 +127,19 @@ const Contact = () => {
         <meta property="description" content={config.meta.description}/>
       </Helmet>
 
+      <div className={pageStyles.horizontalScrollSnapper}>
+        {logos.map(logo => (
+          <img
+            key={logo.id}
+            src={logo.src}
+            alt={logo.title}
+            title={logo.title}
+            className={pageStyles.logo}
+          />
+        ))}
+      </div>
+
       <SectionContainer styleName={styles.mainContent}>
-
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <div className={pageStyles.horizontalScrollSnapper}>
-              {logos.map(logo => (
-                <img
-                  key={logo.id}
-                  src={logo.src}
-                  alt={logo.title}
-                  title={logo.title}
-                  className={pageStyles.logo}
-                />
-              ))}
-            </div>
-
-          </Grid>
-        </Grid>
-
         <Grid container spacing={2}>
           <Grid item xs={12} md={8}>
             <WordSlider
@@ -147,29 +156,29 @@ const Contact = () => {
               ]}
             />
 
-            <Typography variant="body1" color="secondary" sx={{marginBottom: '20px'}}>
+            <Typography variant="body2" color="secondary" sx={{marginBottom: '20px'}}>
               I&apos;m an engineer with a <em>passion</em> for working with people and creating <em>amazing
               products</em>, my goal is to find a team working with the <em>latest</em> and greatest
               technology, that fosters <em>creative thinking</em> and embraces <em>new ideas</em>.
             </Typography>
-            <Typography variant="body1" color="secondary">
+            <Typography variant="body2" color="secondary">
               I&apos;m looking for a company that understands its only as good as the culture it creates!
             </Typography>
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <Typography variant="h3" sx={{marginBottom: '20px', marginTop: '0px'}}>Find me online</Typography>
-            <Socials />
+            <Typography variant="h4" sx={{marginBottom: '20px', marginTop: '0px'}}>Find me online</Typography>
+            <Socials/>
 
-            <Typography variant="h3" sx={{marginBottom: '20px', marginTop: '50px'}}>Send a message</Typography>
+            <Typography variant="h5" sx={{marginBottom: '20px', marginTop: '50px'}}>Send a message</Typography>
 
             {success ? (
-              <Typography variant="body1" color="success" sx={{color: 'rgba(91,229,169,0.5)'}}>
-                <CheckCircleOutlineIcon className={pageStyles.icon} />
+              <Typography variant="body2" color="success" sx={{color: 'rgba(91,229,169,0.5)'}}>
+                <CheckCircleOutlineIcon className={pageStyles.icon}/>
                 Your message has been
                 submitted, I&apos;ll we be in contact as soon as possible! Thanks for stopping bye!</Typography>
             ) : (
-              <Typography variant="body1" color="secondary">Thanks for stopping by, fill out the short form below
+              <Typography variant="body2" color="secondary">Thanks for stopping by, fill out the short form below
                 and I will be in contact as soon as possible! Thanks.</Typography>
             )}
 

@@ -120,6 +120,7 @@ const theme: Theme = createTheme({
       styleOverrides: {
         root: ({ ownerState }) => ({
           ...(ownerState.color === 'primary' && {
+            background: 'transparent',
             ':hover': {
               background: 'rgba(0,0,0,0.85)'
             }
@@ -161,6 +162,7 @@ const theme: Theme = createTheme({
             background: 'linear-gradient(180deg,#999,#666)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
+            textTransform: 'uppercase',
             ':hover': {
               background: 'linear-gradient(180deg,#aaa,#ccc)',
               WebkitBackgroundClip: 'text',

@@ -50,13 +50,10 @@ const ResumeItem = ({
             // transform: `scale(${opacity}) translate(${!isEven ? '' : '-'}${scrollValueCalculated}px, 0)`,
           }}
         >
-          <p
-            className={styles.smallDates}>{moment(item.startAt).format("MMM, YYYY")} to {moment(item.endAt).format("MMM, YYYY")}</p>
+          <p className={styles.smallDates}>{moment(item.startAt).format("MMM, YYYY")} to {moment(item.endAt).format("MMM, YYYY")}</p>
 
-          <h2>
-            {item.company}
-          </h2>
-          <h4><span className={styles.subtitle}>{item.type}</span> {item.title}</h4>
+          <h2>{item.company}</h2>
+          <h4>{item.title} <span className={styles.subtitle}>{item.type}</span></h4>
 
           <ul>
             {item.bullets.map((bullet, i) => (
