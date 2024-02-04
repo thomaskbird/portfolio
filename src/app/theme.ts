@@ -14,12 +14,12 @@ declare module '@mui/material/styles' {
     nav?: PaletteOptions['primary'];
   }
 
-  interface Theme {
-
+  interface TypographyVariants {
+    body3: React.CSSProperties;
   }
 
-  interface ThemeOptions {
-
+  interface TypographyVariantsOptions {
+    body3: React.CSSProperties;
   }
 }
 
@@ -28,6 +28,12 @@ declare module '@mui/material/Button' {
     hero: true;
     clear: true;
     nav: true;
+  }
+}
+
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    body3: true;
   }
 }
 
@@ -116,6 +122,13 @@ const theme: Theme = createTheme({
     }
   },
   components: {
+    MuiTypography: {
+      defaultProps: {
+        variantMapping: {
+          body3: 'p'
+        }
+      }
+    },
     MuiAppBar: {
       styleOverrides: {
         root: ({ ownerState }) => ({
