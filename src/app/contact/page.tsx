@@ -13,13 +13,13 @@ import Typography from "@mui/material/Typography";
 import addContact from "@/services/addContact";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectSetIsLoading} from "@/store/selectors/globalStore";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import config from "@/config/sites";
 import {Helmet} from "react-helmet";
 import WordSlider from "@/components/WordSlider/WordSlider";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import PageSectionTitle from "@/components/PageSectionTitle/PageSectionTitle";
 import Socials from "@/components/Socials/Socials";
+import randomInteger from "@/utils/generateRandomNumber";
 
 const defaultVals: ContactFormType = {
   name: '',
@@ -96,27 +96,40 @@ const Contact = () => {
     handleSubmit,
     reset,
     control,
+    setError,
   } = useForm<ContactFormType>({
     resolver: yupResolver(contactFormSchema),
     defaultValues: defaultVals
   });
 
   const [success, setSuccess] = useState(false);
+  const [captchaVals, setCaptchaVals] = useState<number[]>([]);
+
+  useEffect(() => {
+    setCaptchaVals([randomInteger(), randomInteger()]);
+  }, []);
 
   const onSubmit: SubmitHandler<ContactFormType> = async (data) => {
-    setIsLoading(true);
+    if(captchaVals[0] + captchaVals[1] === data.captcha) {
+      setIsLoading(true);
 
-    try {
-      const submission = await addContact(data);
+      try {
+        const submission = await addContact(data);
 
-      if(submission) {
-        reset();
+        if(submission) {
+          reset();
+        }
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setSuccess(true);
+        setIsLoading(false);
       }
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setSuccess(true);
-      setIsLoading(false);
+    } else {
+      setError('captcha', {
+        type: 'manual',
+        message: 'Your captcha answer was not correct, please try again'
+      })
     }
   };
 
@@ -209,6 +222,12 @@ const Contact = () => {
                   label="Message:"
                   variant="outlined"
                   rows={5}
+                />
+                <HookFormTextField
+                  name="captcha"
+                  control={control}
+                  label={`What is ${captchaVals[0]} + ${captchaVals[1]} = ?`}
+                  variant="outlined"
                 />
               </div>
 
