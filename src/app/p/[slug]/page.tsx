@@ -35,10 +35,15 @@ const Page = ({ params }: PageType) => {
 
   useEffect(() => {
     (async() => {
-      setIsLoading(true);
-      const postFromDb = await retrieveSinglePost(slug);
-      setPost(postFromDb);
-      setIsLoading(false);
+      try {
+        setIsLoading(true);
+        const postFromDb = await retrieveSinglePost(slug);
+        setPost(postFromDb);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setIsLoading(false);
+      }
     })();
   }, []);
 
@@ -49,7 +54,8 @@ const Page = ({ params }: PageType) => {
     <Container maxWidth={false} disableGutters>
       <Helmet>
         <title>{title}</title>
-        <meta property="description" content={desc} />
+        <meta property="description" content={desc}/>
+        <meta property="keywords" content={post?.keywords}/>
       </Helmet>
 
       <SectionContainer styleName={styles.wrapper}>

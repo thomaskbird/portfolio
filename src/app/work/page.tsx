@@ -25,10 +25,15 @@ const Work = () => {
 
   useEffect(() => {
     (async() => {
-      setIsLoading(true);
-      const postsFromDb = await retrieveAllWork();
-      setPosts(postsFromDb);
-      setIsLoading(false);
+      try {
+        setIsLoading(true);
+        const postsFromDb = await retrieveAllWork();
+        setPosts(postsFromDb);
+      } catch (e) {
+        console.error(e);
+      } finally {
+        setIsLoading(false);
+      }
     })();
   }, []);
 
