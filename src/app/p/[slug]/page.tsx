@@ -2,7 +2,7 @@
 
 import styles from './page.module.scss';
 import {Container, Grid, Stack} from "@mui/material";
-import {useEffect, useState} from "react";
+import {LegacyRef, MutableRefObject, useEffect, useRef, useState} from "react";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectSetIsLoading} from "@/store/selectors/globalStore";
 import PostType from "@/types/PostType";
@@ -17,6 +17,7 @@ import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.co
 import config from "@/config/sites";
 import {Helmet} from "react-helmet";
 import stripTags from "@/utils/stripTags";
+import Script from "next/script";
 
 export type PageType = {
   params: {
@@ -27,6 +28,7 @@ export type PageType = {
 // todo: put related posts widget here showing 3 related posts...
 // todo: eventually see about code highlighting
 const Page = ({ params }: PageType) => {
+  const codepenRef = useRef<any>(null);
   const { slug } = params;
   const setIsLoading = useGlobalStore(selectSetIsLoading);
   const router = useRouter();
@@ -46,6 +48,16 @@ const Page = ({ params }: PageType) => {
       }
     })();
   }, []);
+
+  useEffect(() => {
+    if(codepenRef.current) {
+      const script = document.createElement('script');
+      script.src = 'https://cpwebassets.codepen.io/assets/embed/ei.js';
+      script.async = true;
+
+      codepenRef.current.appendChild(script);
+    }
+  }, [codepenRef.current]);
 
   const title = post ? `${config.meta.title} | Blog | ${post.title}` : `${config.meta.title} | Blog`;
   const desc = post ? stripTags(post.description) : '';
@@ -84,11 +96,13 @@ const Page = ({ params }: PageType) => {
           />
 
           <SkeletonSwitcher
-            item={<Typography variant="body2" className={styles.postBody} dangerouslySetInnerHTML={{__html: post?.body!}}/>}
-            skeletonProps={{ ...baseSkeletonProps, height: 200 }}
+            item={<Typography variant="body2" className={styles.postBody}
+                              dangerouslySetInnerHTML={{__html: post?.body!}}/>}
+            skeletonProps={{...baseSkeletonProps, height: 200}}
           />
         </Stack>
       </SectionContainer>
+      <div ref={codepenRef}></div>
     </Container>
   )
 }

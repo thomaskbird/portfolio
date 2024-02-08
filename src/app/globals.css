@@ -57,3 +57,43 @@ code {
   display: none;
 }
 
+a, p, .body1, .body2, .body3 {
+  color: #999;
+  font-weight: 400;
+  line-height: 200%;
+}
+
+a {
+  text-decoration: none;
+  transition: all ease-in 0.25s;
+}
+
+a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.body1 {
+  font-size: 32px;
+}
+
+.body2 {
+  font-size: 24px;
+}
+
+.body3 {
+  font-size: 16px;
+}
+
+.blog-image {
+  max-width: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.videoPlayer {
+  max-width: 100%;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
