@@ -2,7 +2,7 @@
 
 import styles from './page.module.scss';
 import {Container, Grid, Stack} from "@mui/material";
-import {LegacyRef, MutableRefObject, useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectSetIsLoading} from "@/store/selectors/globalStore";
 import PostType from "@/types/PostType";
@@ -17,7 +17,6 @@ import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.co
 import config from "@/config/sites";
 import {Helmet} from "react-helmet";
 import stripTags from "@/utils/stripTags";
-import Script from "next/script";
 
 export type PageType = {
   params: {
@@ -34,6 +33,7 @@ const Page = ({ params }: PageType) => {
   const router = useRouter();
 
   const [post, setPost] = useState<PostType | undefined>(undefined);
+  const [hasAppendedScript, setHasAppendedScript] = useState(false);
 
   useEffect(() => {
     (async() => {
@@ -50,12 +50,13 @@ const Page = ({ params }: PageType) => {
   }, []);
 
   useEffect(() => {
-    if(codepenRef.current) {
+    if(codepenRef.current && !hasAppendedScript) {
       const script = document.createElement('script');
       script.src = 'https://cpwebassets.codepen.io/assets/embed/ei.js';
       script.async = true;
 
       codepenRef.current.appendChild(script);
+      setHasAppendedScript(true);
     }
   }, [codepenRef.current]);
 
@@ -96,8 +97,7 @@ const Page = ({ params }: PageType) => {
           />
 
           <SkeletonSwitcher
-            item={<Typography variant="body2" className={styles.postBody}
-                              dangerouslySetInnerHTML={{__html: post?.body!}}/>}
+            item={<div className={styles.postBody} dangerouslySetInnerHTML={{__html: post?.body!}}/>}
             skeletonProps={{...baseSkeletonProps, height: 200}}
           />
         </Stack>
