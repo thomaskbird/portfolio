@@ -4,7 +4,7 @@ import styles from './page.module.scss';
 import {Container, Grid, Stack} from "@mui/material";
 import {useEffect, useRef, useState} from "react";
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectSetIsLoading} from "@/store/selectors/globalStore";
+import {selectIsLoading, selectSetIsLoading} from "@/store/selectors/globalStore";
 import PostType from "@/types/PostType";
 import retrieveSinglePost from "@/services/retrieveSinglePost";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
@@ -29,6 +29,7 @@ export type PageType = {
 const Page = ({ params }: PageType) => {
   const codepenRef = useRef<any>(null);
   const { slug } = params;
+  const isLoading = useGlobalStore(selectIsLoading);
   const setIsLoading = useGlobalStore(selectSetIsLoading);
   const router = useRouter();
 
@@ -50,7 +51,7 @@ const Page = ({ params }: PageType) => {
   }, []);
 
   useEffect(() => {
-    if(codepenRef.current && !hasAppendedScript) {
+    if(codepenRef.current) {
       const script = document.createElement('script');
       script.src = 'https://cpwebassets.codepen.io/assets/embed/ei.js';
       script.async = true;
@@ -58,7 +59,7 @@ const Page = ({ params }: PageType) => {
       codepenRef.current.appendChild(script);
       setHasAppendedScript(true);
     }
-  }, [codepenRef.current]);
+  }, [isLoading]);
 
   const title = post ? `${config.meta.title} | Blog | ${post.title}` : `${config.meta.title} | Blog`;
   const desc = post ? stripTags(post.description) : '';
