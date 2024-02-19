@@ -132,18 +132,8 @@ const theme: Theme = createTheme({
     MuiAppBar: {
       styleOverrides: {
         root: ({ ownerState }) => ({
-          ...(ownerState.color === 'primary' && {
-            background: 'transparent',
-            ':hover': {
-              background: 'rgba(0,0,0,0.85)'
-            }
-          }),
-          ...(ownerState.color === 'transparent' && {
-            background: 'transparent',
-            ':hover': {
-              background: 'transparent'
-            }
-          }),
+          backdropFilter: 'blur(12px)',
+          backgroundColor: 'transparent',
         }),
       },
     },
