@@ -15,12 +15,9 @@
 
 .innerMacbookWrapLeft {
   right: 75%;
-  //transform: scale(1.75) translate(-25%, 20%);
 }
 
-.innerMacbookWrapRight {
-  //transform: scale(1.75) translate(25%, 20%);
-}
+.innerMacbookWrapRight {}
 
 .macbookImage {
   z-index: 2;
@@ -29,6 +26,10 @@
 
   @media(max-width: 900px) {
     width: 730px;
+  }
+
+  @media(max-width: 600px) {
+    width: 525px;
   }
 }
 
@@ -47,9 +48,20 @@
     width: 577px;
     height: 370px;
   }
+
+  @media(max-width: 600px) {
+    left: 60px;
+    width: 409px;
+    height: 280px;
+
+  }
 }
 
 .screenView {
   width: 100%;
   display: flex;
+
+  @media(max-width: 600px) {
+    width: 435px;
+  }
 }

@@ -16,6 +16,10 @@
   :global {
     .projectMacbookInitial {
       transform: translate(-50px, 0);
+
+      @media(max-width: 600px) {
+        transform: translate(0, 0);
+      }
     }
   }
 
@@ -51,6 +55,7 @@
 
     @media(max-width: 600px) {
       font-size: 44px;
+      margin: 0;
     }
   }
 
@@ -142,10 +147,15 @@
   top: 10vh;
   height: 600px;
   position: sticky;
-  
+
   @media (max-width: 900px) {
     height: unset;
     padding: 50px 0;
+  }
+
+  @media (max-width: 600px) {
+    top: 0;
+    padding: 0;
   }
 }
 

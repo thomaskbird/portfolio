@@ -13,12 +13,14 @@ type ScreenType = {
   opacity: number;
 }
 
-// todo: consider swapping native img for next image component
+// todo: consider always measuring screen viewport and resizing image based off that.
 const Screen = ({ image, title, isLeft, scrollValueCalculated, opacity, screenPosition }: ScreenType) => {
   const imgRef = useRef<HTMLImageElement | null>(null);
   const screenContainerRef = useRef<HTMLDivElement | null>(null);
 
   const [imgHeight, setImgHeight] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+  const [distanceToScroll, setDistanceToScroll] = useState(0);
 
   const transformClasses = cn(styles.innerMacbookWrap, isLeft ? styles.innerMacbookWrapLeft : styles.innerMacbookWrapRight);
 
@@ -27,6 +29,25 @@ const Screen = ({ image, title, isLeft, scrollValueCalculated, opacity, screenPo
       setImgHeight(imgRef.current?.height - 500 - 2);
     }
   }, [imgRef.current?.height, screenContainerRef]);
+
+  const resizedHandler = () => {
+    if(window.innerWidth <= 600 && imgRef.current && screenContainerRef.current) {
+      setDistanceToScroll(imgRef.current?.height - screenContainerRef.current?.clientHeight);
+    }
+
+    setIsMobile(window.innerWidth <= 600);
+  };
+
+  useEffect(() => {
+    if(window) {
+      window.addEventListener('resize', resizedHandler);
+      return () => window.removeEventListener('resize', resizedHandler)
+    }
+  }, []);
+
+  useEffect(() => {
+    resizedHandler();
+  }, []);
 
   return (
     <Grid item xs={12} md={6} className={cn(styles.projectMacbook, 'projectMacbookInitial', 'projectMacbookAnimation')}>
@@ -47,7 +68,7 @@ const Screen = ({ image, title, isLeft, scrollValueCalculated, opacity, screenPo
               src={image}
               className={styles.screenView}
               style={{
-                transform: `translateY(-${imgHeight * screenPosition}px)`
+                transform: `translateY(-${isMobile ? (distanceToScroll * screenPosition) : (imgHeight * screenPosition)}px)`
               }}
             />
           </div>
