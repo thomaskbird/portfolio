@@ -5,3 +5,46 @@
 .navOnly {
   height: 100px;
 }
+
+.drawerHeaderItems {
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    height: 65px;
+  }
+
+  .logo {
+    margin: 0 20px;
+  }
+}
+
+.logo {
+  width: 200px;
+}
+
+.close {
+  color: #aaa;
+  margin-right: 20px;
+  transition: all ease-in .25s;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.drawerList {
+  display: flex;
+  flex-direction: column;
+}
+
+.navLink {
+  font-size: 22px;
+  padding: 0 20px;
+  transition: all ease-in 0.25s;
+
+  &:hover {
+    margin-left: 10px;
+    text-decoration: none;
+  }
+}

@@ -3,29 +3,6 @@
   //display: none;
 }
 
-.drawerHeaderItems {
-  display: flex;
-  justify-content: space-between;
-
-  a {
-    height: 65px;
-  }
-}
-
-.close {
-  color: #aaa;
-  margin-right: 20px;
-  transition: all ease-in .25s;
-
-  &:hover {
-    color: #fff;
-  }
-}
-
-.logo {
-  width: 200px;
-}
-
 .socials {
   flex: 1;
   margin: 0;

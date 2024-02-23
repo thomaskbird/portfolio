@@ -14,7 +14,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import {Container, Slide, useScrollTrigger} from "@mui/material";
-import styles from "@/components/Socials/Socials.module.scss";
 import navStyles from './Nav.module.scss';
 import Link from "next/link";
 import MOCK_NAVITEMS from "@/mocks/mockNavigation";
@@ -64,24 +63,20 @@ const Nav = ({ window, navOnly = false }: Props) => {
 
   const drawer = (
     <Box onClick={handleDrawerToggle}>
-      <div className={styles.drawerHeaderItems}>
+      <div className={navStyles.drawerHeaderItems}>
         <Link href="/">
-          <img src="/thomas-bird-light.png" alt="Thomas K Bird" className={styles.logo} />
+          <img src="/thomas-bird-light.png" alt="Thomas K Bird" className={navStyles.logo} />
         </Link>
         <IconButton>
-          <CloseIcon className={styles.close} />
+          <CloseIcon className={navStyles.close} />
         </IconButton>
       </div>
       <Divider />
-      <List>
+      <List className={navStyles.drawerList}>
         {MOCK_NAVITEMS.map((item) => (
-          <ListItem key={item.id} disablePadding>
-            <Link href={item.link}>
-              <ListItemButton disableRipple>
-                <ListItemText primary={item.label} />
-              </ListItemButton>
-            </Link>
-          </ListItem>
+          <Link href={item.link} key={item.id} className={navStyles.navLink}>
+            {item.label}
+          </Link>
         ))}
       </List>
     </Box>
@@ -115,7 +110,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
               sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
             >
               <Link href="/">
-                <img src="/thomas-bird-light.png" alt="Thomas K Bird" className={styles.logo} />
+                <img src="/thomas-bird-light.png" alt="Thomas K Bird" className={navStyles.logo} />
               </Link>
             </Typography>
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
