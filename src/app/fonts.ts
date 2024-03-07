@@ -9,7 +9,7 @@ export const roboto_mono = Roboto_Mono({
 
 export const source_sans = Source_Sans_3({
   variable: '--font-source-sans-3',
-  weight: ['200', '300', '400', '700', '900'],
+  weight: ['200', '300', '400', '600', '700', '900'],
   subsets: ['latin'],
   display: 'swap'
 });

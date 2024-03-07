@@ -17,6 +17,8 @@ import {selectSetIsLoading} from "@/store/selectors/globalStore";
 import retrieveProjects from "@/services/retrieveProjects";
 import {TestimonyType} from "@/types/TestimonyType";
 import retrieveTestimonys from "@/services/retrieveTestimonys";
+import homeHero from "@/data/homeHero";
+import Fader from "@/components/Fader/Fader";
 
 const Home = () => {
   const setIsLoading = useGlobalStore(selectSetIsLoading);
@@ -50,6 +52,13 @@ const Home = () => {
       </Helmet>
 
       <Hero/>
+
+      <SectionContainer styleName={styles.aboutContainer}>
+        <PageSectionTitle title="What I do?" />
+        <div style={{ marginBottom: 0 }}>
+          <Fader items={homeHero} duration={5000} />
+        </div>
+      </SectionContainer>
 
       <SectionContainer styleName={styles.skillsContainer}>
         <PageSectionTitle title="Skills" />

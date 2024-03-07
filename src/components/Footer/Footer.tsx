@@ -10,6 +10,7 @@ import {selectSetIsLoading} from "@/store/selectors/globalStore";
 import {useEffect, useState} from "react";
 import PostType from "@/types/PostType";
 import retrieveLatestPosts from "@/services/retrieveLatestPosts";
+import Socials from "@/components/Socials/Socials";
 
 type FooterType = {};
 
@@ -61,6 +62,7 @@ const Footer = ({}: FooterType) => {
 
           <div className={styles.footerMain}>
             <div className={styles.footerMainColumn}>
+              <Socials />
               <img src="/logo.png" alt="Thomas K Bird" className={styles.footerLogo} />
               <p className={styles.copyright}>&copy; {new Date().getFullYear()} All Rights Reserved</p>
             </div>
@@ -70,7 +72,7 @@ const Footer = ({}: FooterType) => {
 
               <ul>
                 {posts.map(post => (
-                  <li key={post.id}><Link href={`/p/${post.slug}`}>{post.title}</Link></li>
+                  <li key={post.id}><Link className={styles.footerLinks} href={`/p/${post.slug}`}>{post.title}</Link></li>
                 ))}
               </ul>
             </div>
@@ -80,7 +82,7 @@ const Footer = ({}: FooterType) => {
 
               <ul>
                 {MOCK_NAVITEMS.map((item) => (
-                  <li key={item.id}><Link href={item.link}>{item.label}</Link></li>
+                  <li key={item.id}><Link className={styles.footerLinks} href={item.link}>{item.label}</Link></li>
                 ))}
               </ul>
             </div>

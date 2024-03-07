@@ -1,0 +1,103 @@
+.insideContainer {
+  padding-top: 65px;
+  background: #222;
+}
+
+.resumeWrapper {
+  position: relative;
+}
+
+.resumeContainer {
+  padding: 100px 0;
+}
+
+.divider {
+  left: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  background: #333;
+  margin-left: 50%;
+  margin-right: 50%;
+  position: absolute;
+}
+
+.backToTop {
+  right: 30px;
+  bottom: 30px;
+  position: fixed;
+}
+
+
+
+
+
+
+
+
+
+
+.pageHeader {
+  display: flex;
+  margin-bottom: 0px;
+}
+
+.pageHeaderLeft {
+  text-align: right;
+  align-self: center;
+}
+
+.blurb {
+  width: 100%;
+  padding: 100px;
+  background: #111;
+  text-align: center;
+  position: relative;
+  margin: 30px auto 0;
+
+  .downloadButton {
+    top: 40px;
+    right: 40px;
+    position: absolute;
+  }
+
+  .blurbImage {
+    height: 400px;
+    border-radius: 500px;
+
+    @media(max-width: 500px) {
+      height: auto;
+      max-width: 100%;
+    }
+  }
+
+  h1 {
+    font-weight: 800;
+    margin-bottom: 0px;
+    color: rgba(39,62,93,1);
+    text-transform: uppercase;
+
+    @media (max-width: 600px) {
+      font-size: 44px;
+    }
+  }
+
+  h5 {
+    font-weight: 300;
+    margin-bottom: 30px;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  @media(max-width: 600px) {
+    margin: 0 auto;
+    padding: 100px 30px;
+
+    .downloadButton {
+      top: 20px;
+      right: 20px;
+    }
+  }
+}

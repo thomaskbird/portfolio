@@ -2,6 +2,7 @@ import styles from "@/components/Slider/Slider.module.scss";
 import cn from "classnames";
 import {TestimonyType} from "@/types/TestimonyType";
 import Typography from "@mui/material/Typography";
+import Link from "next/link";
 
 type SlideType = {
   active: boolean;
@@ -10,6 +11,7 @@ type SlideType = {
 const wordLimit = 30;
 
 const Slide = ({
+  id,
   firstName,
   lastName,
   title,
@@ -35,6 +37,8 @@ const Slide = ({
           __html: body.split(' ').length > wordLimit ? `${body.split(' ').splice(0, wordLimit).join(' ')}...` : body
         }}
       />
+
+      <Link className={styles.viewMoreLink} href={`/testimony/${id}`}>View more...</Link>
     </div>
   )
 }

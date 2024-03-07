@@ -6,7 +6,6 @@ import Link from "next/link";
 const Socials = () => {
   return (
     <Grid container className={styles.socialWrap}>
-      {/*<img src="/logo.png" alt="Thomas K Bird" className={styles.logo}/>*/}
       <div className={styles.socials}>
         {socialItems.map(social => (
           <Tooltip key={social.id} title={social.title}>

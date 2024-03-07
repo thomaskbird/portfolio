@@ -6,6 +6,8 @@ import Nav from "@/components/Nav/Nav";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
+import Fader from "@/components/Fader/Fader";
+import homeHero from "@/data/homeHero";
 
 type HeroType = {
   navOnly?: boolean;
@@ -64,22 +66,23 @@ const Hero = ({ navOnly = false }: HeroType) => {
                   variants={items}
                   className={cn(styles.heroTextTitle)}
                 >
-                  <Typography variant="h2">
-                  {headline.map((el, i) => (
-                    <motion.span
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{
-                        duration: 1,
-                        delay: i / 50,
-                      }}
-                      key={i}
-                    >
-                      {el}{' '}
-                    </motion.span>
-                  ))}
+                  <Typography variant="h1">
+                    {headline.map((el, i) => (
+                      <motion.span
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        transition={{
+                          duration: 1,
+                          delay: i / 50,
+                        }}
+                        key={i}
+                      >
+                        {el}{' '}
+                      </motion.span>
+                    ))}
                   </Typography>
                 </motion.div>
+
                 <motion.div
                   custom={2}
                   variants={items}
@@ -104,7 +107,8 @@ const Hero = ({ navOnly = false }: HeroType) => {
                   </motion.div>
                   <motion.div custom={4} variants={items}>
                     <Link href="/resume">
-                      <Button variant="text" color="clear" className={styles.heroCtaSecondary} disableElevation disableRipple>
+                      <Button variant="text" color="clear" className={styles.heroCtaSecondary} disableElevation
+                              disableRipple>
                         Resume
                       </Button>
                     </Link>
@@ -113,10 +117,10 @@ const Hero = ({ navOnly = false }: HeroType) => {
               </Grid>
             </Grid>
           </motion.div>
-        )}
+          )}
       </Container>
     </Container>
-  )
+)
 }
 
 export default Hero;

@@ -4,6 +4,7 @@ import cn from "classnames";
 
 type PageSectionTitleProps = {
   title: string;
+  subtitle?: string;
 }
 
 const item = {
@@ -21,6 +22,7 @@ const item = {
 // todo: add motion to here
 const PageSectionTitle = ({
   title,
+  subtitle,
 }: PageSectionTitleProps) => (
   <motion.div
     className={styles.pageTitle}
@@ -37,6 +39,15 @@ const PageSectionTitle = ({
     >
       {title}
     </motion.h1>
+    {subtitle && (
+      <motion.h5
+        custom={3}
+        variants={item}
+        className={styles.subtitle}
+      >
+        {subtitle}
+      </motion.h5>
+    )}
     <motion.div custom={3} variants={item} className={styles.titleBorder}></motion.div>
   </motion.div>
 )

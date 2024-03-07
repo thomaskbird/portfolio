@@ -18,7 +18,7 @@ import config from "@/config/sites";
 import {Helmet} from "react-helmet";
 import stripTags from "@/utils/stripTags";
 
-export type PageType = {
+type PageType = {
   params: {
     slug: string,
   }

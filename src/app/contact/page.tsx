@@ -180,9 +180,6 @@ const Contact = () => {
           </Grid>
 
           <Grid item xs={12} md={4}>
-            <Typography variant="h4" sx={{marginBottom: '20px', marginTop: '0px'}}>Find me online</Typography>
-            <Socials/>
-
             <Typography variant="h5" sx={{marginBottom: '20px', marginTop: '50px'}}>Send a message</Typography>
 
             {success ? (
@@ -191,8 +188,9 @@ const Contact = () => {
                 Your message has been
                 submitted, I&apos;ll we be in contact as soon as possible! Thanks for stopping bye!</Typography>
             ) : (
-              <Typography variant="body2" color="secondary">Thanks for stopping by, fill out the short form below
-                and I will be in contact as soon as possible! Thanks.</Typography>
+              <Typography variant="body2" color="secondary">
+                Ready to elevate your digital presence? Shoot me a quick message using the form below. Coffee chats, code reviews, or moonlit brainstorming sessions let&apos;s make magic happen.
+              </Typography>
             )}
 
             <form className={pageStyles.form} onSubmit={handleSubmit(onSubmit)}>

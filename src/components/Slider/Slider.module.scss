@@ -22,17 +22,22 @@
   }
 
   @media(min-width: 769px) and (max-width: 900px) {
-    height: 450px;
+    height: 500px;
     padding: 50px;
   }
 
   @media(min-width: 601px) and (max-width: 768px) {
-    height: 550px;
+    height: 700px;
     padding: 50px;
   }
 
-  @media(max-width: 600px) {
-    height: 700px;
+  @media(min-width: 400px) and (max-width: 600px) {
+    height: 850px;
+    padding: 75px 25px;
+  }
+
+  @media(max-width: 399px) {
+    height: 1000px;
     padding: 75px 25px;
   }
 
@@ -159,6 +164,10 @@
     margin-left: 0;
     text-align: center;
   }
+}
+
+.viewMoreLink {
+  font-size: 16px;
 }
 
 .pagination {
