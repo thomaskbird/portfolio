@@ -103,7 +103,7 @@ const Page = ({ params }: PageType) => {
           />
         </Stack>
       </SectionContainer>
-      <div ref={codepenRef}></div>
+      <div ref={codepenRef} />
     </Container>
   )
 }

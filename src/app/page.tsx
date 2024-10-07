@@ -81,7 +81,9 @@ const Home = () => {
         <Container>
           <PageSectionTitle title="People Are Talking"/>
 
-          <Slider items={testimonials} />
+          {testimonials.length && (
+            <Slider items={testimonials} />
+          )}
         </Container>
       </Container>
     </Container>

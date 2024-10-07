@@ -16,7 +16,6 @@ type SliderType = {
 
 // todo: look at converting slider to something like this so we don't have so many styling issues with responsiveness and absolute positioning
 // todo: https://codesandbox.io/p/sandbox/framer-motion-layout-animations-snxgv?file=%2Fsrc%2Findex.tsx
-
 const Slider = ({
   items,
   duration = 3000,
@@ -24,7 +23,7 @@ const Slider = ({
   startAt = 0,
   autoPlayOnlyWhenVisible = false
 }: SliderType) => {
-  const itemsTotal = items?.length ?? 0;
+  const [itemsTotal, setItemsTotal] = useState(0);
 
   const interval: MutableRefObject<any> = useRef();
   const sliderRef: MutableRefObject<any> = useRef();
@@ -34,15 +33,18 @@ const Slider = ({
   const [activeIndex, setActiveIndex] = useState<number>(startAt);
   const [isRunning, setIsRunning] = useState<boolean>(false);
 
-  // trigger autoplay
   useEffect(() => {
-    if(!isRunning && autoPlay && !autoPlayOnlyWhenVisible) {
-      setIsRunning(true);
-      startInterval();
+    if(items.length > 0) {
+      if(!isRunning && autoPlay && !autoPlayOnlyWhenVisible) {
+        setIsRunning(true);
+        startInterval(items.length);
+      }
+
+      setItemsTotal(items.length);
     }
 
     return () => stopInterval();
-  }, []);
+  }, [items]);
 
   useEffect(() => {
     if(autoPlayOnlyWhenVisible) {
@@ -50,7 +52,7 @@ const Slider = ({
         console.warn('You must set autoPlay to false if autoPlayOnlyWhenVisible is true');
       } else {
         if(isVisible && !isRunning) {
-          startInterval();
+          startInterval(itemsTotal);
           setIsRunning(true);
         } else {
           stopInterval();
@@ -61,9 +63,9 @@ const Slider = ({
   }, [isVisible]);
 
   // trigger the interval to start
-  const startInterval = () => {
+  const startInterval = (totalItems: number) => {
     interval.current = setInterval(() => {
-      handleAuto();
+      handleAuto(totalItems);
     }, duration);
   };
 
@@ -74,22 +76,17 @@ const Slider = ({
     if(isRunning) {
       stopInterval();
     } else {
-      startInterval();
+      startInterval(itemsTotal);
     }
 
     setIsRunning(prevState => !prevState);
   }
 
-  // when a pagination item is clicked navigate to it
-  const handleDotClick = (idx: number) => {
-    setActiveIndex(idx);
-  }
-
   // handle next when autoplaying
-  const handleAuto = () => {
+  const handleAuto = (totalItems: number) => {
     setActiveIndex(prevState => {
       const next = prevState + 1;
-      if(next < itemsTotal) {
+      if(next < totalItems) {
         return next;
       } else {
         return 0;
@@ -121,8 +118,8 @@ const Slider = ({
             <div
               key={iDot}
               className={activeIndex === iDot ? styles.dotActive : styles.dot}
-              onClick={() => activeIndex === iDot ? false : handleDotClick(iDot)}
-            ></div>
+              onClick={() => activeIndex === iDot ? false : setActiveIndex(iDot)}
+            />
           ))}
         </div>
       </div>
