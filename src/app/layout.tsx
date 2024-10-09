@@ -35,7 +35,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={cn(source_sans.variable)} suppressHydrationWarning={true}>
+      <body className={cn(source_sans.variable, theme)} suppressHydrationWarning={true}>
         <GlobalCssPriority>
           <ThemeProvider theme={theme === 'dark' ? themeDark : themeLight}>
             <Backdrop

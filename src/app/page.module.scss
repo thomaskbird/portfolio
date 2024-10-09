@@ -11,22 +11,38 @@
   background: #fff;
 }
 
-.skillsContainer {
+.skillsContainerDark {
   padding: 100px 0;
 }
 
-.mainContent {
+.skillsContainerLight {
+  padding: 100px 0;
+  background: #f5f5f5;
+}
+
+.mainContentDark {
   padding: 100px 0;
   background: #0c0c0c;
+}
+
+.mainContentLight {
+  padding: 100px 0;
 }
 
 .listItemWrapper {
   padding-top: 60px;
 }
 
-.testimonialWrapper {
+.testimonialWrapperDark {
   height: auto;
   display: flex;
   background: #000;
+  padding: 100px 0;
+}
+
+.testimonialWrapperLight {
+  height: auto;
+  display: flex;
+  background: #f5f5f5;
   padding: 100px 0;
 }

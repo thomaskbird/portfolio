@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  background: #111;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -16,15 +15,50 @@ h3,
 h4,
 h5,
 h6 {
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   line-height: 150%;
 }
 
+.light {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    background: linear-gradient(160deg, #444, #111);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.dark {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    background: linear-gradient(180deg,#fff,#ddd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
 em {
-  color: #fff;
   font-style: normal;
   font-weight: 600;
+}
+
+.dark {
+  em {
+    color: #fff;
+  }
+}
+
+.light {
+  em {
+    color: #111;
+  }
 }
 
 .backToTop {

@@ -45,6 +45,8 @@ const Home = () => {
     })();
   }, []);
 
+  const isDark = theme === 'dark';
+
   return (
     <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
       <Helmet>
@@ -54,19 +56,19 @@ const Home = () => {
 
       <Hero/>
 
-      <SectionContainer styleName={theme === 'dark' ? styles.aboutContainerDark : styles.aboutContainerLight}>
+      <SectionContainer styleName={isDark ? styles.aboutContainerDark : styles.aboutContainerLight}>
         <PageSectionTitle title="What I do?" />
         <div style={{ marginBottom: 0 }}>
           <Fader items={homeHero} duration={5000} />
         </div>
       </SectionContainer>
 
-      <SectionContainer styleName={styles.skillsContainer}>
+      <SectionContainer styleName={isDark ? styles.skillsContainerDark : styles.skillsContainerLight}>
         <PageSectionTitle title="Skills" />
         <Skills />
       </SectionContainer>
 
-      <SectionContainer styleName={styles.mainContent}>
+      <SectionContainer styleName={isDark ? styles.mainContentDark : styles.mainContentLight}>
 
         <PageSectionTitle title="Project Work"/>
 
@@ -78,7 +80,7 @@ const Home = () => {
           />
         ))}
       </SectionContainer>
-      <Container maxWidth={false} disableGutters className={styles.testimonialWrapper}>
+      <Container maxWidth={false} disableGutters className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
         <Container>
           <PageSectionTitle title="People Are Talking"/>
 

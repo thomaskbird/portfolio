@@ -129,12 +129,6 @@
     margin: 0;
     color: #000;
     text-shadow: 0 5px 15px rgba(0,0,0,.15);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    .MuiTypography-h1 {
-      background: linear-gradient(180deg,#111,#666) !important;
-    }
 
     @media(max-width: 600px) {
       font-size: 44px;
@@ -143,7 +137,7 @@
 
   .heroSubText {
     margin: 10px 0;
-    color: #aaa;
+    color: #666;
   }
 
   .heroCtas {
