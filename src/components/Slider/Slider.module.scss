@@ -3,19 +3,26 @@
   border-radius: 10px;
 }
 
+.sliderWrapDark {
+  background: rgba(0,0,0,.9);
+  border: 1px solid rgba(5,5,5,0.7);
+  box-shadow: inset 0 1px 0px rgba(0,91,168,0.5);
+  background: radial-gradient(circle 700px at center -500px, rgba(0,91,169,0.75), rgba(3,3,3,1));
+}
+
+.sliderWrapLight {
+  background: radial-gradient(circle 700px at center -500px, rgba(255, 255,255,0.75), rgba(255,255,255,1));
+}
+
 .sliderWrap {
   display: flex;
   padding: 100px;
-  background: rgba(0,0,0,.9);
   position: relative;
   //border-radius: 20px;
   overflow: hidden;
   //box-shadow: 0 25px 50px rgba(0,0,0,.05);
 
-  box-shadow: inset 0 1px 0px rgba(0,91,168,0.5);
   border-radius: 10px;
-  background: radial-gradient(circle 700px at center -500px, rgba(0,91,169,0.75), rgba(3,3,3,1));
-  border: 1px solid rgba(5,5,5,0.7);
 
   @media(max-width: 900px) {
     flex-direction: column;
@@ -77,6 +84,14 @@
   @media (max-width: 900px) {
     padding-right: 0;
   }
+}
+
+.quoteColorDark {
+  opacity: 1;
+}
+
+.quoteColorLight {
+  opacity: .05;
 }
 
 .quoteLeft,
@@ -203,7 +218,6 @@
   width: 10px;
   height: 10px;
   cursor: pointer;
-  background: #666;
   border-radius: 100px;
   transition: all ease-in .25s;
 
@@ -214,9 +228,16 @@
   }
 }
 
+.dotDark {
+  background: #fff;
+}
+
+.dotLight {
+  background: #666;
+}
+
 .dotActive {
   width: 20px;
   height: 20px;
-  background: #fff;
   border-radius: 100px;
 }
