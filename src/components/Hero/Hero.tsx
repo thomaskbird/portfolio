@@ -8,6 +8,8 @@ import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import Fader from "@/components/Fader/Fader";
 import homeHero from "@/data/homeHero";
+import {useGlobalStore} from "@/store/useGlobalStore";
+import {selectTheme} from "@/store/selectors/globalStore";
 
 type HeroType = {
   navOnly?: boolean;
@@ -43,8 +45,10 @@ const imageTransition = {
 const headline = "I'm Tom, Nice to meet you!".split(' ');
 
 const Hero = ({ navOnly = false }: HeroType) => {
+  const theme = useGlobalStore(selectTheme);
+
   return (
-    <Container maxWidth={false} disableGutters className={styles.hero}>
+    <Container maxWidth={false} disableGutters className={theme === 'dark' ? styles.heroDark : styles.heroLight}>
       <Container>
         <Nav navOnly={navOnly} />
 

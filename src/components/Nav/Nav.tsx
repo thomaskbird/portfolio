@@ -6,19 +6,19 @@ import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
+import Switch from "@mui/material/Switch";
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import {Container, Slide, useScrollTrigger} from "@mui/material";
+import {Container, Slide, Tooltip, useScrollTrigger} from "@mui/material";
 import navStyles from './Nav.module.scss';
 import Link from "next/link";
 import MOCK_NAVITEMS from "@/mocks/mockNavigation";
 import {usePathname} from "next/navigation";
 import CloseIcon from '@mui/icons-material/Close';
+import {useGlobalStore} from "@/store/useGlobalStore";
+import {selectIsLoading, selectSetIsLoading, selectSetTheme, selectTheme} from "@/store/selectors/globalStore";
 
 interface Props {
   /**
@@ -41,9 +41,12 @@ interface HideOnScrollProps {
 const drawerWidth = 240;
 
 const Nav = ({ window, navOnly = false }: Props) => {
+  const theme = useGlobalStore(selectTheme);
+  const setTheme = useGlobalStore(selectSetTheme);
   const pathname = usePathname();
   const isHome = pathname === '/';
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const logoUrl = theme === 'dark' ? '/logo.png' : '/logo-dark.png';
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -65,7 +68,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
     <Box onClick={handleDrawerToggle}>
       <div className={navStyles.drawerHeaderItems}>
         <Link href="/">
-          <img src="/thomas-bird-light.png" alt="Thomas K Bird" className={navStyles.logo} />
+          <img src={logoUrl} alt="Thomas K Bird" className={navStyles.logo} />
         </Link>
         <IconButton>
           <CloseIcon className={navStyles.close} />
@@ -94,35 +97,40 @@ const Nav = ({ window, navOnly = false }: Props) => {
           color={navOnly ? 'primary' : 'transparent'}
         >
           <Container>
-          <Toolbar>
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerToggle}
-              sx={{ mr: 2, display: { sm: 'none' } }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-            >
-              <Link href="/">
-                <img src="/thomas-bird-light.png" alt="Thomas K Bird" className={navStyles.logo} />
-              </Link>
-            </Typography>
-            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-              {MOCK_NAVITEMS.map((item) => (
-                <Link href={item.link} key={item.id}>
-                  <Button color="nav" component={isHome ? 'span' : 'button'} disableRipple>
-                    {item.label}
-                  </Button>
+            <Toolbar>
+              <IconButton
+                edge="start"
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerToggle}
+                sx={{ mr: 2, display: { sm: 'none' } }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+              >
+                <Link href="/">
+                  <img src={logoUrl} alt="Thomas K Bird" className={navStyles.logo} />
                 </Link>
-              ))}
-            </Box>
-          </Toolbar>
+              </Typography>
+              <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+                {MOCK_NAVITEMS.map((item) => (
+                  <Link href={item.link} key={item.id}>
+                    <Button color="nav" component={isHome ? 'span' : 'button'} disableRipple>
+                      {item.label}
+                    </Button>
+                  </Link>
+                ))}
+
+                {/* todo: need to handle a whole of styling issues */}
+                <Tooltip title="Dark mode">
+                  <Switch checked={theme === 'dark'} onChange={(evt: React.ChangeEvent<HTMLInputElement>) => setTheme(evt.target.checked ? 'dark' : 'light')} />
+                </Tooltip>
+              </Box>
+            </Toolbar>
           </Container>
         </AppBar>
       </HideOnScroll>
