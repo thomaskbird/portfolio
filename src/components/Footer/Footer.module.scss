@@ -1,7 +1,14 @@
-.footerWrapper {
+.footerWrapperDark {
   padding-bottom: 50px;
   background: rgb(7,14,23);
   background: linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footerWrapperLight {
+  padding-bottom: 50px;
+  background: rgb(7,14,23);
+  background: linear-gradient(45deg, rgb(240, 240, 240) 0%, rgba(255, 255, 255, 0.5) 100%);
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -16,8 +23,15 @@
   display: flex;
 }
 
-.blurbIcon {
+.blurbIconDark {
   color: #fff;
+}
+
+.blurbIconLight {
+  color: #111;
+}
+
+.blurbIcon {
   margin-top: 0px;
 }
 
