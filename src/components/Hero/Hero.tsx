@@ -46,9 +46,10 @@ const headline = "I'm Tom, Nice to meet you!".split(' ');
 
 const Hero = ({ navOnly = false }: HeroType) => {
   const theme = useGlobalStore(selectTheme);
+  const isDark = theme === 'dark';
 
   return (
-    <Container maxWidth={false} disableGutters className={theme === 'dark' ? styles.heroDark : styles.heroLight}>
+    <Container maxWidth={false} disableGutters className={isDark ? styles.heroDark : styles.heroLight}>
       <Container>
         <Nav navOnly={navOnly} />
 
@@ -100,10 +101,9 @@ const Hero = ({ navOnly = false }: HeroType) => {
                   <motion.div custom={3} variants={items}>
                     <Link href="/contact">
                       <Button
-                        color="hero"
                         disableElevation
                         variant="outlined"
-                        className={styles.heroCtaPrimary}
+                        className={cn(styles.heroCtaPrimary, isDark ? styles.heroCtaPrimaryDark : styles.heroCtaPrimaryLight)}
                       >
                         Contact me
                       </Button>
@@ -111,8 +111,7 @@ const Hero = ({ navOnly = false }: HeroType) => {
                   </motion.div>
                   <motion.div custom={4} variants={items}>
                     <Link href="/resume">
-                      <Button variant="text" color="clear" className={styles.heroCtaSecondary} disableElevation
-                              disableRipple>
+                      <Button variant="text" color="clear" className={cn(styles.heroCtaSecondary, isDark ? styles.heroCtaSecondaryDark : styles.heroCtaSecondaryLight)} disableElevation disableRipple>
                         Resume
                       </Button>
                     </Link>

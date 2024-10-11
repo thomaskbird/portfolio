@@ -126,7 +126,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
                 ))}
 
                 {/* todo: need to handle a whole of styling issues */}
-                <Tooltip title="Dark mode">
+                <Tooltip title={`${theme} mode`}>
                   <Switch checked={theme === 'dark'} onChange={(evt: React.ChangeEvent<HTMLInputElement>) => setTheme(evt.target.checked ? 'dark' : 'light')} />
                 </Tooltip>
               </Box>

@@ -1,6 +1,13 @@
+.insideContainerDark {
+  background: #222;
+}
+
+.insideContainerLight {
+  background: #f5f5f5;
+}
+
 .insideContainer {
   padding-top: 65px;
-  background: #222;
 }
 
 .resumeWrapper {
@@ -11,12 +18,19 @@
   padding: 100px 0;
 }
 
+.dividerDark {
+  background: #333;
+}
+
+.dividerLight {
+  background: #ddd;
+}
+
 .divider {
   left: 0;
   right: 0;
   width: 5px;
   height: 100%;
-  background: #333;
   margin-left: 50%;
   margin-right: 50%;
   position: absolute;

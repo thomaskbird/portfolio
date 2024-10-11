@@ -10,12 +10,15 @@ import {ResumeType} from "@/types/ResumeType";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import ResumeBlurb from "@/components/ResumeBlurb/ResumeBlurb";
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectSetIsLoading} from "@/store/selectors/globalStore";
+import {selectSetIsLoading, selectTheme} from "@/store/selectors/globalStore";
 import config from "@/config/sites";
 import {Helmet} from "react-helmet";
+import cn from "classnames";
 
 const Resume = () => {
   const setIsLoading = useGlobalStore(selectSetIsLoading);
+  const theme = useGlobalStore(selectTheme);
+  const isDark = theme === 'dark';
   const resumeRef = useRef<HTMLDivElement | null>(null);
   const [jobs, setJobs] = useState<ResumeType[]>([]);
 
@@ -31,7 +34,7 @@ const Resume = () => {
   }, []);
 
   return (
-    <SectionContainer styleName={styles.insideContainer}>
+    <SectionContainer styleName={cn(styles.insideContainer, isDark ? styles.insideContainerDark : styles.insideContainerLight)}>
       <Helmet>
         <title>{config.meta.title} | Resume</title>
         <meta property="description" content={config.meta.description} />
@@ -40,7 +43,7 @@ const Resume = () => {
       <ResumeBlurb />
 
       <div className={styles.resumeWrapper} ref={resumeRef}>
-        <div className={styles.divider}></div>
+        <div className={cn(styles.divider, isDark ? styles.dividerDark : styles.dividerLight)}></div>
 
         <div className={styles.resumeContainer}>
           {jobs.map(((item, idx) => <ResumeItem key={item.id} idx={idx} item={item}/>))}

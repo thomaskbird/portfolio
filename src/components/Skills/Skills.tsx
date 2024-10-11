@@ -6,13 +6,16 @@ import {useEffect, useRef, useState} from "react";
 import {SkillType} from "@/types/SkillType";
 import retrieveSkills from "@/services/retrieveSkills";
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectSetIsLoading} from "@/store/selectors/globalStore";
+import {selectSetIsLoading, selectTheme} from "@/store/selectors/globalStore";
+import cn from "classnames";
 
 type SkillsType = {
 };
 
 const Skills = ({}: SkillsType) => {
   const setIsLoading = useGlobalStore(selectSetIsLoading);
+  const theme = useGlobalStore(selectTheme);
+  const isDark = theme === 'dark';
 
   const [skills, setSkills] = useState<SkillType[]>([]);
   const [vertical, setVertical] = useState(0);
@@ -55,7 +58,7 @@ const Skills = ({}: SkillsType) => {
       {(skills ?? []).map(skill => (
         <motion.div
           key={skill.id}
-          className={styles.chip}
+          className={cn(styles.chip, isDark ? styles.chipDark : styles.chipLight)}
           style={{
             opacity: scrollYProgress,
           }}

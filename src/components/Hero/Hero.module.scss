@@ -1,3 +1,46 @@
+.heroCtaPrimaryDark {
+  color: #999;
+  box-shadow: inset 0 1px 0 rgba(0,91,168,0.5);
+  background: radial-gradient(circle 160px at center -125px, rgba(0,91,169,0.75), rgba(17,17,17,1));
+  border: 1px solid rgba(5,5,5,0.7);
+
+  &:hover {
+    color: #ccc;
+    background: radial-gradient(circle 165px at center -100px, rgba(0,91,169,0.75), rgba(17,17,17,1));
+  }
+
+  &:focus {
+    color: #ccc;
+    background: radial-gradient(circle 165px at center -100px, rgba(0,91,169,0.85), rgba(17,17,17,1));
+  }
+}
+
+.heroCtaPrimaryLight {
+  color: #666;
+  background: radial-gradient(circle 160px at center -125px, rgba(200,200,200,0.75), rgba(255,255,255,1));
+}
+
+.heroCtaPrimary {
+  margin-right: 20px;
+  border-radius: 10px;
+}
+
+.heroCtaSecondaryDark {
+
+}
+
+.heroCtaSecondaryLight {
+  color: #999;
+
+  &:hover {
+    color: #333;
+  }
+}
+
+.heroCtaSecondary {
+
+}
+
 .heroDark {
   background: radial-gradient(circle 500px at center -125px, rgba(0,40,100,0.5), rgba(17,17,17,1));
 
@@ -60,29 +103,6 @@
       margin: 25px 0 50px;
       justify-content: center;
     }
-  }
-
-  .heroCtaPrimary {
-    color: #999;
-    margin-right: 20px;
-    box-shadow: inset 0 1px 0px rgba(0,91,168,0.5);
-    border-radius: 10px;
-    background: radial-gradient(circle 160px at center -125px, rgba(0,91,169,0.75), rgba(17,17,17,1));
-    border: 1px solid rgba(5,5,5,0.7);
-
-    &:hover {
-      color: #ccc;
-      background: radial-gradient(circle 165px at center -100px, rgba(0,91,169,0.75), rgba(17,17,17,1));
-    }
-
-    &:focus {
-      color: #ccc;
-      background: radial-gradient(circle 165px at center -100px, rgba(0,91,169,0.85), rgba(17,17,17,1));
-    }
-  }
-
-  .heroCtaSecondary {
-
   }
 
   @media(min-width: 601px) and (max-width: 900px) {
@@ -149,29 +169,6 @@
       margin: 25px 0 50px;
       justify-content: center;
     }
-  }
-
-  .heroCtaPrimary {
-    color: #999;
-    margin-right: 20px;
-    box-shadow: inset 0 1px 0px rgba(0,91,168,0.5);
-    border-radius: 10px;
-    background: radial-gradient(circle 160px at center -125px, rgba(0,91,169,0.75), rgba(17,17,17,1));
-    border: 1px solid rgba(5,5,5,0.7);
-
-    &:hover {
-      color: #ccc;
-      background: radial-gradient(circle 165px at center -100px, rgba(0,91,169,0.75), rgba(17,17,17,1));
-    }
-
-    &:focus {
-      color: #ccc;
-      background: radial-gradient(circle 165px at center -100px, rgba(0,91,169,0.85), rgba(17,17,17,1));
-    }
-  }
-
-  .heroCtaSecondary {
-
   }
 
   @media(min-width: 601px) and (max-width: 900px) {
