@@ -204,7 +204,9 @@ export const themeDark: Theme = createTheme({
         root: ({ ownerState }) => ({
           padding: 0,
           borderRadius: '500px',
+          background: 'rgba(255,255,255,0.2)',
           '.MuiButtonBase-root': {
+            color: '#fff',
             padding: '5px',
             '.MuiSwitch-thumb': {
               width: '27px',
@@ -443,6 +445,7 @@ export const themeLight: Theme = createTheme({
         root: ({ ownerState }) => ({
           padding: 0,
           borderRadius: '500px',
+          background: 'rgba(0,0,0,0.2)',
           '.MuiButtonBase-root': {
             padding: '5px',
             '.MuiSwitch-thumb': {
