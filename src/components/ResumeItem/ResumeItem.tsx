@@ -80,7 +80,10 @@ const ResumeItem = ({
           <p><b>Skills:</b> {item.skills.join(', ')}</p>
         </motion.div>
         <div className={styles.indicator}>
-          <div className={styles.dot}></div>
+          <div className={cn(
+            styles.dot,
+            isDark ? styles.dotDark : styles.dotLight
+          )}></div>
         </div>
         <div className={cn(
           styles.resumeItemRight,
@@ -92,6 +95,7 @@ const ResumeItem = ({
             }}
             className={cn(
               styles.dates,
+              isDark ? styles.datesDark : styles.datesLight,
               isDark ? styles.resumeItemRightDark : styles.resumeItemRightLight
             )}
           >

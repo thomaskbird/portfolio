@@ -46,10 +46,17 @@
     }
   }
 
+  .datesDark {
+    background: rgb(9, 9, 9);
+  }
+
+  .datesLight {
+    background: #fff;
+  }
+
   .dates {
     padding: 8px 20px;
     width: fit-content;
-    background: rgb(9, 9, 9);
   }
 
   h5 {
@@ -88,12 +95,20 @@
   align-content: center;
   justify-content: center;
 
+  .dotDark {
+    background: rgb(51, 51, 51, 1);
+    border: 5px solid rgba(255,255,255,0.75);
+  }
+
+  .dotLight {
+    background: rgb(255, 255, 255, 1);
+    border: 5px solid rgba(255,255,255,0.25);
+  }
+
   .dot {
     width: 30px;
     height: 30px;
     border-radius: 100px;
-    background: rgb(51, 51, 51, 1);
-    border: 5px solid rgba(255,255,255,0.75);
     box-shadow: 0 1px 20px rgba(0,0,0,0.25);
   }
 }
@@ -158,6 +173,20 @@
       display: flex;
       justify-content: flex-start;
 
+      .datesDark {
+        &::before {
+          border: 28px solid transparent;
+          border-right-color: rgb(9, 9, 9);
+        }
+      }
+
+      .datesLight {
+        &::before {
+          border: 28px solid transparent;
+          border-right-color: #fff;
+        }
+      }
+
       .dates {
         &::before {
           top: 0;
@@ -167,7 +196,6 @@
           right: 100%;
           content: '';
           position: absolute;
-          border: 28px solid transparent;
         }
 
         @media (max-width: 900px) {
@@ -226,6 +254,20 @@
       display: flex;
       justify-content: flex-end;
 
+      .datesDark {
+        &::before {
+          border: 28px solid transparent;
+          border-left-color: rgb(9, 9, 9);
+        }
+      }
+
+      .datesLight {
+        &::before {
+          border: 28px solid transparent;
+          border-left-color: #fff;
+        }
+      }
+
       .dates {
         &::before {
           top: 0;
@@ -235,8 +277,6 @@
           right: auto;
           content: '';
           position: absolute;
-          border: 28px solid transparent;
-          border-left-color: rgb(9, 9, 9);
         }
 
         @media (max-width: 900px) {
