@@ -303,7 +303,7 @@ export const themeLight: Theme = createTheme({
       main: 'rgba(255,255,255, 0.2)',
     },
     secondary: {
-      main: 'rgba(255,255,255,0.5)'
+      main: 'rgba(0,0,0,0.5)'
     },
     success: {
       main: 'rgba(29,194,123,0.5)'
@@ -437,14 +437,6 @@ export const themeLight: Theme = createTheme({
         })
       }
     },
-    MuiFormControl: {
-      styleOverrides: {
-        root: ({ ownerState }) => ({
-          padding: '1px',
-          background: 'linear-gradient(45deg,#000 0,#333 50%, #111 100%);',
-        })
-      }
-    },
     // todo: need to handle a whole lot of styling issues
     MuiSwitch: {
       styleOverrides: {
@@ -490,11 +482,11 @@ export const themeLight: Theme = createTheme({
       styleOverrides: {
         root: ({ ownerState }) => ({
           ...(ownerState.color === 'primary' && {
-            background: '#070707',
+            background: '#f5f5f5',
             transition: 'all ease-in 0.5s',
 
             ':hover': {
-              background: 'linear-gradient(45deg,#111 0, #000 100%);',
+              background: 'linear-gradient(45deg,#eee 0, #fff 100%);',
             }
           }),
           color: '#aaa',

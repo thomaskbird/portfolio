@@ -1,6 +1,8 @@
 import {MutableRefObject, useEffect, useRef, useState} from "react";
 import styles from './WordSlider.module.scss';
 import cn from "classnames";
+import {useGlobalStore} from "@/store/useGlobalStore";
+import {selectTheme} from "@/store/selectors/globalStore";
 
 export type WordSliderType = {
   sentence: string;
@@ -13,6 +15,8 @@ const WordSlider = ({
   duration = 2000,
   slideWords,
 }: WordSliderType) => {
+  const theme = useGlobalStore(selectTheme);
+  const isDark = theme === 'dark';
   const interval: MutableRefObject<any> = useRef();
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -49,7 +53,13 @@ const WordSlider = ({
         <span className={styles.sentence}>{sentence}&nbsp;</span>
         <span className={styles.mask}>
           {(slideWords ?? []).map((word, idx) => (
-            <span key={idx} className={idx === activeIndex ? cn(styles.word, styles.active) : styles.word}>
+            <span
+              key={idx}
+              className={cn(
+                styles.word,
+                isDark ? styles.wordDark : styles.wordLight,
+                idx === activeIndex ? styles.active : '',
+              )}>
               {word}
             </span>
           ))}

@@ -4,6 +4,20 @@
   font-size: 74px;
 }
 
+.horizontalScrollSnapperDark {
+  & > img {
+    filter: grayscale(100%);
+  }
+}
+
+.horizontalScrollSnapperLight {
+  background: #666;
+  margin-bottom: 50px;
+  & > img {
+    filter: grayscale(100%);
+  }
+}
+
 .horizontalScrollSnapper {
   margin-top: 50px;
   display: grid;
@@ -14,7 +28,6 @@
   scroll-snap-type: x mandatory;
 
   & > img {
-    filter: grayscale(100%);
     scroll-snap-align: center;
     transition: all ease-in 0.25s;
 

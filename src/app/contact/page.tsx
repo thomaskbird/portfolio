@@ -12,7 +12,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import Typography from "@mui/material/Typography";
 import addContact from "@/services/addContact";
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectSetIsLoading} from "@/store/selectors/globalStore";
+import {selectSetIsLoading, selectTheme} from "@/store/selectors/globalStore";
 import {useEffect, useState} from "react";
 import config from "@/config/sites";
 import {Helmet} from "react-helmet";
@@ -20,6 +20,7 @@ import WordSlider from "@/components/WordSlider/WordSlider";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Socials from "@/components/Socials/Socials";
 import randomInteger from "@/utils/generateRandomNumber";
+import cn from "classnames";
 
 const defaultVals: ContactFormType = {
   name: '',
@@ -92,6 +93,8 @@ const logos = [
 
 const Contact = () => {
   const setIsLoading = useGlobalStore(selectSetIsLoading);
+  const theme = useGlobalStore(selectTheme);
+  const isDark = theme === 'dark';
   const {
     handleSubmit,
     reset,
@@ -140,7 +143,10 @@ const Contact = () => {
         <meta property="description" content={config.meta.description}/>
       </Helmet>
 
-      <div className={pageStyles.horizontalScrollSnapper}>
+      <div className={cn(
+        pageStyles.horizontalScrollSnapper,
+        isDark ? pageStyles.horizontalScrollSnapperDark : pageStyles.horizontalScrollSnapperLight
+      )}>
         {logos.map(logo => (
           <img
             key={logo.id}
