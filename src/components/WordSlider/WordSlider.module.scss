@@ -25,8 +25,15 @@
     position: relative;
   }
 
-  .word {
+  .wordDark {
     color: #fff;
+  }
+
+  .wordLight {
+    color: #111;
+  }
+
+  .word {
     opacity: 0;
     font-weight: 600;
     position: absolute;

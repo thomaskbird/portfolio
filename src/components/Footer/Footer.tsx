@@ -6,11 +6,12 @@ import Link from "next/link";
 import MOCK_NAVITEMS from "@/mocks/mockNavigation";
 import {Container} from "@mui/material";
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectSetIsLoading} from "@/store/selectors/globalStore";
+import {selectSetIsLoading, selectTheme} from "@/store/selectors/globalStore";
 import {useEffect, useState} from "react";
 import PostType from "@/types/PostType";
 import retrieveLatestPosts from "@/services/retrieveLatestPosts";
 import Socials from "@/components/Socials/Socials";
+import cn from "classnames";
 
 type FooterType = {};
 
@@ -18,6 +19,9 @@ const iconSize = 'medium';
 
 const Footer = ({}: FooterType) => {
   const setIsLoading = useGlobalStore(selectSetIsLoading);
+  const theme = useGlobalStore(selectTheme);
+  const isDark = theme === 'dark';
+  const logoUrl = isDark ? '/logo.png' : '/logo-dark.png';
 
   const [posts, setPosts] = useState<PostType[]>([]);
 
@@ -31,12 +35,12 @@ const Footer = ({}: FooterType) => {
   }, []);
 
   return (
-    <Container maxWidth={false} disableGutters className={styles.footerWrapper}>
+    <Container maxWidth={false} disableGutters className={isDark ? styles.footerWrapperDark : styles.footerWrapperLight}>
       <Container>
         <div>
           <div className={styles.blurbs}>
             <div className={styles.blurb}>
-              <RoomIcon fontSize={iconSize} className={styles.blurbIcon}/>
+              <RoomIcon fontSize={iconSize} className={cn(styles.blurbIcon, isDark ? styles.blurbIconDark : styles.blurbIconLight)}/>
               <div className={styles.blurbText}>
                 <h5>Location</h5>
                 <p><Link target="_blank" href="https://maps.app.goo.gl/ZFKQYfNjj4kqwTyH7">Bowling Green, OH</Link></p>
@@ -44,7 +48,7 @@ const Footer = ({}: FooterType) => {
             </div>
 
             <div className={styles.blurb}>
-              <PhoneIcon fontSize={iconSize} className={styles.blurbIcon}/>
+              <PhoneIcon fontSize={iconSize} className={cn(styles.blurbIcon, isDark ? styles.blurbIconDark : styles.blurbIconLight)}/>
               <div className={styles.blurbText}>
                 <h5>Phone</h5>
                 <p><Link href="tel:313-410-3709">313-410-3709</Link></p>
@@ -52,7 +56,7 @@ const Footer = ({}: FooterType) => {
             </div>
 
             <div className={styles.blurb}>
-              <EmailIcon fontSize={iconSize} className={styles.blurbIcon}/>
+              <EmailIcon fontSize={iconSize} className={cn(styles.blurbIcon, isDark ? styles.blurbIconDark : styles.blurbIconLight)}/>
               <div className={styles.blurbText}>
                 <h5>Email:</h5>
                 <p><Link href="mailto:thomaskbird@icloud.com">thomaskbird@icloud.com</Link></p>
@@ -63,7 +67,7 @@ const Footer = ({}: FooterType) => {
           <div className={styles.footerMain}>
             <div className={styles.footerMainColumn}>
               <Socials />
-              <img src="/logo.png" alt="Thomas K Bird" className={styles.footerLogo} />
+              <img src={logoUrl} alt="Thomas K Bird" className={styles.footerLogo} />
               <p className={styles.copyright}>&copy; {new Date().getFullYear()} All Rights Reserved</p>
             </div>
             <div className={styles.footerMainColumn}>

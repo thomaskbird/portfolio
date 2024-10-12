@@ -4,12 +4,18 @@ import Button from "@mui/material/Button";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
 import Typography from "@mui/material/Typography";
 import Skills from "@/components/Skills/Skills";
+import cn from "classnames";
+import {useGlobalStore} from "@/store/useGlobalStore";
+import {selectTheme} from "@/store/selectors/globalStore";
 
 type ResumeBlurbType = {};
 
 const ResumeBlurb = ({}: ResumeBlurbType) => {
+  const theme = useGlobalStore(selectTheme);
+  const isDark = theme === 'dark';
+
   return (
-    <div className={styles.blurb}>
+    <div className={cn(styles.blurb, isDark ? styles.blurbDark : styles.blurbLight)}>
       <Link
         href="https://docs.google.com/document/d/1gjkhy1ogLDcKIiUpiStgMHxc052bkdsn/edit?usp=sharing&ouid=101742124066617366377&rtpof=true&sd=true"
         target="_blank">

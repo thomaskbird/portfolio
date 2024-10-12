@@ -5,6 +5,9 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import {IconButton} from "@mui/material";
 import {useInView} from "framer-motion";
+import {useGlobalStore} from "@/store/useGlobalStore";
+import {selectTheme} from "@/store/selectors/globalStore";
+import cn from "classnames";
 
 type SliderType = {
   items: any[];
@@ -23,6 +26,8 @@ const Slider = ({
   startAt = 0,
   autoPlayOnlyWhenVisible = false
 }: SliderType) => {
+  const theme = useGlobalStore(selectTheme);
+  const isDark = theme === 'dark';
   const [itemsTotal, setItemsTotal] = useState(0);
 
   const interval: MutableRefObject<any> = useRef();
@@ -96,9 +101,9 @@ const Slider = ({
 
   return (
     <div className={styles.sliderBorder}>
-      <div className={styles.sliderWrap}>
-        <img src="/quote.png" className={styles.quoteLeft}/>
-        <img src="/quote.png" className={styles.quoteRight}/>
+      <div className={cn(styles.sliderWrap, isDark ? styles.sliderWrapDark : styles.sliderWrapLight)}>
+        <img src="/quote.png" className={cn(styles.quoteLeft, isDark ? styles.quoteColorDark : styles.quoteColorLight)}/>
+        <img src="/quote.png" className={cn(styles.quoteRight, isDark ? styles.quoteColorDark : styles.quoteColorLight)}/>
 
         <div className={styles.slidesWrap} ref={sliderRef}>
           {(items ?? []).map((testimonial, idx) => (
@@ -117,7 +122,7 @@ const Slider = ({
           {(items ?? []).map((testimonial, iDot) => (
             <div
               key={iDot}
-              className={activeIndex === iDot ? styles.dotActive : styles.dot}
+              className={cn(activeIndex === iDot ? styles.dotActive : styles.dot, isDark ? styles.dotDark : styles.dotLight)}
               onClick={() => activeIndex === iDot ? false : setActiveIndex(iDot)}
             />
           ))}

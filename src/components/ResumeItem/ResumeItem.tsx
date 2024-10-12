@@ -5,6 +5,8 @@ import {MutableRefObject, useEffect, useRef, useState} from "react";
 import { motion } from "framer-motion";
 import {ResumeType} from "@/types/ResumeType";
 import moment from "moment";
+import {useGlobalStore} from "@/store/useGlobalStore";
+import {selectTheme} from "@/store/selectors/globalStore";
 
 type ResumeItemType = {
   item: ResumeType
@@ -17,6 +19,8 @@ const ResumeItem = ({
   item,
   idx,
 }: ResumeItemType) => {
+  const theme = useGlobalStore(selectTheme);
+  const isDark = theme === 'dark';
   const isEven = idx % 2 === 0;
   const wrapperRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -36,14 +40,26 @@ const ResumeItem = ({
     return () => scrollYProgress.destroy();
   }, []);
 
+  const date = new Date();
+  const yearCurrent = date.getFullYear();
+  const endAtMoment = moment(item.endAt);
+  const endAtFormatted = endAtMoment.format("YYYY");
+  const endDate = Number(endAtFormatted) > yearCurrent ? 'Present' : endAtMoment.format("MMM, YYYY");
+
   return (
     <div
       ref={wrapperRef}
-      className={cn(styles.resumeItem, !isEven ? styles.resumeItemEven : styles.resumeItemOdd)}
+      className={cn(
+        styles.resumeItem,
+        !isEven ? styles.resumeItemEven : styles.resumeItemOdd
+      )}
     >
       <div className={styles.sticky}>
         <motion.div
-          className={styles.resumeItemLeft}
+          className={cn(
+            styles.resumeItemLeft,
+            isDark ? styles.resumeItemDark : styles.resumeItemLight
+          )}
           style={{
             opacity: opacity,
             transform: `scale(${opacity})`,
@@ -64,17 +80,26 @@ const ResumeItem = ({
           <p><b>Skills:</b> {item.skills.join(', ')}</p>
         </motion.div>
         <div className={styles.indicator}>
-          <div className={styles.dot}></div>
+          <div className={cn(
+            styles.dot,
+            isDark ? styles.dotDark : styles.dotLight
+          )}></div>
         </div>
-        <div className={styles.resumeItemRight}>
+        <div className={cn(
+          styles.resumeItemRight,
+        )}>
           <motion.div
             style={{
               opacity: opacity,
               transform: `translate(${isEven ? '' : '-'}${scrollValueCalculated}px, 0)`,
             }}
-            className={styles.dates}
+            className={cn(
+              styles.dates,
+              isDark ? styles.datesDark : styles.datesLight,
+              isDark ? styles.resumeItemRightDark : styles.resumeItemRightLight
+            )}
           >
-            <h5>{moment(item.startAt).format("MMM, YYYY")} to {moment(item.endAt).format("MMM, YYYY")}</h5>
+            <h5>{moment(item.startAt).format("MMM, YYYY")} to {endDate}</h5>
           </motion.div>
         </div>
       </div>

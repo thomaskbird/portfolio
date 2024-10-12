@@ -1,7 +1,6 @@
 .resumeItem {
   height: 150vh;
 
-
   h2,
   h4 {
     margin: 0;
@@ -47,10 +46,17 @@
     }
   }
 
+  .datesDark {
+    background: rgb(9, 9, 9);
+  }
+
+  .datesLight {
+    background: #fff;
+  }
+
   .dates {
     padding: 8px 20px;
     width: fit-content;
-    background: rgb(9, 9, 9);
   }
 
   h5 {
@@ -89,12 +95,20 @@
   align-content: center;
   justify-content: center;
 
+  .dotDark {
+    background: rgb(51, 51, 51, 1);
+    border: 5px solid rgba(255,255,255,0.75);
+  }
+
+  .dotLight {
+    background: rgb(255, 255, 255, 1);
+    border: 5px solid rgba(255,255,255,0.25);
+  }
+
   .dot {
     width: 30px;
     height: 30px;
     border-radius: 100px;
-    background: rgb(51, 51, 51, 1);
-    border: 5px solid rgba(255,255,255,0.75);
     box-shadow: 0 1px 20px rgba(0,0,0,0.25);
   }
 }
@@ -113,10 +127,27 @@
   text-align: right;
 
   .sticky {
-    .resumeItemLeft {
+    .resumeItemDark {
       box-shadow: inset 0 1px 1px rgba(40,60,110,0.5);
       background: radial-gradient(circle 650px at center -400px, rgba(0,40,100,0.75), rgba(10,10,10,1));
 
+      &::before {
+        border: 15px solid transparent;
+        border-left-color: rgb(9, 9, 9);
+      }
+    }
+
+    .resumeItemLight {
+      border-top: 0.25px solid #333;
+      background: #fff;
+
+      &::before {
+        border: 15px solid transparent;
+        border-left-color: #fff;
+      }
+    }
+
+    .resumeItemLeft {
       &::before {
         width: 0;
         height: 0;
@@ -125,8 +156,6 @@
         content: '';
         position: absolute;
         top: calc(50% - 30px / 2);
-        border: 15px solid transparent;
-        border-left-color: rgb(9, 9, 9);
 
         @media(max-width: 900px) {
           display: none;
@@ -144,6 +173,20 @@
       display: flex;
       justify-content: flex-start;
 
+      .datesDark {
+        &::before {
+          border: 28px solid transparent;
+          border-right-color: rgb(9, 9, 9);
+        }
+      }
+
+      .datesLight {
+        &::before {
+          border: 28px solid transparent;
+          border-right-color: #fff;
+        }
+      }
+
       .dates {
         &::before {
           top: 0;
@@ -153,8 +196,6 @@
           right: 100%;
           content: '';
           position: absolute;
-          border: 28px solid transparent;
-          border-right-color: rgba(9,9,9,1);
         }
 
         @media (max-width: 900px) {
@@ -173,10 +214,27 @@
   .sticky {
     flex-direction: row-reverse;
 
-    .resumeItemLeft {
+    .resumeItemLight {
+      border-top: 0.25px solid #333;
+      background: #fff;
+
+      &::before {
+        border: 15px solid transparent;
+        border-right-color: #fff;
+      }
+    }
+
+    .resumeItemDark {
       box-shadow: inset 0 1px 1px rgba(40,60,110,0.5);
       background: radial-gradient(circle 650px at center -400px, rgba(0,40,100,0.75), rgba(10,10,10,1));
 
+      &::before {
+        border: 15px solid transparent;
+        border-right-color: rgb(9, 9, 9);
+      }
+    }
+
+    .resumeItemLeft {
       &::before {
         width: 0;
         height: 0;
@@ -185,8 +243,6 @@
         right: 100%;
         position: absolute;
         top: calc(50% - 30px / 2);
-        border: 15px solid transparent;
-        border-right-color: rgb(9, 9, 9);
 
         @media (max-width: 900px) {
           display: none;
@@ -198,6 +254,20 @@
       display: flex;
       justify-content: flex-end;
 
+      .datesDark {
+        &::before {
+          border: 28px solid transparent;
+          border-left-color: rgb(9, 9, 9);
+        }
+      }
+
+      .datesLight {
+        &::before {
+          border: 28px solid transparent;
+          border-left-color: #fff;
+        }
+      }
+
       .dates {
         &::before {
           top: 0;
@@ -207,8 +277,6 @@
           right: auto;
           content: '';
           position: absolute;
-          border: 28px solid transparent;
-          border-left-color: rgb(9, 9, 9);
         }
 
         @media (max-width: 900px) {
