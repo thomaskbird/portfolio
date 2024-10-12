@@ -4,7 +4,7 @@ import {GlobalStore} from "@/store/types/globalStore";
 
 const initialState = {
   isLoading: false,
-  theme: 'light', // todo: when done testing set default back to dark
+  theme: 'dark',
 }
 
 export const createGlobalStoreSlice: StateCreator<

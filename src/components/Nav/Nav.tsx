@@ -19,6 +19,7 @@ import {usePathname} from "next/navigation";
 import CloseIcon from '@mui/icons-material/Close';
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectIsLoading, selectSetIsLoading, selectSetTheme, selectTheme} from "@/store/selectors/globalStore";
+import cn from "classnames";
 
 interface Props {
   /**
@@ -42,11 +43,12 @@ const drawerWidth = 240;
 
 const Nav = ({ window, navOnly = false }: Props) => {
   const theme = useGlobalStore(selectTheme);
+  const isDark = theme === 'dark';
   const setTheme = useGlobalStore(selectSetTheme);
   const pathname = usePathname();
   const isHome = pathname === '/';
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const logoUrl = theme === 'dark' ? '/logo.png' : '/logo-dark.png';
+  const logoUrl = isDark ? '/logo.png' : '/logo-dark.png';
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -77,11 +79,23 @@ const Nav = ({ window, navOnly = false }: Props) => {
       <Divider />
       <List className={navStyles.drawerList}>
         {MOCK_NAVITEMS.map((item) => (
-          <Link href={item.link} key={item.id} className={navStyles.navLink}>
+          <Link href={item.link} key={item.id} className={cn(
+            navStyles.navLink,
+            isDark ? navStyles.navLinkDark : navStyles.navLinkLight
+          )}>
             {item.label}
           </Link>
         ))}
       </List>
+
+      <div className={navStyles.navSwitch}>
+        <Tooltip title={`${theme} mode`}>
+          <Switch
+            checked={isDark}
+            onChange={(evt: React.ChangeEvent<HTMLInputElement>) => setTheme(evt.target.checked ? 'dark' : 'light')}
+          />
+        </Tooltip>
+      </div>
     </Box>
   );
 
@@ -125,9 +139,8 @@ const Nav = ({ window, navOnly = false }: Props) => {
                   </Link>
                 ))}
 
-                {/* todo: need to handle a whole of styling issues */}
                 <Tooltip title={`${theme} mode`}>
-                  <Switch checked={theme === 'dark'} onChange={(evt: React.ChangeEvent<HTMLInputElement>) => setTheme(evt.target.checked ? 'dark' : 'light')} />
+                  <Switch checked={isDark} onChange={(evt: React.ChangeEvent<HTMLInputElement>) => setTheme(evt.target.checked ? 'dark' : 'light')} />
                 </Tooltip>
               </Box>
             </Toolbar>

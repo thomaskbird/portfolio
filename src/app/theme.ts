@@ -198,7 +198,6 @@ export const themeDark: Theme = createTheme({
         })
       }
     },
-    // todo: need to handle a whole lot of styling issues
     MuiSwitch: {
       styleOverrides: {
         root: ({ ownerState }) => ({
@@ -439,7 +438,6 @@ export const themeLight: Theme = createTheme({
         })
       }
     },
-    // todo: need to handle a whole lot of styling issues
     MuiSwitch: {
       styleOverrides: {
         root: ({ ownerState }) => ({
@@ -503,20 +501,8 @@ export const themeLight: Theme = createTheme({
         root: ({ ownerState }) => ({
           '.MuiPaper-root': {
             width: '100%',
-            background: 'linear-gradient(230deg,#222,#000)',
+            background: 'linear-gradient(230deg,#ddd,#fff)',
           },
-          '.MuiListItem-root': {
-            a: {
-              color: '#aaa',
-              width: '100%',
-              textDecoration: 'none',
-              transition: 'all ease-in 0.5s',
-              ':hover': {
-                color: '#fff',
-                paddingLeft: '10px',
-              }
-            }
-          }
         })
       }
     }
