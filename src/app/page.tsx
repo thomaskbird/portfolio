@@ -83,10 +83,7 @@ const Home = () => {
       <Container maxWidth={false} disableGutters className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
         <Container>
           <PageSectionTitle title="People Are Talking"/>
-
-          {testimonials.length && (
             <Slider items={testimonials} />
-          )}
         </Container>
       </Container>
     </Container>

@@ -60,7 +60,7 @@ export default function RootLayout({
           </ThemeProvider>
         </GlobalCssPriority>
       </body>
-      <GoogleAnalytics gaId="383345066" />
+      <GoogleAnalytics gaId="G-B75MXB0NDX" />
     </html>
   )
 }
