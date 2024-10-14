@@ -5,37 +5,19 @@ import ListView from "@/components/ListView/ListView";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Typography from "@mui/material/Typography";
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectIsLoading, selectSetIsLoading} from "@/store/selectors/globalStore";
-import {useEffect, useState} from "react";
-import PostType from "@/types/PostType";
+import {selectIsLoading} from "@/store/selectors/globalStore";
 import BlogPost from "@/components/BlogPost/BlogPost";
 import ItemAnimation from "@/components/ItemAnimation/ItemAnimation";
 import {Skeleton, Stack} from "@mui/material";
 import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
-import retrieveAllBlogPosts from "@/services/retrieveAllBlogPosts";
 import BlogPostSkeleton from "@/components/BlogPost/BlogPostSkeleton";
 import config from "@/config/sites";
 import {Helmet} from "react-helmet";
+import useRetrievePosts from "@/hooks/useRetrievePosts";
 
 const Blog = () => {
   const isLoading = useGlobalStore(selectIsLoading);
-  const setIsLoading = useGlobalStore(selectSetIsLoading);
-
-  const [posts, setPosts] = useState<PostType[]>([]);
-
-  useEffect(() => {
-    (async() => {
-      try {
-        setIsLoading(true);
-        const postsFromDb = await retrieveAllBlogPosts();
-        setPosts(postsFromDb);
-      } catch (e) {
-        console.error(e);
-      } finally {
-        setIsLoading(false);
-      }
-    })();
-  }, []);
+  const { posts, error } = useRetrievePosts('blog');
 
   return (
     <>
