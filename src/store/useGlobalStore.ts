@@ -1,5 +1,11 @@
 import {createGlobalStoreSlice} from "@/store/slices/createGlobalStoreSlice";
-import {immer} from "zustand/middleware/immer";
+import {createJSONStorage, persist} from "zustand/middleware";
 import {create} from "zustand";
 
-export const useGlobalStore = create(immer(createGlobalStoreSlice));
+export const useGlobalStore = create(persist(
+  createGlobalStoreSlice,
+  {
+    name: 'global-storage',
+    storage: createJSONStorage(() => sessionStorage),
+  }
+));
