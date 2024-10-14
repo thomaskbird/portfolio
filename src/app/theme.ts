@@ -190,6 +190,13 @@ export const themeDark: Theme = createTheme({
         })
       }
     },
+    MuiBackdrop: {
+      styleOverrides: {
+        root: ({ownerState}) => ({
+          backgroundColor: 'rgba(0,0,0,0.95)',
+        })
+      }
+    },
     MuiFormControl: {
       styleOverrides: {
         root: ({ ownerState }) => ({
@@ -370,6 +377,13 @@ export const themeLight: Theme = createTheme({
     }
   },
   components: {
+    MuiBackdrop: {
+      styleOverrides: {
+        root: ({ownerState}) => ({
+          backgroundColor: 'rgba(0,0,0,0.95)',
+        })
+      }
+    },
     MuiTypography: {
       defaultProps: {
         variantMapping: {
