@@ -6,33 +6,20 @@ import Link from "next/link";
 import MOCK_NAVITEMS from "@/mocks/mockNavigation";
 import {Container} from "@mui/material";
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectSetIsLoading, selectTheme} from "@/store/selectors/globalStore";
-import {useEffect, useState} from "react";
-import PostType from "@/types/PostType";
-import retrieveLatestPosts from "@/services/retrieveLatestPosts";
+import {selectTheme} from "@/store/selectors/globalStore";
 import Socials from "@/components/Socials/Socials";
 import cn from "classnames";
+import useRetrievePosts from "@/hooks/useRetrievePosts";
 
 type FooterType = {};
 
 const iconSize = 'medium';
 
 const Footer = ({}: FooterType) => {
-  const setIsLoading = useGlobalStore(selectSetIsLoading);
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
   const logoUrl = isDark ? '/logo.png' : '/logo-dark.png';
-
-  const [posts, setPosts] = useState<PostType[]>([]);
-
-  useEffect(() => {
-    (async() => {
-      setIsLoading(true);
-      const postsFromDb = await retrieveLatestPosts();
-      setPosts(postsFromDb);
-      setIsLoading(false);
-    })();
-  }, []);
+  const { posts } = useRetrievePosts('blog');
 
   return (
     <Container maxWidth={false} disableGutters className={isDark ? styles.footerWrapperDark : styles.footerWrapperLight}>
@@ -75,8 +62,8 @@ const Footer = ({}: FooterType) => {
               <div className={styles.footerTitleDivider}></div>
 
               <ul>
-                {posts.map(post => (
-                  <li key={post.id}><Link className={styles.footerLinks} href={`/p/${post.slug}`}>{post.title}</Link></li>
+                {posts?.map(post => (
+                  <li key={post.sys.id}><Link className={styles.footerLinks} href={`/p/${post.fields.slug}`}>{post.fields.title}</Link></li>
                 ))}
               </ul>
             </div>
