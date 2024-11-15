@@ -49,7 +49,7 @@ const Skills = ({}: SkillsType) => {
             opacity: scrollYProgress,
           }}
         >
-          {skill.fields?.title}
+          {skill.fields?.title as string}
         </motion.div>
       ))}
     </motion.div>

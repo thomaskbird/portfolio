@@ -7,6 +7,7 @@ import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
 import cn from "classnames";
 import {Entry} from "contentful";
+import {ReactNode} from "react";
 
 type Post = {
   type: 'Page' | 'Post'
@@ -34,13 +35,13 @@ const BlogPost = ({
       <div className={cn(styles.listItemWrapper, isDark ? styles.listItemWrapperDark : styles.listItemWrapperLight)}>
         <div className={styles.listItemHeader}>
           <Link href={`/p/${post.fields.slug}`}>
-            <Typography variant="h4">{post.fields.title}</Typography>
+            <Typography variant="h4">{post.fields.title as string}</Typography>
           </Link>
           <span className={styles.listItemPosted}>{post.sys.createdAt.substring(0, 10)}</span>
         </div>
 
         <Typography variant="body2" sx={{ marginBottom: 3 }}>
-          {post.fields.description}
+          {post.fields.description as ReactNode}
         </Typography>
 
         <Link href={`/p/${post.fields.slug}`}>

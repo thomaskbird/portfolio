@@ -10,6 +10,7 @@ import {selectTheme} from "@/store/selectors/globalStore";
 import Socials from "@/components/Socials/Socials";
 import cn from "classnames";
 import useRetrievePosts from "@/hooks/useRetrievePosts";
+import {ReactNode} from "react";
 
 type FooterType = {};
 
@@ -65,7 +66,7 @@ const Footer = ({}: FooterType) => {
 
               <ul>
                 {postsLimited?.map(post => (
-                  <li key={post.sys.id}><Link className={styles.footerLinks} href={`/p/${post.fields.slug}`}>{post.fields.title}</Link></li>
+                  <li key={post.sys.id}><Link className={styles.footerLinks} href={`/p/${post.fields.slug}`}>{post.fields.title as ReactNode}</Link></li>
                 ))}
               </ul>
             </div>

@@ -15,6 +15,7 @@ import useRetrieveTestimonial from "@/hooks/useRetrieveTestimonial";
 import cn from "classnames";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
+import {ReactNode} from "react";
 
 type PageType = {
   params: {
@@ -34,7 +35,7 @@ const Testimony = ({ params }: PageType) => {
   return (
     <SectionContainer styleName={styles.insideContainer}>
       <Helmet>
-        <title>{config.meta.title} | Testimony {name}</title>
+        <title>{config.meta.title} | Testimony {name as ReactNode}</title>
         <meta property="description" content={config.meta.description}/>
       </Helmet>
 
@@ -57,14 +58,14 @@ const Testimony = ({ params }: PageType) => {
       </Grid>
 
       <div className={cn(styles.blurb, isDark ? styles.blurbDark : styles.blurbLight)}>
-        <img src={testimony?.fields.profileImage?.fields.file.url} alt={name} title={name} className={styles.blurbImage}/>
+        <img src={(testimony?.fields.profileImage as any)?.fields.file.url} alt={name as string} title={name as string} className={styles.blurbImage}/>
 
         <Typography variant="h1">
-          {name}
+          {name as ReactNode}
         </Typography>
 
         <Typography variant="h5">
-          {testimony?.fields.title}
+          {testimony?.fields.title as ReactNode}
         </Typography>
 
         <Typography variant="body2" dangerouslySetInnerHTML={{ __html: testimony?.fields.content as string }} />

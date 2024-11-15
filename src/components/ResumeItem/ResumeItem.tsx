@@ -9,7 +9,7 @@ import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
 
 type ResumeItemType = {
-  item: ResumeType
+  item: any; // ResumeType
   idx: number;
 };
 
@@ -71,7 +71,7 @@ const ResumeItem = ({
 
 
           <ul>
-            {item.fields.content.map((content, idx) => (
+            {item.fields.content.map((content: any, idx: number) => (
               <li key={idx}>{content}</li>
             ))}
           </ul>

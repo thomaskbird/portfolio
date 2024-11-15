@@ -24,7 +24,7 @@ const ProjectSection = ({
   title,
   subtitle,
   description
-}: ProjectSectionType) => {
+}: any) => {
   const wrapperRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const [scrollValueCalculated, setScrollValueCalculated] = useState(0);
   const [screenPosition, setScreenPosition] = useState(0);

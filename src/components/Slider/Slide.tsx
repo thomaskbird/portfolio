@@ -22,7 +22,7 @@ const Slide = ({
     <div className={cn(styles.slide, active ? styles.active : '')}>
       <div className={styles.badge}>
         <div className={styles.avatar}>
-          <img src={profileImage.fields.file.url} alt={`${name}`} />
+          <img src={(profileImage as any).fields.file.url} alt={`${name}`} />
         </div>
         <div className={styles.badgeText}>
           <h5>{title}</h5>

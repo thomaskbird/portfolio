@@ -2,7 +2,7 @@
 
 import styles from './page.module.scss';
 import {Container, Grid, Stack} from "@mui/material";
-import {useEffect, useRef, useState} from "react";
+import {ReactNode, useEffect, useRef, useState} from "react";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Typography from "@mui/material/Typography";
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
@@ -15,6 +15,7 @@ import {Helmet} from "react-helmet";
 import stripTags from "@/utils/stripTags";
 import useRetrievePost from "@/hooks/useRetrievePost";
 import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
+import {Document} from "@contentful/rich-text-types";
 
 type PageType = {
   params: {
@@ -43,14 +44,14 @@ const Page = ({ params }: PageType) => {
   }, [isLoading]);
 
   const title = post ? `${config.meta.title} | Blog | ${post.fields.title}` : `${config.meta.title} | Blog`;
-  const desc = post ? stripTags(post.fields.description) : '';
+  const desc = post ? stripTags(post.fields.description as string) : '';
 
   return (
     <Container maxWidth={false} disableGutters>
       <Helmet>
         <title>{title}</title>
         <meta property="description" content={desc}/>
-        <meta property="keywords" content={post?.fields.keywords}/>
+        <meta property="keywords" content={post?.fields.keywords as string}/>
       </Helmet>
 
       <SectionContainer styleName={styles.wrapper}>
@@ -77,17 +78,17 @@ const Page = ({ params }: PageType) => {
         {post ? (
           <Stack spacing={2}>
             <SkeletonSwitcher
-              item={<Typography variant="h2" className={styles.postTitle}>{post?.fields.title}</Typography>}
+              item={<Typography variant="h2" className={styles.postTitle}>{post?.fields.title as ReactNode}</Typography>}
               skeletonProps={baseSkeletonProps}
             />
 
             <SkeletonSwitcher
-              item={<div className={styles.postBody}>{documentToReactComponents(post?.fields.body)}</div>}
+              item={<div className={styles.postBody}>{documentToReactComponents(post?.fields.body as Document)}</div>}
               skeletonProps={{...baseSkeletonProps, height: 200}}
             />
 
             {post.fields.codepen && (
-              <div dangerouslySetInnerHTML={{__html: post.fields.codepen.content[0].content[0].value}}/>
+              <div dangerouslySetInnerHTML={{__html: (post.fields.codepen as any).content[0].content[0].value}}/>
             )}
           </Stack>
         ) : (

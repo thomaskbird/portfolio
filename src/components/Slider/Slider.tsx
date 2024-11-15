@@ -106,7 +106,7 @@ const Slider = ({
         <img src="/quote.png" className={cn(styles.quoteRight, isDark ? styles.quoteColorDark : styles.quoteColorLight)}/>
 
         <div className={styles.slidesWrap} ref={sliderRef}>
-          {(items ?? []).map((testimonial, idx) => (
+          {(items ?? []).map((testimonial: any, idx: number) => (
             <Slide
               key={idx}
               {...testimonial.fields}
@@ -120,7 +120,7 @@ const Slider = ({
           <IconButton className={styles.icons} onClick={handleTogglePlaying}>
             {isRunning ? <PauseIcon fontSize="large" /> : <PlayArrowIcon fontSize="large" />}
           </IconButton>
-          {(items ?? []).map((testimonial, iDot) => (
+          {(items ?? []).map((testimonial: any, iDot: number) => (
             <div
               key={iDot}
               className={cn(activeIndex === iDot ? styles.dotActive : styles.dot, isDark ? styles.dotDark : styles.dotLight)}
