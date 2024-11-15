@@ -7,7 +7,6 @@ import {selectIsLoading} from "@/store/selectors/globalStore";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Typography from "@mui/material/Typography";
 import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
-import ListView from "@/components/ListView/ListView";
 import ItemAnimation from "@/components/ItemAnimation/ItemAnimation";
 import BlogPost from "@/components/BlogPost/BlogPost";
 import BlogPostSkeleton from "@/components/BlogPost/BlogPostSkeleton";
@@ -16,8 +15,7 @@ import {Helmet} from "react-helmet";
 import useRetrievePosts from "@/hooks/useRetrievePosts";
 
 const Work = () => {
-  const isLoading = useGlobalStore(selectIsLoading);
-  const { posts, error } = useRetrievePosts('work');
+  const { posts, error, isLoading } = useRetrievePosts('work');
 
   return (
     <>
@@ -70,14 +68,13 @@ const Work = () => {
             </BlogPostSkeleton>
           </>
         ) : (
-          <ListView
-            posts={posts}
-            renderItem={(item) => (
-              <ItemAnimation key={item.id}>
+          <>
+            {posts?.map(item => (
+              <ItemAnimation key={item.sys.id}>
                 <BlogPost post={item} />
               </ItemAnimation>
-            )}
-          />
+            ))}
+          </>
         )}
       </SectionContainer>
     </>

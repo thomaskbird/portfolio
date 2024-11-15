@@ -10,7 +10,7 @@ import {selectTheme} from "@/store/selectors/globalStore";
 import cn from "classnames";
 
 type SliderType = {
-  items: any[];
+  items: any;
   duration?: number;
   autoPlay?: boolean;
   startAt?: number;
@@ -39,7 +39,7 @@ const Slider = ({
   const [isRunning, setIsRunning] = useState<boolean>(false);
 
   useEffect(() => {
-    if(items.length > 0) {
+    if(items && items.length > 0) {
       if(!isRunning && autoPlay && !autoPlayOnlyWhenVisible) {
         setIsRunning(true);
         startInterval(items.length);
@@ -109,7 +109,8 @@ const Slider = ({
           {(items ?? []).map((testimonial, idx) => (
             <Slide
               key={idx}
-              {...testimonial}
+              {...testimonial.fields}
+              id={testimonial.sys.id}
               active={activeIndex === idx}
             />
           ))}

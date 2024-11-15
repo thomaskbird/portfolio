@@ -1,6 +1,5 @@
 .insideContainer {
   padding-top: 65px;
-  background: #222;
 }
 
 .resumeWrapper {
@@ -28,15 +27,6 @@
   position: fixed;
 }
 
-
-
-
-
-
-
-
-
-
 .pageHeader {
   display: flex;
   margin-bottom: 0px;
@@ -47,10 +37,17 @@
   align-self: center;
 }
 
+.blurbLight {
+  background: transparent;
+}
+
+.blurbDark {
+  background: #111;
+}
+
 .blurb {
   width: 100%;
   padding: 100px;
-  background: #111;
   text-align: center;
   position: relative;
   margin: 30px auto 0;

@@ -8,6 +8,7 @@ import retrieveSkills from "@/services/retrieveSkills";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectSetIsLoading, selectTheme} from "@/store/selectors/globalStore";
 import cn from "classnames";
+import useRetrieveSkills from "@/hooks/useRetrieveSkills";
 
 type SkillsType = {
 };
@@ -16,8 +17,8 @@ const Skills = ({}: SkillsType) => {
   const setIsLoading = useGlobalStore(selectSetIsLoading);
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
+  const { skills, error, isLoading } = useRetrieveSkills();
 
-  const [skills, setSkills] = useState<SkillType[]>([]);
   const [vertical, setVertical] = useState(0);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
@@ -34,21 +35,6 @@ const Skills = ({}: SkillsType) => {
     return () => scrollYProgress.destroy();
   }, []);
 
-  useEffect(() => {
-    (async() => {
-      try {
-        setIsLoading(true);
-        const skillsFromDb = await retrieveSkills();
-
-        setSkills(skillsFromDb);
-      } catch (e) {
-        console.error(e);
-      } finally {
-        setIsLoading(false);
-      }
-    })();
-  }, []);
-
   return (
     <motion.div
       ref={wrapperRef}
@@ -57,13 +43,13 @@ const Skills = ({}: SkillsType) => {
     >
       {(skills ?? []).map(skill => (
         <motion.div
-          key={skill.id}
+          key={skill.sys.id}
           className={cn(styles.chip, isDark ? styles.chipDark : styles.chipLight)}
           style={{
             opacity: scrollYProgress,
           }}
         >
-          {skill.title}
+          {skill.fields?.title}
         </motion.div>
       ))}
     </motion.div>

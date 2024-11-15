@@ -3,7 +3,7 @@ import {StateCreator} from 'zustand';
 import {GlobalStore} from "@/store/types/globalStore";
 
 const initialState = {
-  isLoading: true,
+  isLoading: false,
   theme: 'dark',
 }
 

@@ -1,12 +1,11 @@
 import client from "@/services/api";
 import useSWR from "swr";
 
-type PostTypes = 'blog' | 'work';
-
-const requestPosts = async (type: string) => {
+const requestHeros = async () => {
   try {
     const res = await client.getEntries({
-      'metadata.tags.sys.id[in]': [type]
+      content_type: 'homepageHero',
+      order: 'sys.createdAt'
     });
 
     if(res.total) {
@@ -19,14 +18,14 @@ const requestPosts = async (type: string) => {
   }
 }
 
-const useRetrievePosts = (type: PostTypes) => {
-  const {data: posts, error, isLoading } = useSWR(type, requestPosts)
+const useRetrieveHeros = () => {
+  const {data: heros, error, isLoading } = useSWR('heros', requestHeros)
 
   return {
     isLoading,
-    posts,
+    heros,
     error,
   }
 }
 
-export default useRetrievePosts;
+export default useRetrieveHeros;

@@ -1,11 +1,8 @@
 'use client';
 
 import styles from '../page.module.scss'
-import ListView from "@/components/ListView/ListView";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Typography from "@mui/material/Typography";
-import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectIsLoading} from "@/store/selectors/globalStore";
 import BlogPost from "@/components/BlogPost/BlogPost";
 import ItemAnimation from "@/components/ItemAnimation/ItemAnimation";
 import {Skeleton, Stack} from "@mui/material";
@@ -16,8 +13,7 @@ import {Helmet} from "react-helmet";
 import useRetrievePosts from "@/hooks/useRetrievePosts";
 
 const Blog = () => {
-  const isLoading = useGlobalStore(selectIsLoading);
-  const { posts, error } = useRetrievePosts('blog');
+  const { posts, error, isLoading } = useRetrievePosts('blog');
 
   return (
     <>
@@ -69,14 +65,13 @@ const Blog = () => {
             </BlogPostSkeleton>
           </>
         ) : (
-          <ListView
-            posts={posts}
-            renderItem={(item) => (
-              <ItemAnimation key={item.id}>
+          <>
+            {(posts ?? []).map(item => (
+              <ItemAnimation key={item.sys.id}>
                 <BlogPost post={item}/>
               </ItemAnimation>
-            )}
-          />
+            ))}
+          </>
         )}
       </SectionContainer>
     </>

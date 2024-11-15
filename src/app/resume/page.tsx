@@ -14,24 +14,14 @@ import {selectSetIsLoading, selectTheme} from "@/store/selectors/globalStore";
 import config from "@/config/sites";
 import {Helmet} from "react-helmet";
 import cn from "classnames";
+import useRetrieveExperience from "@/hooks/useRetrieveExperience";
 
 const Resume = () => {
-  const setIsLoading = useGlobalStore(selectSetIsLoading);
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
   const resumeRef = useRef<HTMLDivElement | null>(null);
-  const [jobs, setJobs] = useState<ResumeType[]>([]);
 
-  const retrieveAllJobs = async () => {
-    const jobsSnapshot: QuerySnapshot = await getDocs(queryAllJobsOrdered as any);
-    setIsLoading(false);
-    const jobRecordsFromDb = makeArrayFromSnapshot<ResumeType>(jobsSnapshot as any);
-    setJobs(jobRecordsFromDb);
-  };
-
-  useEffect(() => {
-    retrieveAllJobs();
-  }, []);
+  const { experiences, error, isLoading } = useRetrieveExperience()
 
   return (
     <SectionContainer styleName={cn(styles.insideContainer, isDark ? styles.insideContainerDark : styles.insideContainerLight)}>
@@ -46,7 +36,7 @@ const Resume = () => {
         <div className={cn(styles.divider, isDark ? styles.dividerDark : styles.dividerLight)}></div>
 
         <div className={styles.resumeContainer}>
-          {jobs.map(((item, idx) => <ResumeItem key={item.id} idx={idx} item={item}/>))}
+          {experiences?.map(((item, idx) => <ResumeItem key={item.sys.id} idx={idx} item={item}/>))}
         </div>
       </div>
 

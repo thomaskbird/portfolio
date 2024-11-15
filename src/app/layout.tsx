@@ -40,7 +40,7 @@ export default function RootLayout({
           <ThemeProvider theme={theme === 'dark' ? themeDark : themeLight}>
             <Backdrop
               sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-              open={isLoading}
+              open={false}
             >
               <CircularProgress color="inherit" />
             </Backdrop>
