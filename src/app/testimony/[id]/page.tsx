@@ -12,6 +12,9 @@ import SkeletonSwitcher from "@/components/SkeletonSwitcher/SkeletonSwitcher";
 import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
 import {useRouter} from "next/navigation";
 import useRetrieveTestimonial from "@/hooks/useRetrieveTestimonial";
+import cn from "classnames";
+import {useGlobalStore} from "@/store/useGlobalStore";
+import {selectTheme} from "@/store/selectors/globalStore";
 
 type PageType = {
   params: {
@@ -22,8 +25,10 @@ type PageType = {
 const Testimony = ({ params }: PageType) => {
   const { id } = params;
   const router = useRouter();
+  const theme = useGlobalStore(selectTheme);
   const { testimony, error, isLoading } = useRetrieveTestimonial(id);
 
+  const isDark = theme === 'dark';
   const name = testimony ? testimony?.fields.name : '';
 
   return (
@@ -51,7 +56,7 @@ const Testimony = ({ params }: PageType) => {
         </Grid>
       </Grid>
 
-      <div className={styles.blurb}>
+      <div className={cn(styles.blurb, isDark ? styles.blurbDark : styles.blurbLight)}>
         <img src={testimony?.fields.profileImage?.fields.file.url} alt={name} title={name} className={styles.blurbImage}/>
 
         <Typography variant="h1">

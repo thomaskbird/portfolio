@@ -21,6 +21,8 @@ const Footer = ({}: FooterType) => {
   const logoUrl = isDark ? '/logo.png' : '/logo-dark.png';
   const { posts } = useRetrievePosts('blog');
 
+  const postsLimited = posts ? posts.slice(0, 10) : [];
+
   return (
     <Container maxWidth={false} disableGutters className={isDark ? styles.footerWrapperDark : styles.footerWrapperLight}>
       <Container>
@@ -62,7 +64,7 @@ const Footer = ({}: FooterType) => {
               <div className={styles.footerTitleDivider}></div>
 
               <ul>
-                {posts?.map(post => (
+                {postsLimited?.map(post => (
                   <li key={post.sys.id}><Link className={styles.footerLinks} href={`/p/${post.fields.slug}`}>{post.fields.title}</Link></li>
                 ))}
               </ul>
