@@ -14,7 +14,7 @@ const SkeletonSwitcher = ({
   skeletonProps = {}
 }: SkeletonSwitcherType) => {
   const isLoading = useGlobalStore(selectIsLoading);
-  return isLoading ? <Skeleton {...skeletonProps} /> : item;
+  return false ? <Skeleton {...skeletonProps} /> : item;
 };
 
 export default SkeletonSwitcher;
