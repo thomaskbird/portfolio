@@ -13,7 +13,7 @@ const requestTestimonials = async () => {
       throw new Error('No content found...')
     }
   } catch (e) {
-    throw new Error(e);
+    throw new Error(e as any);
   }
 }
 

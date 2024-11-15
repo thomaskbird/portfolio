@@ -5,8 +5,8 @@ const requestHeros = async () => {
   try {
     const res = await client.getEntries({
       content_type: 'homepageHero',
-      order: 'sys.createdAt'
-    });
+      order: 'fields.priority'
+    } as any);
 
     if(res.total) {
       return res.items;
@@ -14,7 +14,7 @@ const requestHeros = async () => {
       throw new Error('No content found...')
     }
   } catch (e) {
-    throw new Error(e);
+    throw new Error(e as any);
   }
 }
 

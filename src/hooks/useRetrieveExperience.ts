@@ -6,7 +6,7 @@ const requestExperiences = async () => {
     const res = await client.getEntries({
       content_type: 'workExperience',
       order: 'sys.createdAt'
-    });
+    } as any);
 
     if(res.total) {
       return res.items;
@@ -14,7 +14,7 @@ const requestExperiences = async () => {
       throw new Error('No content found...')
     }
   } catch (e) {
-    throw new Error(e);
+    throw new Error(e as any);
   }
 }
 
