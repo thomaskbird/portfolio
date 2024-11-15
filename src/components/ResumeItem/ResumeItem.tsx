@@ -19,7 +19,6 @@ const ResumeItem = ({
   item,
   idx,
 }: ResumeItemType) => {
-  console.log('item', item);
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
   const isEven = idx % 2 === 0;
@@ -42,9 +41,7 @@ const ResumeItem = ({
   }, []);
 
   const date = new Date();
-  const yearCurrent = date.getFullYear();
   const endAtMoment = moment(item.fields.to);
-  const endAtFormatted = endAtMoment.format("YYYY");
   const endDate = item.fields.to ? endAtMoment.format("MMM, YYYY") : 'Present';
 
   return (
@@ -67,14 +64,16 @@ const ResumeItem = ({
             // transform: `scale(${opacity}) translate(${!isEven ? '' : '-'}${scrollValueCalculated}px, 0)`,
           }}
         >
-          <p className={styles.smallDates}>{moment(item.startAt).format("MMM, YYYY")} to {moment(item.endAt).format("MMM, YYYY")}</p>
+          <p className={styles.smallDates}>{moment(item.fields.from).format("MMM, YYYY")} to {endDate}</p>
 
           <h2>{item.fields.company}</h2>
           <h4>{item.fields.title} <span className={styles.subtitle}>{item.type}</span></h4>
 
 
           <ul>
-            <li>{item.fields.content}</li>
+            {item.fields.content.map((content, idx) => (
+              <li key={idx}>{content}</li>
+            ))}
           </ul>
 
           <p><b>Skills:</b> {item.fields.skills.join(', ')}</p>

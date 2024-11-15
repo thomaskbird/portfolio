@@ -26,7 +26,6 @@ const Home = () => {
   const theme = useGlobalStore(selectTheme);
   const { testimonials, isLoading, error } = useRetrieveTestimonials()
   const { heros, isLoading: herosIsLoading, error: herosError } = useRetrieveHeros();
-  console.log('heros', heros);
 
   const isDark = theme === 'dark';
 

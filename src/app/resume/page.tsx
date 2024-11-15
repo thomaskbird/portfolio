@@ -22,7 +22,6 @@ const Resume = () => {
   const resumeRef = useRef<HTMLDivElement | null>(null);
 
   const { experiences, error, isLoading } = useRetrieveExperience()
-  console.log('experiences', experiences);
 
   return (
     <SectionContainer styleName={cn(styles.insideContainer, isDark ? styles.insideContainerDark : styles.insideContainerLight)}>

@@ -20,7 +20,7 @@ const requestExperiences = async () => {
 
 const useRetrieveExperience = () => {
   const {data: experiences, error, isLoading } = useSWR('experiences', requestExperiences)
-console.log('experiences', experiences);
+
   return {
     isLoading,
     experiences,
