@@ -1,14 +1,9 @@
 'use client';
 
 import styles from './page.module.scss'
-import {useEffect, useState} from "react";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
-import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectSetIsLoading} from "@/store/selectors/globalStore";
 import config from "@/config/sites";
 import {Helmet} from "react-helmet";
-import {TestimonyType} from "@/types/TestimonyType";
-import retrieveTestimony from "@/services/retrieveTestimony";
 import Typography from "@mui/material/Typography";
 import {Grid} from "@mui/material";
 import Button from "@mui/material/Button";
@@ -16,6 +11,7 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import SkeletonSwitcher from "@/components/SkeletonSwitcher/SkeletonSwitcher";
 import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
 import {useRouter} from "next/navigation";
+import useRetrieveTestimonial from "@/hooks/useRetrieveTestimonial";
 
 type PageType = {
   params: {
@@ -26,22 +22,14 @@ type PageType = {
 const Testimony = ({ params }: PageType) => {
   const { id } = params;
   const router = useRouter();
-  const setIsLoading = useGlobalStore(selectSetIsLoading);
-  const [testimony, setTestimony] = useState<TestimonyType | undefined>(undefined);
+  const { testimony, error, isLoading } = useRetrieveTestimonial(id);
 
-  useEffect(() => {
-    const retrieveTestimonial = async () => {
-      const testimonyFromDb = await retrieveTestimony(id);
-      setTestimony(testimonyFromDb);
-    }
-
-    retrieveTestimonial();
-  }, []);
+  const name = testimony ? testimony?.fields.name : '';
 
   return (
     <SectionContainer styleName={styles.insideContainer}>
       <Helmet>
-        <title>{config.meta.title} | Resume</title>
+        <title>{config.meta.title} | Testimony {name}</title>
         <meta property="description" content={config.meta.description}/>
       </Helmet>
 
@@ -57,24 +45,24 @@ const Testimony = ({ params }: PageType) => {
         </Grid>
         <Grid item xs={12} sm={6} className={styles.pageHeaderLeft}>
           <SkeletonSwitcher
-            item={<Typography variant="body3">Posted: {testimony?.createdAt.substring(0, 10)}</Typography>}
+            item={<Typography variant="body3">Posted: {testimony?.sys.updatedAt.substring(0, 10)}</Typography>}
             skeletonProps={baseSkeletonProps}
           />
         </Grid>
       </Grid>
 
       <div className={styles.blurb}>
-        <img src={testimony?.image} alt={`${testimony?.firstName} ${testimony?.lastName}`} title={`${testimony?.firstName} ${testimony?.lastName}`} className={styles.blurbImage}/>
+        <img src={testimony?.fields.profileImage?.fields.file.url} alt={name} title={name} className={styles.blurbImage}/>
 
         <Typography variant="h1">
-          {testimony?.firstName} {testimony?.lastName}
+          {name}
         </Typography>
 
         <Typography variant="h5">
-          {testimony?.title}
+          {testimony?.fields.title}
         </Typography>
 
-        <Typography variant="body2" dangerouslySetInnerHTML={{ __html: testimony?.body as string }} />
+        <Typography variant="body2" dangerouslySetInnerHTML={{ __html: testimony?.fields.content as string }} />
       </div>
     </SectionContainer>
   )

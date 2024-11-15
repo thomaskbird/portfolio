@@ -19,31 +19,14 @@ import {TestimonyType} from "@/types/TestimonyType";
 import retrieveTestimonys from "@/services/retrieveTestimonys";
 import homeHero from "@/data/homeHero";
 import Fader from "@/components/Fader/Fader";
+import useRetrieveTestimonials from "@/hooks/useRetrieveTestimonials";
+import useRetrieveHeros from "@/hooks/useRetrieveHeros";
 
 const Home = () => {
-  const setIsLoading = useGlobalStore(selectSetIsLoading);
   const theme = useGlobalStore(selectTheme);
-
-  const [projects, setProjects] = useState<ProjectType[]>([]);
-  const [testimonials, setTestimonials] = useState<TestimonyType[]>([]);
-
-  useEffect(() => {
-    (async() => {
-      try {
-        setIsLoading(true);
-        const projectsFromDb = await retrieveProjects();
-        const testimonysFromDb = await retrieveTestimonys();
-
-        const data = await Promise.all([projectsFromDb, testimonysFromDb]);
-        setProjects(data[0] as ProjectType[]);
-        setTestimonials(data[1] as TestimonyType[]);
-      } catch (e) {
-        console.error(e);
-      } finally {
-        setIsLoading(false);
-      }
-    })();
-  }, []);
+  const { testimonials, isLoading, error } = useRetrieveTestimonials()
+  const { heros, isLoading: herosIsLoading, error: herosError } = useRetrieveHeros();
+  console.log('heros', heros);
 
   const isDark = theme === 'dark';
 
@@ -72,11 +55,11 @@ const Home = () => {
 
         <PageSectionTitle title="Project Work"/>
 
-        {projects.map((project, idx) => (
+        {heros?.map((project, idx) => (
           <ProjectSection
-            {...project}
+            {...project.fields}
             idx={idx}
-            key={project.id}
+            key={project.sys.id}
           />
         ))}
       </SectionContainer>

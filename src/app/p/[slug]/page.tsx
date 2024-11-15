@@ -29,7 +29,6 @@ const Page = ({ params }: PageType) => {
   const { slug } = params;
   const { post, isLoading } = useRetrievePost(slug);
   const router = useRouter();
-
   const [hasAppendedScript, setHasAppendedScript] = useState(false);
 
   useEffect(() => {
@@ -66,24 +65,38 @@ const Page = ({ params }: PageType) => {
             </Button>
           </Grid>
           <Grid item xs={12} sm={6} className={styles.pageHeaderLeft}>
-            <SkeletonSwitcher
-              item={<Typography variant="body3">Posted: {post?.sys.createdAt.substring(0, 10)}</Typography>}
-              skeletonProps={baseSkeletonProps}
-            />
+            {post && (
+              <SkeletonSwitcher
+                item={<Typography variant="body3">Posted: {post?.sys.createdAt.substring(0, 10)}</Typography>}
+                skeletonProps={baseSkeletonProps}
+              />
+            )}
           </Grid>
         </Grid>
 
-        <Stack spacing={2}>
-          <SkeletonSwitcher
-            item={<Typography variant="h2" className={styles.postTitle}>{post?.fields.title}</Typography>}
-            skeletonProps={baseSkeletonProps}
-          />
+        {post ? (
+          <Stack spacing={2}>
+            <SkeletonSwitcher
+              item={<Typography variant="h2" className={styles.postTitle}>{post?.fields.title}</Typography>}
+              skeletonProps={baseSkeletonProps}
+            />
 
-          <SkeletonSwitcher
-            item={<div className={styles.postBody}>{documentToReactComponents(post?.fields.body)}</div>}
-            skeletonProps={{...baseSkeletonProps, height: 200}}
-          />
-        </Stack>
+            <SkeletonSwitcher
+              item={<div className={styles.postBody}>{documentToReactComponents(post?.fields.body)}</div>}
+              skeletonProps={{...baseSkeletonProps, height: 200}}
+            />
+
+            {post.fields.codepen && (
+              <div dangerouslySetInnerHTML={{__html: post.fields.codepen.content[0].content[0].value}}/>
+            )}
+          </Stack>
+        ) : (
+          <Stack spacing={2}>
+            <Typography variant="h2" className={styles.postTitle}>
+              Uh oh something went wrong, please try again!
+            </Typography>
+          </Stack>
+        )}
       </SectionContainer>
       <div ref={codepenRef} />
     </Container>

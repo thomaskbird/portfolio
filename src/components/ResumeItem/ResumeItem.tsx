@@ -19,6 +19,7 @@ const ResumeItem = ({
   item,
   idx,
 }: ResumeItemType) => {
+  console.log('item', item);
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
   const isEven = idx % 2 === 0;
@@ -42,9 +43,9 @@ const ResumeItem = ({
 
   const date = new Date();
   const yearCurrent = date.getFullYear();
-  const endAtMoment = moment(item.endAt);
+  const endAtMoment = moment(item.fields.to);
   const endAtFormatted = endAtMoment.format("YYYY");
-  const endDate = Number(endAtFormatted) > yearCurrent ? 'Present' : endAtMoment.format("MMM, YYYY");
+  const endDate = item.fields.to ? endAtMoment.format("MMM, YYYY") : 'Present';
 
   return (
     <div
@@ -68,16 +69,15 @@ const ResumeItem = ({
         >
           <p className={styles.smallDates}>{moment(item.startAt).format("MMM, YYYY")} to {moment(item.endAt).format("MMM, YYYY")}</p>
 
-          <h2>{item.company}</h2>
-          <h4>{item.title} <span className={styles.subtitle}>{item.type}</span></h4>
+          <h2>{item.fields.company}</h2>
+          <h4>{item.fields.title} <span className={styles.subtitle}>{item.type}</span></h4>
+
 
           <ul>
-            {item.bullets.map((bullet, i) => (
-              <li key={i} dangerouslySetInnerHTML={{__html: bullet}}></li>
-            ))}
+            <li>{item.fields.content}</li>
           </ul>
 
-          <p><b>Skills:</b> {item.skills.join(', ')}</p>
+          <p><b>Skills:</b> {item.fields.skills.join(', ')}</p>
         </motion.div>
         <div className={styles.indicator}>
           <div className={cn(
@@ -99,7 +99,7 @@ const ResumeItem = ({
               isDark ? styles.resumeItemRightDark : styles.resumeItemRightLight
             )}
           >
-            <h5>{moment(item.startAt).format("MMM, YYYY")} to {endDate}</h5>
+            <h5>{moment(item.fields.from).format("MMM, YYYY")} to {endDate}</h5>
           </motion.div>
         </div>
       </div>

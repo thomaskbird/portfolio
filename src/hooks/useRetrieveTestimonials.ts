@@ -1,33 +1,30 @@
 import client from "@/services/api";
 import useSWR from "swr";
 
-const requestPost = async (slug: string) => {
+const requestTestimonials = async () => {
   try {
     const res = await client.getEntries({
-      content_type: 'content',
-      'fields.slug': slug
+      content_type: 'testimonial'
     });
 
     if(res.total) {
-      return res.items[0];
+      return res.items;
     } else {
       throw new Error('No content found...')
     }
   } catch (e) {
     throw new Error(e);
-  } finally {
-
   }
 }
 
-const useRetrievePost = (slug: string) => {
-  const {data: post, error, isLoading } = useSWR(slug, requestPost)
+const useRetrieveTestimonials = () => {
+  const {data: testimonials, error, isLoading } = useSWR('testimonials', requestTestimonials)
 
   return {
     isLoading,
-    post,
+    testimonials,
     error,
   }
 }
 
-export default useRetrievePost;
+export default useRetrieveTestimonials;

@@ -12,29 +12,28 @@ const wordLimit = 30;
 
 const Slide = ({
   id,
-  firstName,
-  lastName,
+  name,
   title,
-  body,
-  image,
+  content,
+  profileImage,
   active
 }: TestimonyType & SlideType) => {
   return (
     <div className={cn(styles.slide, active ? styles.active : '')}>
       <div className={styles.badge}>
         <div className={styles.avatar}>
-          <img src={image} alt={`${firstName} ${lastName}`} />
+          <img src={profileImage.fields.file.url} alt={`${name}`} />
         </div>
         <div className={styles.badgeText}>
           <h5>{title}</h5>
-          <h3>{firstName} {lastName}</h3>
+          <h3>{name}</h3>
         </div>
       </div>
       <Typography
         variant="body2"
         className={styles.slideText}
         dangerouslySetInnerHTML={{
-          __html: body.split(' ').length > wordLimit ? `${body.split(' ').splice(0, wordLimit).join(' ')}...` : body
+          __html: content.split(' ').length > wordLimit ? `${content.split(' ').splice(0, wordLimit).join(' ')}...` : content
         }}
       />
 

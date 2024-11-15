@@ -25,6 +25,7 @@ const ProjectSection = ({
   subtitle,
   description
 }: ProjectSectionType) => {
+  console.log('ProjectSection', idx, image, title, subtitle, description)
   const wrapperRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const [scrollValueCalculated, setScrollValueCalculated] = useState(0);
   const [screenPosition, setScreenPosition] = useState(0);
@@ -37,6 +38,7 @@ const ProjectSection = ({
   const isLeft = idx % 2 === 0;
   const projectClasses = cn(styles.projects, isLeft ? styles.projectsLeft : styles.projectsRight);
   const classes = cn(styles.projectText, isLeft ? styles.textLeft : styles.textRight);
+  const featureImage = image.fields.file.url;
 
   useEffect(() => {
     scrollYProgress.on('change', (num) => {
@@ -55,7 +57,7 @@ const ProjectSection = ({
           {isLeft && (
             <Screen
               title={title}
-              image={image}
+              image={featureImage}
               isLeft={isLeft}
               opacity={opacity}
               scrollValueCalculated={scrollValueCalculated}
@@ -92,7 +94,7 @@ const ProjectSection = ({
           {!isLeft && (
             <Screen
               title={title}
-              image={image}
+              image={featureImage}
               isLeft={isLeft}
               opacity={opacity}
               scrollValueCalculated={scrollValueCalculated}

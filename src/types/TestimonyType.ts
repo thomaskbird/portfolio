@@ -1,9 +1,8 @@
 export type TestimonyType = {
-  body: string;
-  firstName: string;
+  content: string;
+  name: string;
   id?: string;
-  image: string;
-  lastName: string;
+  profileImage: string;
   title: string;
   createdAt: string;
   updatedAt: string;
