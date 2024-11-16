@@ -41,7 +41,7 @@ const Home = () => {
       <SectionContainer styleName={isDark ? styles.aboutContainerDark : styles.aboutContainerLight}>
         <PageSectionTitle title="What I do?" />
         <div style={{ marginBottom: 0 }}>
-          <Fader items={homeHero} duration={5000} />
+          <Fader items={homeHero} duration={10000} />
         </div>
       </SectionContainer>
 

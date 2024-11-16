@@ -1,6 +1,9 @@
 import styles from './Fader.module.scss';
 import {MutableRefObject, useEffect, useRef, useState} from "react";
 import FaderItem from "@/components/Fader/FaderItem";
+import cn from "classnames";
+import {useGlobalStore} from "@/store/useGlobalStore";
+import {selectTheme} from "@/store/selectors/globalStore";
 
 type SliderType = {
   items: any[];
@@ -19,6 +22,8 @@ const Fader = ({
   const itemsTotal = items?.length ?? 0;
 
   const interval: MutableRefObject<any> = useRef();
+  const theme = useGlobalStore(selectTheme);
+  const isDark = theme === 'dark';
 
   const [activeIndex, setActiveIndex] = useState<number>(startAt);
   const [isRunning, setIsRunning] = useState<boolean>(false);
@@ -56,13 +61,23 @@ const Fader = ({
 
   return (
     <div className={styles.faderWrap}>
-      {(items ?? []).map((testimonial, idx) => (
+      {(items ?? []).map((testimonial, dotIdx) => (
         <FaderItem
-          key={idx}
+          key={dotIdx}
           {...testimonial}
-          active={activeIndex === idx}
+          active={activeIndex === dotIdx}
         />
       ))}
+
+      <div className={styles.dotWrap}>
+        {(items ?? []).map((testimonial, idx) => (
+          <div key={idx} className={cn(
+            styles.dot,
+            activeIndex === idx ? styles.dotActive : styles.dotDefault,
+            isDark ? styles.dotDark : styles.dotLight
+          )} />
+        ))}
+      </div>
     </div>
   )
 }

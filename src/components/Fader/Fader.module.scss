@@ -3,6 +3,38 @@
   grid-template-areas: 'pile';
 }
 
+.dotWrap {
+  margin-top: 40px;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.dotDark {
+  background: #333;
+}
+
+.dotLight {
+  background: #ccc;
+}
+
+.dotActive {
+  width: 10px;
+  height: 10px;
+}
+
+.dotDefault {
+  width: 7px;
+  height: 7px;
+}
+
+.dot {
+  margin: 0 5px;
+  border-radius: 100px;
+  transition: all ease-in .25s;
+}
+
 .faderItem {
   z-index: 1;
   opacity: 0;
