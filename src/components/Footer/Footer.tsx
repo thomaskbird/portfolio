@@ -11,6 +11,7 @@ import Socials from "@/components/Socials/Socials";
 import cn from "classnames";
 import useRetrievePosts from "@/hooks/useRetrievePosts";
 import {ReactNode} from "react";
+import useMisc from "@/hooks/useMisc";
 
 type FooterType = {};
 
@@ -21,8 +22,9 @@ const Footer = ({}: FooterType) => {
   const isDark = theme === 'dark';
   const logoUrl = isDark ? '/logo.png' : '/logo-dark.png';
   const { posts } = useRetrievePosts('blog');
+  const { findField } = useMisc()
 
-  const postsLimited = posts ? posts.slice(0, 10) : [];
+  const postsLimited = posts ? posts.slice(0, 5) : [];
 
   return (
     <Container maxWidth={false} disableGutters className={isDark ? styles.footerWrapperDark : styles.footerWrapperLight}>
@@ -33,7 +35,7 @@ const Footer = ({}: FooterType) => {
               <RoomIcon fontSize={iconSize} className={cn(styles.blurbIcon, isDark ? styles.blurbIconDark : styles.blurbIconLight)}/>
               <div className={styles.blurbText}>
                 <h5>Location</h5>
-                <p><Link target="_blank" href="https://maps.app.goo.gl/ZFKQYfNjj4kqwTyH7">Bowling Green, OH</Link></p>
+                <p><Link target="_blank" href={(findField('location-map-link') as string ?? '')}>{findField('location') as ReactNode}</Link></p>
               </div>
             </div>
 
@@ -41,7 +43,7 @@ const Footer = ({}: FooterType) => {
               <PhoneIcon fontSize={iconSize} className={cn(styles.blurbIcon, isDark ? styles.blurbIconDark : styles.blurbIconLight)}/>
               <div className={styles.blurbText}>
                 <h5>Phone</h5>
-                <p><Link href="tel:313-410-3709">313-410-3709</Link></p>
+                <p><Link href={`mailto:${findField('phone')}`}>{findField('phone') as ReactNode}</Link></p>
               </div>
             </div>
 
@@ -49,7 +51,7 @@ const Footer = ({}: FooterType) => {
               <EmailIcon fontSize={iconSize} className={cn(styles.blurbIcon, isDark ? styles.blurbIconDark : styles.blurbIconLight)}/>
               <div className={styles.blurbText}>
                 <h5>Email:</h5>
-                <p><Link href="mailto:thomaskbird@icloud.com">thomaskbird@icloud.com</Link></p>
+                <p><Link href={`mailto:${findField('email')}`}>{findField('email') as ReactNode}</Link></p>
               </div>
             </div>
           </div>

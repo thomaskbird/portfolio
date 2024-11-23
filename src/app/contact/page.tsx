@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import addContact from "@/services/addContact";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectSetIsLoading, selectTheme} from "@/store/selectors/globalStore";
-import {useEffect, useState} from "react";
+import {ReactNode, useEffect, useState} from "react";
 import config from "@/config/sites";
 import {Helmet} from "react-helmet";
 import WordSlider from "@/components/WordSlider/WordSlider";
@@ -21,6 +21,7 @@ import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import Socials from "@/components/Socials/Socials";
 import randomInteger from "@/utils/generateRandomNumber";
 import cn from "classnames";
+import useMisc from "@/hooks/useMisc";
 
 const defaultVals: ContactFormType = {
   name: '',
@@ -104,6 +105,8 @@ const Contact = () => {
     resolver: yupResolver(contactFormSchema),
     defaultValues: defaultVals
   });
+
+  const { findField } = useMisc()
 
   const [success, setSuccess] = useState(false);
   const [captchaVals, setCaptchaVals] = useState<number[]>([]);
@@ -195,7 +198,7 @@ const Contact = () => {
                 submitted, I&apos;ll we be in contact as soon as possible! Thanks for stopping bye!</Typography>
             ) : (
               <Typography variant="body2" color="secondary">
-                Ready to elevate your digital presence? Shoot me a quick message using the form below. Coffee chats, code reviews, or moonlit brainstorming sessions let&apos;s make magic happen.
+                {findField('message-form-text') as ReactNode}
               </Typography>
             )}
 

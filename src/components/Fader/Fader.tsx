@@ -6,7 +6,7 @@ import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
 
 type SliderType = {
-  items: any[];
+  items: any;
   duration?: number;
   startAt?: number;
 };
@@ -61,7 +61,7 @@ const Fader = ({
 
   return (
     <div className={styles.faderWrap}>
-      {(items ?? []).map((testimonial, dotIdx) => (
+      {(items ?? []).map((testimonial: any, dotIdx: number) => (
         <FaderItem
           key={dotIdx}
           {...testimonial}
@@ -70,7 +70,7 @@ const Fader = ({
       ))}
 
       <div className={styles.dotWrap}>
-        {(items ?? []).map((testimonial, idx) => (
+        {(items ?? []).map((testimonial: any, idx: number) => (
           <div key={idx} className={cn(
             styles.dot,
             activeIndex === idx ? styles.dotActive : styles.dotDefault,

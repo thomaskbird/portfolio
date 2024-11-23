@@ -10,23 +10,18 @@ import Slider from "@/components/Slider/Slider";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import {Helmet} from 'react-helmet';
 import config from "@/config/sites";
-import {ProjectType} from "@/types/ProjectType";
-import {useEffect, useState} from "react";
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectSetIsLoading, selectTheme} from "@/store/selectors/globalStore";
-import retrieveProjects from "@/services/retrieveProjects";
-import {TestimonyType} from "@/types/TestimonyType";
-import retrieveTestimonys from "@/services/retrieveTestimonys";
-import homeHero from "@/data/homeHero";
+import {selectTheme} from "@/store/selectors/globalStore";
 import Fader from "@/components/Fader/Fader";
 import useRetrieveTestimonials from "@/hooks/useRetrieveTestimonials";
 import useRetrieveHeros from "@/hooks/useRetrieveHeros";
+import useRetrieveWhatIDo from "@/hooks/useRetrieveWhatIDo";
 
 const Home = () => {
   const theme = useGlobalStore(selectTheme);
   const { testimonials, isLoading, error } = useRetrieveTestimonials()
   const { heros, isLoading: herosIsLoading, error: herosError } = useRetrieveHeros();
-
+  const { items: homeHero } = useRetrieveWhatIDo();
   const isDark = theme === 'dark';
 
   return (

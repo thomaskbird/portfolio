@@ -10,6 +10,7 @@ import Fader from "@/components/Fader/Fader";
 import homeHero from "@/data/homeHero";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
+import useMisc from "@/hooks/useMisc";
 
 type HeroType = {
   navOnly?: boolean;
@@ -47,6 +48,10 @@ const headline = "I'm Tom, Nice to meet you!".split(' ');
 const Hero = ({ navOnly = false }: HeroType) => {
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
+
+  const { findField } = useMisc()
+
+  const headline = ((findField('tag-heading') ?? '') as string).split(' ');
 
   return (
     <Container maxWidth={false} disableGutters className={isDark ? styles.heroDark : styles.heroLight}>
