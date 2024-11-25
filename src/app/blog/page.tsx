@@ -14,6 +14,7 @@ import useRetrievePosts from "@/hooks/useRetrievePosts";
 
 const Blog = () => {
   const { posts, error, isLoading } = useRetrievePosts('blog');
+  const orderedPosts = posts?.reverse();
 
   return (
     <>
@@ -66,7 +67,7 @@ const Blog = () => {
           </>
         ) : (
           <>
-            {(posts ?? []).map(item => (
+            {(orderedPosts ?? []).map(item => (
               <ItemAnimation key={item.sys.id}>
                 <BlogPost post={item}/>
               </ItemAnimation>

@@ -2,8 +2,6 @@
 
 import styles from '../page.module.scss'
 import {Skeleton, Stack} from "@mui/material";
-import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectIsLoading} from "@/store/selectors/globalStore";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Typography from "@mui/material/Typography";
 import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";

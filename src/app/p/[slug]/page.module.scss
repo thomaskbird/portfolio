@@ -21,3 +21,19 @@
 .postBody {
   color: #666;
 }
+
+.mediaWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mediaItem {
+  margin: 10px;
+  overflow: hidden;
+  flex-basis: calc(100% / 4 - 20px);
+}
+
+.media {
+  width: 100%;
+  height: auto;
+}

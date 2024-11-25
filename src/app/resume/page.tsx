@@ -2,15 +2,11 @@
 
 import styles from './page.module.scss'
 import ResumeItem from "@/components/ResumeItem/ResumeItem";
-import {useEffect, useRef, useState} from "react";
-import {getDocs, QuerySnapshot} from "@firebase/firestore";
-import {queryAllJobsOrdered} from "@/services/firebase";
-import {makeArrayFromSnapshot} from "@/utils/makeArrayFromSnapshot";
-import {ResumeType} from "@/types/ResumeType";
+import {useRef} from "react";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import ResumeBlurb from "@/components/ResumeBlurb/ResumeBlurb";
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectSetIsLoading, selectTheme} from "@/store/selectors/globalStore";
+import {selectTheme} from "@/store/selectors/globalStore";
 import config from "@/config/sites";
 import {Helmet} from "react-helmet";
 import cn from "classnames";

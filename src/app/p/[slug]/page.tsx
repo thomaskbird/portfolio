@@ -16,6 +16,8 @@ import stripTags from "@/utils/stripTags";
 import useRetrievePost from "@/hooks/useRetrievePost";
 import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
 import {Document} from "@contentful/rich-text-types";
+import Image from "next/image";
+import Link from "next/link";
 
 type PageType = {
   params: {
@@ -45,6 +47,7 @@ const Page = ({ params }: PageType) => {
 
   const title = post ? `${config.meta.title} | Blog | ${post.fields.title}` : `${config.meta.title} | Blog`;
   const desc = post ? stripTags(post.fields.description as string) : '';
+  const media = post?.fields.media;
 
   return (
     <Container maxWidth={false} disableGutters>
@@ -90,6 +93,22 @@ const Page = ({ params }: PageType) => {
             {post.fields.codepen && (
               <div dangerouslySetInnerHTML={{__html: (post.fields.codepen as any).content[0].content[0].value}}/>
             )}
+
+            <div className={styles.mediaWrapper}>
+            {media && (media as any).map((item: any) => (
+              <div key={item.sys.id} className={styles.mediaItem}>
+                <Link href={'https:'+ item.fields.file.url} target="_blank">
+                  <Image
+                    className={styles.media}
+                    src={'https:'+ item.fields.file.url}
+                    alt={item.fields.file.title}
+                    width={item.fields.file.details.image.width}
+                    height={item.fields.file.details.image.height}
+                  />
+                </Link>
+              </div>
+            ))}
+            </div>
           </Stack>
         ) : (
           <Stack spacing={2}>
