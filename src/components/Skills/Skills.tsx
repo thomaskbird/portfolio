@@ -3,10 +3,8 @@
 import styles from './Skills.module.scss';
 import {motion, useScroll} from 'framer-motion';
 import {useEffect, useRef, useState} from "react";
-import {SkillType} from "@/types/SkillType";
-import retrieveSkills from "@/services/retrieveSkills";
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectSetIsLoading, selectTheme} from "@/store/selectors/globalStore";
+import {selectTheme} from "@/store/selectors/globalStore";
 import cn from "classnames";
 import useRetrieveSkills from "@/hooks/useRetrieveSkills";
 
@@ -14,7 +12,6 @@ type SkillsType = {
 };
 
 const Skills = ({}: SkillsType) => {
-  const setIsLoading = useGlobalStore(selectSetIsLoading);
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
   const { skills, error, isLoading } = useRetrieveSkills();
