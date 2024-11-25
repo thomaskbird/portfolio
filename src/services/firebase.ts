@@ -1,5 +1,5 @@
 import { getApp, getApps, initializeApp } from "@firebase/app";
-import {getFirestore} from "@firebase/firestore";
+import {collection, getFirestore} from "@firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -25,7 +25,10 @@ try {
   console.log("e", e);
 }
 
+const collectionContacts: any = collection(firestoreDb, 'contacts');
+
 export {
   firestoreDb,
   thomaskbird,
+  collectionContacts,
 };
