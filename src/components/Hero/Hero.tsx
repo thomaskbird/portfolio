@@ -6,8 +6,6 @@ import Nav from "@/components/Nav/Nav";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
-import Fader from "@/components/Fader/Fader";
-import homeHero from "@/data/homeHero";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
 import useMisc from "@/hooks/useMisc";
