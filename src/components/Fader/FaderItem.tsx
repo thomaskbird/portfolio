@@ -1,17 +1,18 @@
 import styles from "@/components/Fader/Fader.module.scss";
 import Typography from "@mui/material/Typography";
-import {HomeHeroType} from "@/data/homeHero";
 import cn from "classnames";
 
 type FaderItemType = {
   active: boolean;
+  title: string;
+  content: string;
 }
 
 const FaderItem = ({
   active,
   title,
   content,
-}: HomeHeroType & FaderItemType) => {
+}: FaderItemType) => {
   return (
     <div className={cn(styles.faderItem, active && styles.active)}>
       <Typography
