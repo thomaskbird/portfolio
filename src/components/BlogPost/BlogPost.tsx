@@ -1,6 +1,5 @@
 import Typography from "@mui/material/Typography";
 import styles from './BlogPost.module.scss';
-import PostType from "@/types/PostType";
 import Link from "next/link";
 import Button from "@mui/material/Button";
 import {useGlobalStore} from "@/store/useGlobalStore";
@@ -9,16 +8,16 @@ import cn from "classnames";
 import {Entry} from "contentful";
 import {ReactNode} from "react";
 
-type Post = {
-  type: 'Page' | 'Post'
-  title: string;
-  slug: string;
-  description: string;
-  body: string;
-  featuredImage: string;
-  keywords: string;
-  media: string;
-}
+// type Post = {
+//   type: 'Page' | 'Post'
+//   title: string;
+//   slug: string;
+//   description: string;
+//   body: string;
+//   featuredImage: string;
+//   keywords: string;
+//   media: string;
+// }
 
 type ListItemType = {
   post: Entry
