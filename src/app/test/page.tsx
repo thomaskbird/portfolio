@@ -17,12 +17,9 @@ const Services = () => {
     const requestPost = async () => {
       try {
         const res = await client.getEntry('1SfRwXUWegPMcpc2bImYIM');
-
-        console.log('res', res);
+        setPost(res.fields)
       } catch (e) {
         throw new Error(e as any);
-      } finally {
-
       }
     }
 
@@ -33,7 +30,7 @@ const Services = () => {
       <Hero navOnly={true} />
       <SectionContainer styleName={styles.wrapper}>
       <Box>
-        {post && <Markdown rehypePlugins={[rehypeHighlight]}>{post}</Markdown>}
+        {post && <Markdown rehypePlugins={[rehypeHighlight]}>{post.body}</Markdown>}
       </Box>
       </SectionContainer>
     </Container>
