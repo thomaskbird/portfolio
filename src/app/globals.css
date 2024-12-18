@@ -1,4 +1,14 @@
+@import url('//fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+.jetbrains-mono {
+  font-family: "JetBrains Mono", serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+}
+
 body {
+  font-size: 24px;
   margin: 0;
   overflow-x: hidden;
   overflow-y: auto;
@@ -73,27 +83,63 @@ em {
 
 pre,
 code {
-  font-size: 12px;
+  font-size: 16px;
+
+  font-family: "JetBrains Mono", serif!important;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 pre {
-  color: #1f2328;
-  background: #FFFFFF;
   max-width: 100%;
+  max-height: 400px;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: auto;
   padding: 30px 60px;
-  border-left: 1px solid #666;
-  font-family: 'Source Sans 3', sans-serif !important;
 }
 
 code {
-  color: #aaa;
-  font-family: 'Source Sans 3', sans-serif !important;
+}
+
+.light {
+  pre {
+    color: #5999da;
+    background: #f8f8f8;
+  }
+
+  code {
+    color: #5999da;
+  }
+
+  p code {
+    background: #f8f8f8;
+    padding: 5px 10px;
+  }
+}
+
+.dark {
+  pre {
+    color: #5999da;
+    background: #000;
+  }
+
+  code {
+    color: #5999da;
+  }
+
+  p code {
+    background: #222;
+    padding: 5px 10px;
+  }
 }
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+img {
+  max-height: 500px;
 }
 
 a, p, .body1, .body2, .body3 {
@@ -146,69 +192,138 @@ p, .body2 {
   Outdated base version: https://github.com/primer/github-syntax-light
   Current colors taken from GitHub's CSS
 */
-.hljs {
-  color: #24292e;
-  background: #fff
+.light {
+  .hljs {
+    color: #5999da;
+    background: #f8f8f8
+  }
+
+  .hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_ {
+    color: #db99bc
+  }
+
+  .hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_ {
+    color: #ccbde6
+  }
+
+  .hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable {
+    color: #cc7eb5
+  }
+
+  .hljs-meta .hljs-string,.hljs-regexp,.hljs-string {
+    color: #99badf
+  }
+
+  .hljs-built_in,.hljs-symbol {
+    color: #e36209
+  }
+
+  .hljs-code,.hljs-comment,.hljs-formula {
+    color: #6a737d
+  }
+
+  .hljs-name,.hljs-quote,.hljs-selector-pseudo,.hljs-selector-tag {
+    color: #71b381
+  }
+
+  .hljs-subst {
+    color: #24292e
+  }
+
+  .hljs-section {
+    color: #005cc5;
+    font-weight: 700
+  }
+
+  .hljs-bullet {
+    color: #735c0f
+  }
+
+  .hljs-emphasis {
+    color: #24292e;
+    font-style: italic
+  }
+
+  .hljs-strong {
+    color: #24292e;
+    font-weight: 700
+  }
+
+  .hljs-addition {
+    color: #22863a;
+    background-color: #f0fff4
+  }
+
+  .hljs-deletion {
+    color: #b31d28;
+    background-color: #ffeef0
+  }
 }
 
-.hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_ {
-  color: #d73a49
-}
+.dark {
+  .hljs {
+    color: #5999da;
+    background: #000
+  }
 
-.hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_ {
-  color: #6f42c1
-}
+  .hljs-doctag,.hljs-keyword,.hljs-meta .hljs-keyword,.hljs-template-tag,.hljs-template-variable,.hljs-type,.hljs-variable.language_ {
+    color: #db99bc
+  }
 
-.hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable {
-  color: #005cc5
-}
+  .hljs-title,.hljs-title.class_,.hljs-title.class_.inherited__,.hljs-title.function_ {
+    color: #ccbde6
+  }
 
-.hljs-meta .hljs-string,.hljs-regexp,.hljs-string {
-  color: #032f62
-}
+  .hljs-attr,.hljs-attribute,.hljs-literal,.hljs-meta,.hljs-number,.hljs-operator,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-variable {
+    color: #cc9a90
+  }
 
-.hljs-built_in,.hljs-symbol {
-  color: #e36209
-}
+  .hljs-meta .hljs-string,.hljs-regexp,.hljs-string {
+    color: #99badf
+  }
 
-.hljs-code,.hljs-comment,.hljs-formula {
-  color: #6a737d
-}
+  .hljs-built_in,.hljs-symbol {
+    color: #e36209
+  }
 
-.hljs-name,.hljs-quote,.hljs-selector-pseudo,.hljs-selector-tag {
-  color: #22863a
-}
+  .hljs-code,.hljs-comment,.hljs-formula {
+    color: #6a737d
+  }
 
-.hljs-subst {
-  color: #24292e
-}
+  .hljs-name,.hljs-quote,.hljs-selector-pseudo,.hljs-selector-tag {
+    color: #80c691
+  }
 
-.hljs-section {
-  color: #005cc5;
-  font-weight: 700
-}
+  .hljs-subst {
+    color: #24292e
+  }
 
-.hljs-bullet {
-  color: #735c0f
-}
+  .hljs-section {
+    color: #005cc5;
+    font-weight: 700
+  }
 
-.hljs-emphasis {
-  color: #24292e;
-  font-style: italic
-}
+  .hljs-bullet {
+    color: #735c0f
+  }
 
-.hljs-strong {
-  color: #24292e;
-  font-weight: 700
-}
+  .hljs-emphasis {
+    color: #24292e;
+    font-style: italic
+  }
 
-.hljs-addition {
-  color: #22863a;
-  background-color: #f0fff4
-}
+  .hljs-strong {
+    color: #24292e;
+    font-weight: 700
+  }
 
-.hljs-deletion {
-  color: #b31d28;
-  background-color: #ffeef0
-}
+  .hljs-addition {
+    color: #22863a;
+    background-color: #f0fff4
+  }
 
+  .hljs-deletion {
+    color: #b31d28;
+    background-color: #ffeef0
+  }
+}

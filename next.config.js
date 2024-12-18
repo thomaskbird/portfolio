@@ -11,7 +11,15 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.ctfassets.net',
         port: '',
-
+      },
+    ]
+  },
+  video: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'videos.ctfassets.net',
+        port: '',
       }
     ]
   }
