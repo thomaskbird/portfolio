@@ -10,6 +10,7 @@ import Box from '@mui/material/Box';
 import Markdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight'
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
+import InsidePageHeader from "@/components/InsidePageHeader/InsidePageHeader";
 
 const Services = () => {
   const [post, setPost] = useState(undefined);
@@ -17,7 +18,7 @@ const Services = () => {
     const requestPost = async () => {
       try {
         const res = await client.getEntry('1SfRwXUWegPMcpc2bImYIM');
-        setPost(res.fields)
+        setPost(res)
       } catch (e) {
         throw new Error(e as any);
       }
@@ -29,9 +30,10 @@ const Services = () => {
     <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
       <Hero navOnly={true} />
       <SectionContainer styleName={styles.wrapper}>
-      <Box>
-        {post && <Markdown rehypePlugins={[rehypeHighlight]}>{post.body}</Markdown>}
-      </Box>
+        <InsidePageHeader createdAt={post?.sys.createdAt} />
+        <Box>
+          {post && <Markdown rehypePlugins={[rehypeHighlight]}>{post.fields.body}</Markdown>}
+        </Box>
       </SectionContainer>
     </Container>
   )

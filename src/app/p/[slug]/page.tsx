@@ -18,6 +18,7 @@ import {Document} from "@contentful/rich-text-types";
 import Image from "next/image";
 import Link from "next/link";
 import {Helmet, HelmetProvider} from "react-helmet-async";
+import InsidePageHeader from "@/components/InsidePageHeader/InsidePageHeader";
 
 type PageType = {
   params: Promise<{
@@ -48,6 +49,7 @@ const Page = ({ params }: PageType) => {
   const title = post ? `${config.meta.title} | Blog | ${post.fields.title}` : `${config.meta.title} | Blog`;
   const desc = post ? stripTags(post.fields.description as string) : '';
   const media = post?.fields.media;
+  const createdAt = post?.sys.createdAt ?? '';
 
   return (
     <HelmetProvider>
@@ -58,26 +60,8 @@ const Page = ({ params }: PageType) => {
           <meta property="keywords" content={post?.fields.keywords as string}/>
         </Helmet>
 
-        <SectionContainer styleName={styles.wrapper}>
-          <Grid container className={styles.pageHeader}>
-            <Grid item xs={12} sm={6}>
-              <Button
-                variant="contained"
-                startIcon={<ChevronLeftIcon/>}
-                onClick={() => router.back()}
-              >
-                Back
-              </Button>
-            </Grid>
-            <Grid item xs={12} sm={6} className={styles.pageHeaderLeft}>
-              {post && (
-                <SkeletonSwitcher
-                  item={<Typography variant="body3">Posted: {post?.sys.createdAt.substring(0, 10)}</Typography>}
-                  skeletonProps={baseSkeletonProps}
-                />
-              )}
-            </Grid>
-          </Grid>
+      <SectionContainer styleName={styles.wrapper}>
+        <InsidePageHeader createdAt={createdAt} />
 
           {post ? (
             <Stack spacing={2}>
