@@ -4,9 +4,7 @@ import styles from '../page.module.scss'
 import pageStyles from './page.module.scss';
 import {Grid} from "@mui/material";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
-import Button from "@mui/material/Button";
 import {SubmitHandler, useForm} from "react-hook-form";
-import HookFormTextField from "@/components/HookFormTextField/HookFormTextField";
 import contactFormSchema, {ContactFormType} from "@/app/contact/contactFormSchema";
 import {yupResolver} from "@hookform/resolvers/yup";
 import Typography from "@mui/material/Typography";
@@ -18,10 +16,10 @@ import config from "@/config/sites";
 import {Helmet} from "react-helmet";
 import WordSlider from "@/components/WordSlider/WordSlider";
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import Socials from "@/components/Socials/Socials";
 import randomInteger from "@/utils/generateRandomNumber";
 import cn from "classnames";
 import useMisc from "@/hooks/useMisc";
+import Link from "next/link";
 
 const defaultVals: ContactFormType = {
   name: '',
@@ -32,6 +30,11 @@ const defaultVals: ContactFormType = {
 }
 
 const logos = [
+  {
+    id: 0,
+    title: 'OpenAI',
+    src: '/logos/OpenAI.png'
+  },
   {
     id: 1,
     title: 'NBC Sports',
@@ -161,7 +164,7 @@ const Contact = () => {
         ))}
       </div>
 
-      <SectionContainer styleName={styles.mainContent}>
+      <SectionContainer styleName={styles.contactContentWrapper}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={8}>
             <WordSlider
@@ -202,51 +205,7 @@ const Contact = () => {
               </Typography>
             )}
 
-            <form className={pageStyles.form} onSubmit={handleSubmit(onSubmit)}>
-              <div className={pageStyles.fieldWrapper}>
-                <HookFormTextField
-                  name="name"
-                  control={control}
-                  label="Name:"
-                  variant="outlined"
-                />
-                <HookFormTextField
-                  name="email"
-                  control={control}
-                  label="Email:"
-                  variant="outlined"
-                />
-                <HookFormTextField
-                  name="phone"
-                  control={control}
-                  label="Phone:"
-                  variant="outlined"
-                />
-                <HookFormTextField
-                  multiline
-                  name="message"
-                  control={control}
-                  label="Message:"
-                  variant="outlined"
-                  rows={5}
-                />
-                <HookFormTextField
-                  name="captcha"
-                  control={control}
-                  label={`What is ${captchaVals[0]} + ${captchaVals[1]} = ?`}
-                  variant="outlined"
-                />
-              </div>
-
-              <Button
-                color="hero"
-                type="submit"
-                disableElevation
-                variant="outlined"
-              >
-                Contact me
-              </Button>
-            </form>
+            <Typography variant="body2"><Link target="_blank" href="mailto:thomaskbird@icloud.com">Thomaskbird@icloud.com</Link></Typography>
           </Grid>
         </Grid>
       </SectionContainer>
