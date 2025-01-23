@@ -10,33 +10,37 @@ type HookFormTextFieldType = TextFieldProps & {
   variant?: TextFieldVariants;
 };
 
-const HookFormTextField = ({ name, control, label, variant = 'standard', multiline = false }: HookFormTextFieldType) => {
-  return (
-    <Controller
-      name={name}
-      control={control}
-      render={({
-        field: { onChange, value },
-        fieldState: { error },
-        formState,
-      }) => (
-        <div className={styles.wrapper}>
-          <TextField
-            helperText={error ? error.message : null}
-            size="small"
-            error={!!error}
-            onChange={onChange}
-            value={value}
-            fullWidth
-            label={label}
-            variant={variant}
-            multiline={multiline}
-            rows={multiline ? 4 : 1}
-          />
-        </div>
-      )}
-    />
-  );
-};
+const HookFormTextField = ({
+  name,
+  control,
+  label,
+  variant = 'standard',
+  multiline = false
+}: HookFormTextFieldType) => (
+  <Controller
+    name={name}
+    control={control}
+    render={({
+      field: { onChange, value },
+      fieldState: { error },
+      formState,
+    }) => (
+      <div className={styles.wrapper}>
+        <TextField
+          helperText={error ? error.message : null}
+          size="small"
+          error={!!error}
+          onChange={onChange}
+          value={value}
+          fullWidth
+          label={label}
+          variant={variant}
+          multiline={multiline}
+          rows={multiline ? 4 : 1}
+        />
+      </div>
+    )}
+  />
+);
 
 export default HookFormTextField;
