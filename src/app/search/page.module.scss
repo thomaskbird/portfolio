@@ -1,0 +1,18 @@
+.wrapper {
+  padding: 100px 0 0;
+}
+
+.searchWrap {
+  display: flex;
+  align-items: center;
+
+  input {
+    flex: 1;
+  }
+
+  button {
+    padding: 0;
+    height: 55px;
+    min-width: 200px;
+  }
+}

@@ -3,6 +3,7 @@
 import {Helmet} from "react-helmet";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import styles from "@/app/p/[slug]/page.module.scss";
+import pageStyles from './page.module.scss';
 import {Container, Skeleton, Stack} from "@mui/material";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -52,8 +53,8 @@ const Search = () => {
         <meta property="keywords" content="search, site, site search" />
       </Helmet>
 
-      <SectionContainer styleName={styles.wrapper}>
-        <form onSubmit={handleSubmit(onSubmit)}>
+      <SectionContainer styleName={pageStyles.wrapper}>
+        <form onSubmit={handleSubmit(onSubmit)} className={pageStyles.searchWrap}>
           <HookFormTextField
             name="query"
             control={control}
@@ -73,7 +74,9 @@ const Search = () => {
       </SectionContainer>
 
       <SectionContainer styleName={styles.listItemWrapper}>
-        <Typography variant="h2" style={{ margin: '50px 0' }}>Results...</Typography>
+        <Typography variant="h2" style={{ margin: '50px 0' }}>
+          {posts ? posts.length : ''} Results...
+        </Typography>
 
         {isLoading ? (
           <>
@@ -117,11 +120,13 @@ const Search = () => {
           </>
         ) : (
           <>
-            {posts?.map(item => (
+            {posts ? posts?.map(item => (
               <ItemAnimation key={item.sys.id}>
                 <BlogPost post={item} />
               </ItemAnimation>
-            ))}
+            )): (
+              <p>{query ? 'No content found...' : 'Enter a search query to search for results...'}</p>
+            )}
           </>
         )}
       </SectionContainer>
