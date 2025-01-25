@@ -68,12 +68,12 @@ const Search = () => {
             disableElevation
             variant="outlined"
           >
-            Contact me
+            Search
           </Button>
         </form>
       </SectionContainer>
 
-      <SectionContainer styleName={styles.listItemWrapper}>
+      <SectionContainer styleName={pageStyles.listItemWrapper}>
         <Typography variant="h2" style={{ margin: '50px 0' }}>
           {posts ? posts.length : ''} Results...
         </Typography>

@@ -2,6 +2,10 @@
   padding: 100px 0 0;
 }
 
+.listItemWrapper {
+  padding: 0 0 100px;
+}
+
 .searchWrap {
   display: flex;
   align-items: center;
@@ -13,6 +17,6 @@
   button {
     padding: 0;
     height: 55px;
-    min-width: 200px;
+    min-width: 150px;
   }
 }

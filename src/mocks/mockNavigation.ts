@@ -38,6 +38,12 @@ const MOCK_NAVITEMS: NavItem[] = [
   },
   {
     id: 6,
+    link: '/search',
+    label: 'Search',
+    slug: 'search'
+  },
+  {
+    id: 7,
     link: '/contact',
     label: 'Contact',
     slug: 'contact'
