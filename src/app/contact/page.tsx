@@ -4,30 +4,15 @@ import styles from '../page.module.scss'
 import pageStyles from './page.module.scss';
 import {Grid} from "@mui/material";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
-import {SubmitHandler, useForm} from "react-hook-form";
-import contactFormSchema, {ContactFormType} from "@/app/contact/contactFormSchema";
-import {yupResolver} from "@hookform/resolvers/yup";
 import Typography from "@mui/material/Typography";
-import addContact from "@/services/addContact";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectSetIsLoading, selectTheme} from "@/store/selectors/globalStore";
-import {ReactNode, useEffect, useState} from "react";
 import config from "@/config/sites";
 import {Helmet} from "react-helmet";
 import WordSlider from "@/components/WordSlider/WordSlider";
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import randomInteger from "@/utils/generateRandomNumber";
 import cn from "classnames";
 import useMisc from "@/hooks/useMisc";
 import Link from "next/link";
-
-const defaultVals: ContactFormType = {
-  name: '',
-  email: '',
-  phone: '',
-  message: '',
-  captcha: 0,
-}
 
 const logos = [
   {
@@ -99,48 +84,6 @@ const Contact = () => {
   const setIsLoading = useGlobalStore(selectSetIsLoading);
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
-  const {
-    handleSubmit,
-    reset,
-    control,
-    setError,
-  } = useForm<ContactFormType>({
-    resolver: yupResolver(contactFormSchema),
-    defaultValues: defaultVals
-  });
-
-  const { findField } = useMisc()
-
-  const [success, setSuccess] = useState(false);
-  const [captchaVals, setCaptchaVals] = useState<number[]>([]);
-
-  useEffect(() => {
-    setCaptchaVals([randomInteger(), randomInteger()]);
-  }, []);
-
-  const onSubmit: SubmitHandler<ContactFormType> = async (data) => {
-    if(captchaVals[0] + captchaVals[1] === data.captcha) {
-      setIsLoading(true);
-
-      try {
-        const submission = await addContact(data);
-
-        if(submission) {
-          reset();
-        }
-      } catch (e) {
-        console.error(e);
-      } finally {
-        setSuccess(true);
-        setIsLoading(false);
-      }
-    } else {
-      setError('captcha', {
-        type: 'manual',
-        message: 'Your captcha answer was not correct, please try again'
-      })
-    }
-  };
 
   return (
     <>
@@ -193,17 +136,6 @@ const Contact = () => {
 
           <Grid item xs={12} md={4}>
             <Typography variant="h5" sx={{marginBottom: '20px', marginTop: '50px'}}>Send a message</Typography>
-
-            {success ? (
-              <Typography variant="body2" color="success" sx={{color: 'rgba(91,229,169,0.5)'}}>
-                <CheckCircleOutlineIcon className={pageStyles.icon}/>
-                Your message has been
-                submitted, I&apos;ll we be in contact as soon as possible! Thanks for stopping bye!</Typography>
-            ) : (
-              <Typography variant="body2" color="secondary">
-                {findField('message-form-text') as ReactNode}
-              </Typography>
-            )}
 
             <Typography variant="body2"><Link target="_blank" href="mailto:thomaskbird@icloud.com">Thomaskbird@icloud.com</Link></Typography>
           </Grid>
