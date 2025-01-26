@@ -1,7 +1,7 @@
 import client from "@/services/api";
 import useSWR from "swr";
 
-type PostTypes = 'blog' | 'work';
+type PostTypes = 'blog' | 'work' | 'posts';
 
 const requestPosts = async (type: string) => {
   try {

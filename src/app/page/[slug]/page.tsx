@@ -17,7 +17,7 @@ import useRetrievePage from "@/hooks/useRetrievePage";
 import config from "@/config/sites";
 import stripTags from "@/utils/stripTags";
 import {Helmet, HelmetProvider} from "react-helmet-async";
-import styles from "@/app/p/[slug]/page.module.scss";
+import styles from "@/app/page/[slug]/page.module.scss";
 import Image from "next/image";
 import Typography from "@mui/material/Typography";
 import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
@@ -39,10 +39,6 @@ const InsidePage = ({ params }: PageType) => {
 
   const title = page ? `${config.meta.title} | Blog | ${page.fields.title}` : `${config.meta.title} | Blog`;
   const desc = page ? stripTags(page.fields.description as string) : '';
-  const media = page?.fields.media;
-  const createdAt = page?.sys.createdAt ?? '';
-
-  console.log('page', page);
 
   return (
     <HelmetProvider>
@@ -55,7 +51,7 @@ const InsidePage = ({ params }: PageType) => {
 
         <SectionContainer styleName={pageStyles.wrapper}>
           <Box>
-            {page && (
+            {page && page.fields.featuredImage && (
               <Image
                 className={styles.media}
                 src={'https:'+ page.fields.featuredImage.fields.file.url}
@@ -72,9 +68,11 @@ const InsidePage = ({ params }: PageType) => {
               skeletonProps={baseSkeletonProps}
             />
           </Box>
+
           <Box>
             {page && <Markdown rehypePlugins={[rehypeHighlight]}>{page.fields.body}</Markdown>}
           </Box>
+
           {page && page.metadata.tags && (
             <Box className={pageStyles.tagWrapper}>
               <Box>
