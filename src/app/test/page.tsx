@@ -12,6 +12,7 @@ import Markdown from 'react-markdown';
 import rehypeHighlight from 'rehype-highlight'
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import InsidePageHeader from "@/components/InsidePageHeader/InsidePageHeader";
+import {redirect} from "next/navigation";
 
 // todo: figure out how to render a video element instead of the video being rendered into an image tag
 //    possible solution rehype raw: https://stackoverflow.com/questions/75358080/how-can-i-embed-a-youtube-video-in-reactjs-markdown-with-react-markdown
@@ -21,7 +22,7 @@ const Services = () => {
   useEffect(() => {
     const requestPost = async () => {
       try {
-        const res = await client.getEntry('1SfRwXUWegPMcpc2bImYIM');
+        const res = await client.getEntry('7Cl0BdQgFy14PibejJtx2g');
         console.log('res', res.metadata.tags);
         setPost(res)
       } catch (e) {
@@ -31,6 +32,9 @@ const Services = () => {
 
     requestPost()
   }, [])
+
+  console.log('post', post);
+
   return (
     <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
       <Hero navOnly={true} />
@@ -49,9 +53,7 @@ const Services = () => {
                 key={tag.sys.id}
                 variant="outlined"
                 className={pageStyles.tag} label={tag.sys.id}
-                onClick={() => {
-                  console.log('tag clicked')
-                }}
+                onClick={() => redirect(`/search?query=${tag.sys.id}`)}
               />
             ))}</Box>
           </Box>

@@ -9,7 +9,7 @@ import {Skeleton, Stack} from "@mui/material";
 import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
 import BlogPostSkeleton from "@/components/BlogPost/BlogPostSkeleton";
 import config from "@/config/sites";
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 import useRetrievePosts from "@/hooks/useRetrievePosts";
 
 const Blog = () => {

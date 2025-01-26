@@ -9,7 +9,7 @@ import ItemAnimation from "@/components/ItemAnimation/ItemAnimation";
 import BlogPost from "@/components/BlogPost/BlogPost";
 import BlogPostSkeleton from "@/components/BlogPost/BlogPostSkeleton";
 import config from "@/config/sites";
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 import useRetrievePosts from "@/hooks/useRetrievePosts";
 
 const Work = () => {

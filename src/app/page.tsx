@@ -8,7 +8,7 @@ import Skills from "@/components/Skills/Skills";
 import Hero from "@/components/Hero/Hero";
 import Slider from "@/components/Slider/Slider";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
-import {Helmet} from 'react-helmet';
+import {Helmet} from 'react-helmet-async';
 import config from "@/config/sites";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
