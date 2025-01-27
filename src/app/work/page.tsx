@@ -4,12 +4,12 @@ import styles from '../page.module.scss'
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Typography from "@mui/material/Typography";
 import config from "@/config/sites";
-import {Helmet} from "react-helmet-async";
+import {Helmet} from "react-helmet";
 import useRetrievePosts from "@/hooks/useRetrievePosts";
 import SearchResults from "@/components/SearchResults/SearchResults";
 
 const Work = () => {
-  const { posts, error, isLoading } = useRetrievePosts('posts');
+  const { posts, error, isLoading } = useRetrievePosts('work');
 
   return (
     <>

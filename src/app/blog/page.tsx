@@ -9,7 +9,7 @@ import useRetrievePosts from "@/hooks/useRetrievePosts";
 import SearchResults from "@/components/SearchResults/SearchResults";
 
 const Blog = () => {
-  const { posts, error, isLoading } = useRetrievePosts('posts');
+  const { posts, error, isLoading } = useRetrievePosts('blog');
   const orderedPosts = posts?.reverse();
 
   return (
