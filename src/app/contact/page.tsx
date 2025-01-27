@@ -8,10 +8,9 @@ import Typography from "@mui/material/Typography";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectSetIsLoading, selectTheme} from "@/store/selectors/globalStore";
 import config from "@/config/sites";
-import {Helmet} from "react-helmet-async";
+import {Helmet} from "react-helmet";
 import WordSlider from "@/components/WordSlider/WordSlider";
 import cn from "classnames";
-import useMisc from "@/hooks/useMisc";
 import Link from "next/link";
 
 const logos = [
