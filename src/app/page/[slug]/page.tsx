@@ -53,7 +53,7 @@ const InsidePage = ({ params }: PageType) => {
           <Box>
             {page && page.fields.featuredImage && (
               <Image
-                className={styles.media}
+                className={pageStyles.media}
                 src={'https:'+ page.fields.featuredImage.fields.file.url}
                 alt={page.fields.featuredImage.fields.file.title ?? 'No alt text supplied'}
                 width={page.fields.featuredImage.fields.file.details.image.width}
@@ -62,11 +62,6 @@ const InsidePage = ({ params }: PageType) => {
             )}
 
             <InsidePageHeader createdAt={page?.sys.createdAt} />
-
-            <SkeletonSwitcher
-              item={<Typography variant="h2" className={styles.postTitle}>{page?.fields.title as ReactNode}</Typography>}
-              skeletonProps={baseSkeletonProps}
-            />
           </Box>
 
           <Box>
