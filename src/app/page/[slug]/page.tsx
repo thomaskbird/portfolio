@@ -77,7 +77,14 @@ const InsidePage = ({ params }: PageType) => {
           </Box>
 
           <Box>
-            {page && <Markdown rehypePlugins={[rehypeHighlight]}>{page.fields.body}</Markdown>}
+            {page && (
+              <>
+                <Markdown rehypePlugins={[rehypeHighlight]}>{page.fields.body}</Markdown>
+                {page.fields.codepen && (
+                  <div dangerouslySetInnerHTML={{__html: (page.fields.codepen as any).content[0].content[0].value}}/>
+                )}
+              </>
+            )}
           </Box>
 
           {page && page.metadata.tags && (
@@ -96,7 +103,7 @@ const InsidePage = ({ params }: PageType) => {
             </Box>
           )}
         </SectionContainer>
-        <div ref={codepenRef}/>
+        <div ref={codepenRef} />
       </Container>
     </HelmetProvider>
   )
