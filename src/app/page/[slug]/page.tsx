@@ -33,9 +33,21 @@ type PageType = {
 }
 
 const InsidePage = ({ params }: PageType) => {
+  const [hasAppendedScript, setHasAppendedScript] = useState(false);
   const codepenRef = useRef<any>(null);
   const { slug } = use(params);
   const { page, isLoading } = useRetrievePage(slug);
+
+  useEffect(() => {
+    if(codepenRef.current) {
+      const script = document.createElement('script');
+      script.src = 'https://cpwebassets.codepen.io/assets/embed/ei.js';
+      script.async = true;
+
+      codepenRef.current.appendChild(script);
+      setHasAppendedScript(true);
+    }
+  }, [isLoading]);
 
   const title = page ? `${config.meta.title} | Blog | ${page.fields.title}` : `${config.meta.title} | Blog`;
   const desc = page ? stripTags(page.fields.description as string) : '';
@@ -54,14 +66,14 @@ const InsidePage = ({ params }: PageType) => {
             {page && page.fields.featuredImage && (
               <Image
                 className={pageStyles.media}
-                src={'https:'+ page.fields.featuredImage.fields.file.url}
+                src={'https:' + page.fields.featuredImage.fields.file.url}
                 alt={page.fields.featuredImage.fields.file.title ?? 'No alt text supplied'}
                 width={page.fields.featuredImage.fields.file.details.image.width}
                 height={page.fields.featuredImage.fields.file.details.image.height}
               />
             )}
 
-            <InsidePageHeader createdAt={page?.sys.createdAt} />
+            <InsidePageHeader createdAt={page?.sys.createdAt}/>
           </Box>
 
           <Box>
@@ -84,6 +96,7 @@ const InsidePage = ({ params }: PageType) => {
             </Box>
           )}
         </SectionContainer>
+        <div ref={codepenRef}/>
       </Container>
     </HelmetProvider>
   )

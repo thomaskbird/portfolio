@@ -13,7 +13,6 @@ type ScreenType = {
   opacity: number;
 }
 
-// todo: consider always measuring screen viewport and resizing image based off that.
 const Screen = ({ image, title, isLeft, scrollValueCalculated, opacity, screenPosition }: ScreenType) => {
   const imgRef = useRef<HTMLImageElement | null>(null);
   const screenContainerRef = useRef<HTMLDivElement | null>(null);

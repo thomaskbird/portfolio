@@ -16,15 +16,13 @@ type ProjectSectionType = {
   description: string;
 };
 
-// todo: @media(min-width: 900px) and (max-width: 1100px) {
-
 const ProjectSection = ({
   idx,
   image,
   title,
   subtitle,
   description
-}: any) => {
+}: ProjectSectionType) => {
   const wrapperRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
   const [scrollValueCalculated, setScrollValueCalculated] = useState(0);
   const [screenPosition, setScreenPosition] = useState(0);
