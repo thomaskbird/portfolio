@@ -22,6 +22,7 @@ import Image from "next/image";
 import Typography from "@mui/material/Typography";
 import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
 import SkeletonSwitcher from "@/components/SkeletonSwitcher/SkeletonSwitcher";
+import Link from "next/link";
 
 // todo: figure out how to render a video element instead of the video being rendered into an image tag
 //    possible solution rehype raw: https://stackoverflow.com/questions/75358080/how-can-i-embed-a-youtube-video-in-reactjs-markdown-with-react-markdown
@@ -52,6 +53,8 @@ const InsidePage = ({ params }: PageType) => {
   const title = page ? `${config.meta.title} | Blog | ${page.fields.title}` : `${config.meta.title} | Blog`;
   const desc = page ? stripTags(page.fields.description as string) : '';
 
+  console.log('page', page);
+
   return (
     <HelmetProvider>
       <Container maxWidth={false} disableGutters>
@@ -64,28 +67,49 @@ const InsidePage = ({ params }: PageType) => {
         <SectionContainer styleName={pageStyles.wrapper}>
           <Box>
             {page && page.fields.featuredImage && (
-              <Image
-                className={pageStyles.media}
-                src={'https:' + page.fields.featuredImage.fields.file.url}
-                alt={page.fields.featuredImage.fields.file.title ?? 'No alt text supplied'}
-                width={page.fields.featuredImage.fields.file.details.image.width}
-                height={page.fields.featuredImage.fields.file.details.image.height}
-              />
+              <div className={pageStyles.mediaWrapper}>
+                <Link target="_blank" href={`https:\\${page.fields.featuredImage.fields.file.url}`}>
+                  <Image
+                    className={pageStyles.media}
+                    src={'https:' + page.fields.featuredImage.fields.file.url}
+                    alt={page.fields.featuredImage.fields.title ?? 'No alt text supplied'}
+                    title={page.fields.featuredImage.fields.title ?? 'No title text supplied'}
+                    width={page.fields.featuredImage.fields.file.details.image.width}
+                    height={page.fields.featuredImage.fields.file.details.image.height}
+                  />
+                </Link>
+              </div>
             )}
 
             <InsidePageHeader createdAt={page?.sys.createdAt}/>
           </Box>
 
-          <Box>
-            {page && (
-              <>
-                <Markdown rehypePlugins={[rehypeHighlight]}>{page.fields.body}</Markdown>
-                {page.fields.codepen && (
-                  <div dangerouslySetInnerHTML={{__html: (page.fields.codepen as any).content[0].content[0].value}}/>
-                )}
-              </>
-            )}
-          </Box>
+          {page && (
+            <Box>
+              <Markdown rehypePlugins={[rehypeHighlight]}>{page.fields.body}</Markdown>
+              {page.fields.codepen && (
+                <div dangerouslySetInnerHTML={{__html: (page.fields.codepen as any).content[0].content[0].value}}/>
+              )}
+            </Box>
+          )}
+
+          {page && page.fields.gallery && (
+            <div className={styles.galleryWrapper}>
+              {page && page.fields.gallery && (page.fields.gallery as any).map((item: any) => (
+                <div key={item.sys.id} className={styles.galleryItem}>
+                  <Link href={'https:' + item.fields.file.url} target="_blank">
+                    <Image
+                      className={styles.media}
+                      src={'https:' + item.fields.file.url}
+                      alt={item.fields.file.title ?? 'No alt text supplied'}
+                      width={item.fields.file.details.image.width}
+                      height={item.fields.file.details.image.height}
+                    />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          )}
 
           {page && page.metadata.tags && (
             <Box className={pageStyles.tagWrapper}>
@@ -103,7 +127,7 @@ const InsidePage = ({ params }: PageType) => {
             </Box>
           )}
         </SectionContainer>
-        <div ref={codepenRef} />
+        <div ref={codepenRef}/>
       </Container>
     </HelmetProvider>
   )
