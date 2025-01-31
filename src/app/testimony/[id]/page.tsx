@@ -15,16 +15,16 @@ import useRetrieveTestimonial from "@/hooks/useRetrieveTestimonial";
 import cn from "classnames";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
-import {ReactNode} from "react";
+import {ReactNode, use} from "react";
 
 type PageType = {
-  params: {
+  params: Promise<{
     id: string,
-  }
+  }>
 }
 
 const Testimony = ({ params }: PageType) => {
-  const { id } = params;
+  const { id } = use(params);
   const router = useRouter();
   const theme = useGlobalStore(selectTheme);
   const { testimony, error, isLoading } = useRetrieveTestimonial(id);

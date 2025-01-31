@@ -14,7 +14,6 @@ import useRetrievePage from "@/hooks/useRetrievePage";
 import config from "@/config/sites";
 import stripTags from "@/utils/stripTags";
 import {Helmet, HelmetProvider} from "react-helmet-async";
-import styles from "@/app/page/[slug]/page.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import MediaGallery from "@/components/MediaGallery/MediaGallery";
@@ -47,8 +46,6 @@ const InsidePage = ({ params }: PageType) => {
 
   const title = page ? `${config.meta.title} | Blog | ${page.fields.title}` : `${config.meta.title} | Blog`;
   const desc = page ? stripTags(page.fields.description as string) : '';
-
-  console.log('page', page);
 
   return (
     <HelmetProvider>
