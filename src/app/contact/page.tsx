@@ -11,7 +11,6 @@ import config from "@/config/sites";
 import {Helmet} from "react-helmet";
 import WordSlider from "@/components/WordSlider/WordSlider";
 import cn from "classnames";
-import useMisc from "@/hooks/useMisc";
 import Link from "next/link";
 
 const logos = [

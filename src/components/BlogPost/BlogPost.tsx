@@ -33,7 +33,7 @@ const BlogPost = ({
     <div className={styles.listItemWrapperBorder}>
       <div className={cn(styles.listItemWrapper, isDark ? styles.listItemWrapperDark : styles.listItemWrapperLight)}>
         <div className={styles.listItemHeader}>
-          <Link href={`/p/${post.fields.slug}`}>
+          <Link href={`/page/${post.fields.slug}`}>
             <Typography variant="h4">{post.fields.title as string}</Typography>
           </Link>
           <span className={styles.listItemPosted}>{post.sys.createdAt.substring(0, 10)}</span>
@@ -43,7 +43,7 @@ const BlogPost = ({
           {post.fields.description as ReactNode}
         </Typography>
 
-        <Link href={`/p/${post.fields.slug}`}>
+        <Link href={`/page/${post.fields.slug}`}>
           <Button variant="text" color="nav">
             View post...
           </Button>

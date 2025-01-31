@@ -38,7 +38,7 @@
   z-index: 1;
   left: 104px;
   width: 786px;
-  height: 506px;
+  height: 426px;
   overflow-y: auto;
   position: absolute;
   overflow-x: hidden;
@@ -60,6 +60,7 @@
 .screenView {
   width: 100%;
   display: flex;
+  max-height: unset;
 
   @media(max-width: 600px) {
     width: 435px;

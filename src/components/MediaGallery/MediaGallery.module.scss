@@ -1,0 +1,28 @@
+.gallery {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40% 20% 20% 20%;
+  grid-template-rows: 200px 200px;
+  gap: 12px;
+}
+
+.itemWrap {
+  height: 200px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-height: unset;
+
+  opacity: 0.75;
+  filter: grayscale(1);
+  transition: all 0.25s ease-in;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+    filter: grayscale(0);
+  }
+}

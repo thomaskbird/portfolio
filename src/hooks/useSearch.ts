@@ -6,6 +6,7 @@ type PostTypes = 'blog' | 'work' | 'posts';
 const requestSearch = async (type: PostTypes, query: string) => {
   try {
     const res = await client.getEntries({
+      content_type: 'posts',
       query: query
     });
 

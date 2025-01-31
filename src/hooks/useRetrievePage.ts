@@ -1,10 +1,10 @@
 import client from "@/services/api";
 import useSWR from "swr";
 
-const requestPost = async (slug: string) => {
+const requestPage = async (slug: string) => {
   try {
     const res = await client.getEntries({
-      content_type: 'content',
+      content_type: 'posts',
       'fields.slug': slug,
       'order': '-sys.createdAt',
     } as any);
@@ -21,14 +21,14 @@ const requestPost = async (slug: string) => {
   }
 }
 
-const useRetrievePost = (slug: string) => {
-  const {data: post, error, isLoading } = useSWR(slug, requestPost)
+const useRetrievePage = (slug: string) => {
+  const {data: page, error, isLoading } = useSWR(slug, requestPage)
 
   return {
     isLoading,
-    post,
+    page,
     error,
   }
 }
 
-export default useRetrievePost;
+export default useRetrievePage;
