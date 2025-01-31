@@ -140,10 +140,6 @@ code {
   display: none;
 }
 
-img {
-  max-height: 500px;
-}
-
 p, .body1, .body2, .body3 {
   color: #999;
   font-weight: 400;

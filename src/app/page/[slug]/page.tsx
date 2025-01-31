@@ -1,10 +1,8 @@
 'use client';
 
-import client from "@/services/api";
-import {ReactNode, use, useEffect, useRef, useState} from "react";
+import {use, useEffect, useRef, useState} from "react";
 import pageStyles from './page.module.scss'
 import {Chip, Container} from '@mui/material';
-import Hero from '@/components/Hero/Hero';
 import Box from '@mui/material/Box';
 
 import Markdown from 'react-markdown';
@@ -12,17 +10,14 @@ import rehypeHighlight from 'rehype-highlight'
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import InsidePageHeader from "@/components/InsidePageHeader/InsidePageHeader";
 import {redirect} from "next/navigation";
-import useRetrievePost from "@/hooks/useRetrievePost";
 import useRetrievePage from "@/hooks/useRetrievePage";
 import config from "@/config/sites";
 import stripTags from "@/utils/stripTags";
 import {Helmet, HelmetProvider} from "react-helmet-async";
 import styles from "@/app/page/[slug]/page.module.scss";
 import Image from "next/image";
-import Typography from "@mui/material/Typography";
-import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
-import SkeletonSwitcher from "@/components/SkeletonSwitcher/SkeletonSwitcher";
 import Link from "next/link";
+import MediaGallery from "@/components/MediaGallery/MediaGallery";
 
 // todo: figure out how to render a video element instead of the video being rendered into an image tag
 //    possible solution rehype raw: https://stackoverflow.com/questions/75358080/how-can-i-embed-a-youtube-video-in-reactjs-markdown-with-react-markdown
@@ -94,21 +89,7 @@ const InsidePage = ({ params }: PageType) => {
           )}
 
           {page && page.fields.gallery && (
-            <div className={styles.galleryWrapper}>
-              {page && page.fields.gallery && (page.fields.gallery as any).map((item: any) => (
-                <div key={item.sys.id} className={styles.galleryItem}>
-                  <Link href={'https:' + item.fields.file.url} target="_blank">
-                    <Image
-                      className={styles.media}
-                      src={'https:' + item.fields.file.url}
-                      alt={item.fields.file.title ?? 'No alt text supplied'}
-                      width={item.fields.file.details.image.width}
-                      height={item.fields.file.details.image.height}
-                    />
-                  </Link>
-                </div>
-              ))}
-            </div>
+            <MediaGallery gallery={page.fields.gallery} />
           )}
 
           {page && page.metadata.tags && (
