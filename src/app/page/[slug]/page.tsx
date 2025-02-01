@@ -47,8 +47,9 @@ const InsidePage = ({ params }: PageType) => {
 
   const title = page ? `${config.meta.title} | Blog | ${page.fields.title}` : `${config.meta.title} | Blog`;
   const desc = page ? stripTags(page.fields.description as string) : '';
-  const imageField: any = page && ((page?.fields as any).featuredImage as any).fields;
+  const imageField: any = page && ((page?.fields as any).featuredImage as any)?.fields;
   const pageFields = page?.fields as any;
+  console.log('imageField', imageField);
 
   return (
     <HelmetProvider>
@@ -61,7 +62,7 @@ const InsidePage = ({ params }: PageType) => {
 
         <SectionContainer styleName={pageStyles.wrapper}>
           <Box>
-            {page && page.fields.featuredImage && (
+            {imageField && (
               <div className={pageStyles.mediaWrapper}>
                 <Link target="_blank" href={`https:\\${imageField.file.url}`}>
                   <Image
