@@ -3,7 +3,6 @@
 import styles from './page.module.scss'
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import config from "@/config/sites";
-import {Helmet} from "react-helmet";
 import Typography from "@mui/material/Typography";
 import {Grid} from "@mui/material";
 import Button from "@mui/material/Button";
@@ -16,6 +15,7 @@ import cn from "classnames";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
 import {ReactNode, use} from "react";
+import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
 
 type PageType = {
   params: Promise<{
@@ -34,10 +34,10 @@ const Testimony = ({ params }: PageType) => {
 
   return (
     <SectionContainer styleName={styles.insideContainer}>
-      <Helmet>
+      <HelmetComponent>
         <title>{config.meta.title} | Testimony {name as ReactNode}</title>
         <meta property="description" content={config.meta.description}/>
-      </Helmet>
+      </HelmetComponent>
 
       <Grid container className={styles.pageHeader}>
         <Grid item xs={12} sm={6}>

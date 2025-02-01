@@ -13,10 +13,11 @@ import {redirect} from "next/navigation";
 import useRetrievePage from "@/hooks/useRetrievePage";
 import config from "@/config/sites";
 import stripTags from "@/utils/stripTags";
-import {Helmet, HelmetProvider} from "react-helmet-async";
+import {HelmetProvider} from "react-helmet-async";
 import Image from "next/image";
 import Link from "next/link";
 import MediaGallery from "@/components/MediaGallery/MediaGallery";
+import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
 
 // todo: figure out how to render a video element instead of the video being rendered into an image tag
 //    possible solution rehype raw: https://stackoverflow.com/questions/75358080/how-can-i-embed-a-youtube-video-in-reactjs-markdown-with-react-markdown
@@ -52,11 +53,11 @@ const InsidePage = ({ params }: PageType) => {
   return (
     <HelmetProvider>
       <Container maxWidth={false} disableGutters>
-        <Helmet>
+        <HelmetComponent>
           <title>{title}</title>
           <meta property="description" content={desc}/>
           <meta property="keywords" content={page?.fields.keywords as string}/>
-        </Helmet>
+        </HelmetComponent>
 
         <SectionContainer styleName={pageStyles.wrapper}>
           <Box>

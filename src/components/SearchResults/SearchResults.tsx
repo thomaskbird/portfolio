@@ -6,7 +6,7 @@ import BlogPost from "@/components/BlogPost/BlogPost";
 
 type SearchResultsProps = {
   isLoading: boolean;
-  posts: unknown[];
+  posts: any;
 }
 
 const SearchResults = ({ isLoading, posts }: SearchResultsProps) => {

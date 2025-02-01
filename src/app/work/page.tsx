@@ -4,19 +4,19 @@ import styles from '../page.module.scss'
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Typography from "@mui/material/Typography";
 import config from "@/config/sites";
-import {Helmet} from "react-helmet";
 import useRetrievePosts from "@/hooks/useRetrievePosts";
 import SearchResults from "@/components/SearchResults/SearchResults";
+import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
 
 const Work = () => {
   const { posts, error, isLoading } = useRetrievePosts('work');
 
   return (
     <>
-      <Helmet>
+      <HelmetComponent>
         <title>{config.meta.title} | Work</title>
         <meta property="description" content={config.meta.description} />
-      </Helmet>
+      </HelmetComponent>
 
       <SectionContainer styleName={styles.listItemWrapper}>
         <Typography variant="h2" style={{ margin: '50px 0' }}>Work</Typography>

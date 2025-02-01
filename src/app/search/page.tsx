@@ -18,7 +18,7 @@ import ItemAnimation from "@/components/ItemAnimation/ItemAnimation";
 import BlogPost from "@/components/BlogPost/BlogPost";
 import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
 
-const Search = () => {
+const Testimony = () => {
   const searchParams = useSearchParams()
   const query = searchParams.get('query') ?? '';
 
@@ -133,4 +133,4 @@ const Search = () => {
   )
 }
 
-export default Search;
+export default Testimony;
