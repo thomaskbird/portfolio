@@ -18,8 +18,9 @@ import MOCK_NAVITEMS from "@/mocks/mockNavigation";
 import {usePathname} from "next/navigation";
 import CloseIcon from '@mui/icons-material/Close';
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectIsLoading, selectSetIsLoading, selectSetTheme, selectTheme} from "@/store/selectors/globalStore";
+import {selectSetTheme, selectTheme} from "@/store/selectors/globalStore";
 import cn from "classnames";
+import {ChangeEvent, ReactElement, useState} from "react";
 
 interface Props {
   /**
@@ -36,7 +37,7 @@ interface HideOnScrollProps {
    * You won't need it on your project.
    */
   window?: () => Window;
-  children: React.ReactElement;
+  children: ReactElement;
 }
 
 const drawerWidth = 240;
@@ -47,7 +48,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
   const setTheme = useGlobalStore(selectSetTheme);
   const pathname = usePathname();
   const isHome = pathname === '/';
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const logoUrl = isDark ? '/logo.png' : '/logo-dark.png';
 
   const handleDrawerToggle = () => {
@@ -92,7 +93,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
         <Tooltip title={`${theme} mode`}>
           <Switch
             checked={isDark}
-            onChange={(evt: React.ChangeEvent<HTMLInputElement>) => setTheme(evt.target.checked ? 'dark' : 'light')}
+            onChange={(evt: ChangeEvent<HTMLInputElement>) => setTheme(evt.target.checked ? 'dark' : 'light')}
           />
         </Tooltip>
       </div>
@@ -140,7 +141,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
                 ))}
 
                 <Tooltip title={`${theme} mode`}>
-                  <Switch checked={isDark} onChange={(evt: React.ChangeEvent<HTMLInputElement>) => setTheme(evt.target.checked ? 'dark' : 'light')} />
+                  <Switch checked={isDark} onChange={(evt: ChangeEvent<HTMLInputElement>) => setTheme(evt.target.checked ? 'dark' : 'light')} />
                 </Tooltip>
               </Box>
             </Toolbar>

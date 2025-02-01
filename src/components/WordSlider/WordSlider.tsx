@@ -34,7 +34,7 @@ const WordSlider = ({
     startInterval();
 
     return () => stopInterval();
-  }, []);
+  });
 
   const handleAuto = () => {
     setActiveIndex(prevState => {

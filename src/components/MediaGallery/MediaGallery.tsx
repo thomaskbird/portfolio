@@ -11,7 +11,7 @@ const MediaGallery = ({ gallery }: MediaGalleryProps) => {
   return (
     <Gallery>
       <div className={styles.gallery}>
-        {gallery.map((item) => (
+        {gallery.map((item: any) => (
           <Item
             key={item.sys.id}
             original={'https:' + item.fields.file.url}

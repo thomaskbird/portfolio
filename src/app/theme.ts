@@ -1,5 +1,6 @@
 import {createTheme} from "@mui/material";
 import {Theme} from "@mui/system";
+import {CSSProperties} from "react";
 
 declare module '@mui/material/styles' {
   interface Palette {
@@ -15,11 +16,11 @@ declare module '@mui/material/styles' {
   }
 
   interface TypographyVariants {
-    body3: React.CSSProperties;
+    body3: CSSProperties;
   }
 
   interface TypographyVariantsOptions {
-    body3: React.CSSProperties;
+    body3: CSSProperties;
   }
 }
 

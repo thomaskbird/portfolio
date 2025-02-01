@@ -35,7 +35,7 @@ const ProjectSection = ({
   const isLeft = idx % 2 === 0;
   const projectClasses = cn(styles.projects, isLeft ? styles.projectsLeft : styles.projectsRight);
   const classes = cn(styles.projectText, isLeft ? styles.textLeft : styles.textRight);
-  const featureImage = image.fields.file.url;
+  const featureImage = (image as any).fields.file.url;
 
   useEffect(() => {
     scrollYProgress.on('change', (num) => {

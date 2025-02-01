@@ -15,13 +15,14 @@ import GlobalCssPriority from "@/components/GlobalCssPriority/GlobalCssPriority"
 import { source_sans } from "@/app/fonts";
 import cn from "classnames";
 import { GoogleAnalytics } from '@next/third-parties/google'
+import {ReactNode, Suspense} from "react";
 
 const pagesWithScrollToTop = ['/', '/work', '/blog', '/resume'];
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: ReactNode
 }) {
   const isLoading = useGlobalStore(selectIsLoading);
   const theme = useGlobalStore(selectTheme);
@@ -36,29 +37,31 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(source_sans.variable, theme)} suppressHydrationWarning={true}>
-        <GlobalCssPriority>
-          <ThemeProvider theme={theme === 'dark' ? themeDark : themeLight}>
-            <Backdrop
-              sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-              open={false}
-            >
-              <CircularProgress color="inherit" />
-            </Backdrop>
+        <Suspense>
+          <GlobalCssPriority>
+            <ThemeProvider theme={theme === 'dark' ? themeDark : themeLight}>
+              <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={false}
+              >
+                <CircularProgress color="inherit" />
+              </Backdrop>
 
-            <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
-              <Hero navOnly={true} />
-              {children}
-            </Container>
+              <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
+                <Hero navOnly={true} />
+                {children}
+              </Container>
 
-            <Footer />
+              <Footer />
 
-            {hasScrollTop && (
-              <Fab color="primary" className="backToTop" onClick={backToTop}>
-                <ExpandLessIcon/>
-              </Fab>
-            )}
-          </ThemeProvider>
-        </GlobalCssPriority>
+              {hasScrollTop && (
+                <Fab color="primary" className="backToTop" onClick={backToTop}>
+                  <ExpandLessIcon/>
+                </Fab>
+              )}
+            </ThemeProvider>
+          </GlobalCssPriority>
+        </Suspense>
       </body>
       <GoogleAnalytics gaId="G-B75MXB0NDX" />
     </html>
