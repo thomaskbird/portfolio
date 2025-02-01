@@ -4,9 +4,9 @@ import styles from '../page.module.scss'
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Typography from "@mui/material/Typography";
 import config from "@/config/sites";
-import {Helmet} from "react-helmet";
 import useRetrievePosts from "@/hooks/useRetrievePosts";
 import SearchResults from "@/components/SearchResults/SearchResults";
+import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
 
 const Blog = () => {
   const { posts, error, isLoading } = useRetrievePosts('blog');
@@ -14,15 +14,17 @@ const Blog = () => {
 
   return (
     <>
-      <Helmet>
+      <HelmetComponent>
         <title>{config.meta.title} | Blog</title>
         <meta property="description" content={config.meta.description} />
-      </Helmet>
+      </HelmetComponent>
 
       <SectionContainer styleName={styles.listItemWrapper}>
         <Typography variant="h2" style={{margin: '50px 0'}}>Blog</Typography>
 
-        <SearchResults isLoading={isLoading} posts={orderedPosts} />
+        {orderedPosts && (
+          <SearchResults isLoading={isLoading} posts={orderedPosts} />
+        )}
       </SectionContainer>
     </>
   )

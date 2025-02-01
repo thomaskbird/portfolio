@@ -46,6 +46,8 @@ const InsidePage = ({ params }: PageType) => {
 
   const title = page ? `${config.meta.title} | Blog | ${page.fields.title}` : `${config.meta.title} | Blog`;
   const desc = page ? stripTags(page.fields.description as string) : '';
+  const imageField: any = page && ((page?.fields as any).featuredImage as any).fields;
+  const pageFields = page?.fields as any;
 
   return (
     <HelmetProvider>
@@ -60,25 +62,25 @@ const InsidePage = ({ params }: PageType) => {
           <Box>
             {page && page.fields.featuredImage && (
               <div className={pageStyles.mediaWrapper}>
-                <Link target="_blank" href={`https:\\${page.fields.featuredImage.fields.file.url}`}>
+                <Link target="_blank" href={`https:\\${imageField.file.url}`}>
                   <Image
                     className={pageStyles.media}
-                    src={'https:' + page.fields.featuredImage.fields.file.url}
-                    alt={page.fields.featuredImage.fields.title ?? 'No alt text supplied'}
-                    title={page.fields.featuredImage.fields.title ?? 'No title text supplied'}
-                    width={page.fields.featuredImage.fields.file.details.image.width}
-                    height={page.fields.featuredImage.fields.file.details.image.height}
+                    src={'https:' + imageField.file.url}
+                    alt={imageField.title ?? 'No alt text supplied'}
+                    title={imageField.title ?? 'No title text supplied'}
+                    width={imageField.file.details.image.width}
+                    height={imageField.file.details.image.height}
                   />
                 </Link>
               </div>
             )}
 
-            <InsidePageHeader createdAt={page?.sys.createdAt}/>
+            <InsidePageHeader createdAt={page?.sys.createdAt as string}/>
           </Box>
 
           {page && (
             <Box>
-              <Markdown rehypePlugins={[rehypeHighlight]}>{page.fields.body}</Markdown>
+              <Markdown rehypePlugins={[rehypeHighlight]}>{pageFields.body}</Markdown>
               {page.fields.codepen && (
                 <div dangerouslySetInnerHTML={{__html: (page.fields.codepen as any).content[0].content[0].value}}/>
               )}

@@ -4,7 +4,7 @@ import {Gallery, Item} from "react-photoswipe-gallery";
 import Image from "next/image";
 
 type MediaGalleryProps = {
-  gallery: { [key: string]: any };
+  gallery: any;
 }
 
 const MediaGallery = ({ gallery }: MediaGalleryProps) => {

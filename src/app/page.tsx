@@ -8,14 +8,16 @@ import Skills from "@/components/Skills/Skills";
 import Hero from "@/components/Hero/Hero";
 import Slider from "@/components/Slider/Slider";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
-import {Helmet} from 'react-helmet';
 import config from "@/config/sites";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
 import Fader from "@/components/Fader/Fader";
 import useRetrieveTestimonials from "@/hooks/useRetrieveTestimonials";
-import useRetrieveHeros from "@/hooks/useRetrieveHeros";
+import useRetrieveHeros, {HeroFieldsType} from "@/hooks/useRetrieveHeros";
 import useRetrieveWhatIDo from "@/hooks/useRetrieveWhatIDo";
+import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
+
+
 
 const Home = () => {
   const theme = useGlobalStore(selectTheme);
@@ -26,10 +28,10 @@ const Home = () => {
 
   return (
     <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
-      <Helmet>
+      <HelmetComponent>
         <title>Thomas K Bird | Home</title>
         <meta property="description" content={config.meta.description} />
-      </Helmet>
+      </HelmetComponent>
 
       <Hero/>
 
@@ -49,11 +51,14 @@ const Home = () => {
 
         <PageSectionTitle title="Project Work"/>
 
-        {heros?.map((project, idx) => (
+        {heros && heros?.map((project, idx) => (
           <ProjectSection
-            {...project.fields}
             idx={idx}
             key={project.sys.id}
+            image={project.fields.image as string}
+            title={project.fields.title as string}
+            subtitle={project.fields.subtitle as string}
+            description={project.fields.description as string}
           />
         ))}
       </SectionContainer>

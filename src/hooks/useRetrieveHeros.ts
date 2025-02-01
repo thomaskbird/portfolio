@@ -1,6 +1,14 @@
 import client from "@/services/api";
 import useSWR from "swr";
 
+export type HeroFieldsType = {
+  title: string;
+  subtitle: string;
+  description: string;
+  image: any;
+  priority: number;
+}
+
 const requestHeros = async () => {
   try {
     const res = await client.getEntries({

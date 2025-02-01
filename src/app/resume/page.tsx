@@ -8,9 +8,9 @@ import ResumeBlurb from "@/components/ResumeBlurb/ResumeBlurb";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
 import config from "@/config/sites";
-import {Helmet} from "react-helmet";
 import cn from "classnames";
 import useRetrieveExperience from "@/hooks/useRetrieveExperience";
+import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
 
 const Resume = () => {
   const theme = useGlobalStore(selectTheme);
@@ -21,10 +21,10 @@ const Resume = () => {
 
   return (
     <SectionContainer styleName={cn(styles.insideContainer, isDark ? styles.insideContainerDark : styles.insideContainerLight)}>
-      <Helmet>
+      <HelmetComponent>
         <title>{config.meta.title} | Resume</title>
         <meta property="description" content={config.meta.description} />
-      </Helmet>
+      </HelmetComponent>
 
       <ResumeBlurb />
 

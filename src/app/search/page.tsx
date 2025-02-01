@@ -1,8 +1,6 @@
 'use client';
 
-import {Helmet} from "react-helmet";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
-import styles from "@/app/p/[slug]/page.module.scss";
 import pageStyles from './page.module.scss';
 import {Container, Skeleton, Stack} from "@mui/material";
 import Button from "@mui/material/Button";
@@ -18,6 +16,7 @@ import useSearch from "@/hooks/useSearch";
 import BlogPostSkeleton from "@/components/BlogPost/BlogPostSkeleton";
 import ItemAnimation from "@/components/ItemAnimation/ItemAnimation";
 import BlogPost from "@/components/BlogPost/BlogPost";
+import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
 
 const Search = () => {
   const searchParams = useSearchParams()
@@ -47,11 +46,11 @@ const Search = () => {
 
   return (
     <Container maxWidth={false} disableGutters>
-      <Helmet>
+      <HelmetComponent>
         <title>{`${config.meta.title} | Blog`}</title>
         <meta property="description" content="Search website"/>
         <meta property="keywords" content="search, site, site search" />
-      </Helmet>
+      </HelmetComponent>
 
       <SectionContainer styleName={pageStyles.wrapper}>
         <form onSubmit={handleSubmit(onSubmit)} className={pageStyles.searchWrap}>
@@ -131,7 +130,7 @@ const Search = () => {
         )}
       </SectionContainer>
     </Container>
-)
+  )
 }
 
 export default Search;

@@ -8,10 +8,10 @@ import Typography from "@mui/material/Typography";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectSetIsLoading, selectTheme} from "@/store/selectors/globalStore";
 import config from "@/config/sites";
-import {Helmet} from "react-helmet";
 import WordSlider from "@/components/WordSlider/WordSlider";
 import cn from "classnames";
 import Link from "next/link";
+import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
 
 const logos = [
   {
@@ -86,10 +86,10 @@ const Contact = () => {
 
   return (
     <>
-      <Helmet>
+      <HelmetComponent>
         <title>{config.meta.title} | Contact</title>
         <meta property="description" content={config.meta.description}/>
-      </Helmet>
+      </HelmetComponent>
 
       <div className={cn(
         pageStyles.horizontalScrollSnapper,
