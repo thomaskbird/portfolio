@@ -175,14 +175,14 @@
 
       .datesDark {
         &::before {
-          border: 28px solid transparent;
+          border: 23px solid transparent;
           border-right-color: rgb(9, 9, 9);
         }
       }
 
       .datesLight {
         &::before {
-          border: 28px solid transparent;
+          border: 23px solid transparent;
           border-right-color: #fff;
         }
       }
@@ -256,14 +256,14 @@
 
       .datesDark {
         &::before {
-          border: 28px solid transparent;
+          border: 23px solid transparent;
           border-left-color: rgb(9, 9, 9);
         }
       }
 
       .datesLight {
         &::before {
-          border: 28px solid transparent;
+          border: 23px solid transparent;
           border-left-color: #fff;
         }
       }

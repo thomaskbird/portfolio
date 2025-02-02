@@ -1,9 +1,9 @@
 .gallery {
   width: 100%;
   display: grid;
-  grid-template-columns: 40% 20% 20% 20%;
+  grid-template-columns: 4fr 2fr 2fr 2fr;
   grid-template-rows: 200px 200px;
-  gap: 12px;
+  gap: 20px;
 }
 
 .itemWrap {

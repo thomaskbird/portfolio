@@ -17,6 +17,7 @@ import BlogPostSkeleton from "@/components/BlogPost/BlogPostSkeleton";
 import ItemAnimation from "@/components/ItemAnimation/ItemAnimation";
 import BlogPost from "@/components/BlogPost/BlogPost";
 import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
+import SearchIcon from "@mui/icons-material/Search";
 
 const Testimony = () => {
   const searchParams = useSearchParams()
@@ -67,7 +68,7 @@ const Testimony = () => {
             disableElevation
             variant="outlined"
           >
-            Search
+            <SearchIcon />
           </Button>
         </form>
       </SectionContainer>
