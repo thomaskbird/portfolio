@@ -7,7 +7,8 @@ const requestSearch = async (type: PostTypes, query: string) => {
   try {
     const res = await client.getEntries({
       content_type: 'posts',
-      query: query
+      query: query,
+      'order': '-sys.createdAt',
     });
 
     if(res.total) {

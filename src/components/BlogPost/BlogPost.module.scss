@@ -1,3 +1,10 @@
+.featuredImage {
+  height: 200px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
 .listItemWrapperBorder {
   padding: 1px;
   border-radius: 21px;

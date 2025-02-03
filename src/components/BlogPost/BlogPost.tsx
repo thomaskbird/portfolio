@@ -7,6 +7,8 @@ import {selectTheme} from "@/store/selectors/globalStore";
 import cn from "classnames";
 import {Entry} from "contentful";
 import {ReactNode} from "react";
+import pageStyles from "@/app/page/[slug]/page.module.scss";
+import Image from "next/image";
 
 // type Post = {
 //   type: 'Page' | 'Post'
@@ -29,6 +31,9 @@ const BlogPost = ({
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
 
+  const featuredImage = post.fields.featuredImage?.fields;
+  console.log('post', featuredImage);
+
   return (
     <div className={styles.listItemWrapperBorder}>
       <div className={cn(styles.listItemWrapper, isDark ? styles.listItemWrapperDark : styles.listItemWrapperLight)}>
@@ -38,6 +43,21 @@ const BlogPost = ({
           </Link>
           <span className={styles.listItemPosted}>{post.sys.createdAt.substring(0, 10)}</span>
         </div>
+
+        {featuredImage && (
+          <div className={styles.featuredImage}>
+            <Link href={`/page/${post.fields.slug}`}>
+              <Image
+                className={pageStyles.media}
+                src={'https:' + featuredImage.file.url}
+                alt={featuredImage.title ?? 'No title text supplied'}
+                title={featuredImage.title ?? 'No title text supplied'}
+                width={featuredImage.file.details.image.width}
+                height={featuredImage.file.details.image.height}
+              />
+            </Link>
+          </div>
+        )}
 
         <Typography variant="body2" sx={{ marginBottom: 3 }}>
           {post.fields.description as ReactNode}

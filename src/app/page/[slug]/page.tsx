@@ -68,7 +68,7 @@ const InsidePage = ({ params }: PageType) => {
                   <Image
                     className={pageStyles.media}
                     src={'https:' + imageField.file.url}
-                    alt={imageField.title ?? 'No alt text supplied'}
+                    alt={imageField.title ?? 'No title text supplied'}
                     title={imageField.title ?? 'No title text supplied'}
                     width={imageField.file.details.image.width}
                     height={imageField.file.details.image.height}
