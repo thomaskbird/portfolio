@@ -32,7 +32,6 @@ const BlogPost = ({
   const isDark = theme === 'dark';
 
   const featuredImage = post.fields.featuredImage?.fields;
-  console.log('post', featuredImage);
 
   return (
     <div className={styles.listItemWrapperBorder}>

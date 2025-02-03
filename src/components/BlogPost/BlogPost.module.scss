@@ -1,8 +1,21 @@
 .featuredImage {
-  height: 200px;
-  overflow: hidden;
   display: flex;
+  height: 200px;
+  margin-top: 10px;
+  overflow: hidden;
   align-items: center;
+  margin-bottom: 20px;
+
+  img {
+    opacity: 0.5;
+    filter: grayscale(100%);
+    transition: all ease-in 0.25s;
+
+    &:hover {
+      opacity: 1;
+      filter: grayscale(0);
+    }
+  }
 }
 
 .listItemWrapperBorder {
