@@ -3,7 +3,6 @@ import cn from "classnames";
 import {useScroll} from "framer-motion";
 import {MutableRefObject, useEffect, useRef, useState} from "react";
 import { motion } from "framer-motion";
-import {ResumeType} from "@/types/ResumeType";
 import moment from "moment";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
