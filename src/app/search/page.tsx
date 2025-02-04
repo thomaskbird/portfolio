@@ -2,10 +2,8 @@
 
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import pageStyles from './page.module.scss';
-import {Container, Skeleton, Stack} from "@mui/material";
+import {Container} from "@mui/material";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
 import config from "@/config/sites";
 import searchFormSchema, {SearchFormType} from "@/app/search/searchFormSchema";
 import {SubmitHandler, useForm} from "react-hook-form";
@@ -13,11 +11,9 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import HookFormTextField from "@/components/HookFormTextField/HookFormTextField";
 import {redirect, useSearchParams} from "next/navigation";
 import useSearch from "@/hooks/useSearch";
-import BlogPostSkeleton from "@/components/BlogPost/BlogPostSkeleton";
-import ItemAnimation from "@/components/ItemAnimation/ItemAnimation";
-import BlogPost from "@/components/BlogPost/BlogPost";
 import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
 import SearchIcon from "@mui/icons-material/Search";
+import Listings from "@/components/Listings/Listings";
 
 const Testimony = () => {
   const searchParams = useSearchParams()
@@ -73,63 +69,69 @@ const Testimony = () => {
         </form>
       </SectionContainer>
 
-      <SectionContainer styleName={pageStyles.listItemWrapper}>
-        <Typography variant="h2" style={{ margin: '50px 0' }}>
-          {posts ? posts.length : ''} Results...
-        </Typography>
+      <Listings
+        title="Search"
+        isLoading={isLoading}
+        posts={posts}
+      />
 
-        {isLoading ? (
-          <>
-            <BlogPostSkeleton>
-              <Stack spacing={2} sx={{ margin: '25px 0 0' }}>
-                <Skeleton height={40} width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-              </Stack>
+      {/*<SectionContainer styleName={pageStyles.listItemWrapper}>*/}
+      {/*  <Typography variant="h2" style={{ margin: '50px 0' }}>*/}
+      {/*    {posts ? posts.length : ''} Results...*/}
+      {/*  </Typography>*/}
 
-              <Stack spacing={2} sx={{ margin: '25px 0 40px' }}>
-                <Skeleton width="90%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-                <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
-                <Skeleton width="40%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-              </Stack>
+      {/*  {isLoading ? (*/}
+      {/*    <>*/}
+      {/*      <PostSkeleton>*/}
+      {/*        <Stack spacing={2} sx={{ margin: '25px 0 0' }}>*/}
+      {/*          <Skeleton height={40} width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*        </Stack>*/}
 
-              <Stack spacing={2} sx={{ margin: '20px 0' }}>
-                <Skeleton width="95%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-                <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
-                <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
-                <Skeleton width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-              </Stack>
-            </BlogPostSkeleton>
+      {/*        <Stack spacing={2} sx={{ margin: '25px 0 40px' }}>*/}
+      {/*          <Skeleton width="90%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*          <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*          <Skeleton width="40%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*        </Stack>*/}
 
-            <BlogPostSkeleton>
-              <Stack spacing={2} sx={{ margin: '25px 0 0' }}>
-                <Skeleton height={40} width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-              </Stack>
+      {/*        <Stack spacing={2} sx={{ margin: '20px 0' }}>*/}
+      {/*          <Skeleton width="95%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*          <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*          <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*          <Skeleton width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*        </Stack>*/}
+      {/*      </PostSkeleton>*/}
 
-              <Stack spacing={2} sx={{ margin: '25px 0 40px' }}>
-                <Skeleton width="90%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-                <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
-                <Skeleton width="40%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-              </Stack>
+      {/*      <PostSkeleton>*/}
+      {/*        <Stack spacing={2} sx={{ margin: '25px 0 0' }}>*/}
+      {/*          <Skeleton height={40} width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*        </Stack>*/}
 
-              <Stack spacing={2} sx={{ margin: '20px 0 25px' }}>
-                <Skeleton width="95%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-                <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
-                <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />
-                <Skeleton width="20%" variant="rectangular" {...{ ...baseSkeletonProps }} />
-              </Stack>
-            </BlogPostSkeleton>
-          </>
-        ) : (
-          <>
-            {posts ? posts?.map(item => (
-              <ItemAnimation key={item.sys.id}>
-                <BlogPost post={item} />
-              </ItemAnimation>
-            )): (
-              <p>{query ? 'No content found...' : 'Enter a search query to search for results...'}</p>
-            )}
-          </>
-        )}
-      </SectionContainer>
+      {/*        <Stack spacing={2} sx={{ margin: '25px 0 40px' }}>*/}
+      {/*          <Skeleton width="90%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*          <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*          <Skeleton width="40%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*        </Stack>*/}
+
+      {/*        <Stack spacing={2} sx={{ margin: '20px 0 25px' }}>*/}
+      {/*          <Skeleton width="95%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*          <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*          <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*          <Skeleton width="20%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
+      {/*        </Stack>*/}
+      {/*      </PostSkeleton>*/}
+      {/*    </>*/}
+      {/*  ) : (*/}
+      {/*    <>*/}
+      {/*      {posts ? posts?.map(item => (*/}
+      {/*        <ItemAnimation key={item.sys.id}>*/}
+      {/*          <Post post={item} />*/}
+      {/*        </ItemAnimation>*/}
+      {/*      )): (*/}
+      {/*        <p>{query ? 'No content found...' : 'Enter a search query to search for results...'}</p>*/}
+      {/*      )}*/}
+      {/*    </>*/}
+      {/*  )}*/}
+      {/*</SectionContainer>*/}
     </Container>
   )
 }
