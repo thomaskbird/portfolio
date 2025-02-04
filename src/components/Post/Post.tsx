@@ -20,7 +20,7 @@ const Post = ({
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
 
-  const featuredImage = post.fields.featuredImage?.fields;
+  const featuredImage = (post.fields.featuredImage as any)?.fields;
 
   return (
     <div className={styles.listItemWrapperBorder}>

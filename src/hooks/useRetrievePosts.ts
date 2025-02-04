@@ -8,8 +8,8 @@ const requestPosts = async (tag: TagTypes) => {
     const res = await client.getEntries({
       content_type: 'posts',
       'metadata.tags.sys.id[in]': [tag],
-      'order': '-sys.createdAt',
-    });
+      order: '-sys.createdAt',
+    } as any);
 
     if(res.total) {
       return res.items;

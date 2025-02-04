@@ -12,7 +12,6 @@ import InsidePageHeader from "@/components/InsidePageHeader/InsidePageHeader";
 import {redirect} from "next/navigation";
 import useRetrievePage from "@/hooks/useRetrievePage";
 import config from "@/config/sites";
-import stripTags from "@/utils/stripTags";
 import {HelmetProvider} from "react-helmet-async";
 import Image from "next/image";
 import Link from "next/link";
@@ -46,7 +45,7 @@ const InsidePage = ({ params }: PageType) => {
   }, [isLoading]);
 
   const title = page ? `${config.meta.title} | Blog | ${page.fields.title}` : `${config.meta.title} | Blog`;
-  const desc = page ? page.fields.description : '';
+  const desc: string = page ? (page.fields.description as string) : '';
   const imageField: any = page && ((page?.fields as any).featuredImage as any)?.fields;
   const pageFields = page?.fields as any;
 

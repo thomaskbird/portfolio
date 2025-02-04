@@ -9,7 +9,7 @@ const requestSearch = async (type: PostTypes, query: string) => {
       content_type: 'posts',
       query: query,
       'order': '-sys.createdAt',
-    });
+    } as any);
 
     if(res.total) {
       return res.items;
