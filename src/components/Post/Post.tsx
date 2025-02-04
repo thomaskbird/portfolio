@@ -1,5 +1,5 @@
 import Typography from "@mui/material/Typography";
-import styles from './BlogPost.module.scss';
+import styles from './Post.module.scss';
 import Link from "next/link";
 import Button from "@mui/material/Button";
 import {useGlobalStore} from "@/store/useGlobalStore";
@@ -10,24 +10,13 @@ import {ReactNode} from "react";
 import pageStyles from "@/app/page/[slug]/page.module.scss";
 import Image from "next/image";
 
-// type Post = {
-//   type: 'Page' | 'Post'
-//   title: string;
-//   slug: string;
-//   description: string;
-//   body: string;
-//   featuredImage: string;
-//   keywords: string;
-//   media: string;
-// }
-
-type ListItemType = {
+type PostType = {
   post: Entry
 };
 
-const BlogPost = ({
+const Post = ({
   post,
-}: ListItemType) => {
+}: PostType) => {
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
 
@@ -72,4 +61,4 @@ const BlogPost = ({
   )
 }
 
-export default BlogPost;
+export default Post;

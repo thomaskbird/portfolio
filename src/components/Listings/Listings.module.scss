@@ -1,0 +1,39 @@
+.listingsContainer {
+  margin: 100px 0;
+}
+
+.contentListingHeader {
+  display: flex;
+  align-items: center;
+
+  h2 {
+    flex: 1;
+  }
+
+  .contentListingHeaderButtonGroup {
+    height: 50px;
+  }
+}
+
+.contentListingHeaderSubtitle {
+  font-size: 24px;
+  font-weight: 300;
+  margin-left: 20px;
+}
+
+.listingItemsContainer {
+  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
+}
+
+.dark {
+  .contentListingHeader {
+    .contentListingHeaderButtonGroup {
+      button {
+        background: #666;
+      }
+    }
+  }
+}

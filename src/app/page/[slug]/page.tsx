@@ -46,7 +46,7 @@ const InsidePage = ({ params }: PageType) => {
   }, [isLoading]);
 
   const title = page ? `${config.meta.title} | Blog | ${page.fields.title}` : `${config.meta.title} | Blog`;
-  const desc = page ? stripTags(page.fields.description as string) : '';
+  const desc = page ? page.fields.description : '';
   const imageField: any = page && ((page?.fields as any).featuredImage as any)?.fields;
   const pageFields = page?.fields as any;
 

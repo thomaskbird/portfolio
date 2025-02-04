@@ -1,11 +1,11 @@
-import styles from '@/components/BlogPost/BlogPost.module.scss';
+import styles from './Post.module.scss';
 import {ReactNode} from "react";
 
 type BlogPostSkeletonType = {
   children: ReactNode
 };
 
-const BlogPostSkeleton = ({
+const PostSkeleton = ({
   children,
 }: BlogPostSkeletonType) => {
   return (
@@ -17,4 +17,4 @@ const BlogPostSkeleton = ({
   )
 }
 
-export default BlogPostSkeleton;
+export default PostSkeleton;
