@@ -17,18 +17,20 @@ type ListingsProps = {
   posts: any;
 }
 
+type FormatType = 'list' | 'card';
+
 const Listings = ({
   title,
   isLoading,
   posts
 }: ListingsProps) => {
-  const [format, setFormat] = useState<'list' | 'card'>('list');
+  const [format, setFormat] = useState<FormatType>('list');
 
   const handleFormat = (
     event: React.MouseEvent<HTMLElement>,
-    newFormat: 'list' | 'card' | null,
+    newFormat: FormatType | null,
   ) => {
-    setFormat(newFormat)
+    setFormat(newFormat as FormatType)
   }
 
   return (
