@@ -6,6 +6,10 @@
   align-items: center;
   margin-bottom: 20px;
 
+  a {
+    width: 100%;
+  }
+
   img {
     opacity: 0.5;
     filter: grayscale(100%);
@@ -37,8 +41,8 @@
 }
 
 .listItemWrapper {
-  border-radius: 20px;
   padding: 40px 60px;
+  border-radius: 20px;
 
   @media(max-width: 600px) {
     padding: 30px 30px;
