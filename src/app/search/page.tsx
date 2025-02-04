@@ -74,64 +74,6 @@ const Testimony = () => {
         isLoading={isLoading}
         posts={posts}
       />
-
-      {/*<SectionContainer styleName={pageStyles.listItemWrapper}>*/}
-      {/*  <Typography variant="h2" style={{ margin: '50px 0' }}>*/}
-      {/*    {posts ? posts.length : ''} Results...*/}
-      {/*  </Typography>*/}
-
-      {/*  {isLoading ? (*/}
-      {/*    <>*/}
-      {/*      <PostSkeleton>*/}
-      {/*        <Stack spacing={2} sx={{ margin: '25px 0 0' }}>*/}
-      {/*          <Skeleton height={40} width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*        </Stack>*/}
-
-      {/*        <Stack spacing={2} sx={{ margin: '25px 0 40px' }}>*/}
-      {/*          <Skeleton width="90%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*          <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*          <Skeleton width="40%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*        </Stack>*/}
-
-      {/*        <Stack spacing={2} sx={{ margin: '20px 0' }}>*/}
-      {/*          <Skeleton width="95%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*          <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*          <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*          <Skeleton width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*        </Stack>*/}
-      {/*      </PostSkeleton>*/}
-
-      {/*      <PostSkeleton>*/}
-      {/*        <Stack spacing={2} sx={{ margin: '25px 0 0' }}>*/}
-      {/*          <Skeleton height={40} width="70%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*        </Stack>*/}
-
-      {/*        <Stack spacing={2} sx={{ margin: '25px 0 40px' }}>*/}
-      {/*          <Skeleton width="90%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*          <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*          <Skeleton width="40%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*        </Stack>*/}
-
-      {/*        <Stack spacing={2} sx={{ margin: '20px 0 25px' }}>*/}
-      {/*          <Skeleton width="95%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*          <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*          <Skeleton variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*          <Skeleton width="20%" variant="rectangular" {...{ ...baseSkeletonProps }} />*/}
-      {/*        </Stack>*/}
-      {/*      </PostSkeleton>*/}
-      {/*    </>*/}
-      {/*  ) : (*/}
-      {/*    <>*/}
-      {/*      {posts ? posts?.map(item => (*/}
-      {/*        <ItemAnimation key={item.sys.id}>*/}
-      {/*          <Post post={item} />*/}
-      {/*        </ItemAnimation>*/}
-      {/*      )): (*/}
-      {/*        <p>{query ? 'No content found...' : 'Enter a search query to search for results...'}</p>*/}
-      {/*      )}*/}
-      {/*    </>*/}
-      {/*  )}*/}
-      {/*</SectionContainer>*/}
     </Container>
   )
 }

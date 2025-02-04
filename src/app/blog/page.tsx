@@ -1,8 +1,5 @@
 'use client';
 
-import styles from '../page.module.scss'
-import SectionContainer from "@/components/SectionContainer/SectionContainer";
-import Typography from "@mui/material/Typography";
 import config from "@/config/sites";
 import useRetrievePosts from "@/hooks/useRetrievePosts";
 import Listings from "@/components/Listings/Listings";
