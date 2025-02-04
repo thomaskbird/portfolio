@@ -54,7 +54,7 @@ const SearchResults = ({ isLoading, posts }: SearchResultsProps) => {
     <>
       {(posts ?? []).map((item: any) => (
         <ItemAnimation key={item.sys.id}>
-          <BlogPost post={item}/>
+          <BlogPost post={item} />
         </ItemAnimation>
       ))}
     </>
