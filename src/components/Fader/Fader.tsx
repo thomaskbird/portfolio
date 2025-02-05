@@ -25,7 +25,7 @@ const Fader = ({
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
 
-  const [activeIndex, setActiveIndex] = useState<number>(startAt);
+  const [activeIndex, setActiveIndex] = useState<number>(startAt ?? 0);
   const [isRunning, setIsRunning] = useState<boolean>(false);
 
   // trigger autoplay

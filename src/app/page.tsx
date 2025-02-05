@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './page.module.scss'
-import {Container} from "@mui/material";
+import {Container, Skeleton, Stack} from "@mui/material";
 import PageSectionTitle from "@/components/PageSectionTitle/PageSectionTitle";
 import ProjectSection from "@/components/ProjectSection/ProjectSection";
 import Skills from "@/components/Skills/Skills";
@@ -13,9 +13,10 @@ import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
 import Fader from "@/components/Fader/Fader";
 import useRetrieveTestimonials from "@/hooks/useRetrieveTestimonials";
-import useRetrieveHeros, {HeroFieldsType} from "@/hooks/useRetrieveHeros";
+import useRetrieveHeros from "@/hooks/useRetrieveHeros";
 import useRetrieveWhatIDo from "@/hooks/useRetrieveWhatIDo";
 import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
+import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
 
 
 
@@ -30,21 +31,29 @@ const Home = () => {
     <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
       <HelmetComponent>
         <title>Thomas K Bird | Home</title>
-        <meta property="description" content={config.meta.description} />
+        <meta property="description" content={config.meta.description}/>
       </HelmetComponent>
 
       <Hero/>
 
       <SectionContainer styleName={isDark ? styles.aboutContainerDark : styles.aboutContainerLight}>
-        <PageSectionTitle title="What I do?" />
-        <div style={{ marginBottom: 0 }}>
-          <Fader items={homeHero} duration={10000} />
+        <PageSectionTitle title="What I do?"/>
+        <div style={{marginBottom: 0}}>
+          {homeHero ? (
+            <Fader items={homeHero} duration={10000}/>
+          ) : (
+            <Stack spacing={2} alignItems="center">
+              <Skeleton width="80%" variant="rectangular" {...{...baseSkeletonProps}} />
+              <Skeleton width="90%" variant="rectangular" {...{...baseSkeletonProps}} />
+              <Skeleton width="60%" variant="rectangular" {...{...baseSkeletonProps}} />
+            </Stack>
+          )}
         </div>
       </SectionContainer>
 
       <SectionContainer styleName={isDark ? styles.skillsContainerDark : styles.skillsContainerLight}>
-        <PageSectionTitle title="Skills" />
-        <Skills />
+        <PageSectionTitle title="Skills"/>
+        <Skills/>
       </SectionContainer>
 
       <SectionContainer styleName={isDark ? styles.mainContentDark : styles.mainContentLight}>
@@ -62,14 +71,15 @@ const Home = () => {
           />
         ))}
       </SectionContainer>
-      <Container maxWidth={false} disableGutters className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
+      <Container maxWidth={false} disableGutters
+                 className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
         <Container>
           <PageSectionTitle title="People Are Talking"/>
-            <Slider items={testimonials} />
+          <Slider items={testimonials}/>
         </Container>
       </Container>
     </Container>
-  )
+  );
 }
 
 export default Home;
