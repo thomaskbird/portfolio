@@ -16,7 +16,6 @@ type PostType = {
 
 const textEllipser = (txt: string, wordCount: number = 40) => {
   const words = txt.split(' ');
-  console.log(words.length);
   return words.length < wordCount ? txt : `${words.slice(0, wordCount).join(' ')}...`;
 }
 
@@ -54,7 +53,7 @@ const Post = ({
         )}
 
         <Typography variant="body2" sx={{ marginBottom: 3 }}>
-          {textEllipser(post.fields.description)}
+          {textEllipser(post.fields.description as string)}
         </Typography>
 
         <Link href={`/page/${post.fields.slug}`}>
