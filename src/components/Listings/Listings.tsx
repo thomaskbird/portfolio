@@ -1,7 +1,7 @@
 import styles from './Listings.module.scss';
 
 import PostSkeleton from "@/components/Post/PostSkeleton";
-import {Skeleton, Stack, ToggleButton, ToggleButtonGroup} from "@mui/material";
+import {Skeleton, Stack, ToggleButton, ToggleButtonGroup, Tooltip} from "@mui/material";
 import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
 import ItemAnimation from "@/components/ItemAnimation/ItemAnimation";
 import Post from "@/components/Post/Post";
@@ -13,6 +13,7 @@ import SectionContainer from "@/components/SectionContainer/SectionContainer";
 
 type ListingsProps = {
   title: string;
+  query?: string;
   isLoading: boolean;
   posts: any;
 }
@@ -21,6 +22,7 @@ type FormatType = 'list' | 'card';
 
 const Listings = ({
   title,
+  query,
   isLoading,
   posts
 }: ListingsProps) => {
@@ -38,7 +40,7 @@ const Listings = ({
       <div className={styles.contentListingHeader}>
         <Typography variant="h2" style={{margin: '50px 0'}}>
           {title}
-          {posts && <small className={styles.contentListingHeaderSubtitle}>{posts.length} Results...</small>}
+          {posts && <small className={styles.contentListingHeaderSubtitle}>{posts.length} Results found for <i>{query ?? title}</i>...</small>}
         </Typography>
         <ToggleButtonGroup
           value={format}
@@ -48,12 +50,16 @@ const Listings = ({
           aria-label="text alignment"
           className={styles.contentListingHeaderButtonGroup}
         >
-          <ToggleButton value="list" aria-label="left aligned">
-            <ListIcon/>
-          </ToggleButton>
-          <ToggleButton value="card" aria-label="right aligned">
-            <DashboardIcon/>
-          </ToggleButton>
+          <Tooltip title="List">
+            <ToggleButton value="list" aria-label="left aligned">
+              <ListIcon/>
+            </ToggleButton>
+          </Tooltip>
+          <Tooltip title="Card">
+            <ToggleButton value="card" aria-label="right aligned">
+              <DashboardIcon/>
+            </ToggleButton>
+          </Tooltip>
         </ToggleButtonGroup>
       </div>
 
@@ -103,8 +109,13 @@ const Listings = ({
             <ItemAnimation key={item.sys.id}>
               <Post post={item} />
             </ItemAnimation>
-          )) : (
+          )) : (posts === undefined && query === '') ? (
             <Typography variant="h6">
+              Enter a search query to search for results...
+            </Typography>
+          ) : (
+            <Typography variant="h6">
+              {posts ? posts.length : ''}
               No results found...
             </Typography>
           )}

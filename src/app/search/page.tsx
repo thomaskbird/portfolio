@@ -71,6 +71,7 @@ const Testimony = () => {
 
       <Listings
         title="Search"
+        query={query}
         isLoading={isLoading}
         posts={posts}
       />
