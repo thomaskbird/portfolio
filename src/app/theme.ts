@@ -138,6 +138,13 @@ export const themeDark: Theme = createTheme({
         }),
       },
     },
+    MuiToggleButtonGroup: {
+      styleOverrides: {
+        root: ({ ownerState }) => ({
+          background: 'rgba(255,255,255, 0.05)'
+        })
+      }
+    },
     MuiButton: {
       styleOverrides: {
         root: ({ ownerState}) => ({

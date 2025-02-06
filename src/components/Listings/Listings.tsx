@@ -43,6 +43,7 @@ const Listings = ({
         <ToggleButtonGroup
           value={format}
           exclusive
+          color="secondary"
           onChange={handleFormat}
           aria-label="text alignment"
           className={styles.contentListingHeaderButtonGroup}
