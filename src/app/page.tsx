@@ -71,8 +71,7 @@ const Home = () => {
           />
         ))}
       </SectionContainer>
-      <Container maxWidth={false} disableGutters
-                 className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
+      <Container maxWidth={false} disableGutters className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
         <Container>
           <PageSectionTitle title="People Are Talking"/>
           <Slider items={testimonials}/>

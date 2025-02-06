@@ -21,6 +21,7 @@ import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectSetTheme, selectTheme} from "@/store/selectors/globalStore";
 import cn from "classnames";
 import {ChangeEvent, ReactElement, useState} from "react";
+import Image from 'next/image';
 
 interface Props {
   /**
@@ -71,7 +72,13 @@ const Nav = ({ window, navOnly = false }: Props) => {
     <Box onClick={handleDrawerToggle}>
       <div className={navStyles.drawerHeaderItems}>
         <Link href="/">
-          <img src={logoUrl} alt="Thomas K Bird" className={navStyles.logo} />
+          <Image
+            width={715}
+            height={83}
+            src={logoUrl}
+            alt="Thomas K Bird"
+            className={navStyles.logo}
+          />
         </Link>
         <IconButton>
           <CloseIcon className={navStyles.close} />
@@ -128,7 +135,13 @@ const Nav = ({ window, navOnly = false }: Props) => {
                 sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
               >
                 <Link href="/">
-                  <img src={logoUrl} alt="Thomas K Bird" className={navStyles.logo} />
+                  <Image
+                    width={715}
+                    height={83}
+                    src={logoUrl}
+                    alt="Thomas K Bird"
+                    className={navStyles.logo}
+                  />
                 </Link>
               </Typography>
               <Box sx={{ display: { xs: 'none', sm: 'block' } }}>

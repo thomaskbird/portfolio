@@ -3,6 +3,7 @@ import {Grid} from "@mui/material";
 import cn from "classnames";
 import { motion } from 'framer-motion';
 import {useEffect, useRef, useState} from "react";
+import Image from 'next/image';
 
 type ScreenType = {
   image: string;
@@ -58,7 +59,14 @@ const Screen = ({ image, title, isLeft, scrollValueCalculated, opacity, screenPo
         }}
       >
         <div className={transformClasses}>
-          <img src="/macbook-pro.png" className={styles.macbookImage} alt="MacBook Pro" title={title} />
+          <Image
+            width={1500}
+            height={871}
+            src="/macbook-pro.png"
+            className={styles.macbookImage}
+            alt="MacBook Pro"
+            title={title}
+          />
           <div className={styles.screen} ref={screenContainerRef}>
             <motion.img
               alt={title}
@@ -74,7 +82,7 @@ const Screen = ({ image, title, isLeft, scrollValueCalculated, opacity, screenPo
         </div>
       </motion.div>
     </Grid>
-  )
+  );
 }
 
 export default Screen;

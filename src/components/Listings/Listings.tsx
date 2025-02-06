@@ -40,7 +40,7 @@ const Listings = ({
       <div className={styles.contentListingHeader}>
         <Typography variant="h2" style={{margin: '50px 0'}}>
           {title}
-          {posts && <small className={styles.contentListingHeaderSubtitle}>{posts.length} Results found for <i>{query ?? title}</i>...</small>}
+          {posts && <small className={styles.contentListingHeaderSubtitle}>{posts.length} Results found for <em>{query ?? title}</em>...</small>}
         </Typography>
         <ToggleButtonGroup
           value={format}

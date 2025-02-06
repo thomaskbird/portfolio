@@ -12,6 +12,7 @@ import WordSlider from "@/components/WordSlider/WordSlider";
 import cn from "classnames";
 import Link from "next/link";
 import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
+import Image from "next/image";
 
 const logos = [
   {
@@ -96,7 +97,9 @@ const Contact = () => {
         isDark ? pageStyles.horizontalScrollSnapperDark : pageStyles.horizontalScrollSnapperLight
       )}>
         {logos.map(logo => (
-          <img
+          <Image
+            width={501}
+            height={501}
             key={logo.id}
             src={logo.src}
             alt={logo.title}

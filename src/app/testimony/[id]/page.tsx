@@ -16,6 +16,7 @@ import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
 import {ReactNode, use} from "react";
 import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
+import Image from 'next/image';
 
 type PageType = {
   params: Promise<{
@@ -31,6 +32,7 @@ const Testimony = ({ params }: PageType) => {
 
   const isDark = theme === 'dark';
   const name = testimony ? testimony?.fields.name : '';
+  const testimonyProfileImage = testimony?.fields.profileImage.fields?.file;
 
   return (
     <SectionContainer styleName={styles.insideContainer}>
@@ -58,7 +60,16 @@ const Testimony = ({ params }: PageType) => {
       </Grid>
 
       <div className={cn(styles.blurb, isDark ? styles.blurbDark : styles.blurbLight)}>
-        <img src={(testimony?.fields.profileImage as any)?.fields.file.url} alt={name as string} title={name as string} className={styles.blurbImage}/>
+        {!isLoading && (
+          <Image
+            width={testimonyProfileImage.details.image.width}
+            height={testimonyProfileImage.details.image.height}
+            src={`https://${testimonyProfileImage.url}`}
+            alt={name as string}
+            title={name as string}
+            className={styles.blurbImage}
+          />
+        )}
 
         <Typography variant="h1">
           {name as ReactNode}

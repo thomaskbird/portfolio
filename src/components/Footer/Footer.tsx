@@ -12,6 +12,7 @@ import cn from "classnames";
 import useRetrievePosts from "@/hooks/useRetrievePosts";
 import {ReactNode} from "react";
 import useMisc from "@/hooks/useMisc";
+import Image from 'next/image';
 
 type FooterType = {};
 
@@ -59,7 +60,13 @@ const Footer = ({}: FooterType) => {
           <div className={styles.footerMain}>
             <div className={styles.footerMainColumn}>
               <Socials />
-              <img src={logoUrl} alt="Thomas K Bird" className={styles.footerLogo} />
+              <Image
+                width={715}
+                height={83}
+                src={logoUrl}
+                alt="Thomas K Bird"
+                className={styles.footerLogo}
+              />
               <p className={styles.copyright}>&copy; {new Date().getFullYear()} All Rights Reserved</p>
             </div>
             <div className={styles.footerMainColumn}>

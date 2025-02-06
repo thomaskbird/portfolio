@@ -8,6 +8,7 @@ import {useInView} from "framer-motion";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
 import cn from "classnames";
+import Image from "next/image";
 
 type SliderType = {
   items: any;
@@ -102,8 +103,20 @@ const Slider = ({
   return (
     <div className={styles.sliderBorder}>
       <div className={cn(styles.sliderWrap, isDark ? styles.sliderWrapDark : styles.sliderWrapLight)}>
-        <img src="/quote.png" className={cn(styles.quoteLeft, isDark ? styles.quoteColorDark : styles.quoteColorLight)}/>
-        <img src="/quote.png" className={cn(styles.quoteRight, isDark ? styles.quoteColorDark : styles.quoteColorLight)}/>
+        <Image
+          width={198}
+          height={155}
+          alt="Quote graphic"
+          src="/quote.png"
+          className={cn(styles.quoteLeft, isDark ? styles.quoteColorDark : styles.quoteColorLight)}
+        />
+        <Image
+          width={198}
+          height={155}
+          alt="Quote graphic"
+          src="/quote.png"
+          className={cn(styles.quoteRight, isDark ? styles.quoteColorDark : styles.quoteColorLight)}
+        />
 
         <div className={styles.slidesWrap} ref={sliderRef}>
           {(items ?? []).map((testimonial: any, idx: number) => (

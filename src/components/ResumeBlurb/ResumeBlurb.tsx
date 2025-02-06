@@ -7,6 +7,7 @@ import Skills from "@/components/Skills/Skills";
 import cn from "classnames";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
+import Image from "next/image";
 
 type ResumeBlurbType = {};
 
@@ -24,7 +25,14 @@ const ResumeBlurb = ({}: ResumeBlurbType) => {
         </Button>
       </Link>
 
-      <img src="/thomas-bird.png" alt="Thomas Bird" title="Thomas Bird" className={styles.blurbImage}/>
+      <Image
+        width={471}
+        height={595}
+        src="/thomas-bird.png"
+        alt="Thomas Bird"
+        title="Thomas Bird"
+        className={styles.blurbImage}
+      />
       <Typography variant="h1">
         About Me
       </Typography>

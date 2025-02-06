@@ -3,6 +3,7 @@ import cn from "classnames";
 import {TestimonyType} from "@/types/TestimonyType";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
+import Image from 'next/image';
 
 type SlideType = {
   active: boolean;
@@ -22,7 +23,12 @@ const Slide = ({
     <div className={cn(styles.slide, active ? styles.active : '')}>
       <div className={styles.badge}>
         <div className={styles.avatar}>
-          <img src={(profileImage as any).fields.file.url} alt={`${name}`} />
+          <Image
+            src={`https://${(profileImage as any).fields.file.url}`}
+            alt={`${name}`}
+            width={profileImage.fields.file.details.image.width}
+            height={profileImage.fields.file.details.image.height}
+          />
         </div>
         <div className={styles.badgeText}>
           <h5>{title}</h5>
