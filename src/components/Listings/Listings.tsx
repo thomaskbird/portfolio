@@ -8,8 +8,9 @@ import Post from "@/components/Post/Post";
 import Typography from "@mui/material/Typography";
 import ListIcon from "@mui/icons-material/List";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import {useState} from "react";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
+import {useGlobalStore} from "@/store/useGlobalStore";
+import {selectListingFormat, selectSetListingLayout} from "@/store/selectors/globalStore";
 
 type ListingsProps = {
   title: string;
@@ -18,7 +19,7 @@ type ListingsProps = {
   posts: any;
 }
 
-type FormatType = 'list' | 'card';
+export type ListingFormatType = 'list' | 'card';
 
 const Listings = ({
   title,
@@ -26,14 +27,13 @@ const Listings = ({
   isLoading,
   posts
 }: ListingsProps) => {
-  const [format, setFormat] = useState<FormatType>('list');
+  const setListingLayout = useGlobalStore(selectSetListingLayout);
+  const listingFormat = useGlobalStore(selectListingFormat);
 
   const handleFormat = (
     event: React.MouseEvent<HTMLElement>,
-    newFormat: FormatType | null,
-  ) => {
-    setFormat(newFormat as FormatType)
-  }
+    newFormat: ListingFormatType | null,
+  ) => setListingLayout(newFormat as ListingFormatType)
 
   return (
     <SectionContainer styleName={styles.listingsContainer}>
@@ -43,7 +43,7 @@ const Listings = ({
           {posts && <small className={styles.contentListingHeaderSubtitle}>{posts.length} Results found for <em>{query ?? title}</em>...</small>}
         </Typography>
         <ToggleButtonGroup
-          value={format}
+          value={listingFormat}
           exclusive
           color="secondary"
           onChange={handleFormat}
@@ -104,7 +104,7 @@ const Listings = ({
           </PostSkeleton>
         </>
       ) : (
-        <div className={format === 'card' ? styles.listingItemsContainer : ''}>
+        <div className={listingFormat === 'card' ? styles.listingItemsContainer : ''}>
           {posts && posts.length > 0 ? posts.map((item: any) => (
             <ItemAnimation key={item.sys.id}>
               <Post post={item} />

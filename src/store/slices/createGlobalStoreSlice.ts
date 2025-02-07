@@ -1,6 +1,7 @@
 
 import {StateCreator} from 'zustand';
 import {GlobalStore} from "@/store/types/globalStore";
+import {ListingFormatType} from "@/components/Listings/Listings";
 
 const initialState = {
   isLoading: false,
@@ -14,9 +15,9 @@ export const createGlobalStoreSlice: StateCreator<
   GlobalStore
 > = (set) => ({
   ...initialState,
-  setIsLoading: (isLoading: boolean) => {
+  setListingLayout: (format: ListingFormatType) => {
     set((state) => {
-      state.isLoading = isLoading;
+      state.format = format;
       return state;
     })
   },

@@ -1,10 +1,12 @@
+import {ListingFormatType} from "@/components/Listings/Listings";
+
 export type GlobalStoreState = {
-  isLoading: boolean;
+  format: ListingFormatType;
   theme: string;
 }
 
 export type GlobalStoreActions = {
-  setIsLoading: (isLoading: boolean) => void;
+  setListingLayout: (format: ListingFormatType) => void;
   setTheme: (theme: string) => void;
 }
 
