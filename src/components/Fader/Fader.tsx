@@ -30,34 +30,33 @@ const Fader = ({
 
   // trigger autoplay
   useEffect(() => {
+    const startInterval = () => {
+      interval.current = setInterval(() => {
+        handleAuto();
+      }, duration);
+    };
+
+    // handle next when autoplaying
+    const handleAuto = () => {
+      setActiveIndex(prevState => {
+        const next = prevState + 1;
+        if(next < itemsTotal) {
+          return next;
+        } else {
+          return 0;
+        }
+      })
+    }
+
     if(!isRunning) {
       setIsRunning(true);
       startInterval();
     }
 
     return () => stopInterval();
-  }, []);
-
-  // trigger the interval to start
-  const startInterval = () => {
-    interval.current = setInterval(() => {
-      handleAuto();
-    }, duration);
-  };
+  }, [isRunning, duration, itemsTotal]);
 
   const stopInterval = () => clearInterval(interval.current);
-
-  // handle next when autoplaying
-  const handleAuto = () => {
-    setActiveIndex(prevState => {
-      const next = prevState + 1;
-      if(next < itemsTotal) {
-        return next;
-      } else {
-        return 0;
-      }
-    })
-  }
 
   return (
     <div className={styles.faderWrap}>

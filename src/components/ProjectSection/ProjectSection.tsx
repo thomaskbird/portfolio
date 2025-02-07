@@ -45,7 +45,7 @@ const ProjectSection = ({
     });
 
     return () => scrollYProgress.destroy();
-  }, []);
+  }, [scrollYProgress]);
 
   return (
     <div className={styles.stickyWrapper} ref={wrapperRef}>

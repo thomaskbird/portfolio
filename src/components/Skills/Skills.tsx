@@ -30,7 +30,7 @@ const Skills = ({}: SkillsType) => {
     });
 
     return () => scrollYProgress.destroy();
-  }, []);
+  }, [scrollYProgress]);
 
   return (
     <motion.div

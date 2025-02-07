@@ -37,7 +37,7 @@ const ResumeItem = ({
     });
 
     return () => scrollYProgress.destroy();
-  }, []);
+  }, [scrollYProgress]);
 
   const date = new Date();
   const endAtMoment = moment(item.fields.to);

@@ -1,6 +1,6 @@
 import styles from './Slider.module.scss';
 import Slide from "@/components/Slider/Slide";
-import {MutableRefObject, useEffect, useRef, useState} from "react";
+import {MutableRefObject, useCallback, useEffect, useRef, useState} from "react";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import {IconButton} from "@mui/material";
@@ -39,6 +39,13 @@ const Slider = ({
   const [activeIndex, setActiveIndex] = useState<number>(startAt);
   const [isRunning, setIsRunning] = useState<boolean>(false);
 
+  // trigger the interval to start
+  const startInterval = useCallback((totalItems: number) => {
+    interval.current = setInterval(() => {
+      handleAuto(totalItems);
+    }, duration);
+  }, [duration]);
+
   useEffect(() => {
     if(items && items.length > 0) {
       if(!isRunning && autoPlay && !autoPlayOnlyWhenVisible) {
@@ -50,7 +57,7 @@ const Slider = ({
     }
 
     return () => stopInterval();
-  }, [items]);
+  }, [items, isRunning, autoPlay, autoPlayOnlyWhenVisible, startInterval]);
 
   useEffect(() => {
     if(autoPlayOnlyWhenVisible) {
@@ -66,14 +73,7 @@ const Slider = ({
         }
       }
     }
-  }, [isVisible]);
-
-  // trigger the interval to start
-  const startInterval = (totalItems: number) => {
-    interval.current = setInterval(() => {
-      handleAuto(totalItems);
-    }, duration);
-  };
+  }, [isVisible, autoPlay, autoPlayOnlyWhenVisible, isRunning, itemsTotal, startInterval]);
 
   const stopInterval = () => clearInterval(interval.current);
 
