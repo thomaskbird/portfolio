@@ -26,8 +26,8 @@ const Slide = ({
           <Image
             src={`https://${(profileImage as any).fields.file.url}`}
             alt={`${name}`}
-            width={profileImage.fields.file.details.image.width}
-            height={profileImage.fields.file.details.image.height}
+            width={(profileImage as any).fields.file.details.image.width}
+            height={(profileImage as any).fields.file.details.image.height}
           />
         </div>
         <div className={styles.badgeText}>
