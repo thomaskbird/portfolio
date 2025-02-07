@@ -32,7 +32,7 @@ const Testimony = ({ params }: PageType) => {
 
   const isDark = theme === 'dark';
   const name = testimony ? testimony?.fields.name : '';
-  const testimonyProfileImage = testimony?.fields.profileImage.fields?.file;
+  const testimonyProfileImage = testimony?.fields.profileImage?.fields?.file;
 
   return (
     <SectionContainer styleName={styles.insideContainer}>
