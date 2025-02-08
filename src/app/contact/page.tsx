@@ -6,7 +6,7 @@ import {Grid} from "@mui/material";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import Typography from "@mui/material/Typography";
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectSetIsLoading, selectTheme} from "@/store/selectors/globalStore";
+import {selectTheme} from "@/store/selectors/globalStore";
 import config from "@/config/sites";
 import WordSlider from "@/components/WordSlider/WordSlider";
 import cn from "classnames";
@@ -81,7 +81,6 @@ const logos = [
 // todo: https://codesandbox.io/p/sandbox/text-typing-animation-forked-mgzgdj
 
 const Contact = () => {
-  const setIsLoading = useGlobalStore(selectSetIsLoading);
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
 

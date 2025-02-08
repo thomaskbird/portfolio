@@ -8,7 +8,7 @@ import styles from "@/app/page.module.scss";
 import Hero from "@/components/Hero/Hero";
 import Footer from "@/components/Footer/Footer";
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectIsLoading, selectTheme} from "@/store/selectors/globalStore";
+import {selectTheme} from "@/store/selectors/globalStore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import {usePathname} from "next/navigation";
 import GlobalCssPriority from "@/components/GlobalCssPriority/GlobalCssPriority";
@@ -24,7 +24,6 @@ export default function RootLayout({
 }: {
   children: ReactNode
 }) {
-  const isLoading = useGlobalStore(selectIsLoading);
   const theme = useGlobalStore(selectTheme);
 
   const path = usePathname();
