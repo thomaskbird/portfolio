@@ -4,7 +4,7 @@ import {GlobalStore} from "@/store/types/globalStore";
 import {ListingFormatType} from "@/components/Listings/Listings";
 
 const initialState = {
-  isLoading: false,
+  format: 'list',
   theme: 'dark',
 }
 
@@ -15,7 +15,7 @@ export const createGlobalStoreSlice: StateCreator<
   GlobalStore
 > = (set) => ({
   ...initialState,
-  setListingLayout: (format: ListingFormatType) => {
+  setListingLayout: (format: string) => {
     set((state) => {
       state.format = format;
       return state;

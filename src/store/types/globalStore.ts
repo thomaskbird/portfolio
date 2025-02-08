@@ -1,12 +1,10 @@
-import {ListingFormatType} from "@/components/Listings/Listings";
-
 export type GlobalStoreState = {
-  format: ListingFormatType;
+  format: string;
   theme: string;
 }
 
 export type GlobalStoreActions = {
-  setListingLayout: (format: ListingFormatType) => void;
+  setListingLayout: (format: string) => void;
   setTheme: (theme: string) => void;
 }
 
