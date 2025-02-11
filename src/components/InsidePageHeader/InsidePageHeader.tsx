@@ -17,7 +17,7 @@ const InsidePageHeader = ({ createdAt }: InsidePageHeaderProps) => {
     <Grid container className={styles.pageHeader}>
       <Grid item xs={12} sm={6}>
         <Button
-          variant="contained"
+          variant="link"
           startIcon={<ChevronLeftIcon/>}
           onClick={() => router.back()}
         >

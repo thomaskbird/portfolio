@@ -17,6 +17,7 @@ import Image from "next/image";
 import Link from "next/link";
 import MediaGallery from "@/components/MediaGallery/MediaGallery";
 import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
+import Sidebar from "@/components/Sidebar/Sidebar";
 
 // todo: figure out how to render a video element instead of the video being rendered into an image tag
 //    possible solution rehype raw: https://stackoverflow.com/questions/75358080/how-can-i-embed-a-youtube-video-in-reactjs-markdown-with-react-markdown
@@ -58,56 +59,65 @@ const InsidePage = ({ params }: PageType) => {
           <meta property="keywords" content={page?.fields.keywords as string}/>
         </HelmetComponent>
 
-        <SectionContainer styleName={pageStyles.wrapper}>
-          <Box>
-            {imageField && (
-              <div className={pageStyles.mediaWrapper}>
-                <Link target="_blank" href={`https:\\${imageField.file.url}`}>
-                  <Image
-                    className={pageStyles.media}
-                    src={'https:' + imageField.file.url}
-                    alt={imageField.title ?? 'No title text supplied'}
-                    title={imageField.title ?? 'No title text supplied'}
-                    width={imageField.file.details.image.width}
-                    height={imageField.file.details.image.height}
-                  />
-                </Link>
-              </div>
-            )}
-
-            <InsidePageHeader createdAt={page?.sys.createdAt as string}/>
-          </Box>
-
-          {page && (
-            <Box className="page-content">
-              <Markdown rehypePlugins={[rehypeHighlight]}>{pageFields.body}</Markdown>
-              {page.fields.codepen && (
-                <div dangerouslySetInnerHTML={{__html: (page.fields.codepen as any).content[0].content[0].value}}/>
-              )}
-            </Box>
-          )}
-
-          {page && page.fields.gallery && (
-            <MediaGallery gallery={page.fields.gallery} />
-          )}
-
-          {page && page.metadata.tags && (
-            <Box className={pageStyles.tagWrapper}>
-              <Box>
-                <h3>Tags:</h3>
-              </Box>
-              <Box>{page.metadata.tags.map(tag => (
-                <Chip
-                  key={tag.sys.id}
-                  variant="outlined"
-                  className={pageStyles.tag} label={tag.sys.id}
-                  onClick={() => redirect(`/search?query=${tag.sys.id}`)}
+        <Box className={pageStyles.header}>
+          {imageField && (
+            <div className={pageStyles.mediaWrapper}>
+              <Link target="_blank" href={`https:\\${imageField.file.url}`}>
+                <Image
+                  className={pageStyles.media}
+                  src={'https:' + imageField.file.url}
+                  alt={imageField.title ?? 'No title text supplied'}
+                  title={imageField.title ?? 'No title text supplied'}
+                  width={imageField.file.details.image.width}
+                  height={imageField.file.details.image.height}
                 />
-              ))}</Box>
-            </Box>
+              </Link>
+            </div>
           )}
+
+          <InsidePageHeader createdAt={page?.sys.createdAt as string}/>
+        </Box>
+
+        <SectionContainer styleName={pageStyles.wrapper}>
+          <div className={pageStyles.contentWrapper}>
+            <div className={pageStyles.left}>
+              {page && (
+                <Box className="page-content">
+                  <Markdown rehypePlugins={[rehypeHighlight]}>{pageFields.body}</Markdown>
+                  {page.fields.codepen && (
+                    <div dangerouslySetInnerHTML={{__html: (page.fields.codepen as any).content[0].content[0].value}}/>
+                  )}
+                </Box>
+              )}
+
+              {page && page.fields.gallery && (
+                <MediaGallery gallery={page.fields.gallery}/>
+              )}
+
+              {page && page.metadata.tags && (
+                <Box className={pageStyles.tagWrapper}>
+                  <Box>
+                    <h3>Tags:</h3>
+                  </Box>
+                  <Box>{page.metadata.tags.map(tag => (
+                    <Chip
+                      key={tag.sys.id}
+                      variant="outlined"
+                      label={tag.sys.id}
+                      className={pageStyles.tag}
+                      onClick={() => redirect(`/search?query=${tag.sys.id}`)}
+                    />
+                  ))}</Box>
+                </Box>
+              )}
+
+              <div ref={codepenRef}/>
+            </div>
+            <div className={pageStyles.right}>
+              <Sidebar page={page} />
+            </div>
+          </div>
         </SectionContainer>
-        <div ref={codepenRef}/>
       </Container>
     </HelmetProvider>
   )
