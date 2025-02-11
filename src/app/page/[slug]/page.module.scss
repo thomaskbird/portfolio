@@ -1,5 +1,34 @@
+.header {
+
+}
+
 .wrapper {
-  padding: 110px 0 100px;
+  padding: 50px 0 100px;
+}
+
+.contentWrapper {
+  display: flex;
+
+  @media(max-width: 1024px) {
+    flex-direction: column;
+  }
+}
+
+.left {
+  flex: 9;
+  padding-right: 40px;
+}
+
+.right {
+  flex: 3;
+  padding: 20px 30px;
+}
+
+.footerTitleDivider {
+  width: 40px;
+  height: 2px;
+  background: rgba(255,255,255,0.25);
+  margin-bottom: 20px;
 }
 
 .tagWrapper {
@@ -14,7 +43,7 @@
 
 .mediaWrapper {
   overflow: hidden;
-  max-height: 250px;
+  max-height: 400px;
   margin-bottom: 20px;
 }
 

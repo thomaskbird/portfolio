@@ -75,7 +75,9 @@ const Footer = ({}: FooterType) => {
 
               <ul>
                 {postsLimited?.map(post => (
-                  <li key={post.sys.id}><Link className={styles.footerLinks} href={`/p/${post.fields.slug}`}>{post.fields.title as ReactNode}</Link></li>
+                  <li key={post.sys.id}>
+                    <Link className={styles.footerLinks} href={`/page/${post.fields.slug}`}>{post.fields.title as ReactNode}</Link>
+                  </li>
                 ))}
               </ul>
             </div>
