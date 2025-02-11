@@ -64,7 +64,7 @@ const Testimony = ({ params }: PageType) => {
           <Image
             width={testimonyProfileImage.details.image.width}
             height={testimonyProfileImage.details.image.height}
-            src={`https://${testimonyProfileImage.url}`}
+            src={`https:${testimonyProfileImage.url}`}
             alt={name as string}
             title={name as string}
             className={styles.blurbImage}
