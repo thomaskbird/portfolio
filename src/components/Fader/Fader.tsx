@@ -4,6 +4,7 @@ import FaderItem from "@/components/Fader/FaderItem";
 import cn from "classnames";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
+import useIntervalHook from "@/hooks/useIntervalHook";
 
 type SliderType = {
   items: any;
@@ -21,42 +22,24 @@ const Fader = ({
 }: SliderType) => {
   const itemsTotal = items?.length ?? 0;
 
-  const interval: MutableRefObject<any> = useRef();
+  const {
+    startInterval,
+    stopInterval,
+    activeIndex,
+    isRunning,
+  } = useIntervalHook(itemsTotal, duration, startAt)
+
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
 
-  const [activeIndex, setActiveIndex] = useState<number>(startAt ?? 0);
-  const [isRunning, setIsRunning] = useState<boolean>(false);
-
   // trigger autoplay
   useEffect(() => {
-    const startInterval = () => {
-      interval.current = setInterval(() => {
-        handleAuto();
-      }, duration);
-    };
-
-    // handle next when autoplaying
-    const handleAuto = () => {
-      setActiveIndex(prevState => {
-        const next = prevState + 1;
-        if(next < itemsTotal) {
-          return next;
-        } else {
-          return 0;
-        }
-      })
-    }
-
     if(!isRunning) {
-      setIsRunning(true);
       startInterval();
     }
 
     return () => stopInterval();
-  }, [isRunning, duration, itemsTotal]);
-
-  const stopInterval = () => clearInterval(interval.current);
+  }, [isRunning, itemsTotal]);
 
   return (
     <div className={styles.faderWrap}>
