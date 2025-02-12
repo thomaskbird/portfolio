@@ -1,34 +1,26 @@
 import {MutableRefObject, useEffect, useRef, useState} from "react";
 
-const useIntervalHook = (total, duration, startAt) => {
+const useIntervalHook = (total: number, duration: number, startAt: number) => {
   const interval: MutableRefObject<any> = useRef();
   const [activeIndex, setActiveIndex] = useState<number>(startAt ?? 0);
-  const [isRunning, setIsRunning] = useState<boolean>(false);
 
-  // handle next when autoplaying
-  const handleAuto = () => {console.log('handleAuto')
-    setActiveIndex(prevState => {
-      const next = prevState + 1;
-      if(next < total) {
-        return next;
-      } else {
-        return 0;
-      }
-    })
-  }
+  useEffect(() => {
+    interval.current = setInterval(() => {
+      setActiveIndex(prevState => {
+        const next = prevState + 1;
+        if(next < total) {
+          return next;
+        } else {
+          return 0;
+        }
+      })
+    }, duration);
 
-  const stopInterval = () => clearInterval(interval.current);
-
-  const startInterval = () => {
-    setIsRunning(true);
-    interval.current = setInterval(() => handleAuto(), duration);
-  };
+    return () => clearInterval(interval.current);
+  });
 
   return {
-    startInterval,
-    stopInterval,
     activeIndex,
-    isRunning,
   }
 }
 
