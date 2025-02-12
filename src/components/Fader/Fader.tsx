@@ -23,23 +23,11 @@ const Fader = ({
   const itemsTotal = items?.length ?? 0;
 
   const {
-    startInterval,
-    stopInterval,
     activeIndex,
-    isRunning,
-  } = useIntervalHook(itemsTotal, duration, startAt)
+} = useIntervalHook(itemsTotal, duration!, startAt!)
 
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
-
-  // trigger autoplay
-  useEffect(() => {
-    if(!isRunning) {
-      startInterval();
-    }
-
-    return () => stopInterval();
-  }, [isRunning, itemsTotal]);
 
   return (
     <div className={styles.faderWrap}>
