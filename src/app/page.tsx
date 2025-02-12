@@ -17,8 +17,10 @@ import useRetrieveHeros from "@/hooks/useRetrieveHeros";
 import useRetrieveWhatIDo from "@/hooks/useRetrieveWhatIDo";
 import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
 import baseSkeletonProps from "@/components/SkeletonSwitcher/SkeletonSwitcher.config";
-
-
+import ScrollSnapper from "@/components/ScrollSnapper/ScrollSnapper";
+import Image from "next/image";
+import pageStyles from "@/app/contact/page.module.scss";
+import logos from "@/mocks/mockLogos";
 
 const Home = () => {
   const theme = useGlobalStore(selectTheme);
@@ -57,6 +59,23 @@ const Home = () => {
       </SectionContainer>
 
       <SectionContainer styleName={isDark ? styles.mainContentDark : styles.mainContentLight}>
+        <PageSectionTitle title="Clients"/>
+        <ScrollSnapper>
+          {logos.map(logo => (
+            <Image
+              width={501}
+              height={501}
+              key={logo.id}
+              src={logo.src}
+              alt={logo.title}
+              title={logo.title}
+              className={pageStyles.logo}
+            />
+          ))}
+        </ScrollSnapper>
+      </SectionContainer>
+
+      <SectionContainer styleName={isDark ? styles.skillsContainerDark : styles.skillsContainerLight}>
 
         <PageSectionTitle title="Project Work"/>
 
@@ -71,7 +90,8 @@ const Home = () => {
           />
         ))}
       </SectionContainer>
-      <Container maxWidth={false} disableGutters className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
+      <Container maxWidth={false} disableGutters
+                 className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
         <Container>
           <PageSectionTitle title="People Are Talking"/>
           <Slider items={testimonials}/>

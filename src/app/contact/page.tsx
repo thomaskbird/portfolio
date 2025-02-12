@@ -13,69 +13,7 @@ import cn from "classnames";
 import Link from "next/link";
 import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
 import Image from "next/image";
-
-const logos = [
-  {
-    id: 0,
-    title: 'OpenAI',
-    src: '/logos/OpenAI.png'
-  },
-  {
-    id: 1,
-    title: 'NBC Sports',
-    src: '/logos/nbc.png'
-  },
-  {
-    id: 2,
-    title: 'Powerley',
-    src: '/logos/powerley.png'
-  },
-  {
-    id: 3,
-    title: 'Ford',
-    src: '/logos/ford.png'
-  },
-  {
-    id: 4,
-    title: 'GM',
-    src: '/logos/gm.png'
-  },
-  {
-    id: 5,
-    title: 'Livegistics',
-    src: '/logos/livegistics.png'
-  },
-  {
-    id: 6,
-    title: 'Dominos',
-    src: '/logos/dominos.png'
-  },
-  {
-    id: 7,
-    title: 'Ultimate Software',
-    src: '/logos/ultimate-software.png'
-  },
-  {
-    id: 8,
-    title: 'UnitedHealth Group',
-    src: '/logos/unitedhealth-group.png'
-  },
-  {
-    id: 9,
-    title: 'Belle Tire',
-    src: '/logos/belle.png'
-  },
-  {
-    id: 10,
-    title: 'Brogan & Partners',
-    src: '/logos/brogan.png',
-  },
-  {
-    id: 11,
-    title: 'Media Genesis',
-    src: '/logos/mediag.png',
-  }
-]
+import logos from "@/mocks/mockLogos";
 
 // todo: https://www.frontend.fyi/v/staggered-text-animations-with-framer-motion
 // todo: https://codesandbox.io/p/sandbox/text-typing-animation-forked-mgzgdj
@@ -138,12 +76,13 @@ const Contact = () => {
           <Grid item xs={12} md={4}>
             <Typography variant="h5" sx={{marginBottom: '20px', marginTop: '50px'}}>Send a message</Typography>
 
-            <Typography variant="body2"><Link target="_blank" href="mailto:thomaskbird@icloud.com">Thomaskbird@icloud.com</Link></Typography>
+            <Typography variant="body2"><Link target="_blank"
+                                              href="mailto:thomaskbird@icloud.com">Thomaskbird@icloud.com</Link></Typography>
           </Grid>
         </Grid>
       </SectionContainer>
     </>
-  )
+  );
 }
 
 export default Contact;
