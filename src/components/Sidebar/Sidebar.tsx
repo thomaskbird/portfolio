@@ -5,6 +5,7 @@ import useSearch from "@/hooks/useSearch";
 import useTags from "@/hooks/useTags";
 import {Chip} from "@mui/material";
 import {redirect} from "next/navigation";
+import Divider from "@/components/Divider/Divider";
 
 type SidebarType = {
   page: any;
@@ -26,7 +27,7 @@ const Sidebar = ({ page }: SidebarType) => {
       {posts && (
         <div className={styles.sidebarItemWrap}>
           <h5>Related Posts</h5>
-          <div className={styles.footerTitleDivider}></div>
+          <Divider />
 
           <ul>
             {posts?.filter(p => p.sys.id !== page?.sys.id).map(post => (
@@ -46,7 +47,7 @@ const Sidebar = ({ page }: SidebarType) => {
       {tags && (
         <div className={styles.sidebarItemWrap}>
           <h5>Tags</h5>
-          <div className={styles.footerTitleDivider}></div>
+          <Divider />
 
           {tags.map(tag => (
             <Chip

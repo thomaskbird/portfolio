@@ -13,6 +13,7 @@ import useRetrievePosts from "@/hooks/useRetrievePosts";
 import {ReactNode} from "react";
 import useMisc from "@/hooks/useMisc";
 import Image from 'next/image';
+import Divider from "@/components/Divider/Divider";
 
 type FooterType = {};
 
@@ -71,7 +72,7 @@ const Footer = ({}: FooterType) => {
             </div>
             <div className={styles.footerMainColumn}>
               <h5>Blog Posts</h5>
-              <div className={styles.footerTitleDivider}></div>
+              <Divider />
 
               <ul>
                 {postsLimited?.map(post => (
@@ -83,7 +84,7 @@ const Footer = ({}: FooterType) => {
             </div>
             <div className={styles.footerMainColumn}>
               <h5>Pages</h5>
-              <div className={styles.footerTitleDivider}></div>
+              <Divider />
 
               <ul>
                 {MOCK_NAVITEMS.map((item) => (
