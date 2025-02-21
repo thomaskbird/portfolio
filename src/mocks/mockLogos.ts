@@ -5,6 +5,21 @@ const logos = [
     src: '/logos/OpenAI.png'
   },
   {
+    id: 5,
+    title: 'NBC Sports',
+    src: '/logos/nbc.png'
+  },
+  {
+    id: 9,
+    title: 'Livegistics',
+    src: '/logos/livegistics.png'
+  },
+  {
+    id: 6,
+    title: 'Powerley',
+    src: '/logos/powerley.png'
+  },
+  {
     id: 2,
     title: '3M',
     src: '/logos/3m.png'
@@ -20,16 +35,6 @@ const logos = [
     src: '/logos/jnj.png'
   },
   {
-    id: 5,
-    title: 'NBC Sports',
-    src: '/logos/nbc.png'
-  },
-  {
-    id: 6,
-    title: 'Powerley',
-    src: '/logos/powerley.png'
-  },
-  {
     id: 7,
     title: 'Ford',
     src: '/logos/ford.png'
@@ -38,11 +43,6 @@ const logos = [
     id: 8,
     title: 'GM',
     src: '/logos/gm.png'
-  },
-  {
-    id: 9,
-    title: 'Livegistics',
-    src: '/logos/livegistics.png'
   },
   {
     id: 10,
