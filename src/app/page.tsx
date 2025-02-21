@@ -39,7 +39,7 @@ const Home = () => {
       <Hero/>
 
       <SectionContainer styleName={isDark ? styles.aboutContainerDark : styles.aboutContainerLight}>
-        <PageSectionTitle title="What I do?"/>
+        <PageSectionTitle title="What I do?" subtitle="Get A Deeper Look At What Drives Me" />
         <div style={{marginBottom: 0}}>
           {homeHero ? (
             <Fader items={homeHero} duration={10000}/>
@@ -54,12 +54,12 @@ const Home = () => {
       </SectionContainer>
 
       <SectionContainer styleName={isDark ? styles.skillsContainerDark : styles.skillsContainerLight}>
-        <PageSectionTitle title="Skills"/>
+        <PageSectionTitle title="Skills" subtitle="Acquired through years of professional work"/>
         <Skills/>
       </SectionContainer>
 
       <SectionContainer styleName={isDark ? styles.mainContentDark : styles.mainContentLight}>
-        <PageSectionTitle title="Clients"/>
+        <PageSectionTitle title="Brands" subtitle="I've Had The Pleasure To Work With"/>
         <ScrollSnapper>
           {logos.map(logo => (
             <Image
@@ -77,7 +77,7 @@ const Home = () => {
 
       <SectionContainer styleName={isDark ? styles.skillsContainerDark : styles.skillsContainerLight}>
 
-        <PageSectionTitle title="Project Work"/>
+        <PageSectionTitle title="Project Work" subtitle="Projects I've been blessed to be a part of"/>
 
         {heros && heros?.map((project, idx) => (
           <ProjectSection
@@ -90,10 +90,9 @@ const Home = () => {
           />
         ))}
       </SectionContainer>
-      <Container maxWidth={false} disableGutters
-                 className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
+      <Container maxWidth={false} disableGutters className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
         <Container>
-          <PageSectionTitle title="People Are Talking"/>
+          <PageSectionTitle title="People Are Talking" subtitle="See What They've Got To Say"/>
           <Slider items={testimonials}/>
         </Container>
       </Container>
