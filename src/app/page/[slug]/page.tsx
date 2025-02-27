@@ -50,7 +50,6 @@ const InsidePage = ({ params }: PageType) => {
   const desc: string = page ? (page.fields.description as string) : '';
   const imageField: any = page && ((page?.fields as any).featuredImage as any)?.fields;
   const pageFields = page?.fields as any;
-  console.log('imageField', imageField);
 
   return (
     <HelmetProvider>

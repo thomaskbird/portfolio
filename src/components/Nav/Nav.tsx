@@ -5,7 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
+import { motion } from 'framer-motion';
 import Switch from "@mui/material/Switch";
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
@@ -41,7 +41,24 @@ interface HideOnScrollProps {
   children: ReactElement;
 }
 
-const drawerWidth = 240;
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delayChildren: 0.4,
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { x: 100, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+  },
+};
 
 const Nav = ({ window, navOnly = false }: Props) => {
   const theme = useGlobalStore(selectTheme);
@@ -85,16 +102,29 @@ const Nav = ({ window, navOnly = false }: Props) => {
         </IconButton>
       </div>
       <Divider />
-      <List className={navStyles.drawerList}>
-        {MOCK_NAVITEMS.map((item) => (
-          <Link href={item.link} key={item.id} className={cn(
-            navStyles.navLink,
-            isDark ? navStyles.navLinkDark : navStyles.navLinkLight
-          )}>
-            {item.label}
-          </Link>
-        ))}
-      </List>
+      <motion.ul
+        className={navStyles.drawerList}
+        variants={containerVariants}
+        initial="hidden"
+        animate={mobileOpen ? 'visible' : 'hidden'}
+        style={{listStyle: 'none', padding: 0}}
+      >
+          {MOCK_NAVITEMS.map((item) => (
+            <motion.li key={item.id} variants={itemVariants}>
+              <Link
+                href={item.link}
+                className={cn(
+                  navStyles.navLink,
+                  isDark ? navStyles.navLinkDark : navStyles.navLinkLight
+                )}
+              >
+                {item.label}
+              </Link>
+            </motion.li>
+          ))}
+      </motion.ul>
+
+      <Divider/>
 
       <div className={navStyles.navSwitch}>
         <Tooltip title={`${theme} mode`}>
