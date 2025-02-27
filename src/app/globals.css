@@ -65,13 +65,15 @@ em {
 }
 
 .dark {
-  em {
+  em,
+  strong {
     color: #fff;
   }
 }
 
 .light {
-  em {
+  em,
+  strong {
     color: #111;
   }
 }
