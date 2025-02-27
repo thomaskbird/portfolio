@@ -18,6 +18,7 @@ import Link from "next/link";
 import MediaGallery from "@/components/MediaGallery/MediaGallery";
 import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
 import Sidebar from "@/components/Sidebar/Sidebar";
+import {Gallery, Item} from "react-photoswipe-gallery";
 
 // todo: figure out how to render a video element instead of the video being rendered into an image tag
 //    possible solution rehype raw: https://stackoverflow.com/questions/75358080/how-can-i-embed-a-youtube-video-in-reactjs-markdown-with-react-markdown
@@ -49,6 +50,7 @@ const InsidePage = ({ params }: PageType) => {
   const desc: string = page ? (page.fields.description as string) : '';
   const imageField: any = page && ((page?.fields as any).featuredImage as any)?.fields;
   const pageFields = page?.fields as any;
+  console.log('imageField', imageField);
 
   return (
     <HelmetProvider>
@@ -61,18 +63,30 @@ const InsidePage = ({ params }: PageType) => {
 
         <Box className={pageStyles.header}>
           {imageField && (
-            <div className={pageStyles.mediaWrapper}>
-              <Link target="_blank" href={`https:\\${imageField.file.url}`}>
-                <Image
-                  className={pageStyles.media}
-                  src={'https:' + imageField.file.url}
-                  alt={imageField.title ?? 'No title text supplied'}
-                  title={imageField.title ?? 'No title text supplied'}
+            <Gallery>
+              <div className={pageStyles.mediaWrapper}>
+                <Item
+                  original={'https:' + imageField.file.url}
+                  thumbnail={'https:' + imageField.file.url}
+                  alt={imageField.title ?? 'No alt text supplied'}
                   width={imageField.file.details.image.width}
                   height={imageField.file.details.image.height}
-                />
-              </Link>
-            </div>
+                >
+                  {({ ref, open }) => (
+                    <Image
+                      ref={ref}
+                      onClick={open}
+                      className={pageStyles.media}
+                      src={'https:' + imageField.file.url}
+                      alt={imageField.title ?? 'No title text supplied'}
+                      title={imageField.title ?? 'No title text supplied'}
+                      width={imageField.file.details.image.width}
+                      height={imageField.file.details.image.height}
+                    />
+                  )}
+                </Item>
+              </div>
+            </Gallery>
           )}
 
           <InsidePageHeader createdAt={page?.sys.createdAt as string}/>
