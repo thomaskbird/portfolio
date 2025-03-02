@@ -18,7 +18,7 @@ import MOCK_NAVITEMS from "@/mocks/mockNavigation";
 import {usePathname} from "next/navigation";
 import CloseIcon from '@mui/icons-material/Close';
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectSetTheme, selectTheme} from "@/store/selectors/globalStore";
+import {selectIsMobileOpen, selectSetIsMobileOpen, selectSetTheme, selectTheme} from "@/store/selectors/globalStore";
 import cn from "classnames";
 import {ChangeEvent, ReactElement, useState} from "react";
 import Image from 'next/image';
@@ -62,16 +62,15 @@ const itemVariants = {
 
 const Nav = ({ window, navOnly = false }: Props) => {
   const theme = useGlobalStore(selectTheme);
+  const isMobileOpen = useGlobalStore(selectIsMobileOpen);
+  const setIsMobileOpen = useGlobalStore(selectSetIsMobileOpen);
   const isDark = theme === 'dark';
   const setTheme = useGlobalStore(selectSetTheme);
   const pathname = usePathname();
   const isHome = pathname === '/';
-  const [mobileOpen, setMobileOpen] = useState(false);
   const logoUrl = isDark ? '/logo.png' : '/logo-dark.png';
 
-  const handleDrawerToggle = () => {
-    setMobileOpen((prevState) => !prevState);
-  };
+  const handleToggle = () => setIsMobileOpen()
 
   const HideOnScroll = ({ children, window }: HideOnScrollProps) => {
     const trigger = useScrollTrigger({
@@ -86,7 +85,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
   }
 
   const drawer = (
-    <Box onClick={handleDrawerToggle}>
+    <Box onClick={handleToggle}>
       <div className={navStyles.drawerHeaderItems}>
         <Link href="/">
           <Image
@@ -106,7 +105,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
         className={navStyles.drawerList}
         variants={containerVariants}
         initial="hidden"
-        animate={mobileOpen ? 'visible' : 'hidden'}
+        animate={isMobileOpen ? 'visible' : 'hidden'}
         style={{listStyle: 'none', padding: 0}}
       >
           {MOCK_NAVITEMS.map((item) => (
@@ -154,7 +153,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
                 edge="start"
                 color="inherit"
                 aria-label="open drawer"
-                onClick={handleDrawerToggle}
+                onClick={handleToggle}
                 sx={{ mr: 2, display: { sm: 'none' } }}
               >
                 <MenuIcon />
@@ -191,23 +190,6 @@ const Nav = ({ window, navOnly = false }: Props) => {
           </Container>
         </AppBar>
       </HideOnScroll>
-      <nav>
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            // display: { xs: 'block', sm: 'none' },
-            // '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </nav>
     </Box>
   );
 }

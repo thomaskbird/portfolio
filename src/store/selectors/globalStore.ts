@@ -7,3 +7,7 @@ export const selectSetListingLayout = (store: GlobalStore) => store.setListingLa
 export const selectTheme = (store: GlobalStore) => store.theme;
 
 export const selectSetTheme = (store: GlobalStore) => store.setTheme;
+
+export const selectIsMobileOpen = (store: GlobalStore) => store.isMobileOpen;
+
+export const selectSetIsMobileOpen = (store: GlobalStore) => store.setIsMobileOpen;

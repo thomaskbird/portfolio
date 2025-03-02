@@ -1,3 +1,11 @@
+.contentWrap {
+  transition: all ease-in 0.25s;
+}
+
+.contentWrapOpen {
+  transform: translateX(80vw) translateY(20px);
+}
+
 .overallWrapper {
 }
 
