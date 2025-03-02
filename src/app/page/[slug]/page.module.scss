@@ -7,21 +7,17 @@
 }
 
 .contentWrapper {
-  display: flex;
+  gap: 50px;
+  display: grid;
+  grid-template-columns: 9fr 3fr;
 
-  @media(max-width: 1024px) {
-    flex-direction: column;
+  @media(max-width: 768px) {
+    grid-template-columns: 1fr;
   }
 }
 
-.left {
-  flex: 9;
-  padding-right: 40px;
-}
-
-.right {
-  flex: 3;
-  padding: 20px 30px;
+.left, .right {
+  overflow: hidden;
 }
 
 .footerTitleDivider {

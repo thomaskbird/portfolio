@@ -95,7 +95,7 @@ const InsidePage = ({ params }: PageType) => {
           <div className={pageStyles.contentWrapper}>
             <div className={pageStyles.left}>
               {page && (
-                <Box className="page-content">
+                <Box className={pageStyles.pageContent}>
                   <Markdown rehypePlugins={[rehypeHighlight]}>{pageFields.body}</Markdown>
                   {page.fields.codepen && (
                     <div dangerouslySetInnerHTML={{__html: (page.fields.codepen as any).content[0].content[0].value}}/>
