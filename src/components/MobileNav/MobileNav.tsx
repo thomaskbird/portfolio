@@ -10,7 +10,7 @@ import MOCK_NAVITEMS from "@/mocks/mockNavigation";
 import cn from "classnames";
 import * as React from "react";
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectSetTheme, selectTheme} from "@/store/selectors/globalStore";
+import {selectIsMobileOpen, selectSetIsMobileOpen, selectSetTheme, selectTheme} from "@/store/selectors/globalStore";
 import {Tooltip} from "@mui/material";
 import Switch from "@mui/material/Switch";
 import {ChangeEvent} from "react";
@@ -20,7 +20,7 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      delayChildren: 0.4,
+      delayChildren: 0.3,
       staggerChildren: 0.1,
     },
   },
@@ -37,6 +37,8 @@ const itemVariants = {
 const MobileNav = () => {
   const theme = useGlobalStore(selectTheme);
   const setTheme = useGlobalStore(selectSetTheme);
+  const isMobileOpen = useGlobalStore(selectIsMobileOpen);
+  const setIsMobileOpen = useGlobalStore(selectSetIsMobileOpen);
   const isDark = theme === 'dark';
   const logoUrl = isDark ? '/logo.png' : '/logo-dark.png';
 
@@ -52,7 +54,7 @@ const MobileNav = () => {
             className={navStyles.logo}
           />
         </Link>
-        <IconButton>
+        <IconButton onClick={() => setIsMobileOpen()}>
           <CloseIcon className={styles.close}/>
         </IconButton>
       </div>
@@ -60,7 +62,7 @@ const MobileNav = () => {
         className={styles.drawerList}
         variants={containerVariants}
         initial="hidden"
-        animate={true ? 'visible' : 'hidden'}
+        animate={isMobileOpen ? 'visible' : 'hidden'}
         style={{listStyle: 'none', padding: 0}}
       >
         {MOCK_NAVITEMS.map((item) => (
@@ -71,6 +73,7 @@ const MobileNav = () => {
                 styles.navLink,
                 isDark ? styles.navLinkDark : styles.navLinkLight
               )}
+              onClick={() => setIsMobileOpen()}
             >
               {item.label}
             </Link>
@@ -82,7 +85,10 @@ const MobileNav = () => {
         <Tooltip title={`${theme} mode`}>
           <Switch
             checked={isDark}
-            onChange={(evt: ChangeEvent<HTMLInputElement>) => setTheme(evt.target.checked ? 'dark' : 'light')}
+            onChange={(evt: ChangeEvent<HTMLInputElement>) => {
+              setIsMobileOpen()
+              setTheme(evt.target.checked ? 'dark' : 'light')
+            }}
           />
         </Tooltip>
       </div>

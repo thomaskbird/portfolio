@@ -33,13 +33,20 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={cn(source_sans.variable, theme)} suppressHydrationWarning={true}>
+      <body className={cn(source_sans.variable, theme, isMobileOpen ? styles.locked : '')} suppressHydrationWarning={true}>
         <Suspense>
           <GlobalCssPriority>
             <ThemeProvider theme={theme === 'dark' ? themeDark : themeLight}>
               <MobileNav />
 
-              <div className={cn(styles.contentWrap, isMobileOpen ? styles.contentWrapOpen : '')}>
+              <div
+                className={
+                cn(
+                  styles.contentWrap,
+                  theme === 'dark' ? styles.contentWrapDark : styles.contentWrapLight,
+                  isMobileOpen ? styles.contentWrapOpen : ''
+                )
+              }>
                 <Backdrop
                   sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                   open={false}
@@ -53,13 +60,13 @@ export default function RootLayout({
                 </Container>
 
                 <Footer />
-              </div>
 
-              {hasScrollTop && (
-                <Fab color="primary" className="backToTop" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-                  <ExpandLessIcon/>
-                </Fab>
-              )}
+                {hasScrollTop && (
+                  <Fab color="primary" className="backToTop" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
+                    <ExpandLessIcon/>
+                  </Fab>
+                )}
+              </div>
             </ThemeProvider>
           </GlobalCssPriority>
         </Suspense>
