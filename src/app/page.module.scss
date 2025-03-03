@@ -1,3 +1,26 @@
+.locked {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.contentWrap {
+  position: relative;
+  transition: all ease-in 0.25s;
+}
+
+.contentWrapLight {
+  background: #fff;
+}
+
+.contentWrapDark {
+  background: #000;
+}
+
+.contentWrapOpen {
+  transform: translateX(80vw) translateY(20px);
+}
+
 .overallWrapper {
 }
 
@@ -16,7 +39,7 @@
 
 .aboutContainerLight {
   padding: 100px 0;
-  background: #fff;
+  background: #f5f5f5;
 }
 
 .skillsContainerDark {
@@ -25,7 +48,7 @@
 
 .skillsContainerLight {
   padding: 100px 0;
-  background: #f5f5f5;
+  background: #fff;
 }
 
 .mainContentDark {
@@ -34,6 +57,7 @@
 }
 
 .mainContentLight {
+  background: #f5f5f5;
   padding: 100px 0;
 }
 
@@ -44,7 +68,7 @@
 .testimonialWrapperDark {
   height: auto;
   display: flex;
-  background: #000;
+  background: #0c0c0c;
   padding: 100px 0;
 }
 

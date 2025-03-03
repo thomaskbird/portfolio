@@ -6,6 +6,7 @@ import {ListingFormatType} from "@/components/Listings/Listings";
 const initialState = {
   format: 'list',
   theme: 'dark',
+  isMobileOpen: false
 }
 
 export const createGlobalStoreSlice: StateCreator<
@@ -24,6 +25,12 @@ export const createGlobalStoreSlice: StateCreator<
   setTheme: (theme: string) => {
     set((state) => {
       state.theme = theme;
+      return state;
+    })
+  },
+  setIsMobileOpen: () => {
+    set((state) => {
+      state.isMobileOpen = !state.isMobileOpen;
       return state;
     })
   }
