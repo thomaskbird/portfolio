@@ -45,7 +45,7 @@ const MobileNav = () => {
   return (
     <div className={cn(styles.wrapper, isDark ? styles.wrapperDark : styles.wrapperLight)}>
       <div className={styles.header}>
-        <Link href="/">
+        <Link href="/" onClick={() => setIsMobileOpen()}>
           <Image
             width={715}
             height={83}

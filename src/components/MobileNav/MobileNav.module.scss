@@ -52,7 +52,12 @@
 }
 
 .navLinkLight {
+  color: #999;
 
+  &:hover {
+    color: #333;
+    background: rgba(0,0,0,0.1);
+  }
 }
 
 .close {
