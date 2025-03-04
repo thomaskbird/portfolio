@@ -11,6 +11,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import SectionContainer from "@/components/SectionContainer/SectionContainer";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectListingFormat, selectSetListingLayout} from "@/store/selectors/globalStore";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
 
 type ListingsProps = {
   title: string;
@@ -29,6 +30,7 @@ const Listings = ({
 }: ListingsProps) => {
   const setListingLayout = useGlobalStore(selectSetListingLayout);
   const listingFormat = useGlobalStore(selectListingFormat);
+  const windowDimensions = useWindowDimensions();
 
   const handleFormat = (
     event: React.MouseEvent<HTMLElement>,
@@ -43,9 +45,10 @@ const Listings = ({
           {posts && <small className={styles.contentListingHeaderSubtitle}>{posts.length} Results found for <em>{query ?? title}</em>...</small>}
         </Typography>
         <ToggleButtonGroup
-          value={listingFormat}
           exclusive
           color="secondary"
+          orientation={windowDimensions.width < 601 ? 'vertical' : 'horizontal'}
+          value={listingFormat}
           onChange={handleFormat}
           aria-label="text alignment"
           className={styles.contentListingHeaderButtonGroup}
