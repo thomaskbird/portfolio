@@ -38,7 +38,7 @@ const Listings = ({
   return (
     <SectionContainer styleName={styles.listingsContainer}>
       <div className={styles.contentListingHeader}>
-        <Typography variant="h2" style={{margin: '50px 0'}}>
+        <Typography variant="h2">
           {title}
           {posts && <small className={styles.contentListingHeaderSubtitle}>{posts.length} Results found for <em>{query ?? title}</em>...</small>}
         </Typography>
