@@ -4,11 +4,24 @@
   grid-template-columns: 4fr 2fr 2fr 2fr;
   grid-template-rows: 200px 200px;
   gap: 20px;
+
+  @media(max-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  @media(max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
 }
 
 .itemWrap {
   height: 200px;
   overflow: hidden;
+
+  @media(max-width: 1024px) {
+    height: auto;
+  }
 }
 
 .image {

@@ -1,7 +1,7 @@
 import client from "@/services/api";
 import useSWR from "swr";
 
-type TagTypes = 'blog' | 'work' | 'posts';
+type TagTypes = 'blog' | 'work' | 'posts' | 'photography';
 
 const requestPosts = async (tag: TagTypes) => {
   try {

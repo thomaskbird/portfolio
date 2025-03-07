@@ -25,22 +25,28 @@ const MOCK_NAVITEMS: NavItem[] = [
   //   slug: 'services'
   // },
   {
-    id: 4,
+    id: 3,
     link: '/blog',
     label: 'Blog',
     slug: 'blog'
   },
   {
-    id: 5,
+    id: 4,
     link: '/resume',
     label: 'Resume',
     slug: 'resume'
   },
   {
-    id: 6,
+    id: 5,
     link: '/search',
     label: 'Search',
     slug: 'search'
+  },
+  {
+    id: 6,
+    link: '/photography',
+    label: 'Photography',
+    slug: 'photography'
   },
   {
     id: 7,

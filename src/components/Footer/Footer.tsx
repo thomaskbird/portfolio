@@ -30,8 +30,7 @@ const Footer = ({}: FooterType) => {
 
   return (
     <Container maxWidth={false} disableGutters className={isDark ? styles.footerWrapperDark : styles.footerWrapperLight}>
-      <Container>
-        <div>
+      <Container className={styles.footerInnerWrap}>
           <div className={styles.blurbs}>
             <div className={styles.blurb}>
               <RoomIcon fontSize={iconSize} className={cn(styles.blurbIcon, isDark ? styles.blurbIconDark : styles.blurbIconLight)}/>
@@ -93,7 +92,6 @@ const Footer = ({}: FooterType) => {
               </ul>
             </div>
           </div>
-        </div>
       </Container>
     </Container>
   )
