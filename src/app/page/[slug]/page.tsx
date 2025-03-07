@@ -110,7 +110,7 @@ const InsidePage = ({ params }: PageType) => {
               {page && page.metadata.tags && (
                 <Box className={pageStyles.tagWrapper}>
                   <Box>
-                    <h3>Tags:</h3>
+                    <h3>Post tags:</h3>
                   </Box>
                   <Box>{page.metadata.tags.map(tag => (
                     <Chip
