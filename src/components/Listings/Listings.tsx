@@ -36,7 +36,7 @@ const Listings = ({
   ) => setListingLayout(newFormat as ListingFormatType)
 
   return (
-    <SectionContainer styleName={styles.listingsContainer}>
+    <SectionContainer styleName={styles.listingsContainer} innerStyles={styles.listingsContainerInner}>
       <div className={styles.contentListingHeader}>
         <Typography variant="h2">
           {title}

@@ -35,7 +35,7 @@ const Testimony = ({ params }: PageType) => {
   const testimonyProfileImage = (testimony?.fields.profileImage as any)?.fields?.file;
 
   return (
-    <SectionContainer styleName={styles.insideContainer}>
+    <SectionContainer styleName={styles.insideContainer} innerStyles={styles.insideInnerContainer}>
       <HelmetComponent>
         <title>{config.meta.title} | Testimony {name as ReactNode}</title>
         <meta property="description" content={config.meta.description}/>

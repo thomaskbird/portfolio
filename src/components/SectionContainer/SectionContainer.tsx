@@ -4,15 +4,17 @@ import {Container} from "@mui/material";
 type SectionContainerType = {
   children: any;
   styleName?: any;
+  innerStyles?: any;
 };
 
 const SectionContainer = ({
   children,
   styleName,
+  innerStyles,
 }: SectionContainerType) => {
   return (
     <Container maxWidth={false} disableGutters className={styleName}>
-      <Container>
+      <Container className={innerStyles}>
         {children}
       </Container>
     </Container>

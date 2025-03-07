@@ -46,7 +46,7 @@ const Contact = () => {
         ))}
       </div>
 
-      <SectionContainer styleName={styles.contactContentWrapper}>
+      <SectionContainer styleName={styles.contactContentWrapper} innerStyles={styles.contactContentInnerWrapper}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={8}>
             <WordSlider

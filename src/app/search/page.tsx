@@ -49,7 +49,7 @@ const Testimony = () => {
         <meta property="keywords" content="search, site, site search" />
       </HelmetComponent>
 
-      <SectionContainer styleName={pageStyles.wrapper}>
+      <SectionContainer styleName={pageStyles.wrapper} innerStyles={pageStyles.innerContainer}>
         <form onSubmit={handleSubmit(onSubmit)} className={pageStyles.searchWrap}>
           <HookFormTextField
             name="query"

@@ -5,7 +5,6 @@
 }
 
 .contentWrap {
-  padding: 0 20px;
   position: relative;
   transition: all ease-in 0.25s;
 }
@@ -31,6 +30,10 @@
 
 .contactContentWrapper {
   padding: 100px 0;
+}
+
+.contactContentInnerWrapper {
+  padding: 0 50px;
 }
 
 .aboutContainerDark {

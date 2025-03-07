@@ -91,7 +91,7 @@ const InsidePage = ({ params }: PageType) => {
           <InsidePageHeader createdAt={page?.sys.createdAt as string}/>
         </Box>
 
-        <SectionContainer styleName={pageStyles.wrapper}>
+        <SectionContainer styleName={pageStyles.wrapper} innerStyles={pageStyles.innerWrapper}>
           <div className={pageStyles.contentWrapper}>
             <div className={pageStyles.left}>
               {page && (
