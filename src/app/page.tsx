@@ -21,6 +21,7 @@ import ScrollSnapper from "@/components/ScrollSnapper/ScrollSnapper";
 import Image from "next/image";
 import pageStyles from "@/app/contact/page.module.scss";
 import logos from "@/mocks/mockLogos";
+import PhotoScroller from "@/components/PhotoScroller/PhotoScroller";
 
 const Home = () => {
   const theme = useGlobalStore(selectTheme);
@@ -90,6 +91,12 @@ const Home = () => {
           />
         ))}
       </SectionContainer>
+      <Container maxWidth={false} disableGutters className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
+        <Container>
+          <PageSectionTitle title="Photography" subtitle="Capturing moments, freezing moments forever!"/>
+          <PhotoScroller />
+        </Container>
+      </Container>
       <Container maxWidth={false} disableGutters className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
         <Container>
           <PageSectionTitle title="People Are Talking" subtitle="See What They've Got To Say"/>
