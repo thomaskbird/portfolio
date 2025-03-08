@@ -14,8 +14,8 @@ const MediaGallery = ({ gallery }: MediaGalleryProps) => {
         {gallery.map((item: any) => (
           <Item
             key={item.sys.id}
-            original={'https:' + item.fields.file.url}
-            thumbnail={'https:' + item.fields.file.url}
+            original={`https:${item.fields.file.url}`}
+            thumbnail={`https:${item.fields.file.url}`}
             alt={item.fields.file.title ?? 'No alt text supplied'}
             width={item.fields.file.details.image.width}
             height={item.fields.file.details.image.height}
@@ -26,8 +26,9 @@ const MediaGallery = ({ gallery }: MediaGalleryProps) => {
                   ref={ref}
                   onClick={open}
                   className={styles.image}
-                  src={'https:' + item.fields.file.url}
+                  src={`https:${item.fields.file.url}`}
                   alt={item.fields.file.title ?? 'No alt text supplied'}
+                  title={item.fields.file.title ?? 'No title text supplied'}
                   width={item.fields.file.details.image.width}
                   height={item.fields.file.details.image.height}
                 />
