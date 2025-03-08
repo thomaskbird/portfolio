@@ -91,7 +91,7 @@ const Home = () => {
           />
         ))}
       </SectionContainer>
-      <Container maxWidth={false} disableGutters className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
+      <Container maxWidth={false} disableGutters className={isDark ? styles.photographyWrapperDark : styles.photographyWrapperLight}>
         <Container>
           <PageSectionTitle title="Photography" subtitle="Capturing moments, freezing moments forever!"/>
           <PhotoScroller />

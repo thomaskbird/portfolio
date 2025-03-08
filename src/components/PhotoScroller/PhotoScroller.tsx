@@ -16,8 +16,6 @@ const PhotoScroller = () => {
           const file = fields.file;
           const meta = file.details.image;
 
-          console.log(`https:${file.url}`);
-
           return (
             <Item
               key={photo.sys.id}
