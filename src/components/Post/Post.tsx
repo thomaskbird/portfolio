@@ -32,9 +32,9 @@ const Post = ({
       <div className={cn(styles.listItemWrapper, isDark ? styles.listItemWrapperDark : styles.listItemWrapperLight)}>
         <div className={styles.listItemHeader}>
           <Link href={`/page/${post.fields.slug}`}>
-            <Typography variant="h4">{post.fields.title as string}</Typography>
+            <Typography variant="h5">{post.fields.title as string}</Typography>
           </Link>
-          <span className={styles.listItemPosted}>{post.sys.createdAt.substring(0, 10)}</span>
+          <span className={styles.listItemPosted}>Posted: {post.sys.createdAt.substring(0, 10)}</span>
         </div>
 
         {featuredImage && (
