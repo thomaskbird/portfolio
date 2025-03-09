@@ -11,7 +11,7 @@ const PhotoScroller = () => {
   return (
     <Gallery>
       <ScrollSnapper>
-        {!isLoading && (photos as []).map(photo => {
+        {!isLoading && (photos as []).map((photo: any) => {
           const fields = photo.fields;
           const file = fields.file;
           const meta = file.details.image;
