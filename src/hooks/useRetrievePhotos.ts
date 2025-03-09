@@ -1,5 +1,6 @@
 import client from "@/services/api";
 import useSWR from "swr";
+import {Asset, ContentfulCollection} from "contentful";
 
 const requestPhotos = async (tag: string) => {
   try {

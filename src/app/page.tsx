@@ -93,7 +93,7 @@ const Home = () => {
       </SectionContainer>
       <Container maxWidth={false} disableGutters className={isDark ? styles.photographyWrapperDark : styles.photographyWrapperLight}>
         <Container>
-          <PageSectionTitle title="Photography" subtitle="Capturing moments, freezing moments forever!"/>
+          <PageSectionTitle title="Photography" subtitle="Capturing moments, freezing time!"/>
           <PhotoScroller />
         </Container>
       </Container>
