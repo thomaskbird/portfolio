@@ -98,7 +98,7 @@ const Nav = ({ window, navOnly = false }: Props) => {
               <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' } }}>
                 {MOCK_NAVITEMS.map((item) => (
                   <Link href={item.link} key={item.id}>
-                    <Button color="nav" component={isHome ? 'span' : 'button'} disableRipple>
+                    <Button color="nav" component="span" className={navStyles.links} disableRipple>
                       {item.label}
                     </Button>
                   </Link>
