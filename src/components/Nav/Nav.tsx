@@ -12,9 +12,8 @@ import {Container, Slide, Tooltip, useScrollTrigger} from "@mui/material";
 import navStyles from './Nav.module.scss';
 import Link from "next/link";
 import MOCK_NAVITEMS from "@/mocks/mockNavigation";
-import {usePathname} from "next/navigation";
 import {useGlobalStore} from "@/store/useGlobalStore";
-import {selectIsMobileOpen, selectSetIsMobileOpen, selectSetTheme, selectTheme} from "@/store/selectors/globalStore";
+import {selectSetIsMobileOpen, selectSetTheme, selectTheme} from "@/store/selectors/globalStore";
 import {ChangeEvent, ReactElement} from "react";
 import Image from 'next/image';
 
@@ -38,12 +37,9 @@ interface HideOnScrollProps {
 
 const Nav = ({ window, navOnly = false }: Props) => {
   const theme = useGlobalStore(selectTheme);
-  const isMobileOpen = useGlobalStore(selectIsMobileOpen);
   const setIsMobileOpen = useGlobalStore(selectSetIsMobileOpen);
   const isDark = theme === 'dark';
   const setTheme = useGlobalStore(selectSetTheme);
-  const pathname = usePathname();
-  const isHome = pathname === '/';
   const logoUrl = isDark ? '/logo.png' : '/logo-dark.png';
 
   const handleToggle = () => setIsMobileOpen()
