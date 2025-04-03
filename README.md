@@ -22,8 +22,7 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 ### Todo
 2. Rewrite project sections
-3. Write up some new blog content
-4. Come up with better content for contact us page
-5. Add google analytics
-6. Secure firestore
-7. Consider having navigation contain a Menu on tablet and up screens https://mui.com/material-ui/react-menu/
+3. ~~Write up some new blog content~~
+
+6. ~~Secure firestore~~
+7. ~~Consider having navigation contain a Menu on tablet and up screens https://mui.com/material-ui/react-menu/~~

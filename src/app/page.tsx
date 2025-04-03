@@ -22,6 +22,7 @@ import Image from "next/image";
 import pageStyles from "@/app/contact/page.module.scss";
 import logos from "@/mocks/mockLogos";
 import PhotoScroller from "@/components/PhotoScroller/PhotoScroller";
+import cn from "classnames";
 
 const Home = () => {
   const theme = useGlobalStore(selectTheme);
@@ -40,7 +41,7 @@ const Home = () => {
       <Hero/>
 
       <SectionContainer styleName={isDark ? styles.aboutContainerDark : styles.aboutContainerLight}>
-        <PageSectionTitle title="What I do?" subtitle="Get A Deeper Look At What Drives Me" />
+        <PageSectionTitle title="What I do?" subtitle="Get A Deeper Look At What Drives Me"/>
         <div style={{marginBottom: 0}}>
           {homeHero ? (
             <Fader items={homeHero} duration={10000}/>
@@ -70,7 +71,7 @@ const Home = () => {
               src={logo.src}
               alt={logo.title}
               title={logo.title}
-              className={pageStyles.logo}
+              className={cn(pageStyles.logo, !isDark && pageStyles.logoImageLight)}
             />
           ))}
         </ScrollSnapper>
@@ -91,13 +92,15 @@ const Home = () => {
           />
         ))}
       </SectionContainer>
-      <Container maxWidth={false} disableGutters className={isDark ? styles.photographyWrapperDark : styles.photographyWrapperLight}>
+      <Container maxWidth={false} disableGutters
+                 className={isDark ? styles.photographyWrapperDark : styles.photographyWrapperLight}>
         <Container>
           <PageSectionTitle title="Photography" subtitle="Capturing moments, freezing time!"/>
-          <PhotoScroller />
+          <PhotoScroller/>
         </Container>
       </Container>
-      <Container maxWidth={false} disableGutters className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
+      <Container maxWidth={false} disableGutters
+                 className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
         <Container>
           <PageSectionTitle title="People Are Talking" subtitle="See What They've Got To Say"/>
           <Slider items={testimonials}/>
