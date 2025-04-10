@@ -16,5 +16,13 @@
 }
 
 .navSwitch {
-  padding: 0 20px;
+  cursor: pointer;
+
+  svg {
+    transform: translateY(5px);
+  }
+}
+
+.navSwitchMobile {
+  padding: 0 25px;
 }

@@ -4,16 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import Divider from "@mui/material/Divider";
 import {motion} from "framer-motion";
 import MOCK_NAVITEMS from "@/mocks/mockNavigation";
 import cn from "classnames";
 import * as React from "react";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectIsMobileOpen, selectSetIsMobileOpen, selectSetTheme, selectTheme} from "@/store/selectors/globalStore";
-import {Tooltip} from "@mui/material";
-import Switch from "@mui/material/Switch";
-import {ChangeEvent} from "react";
+import {LightMode as LightModeIcon, Nightlight as NightLightIcon} from "@mui/icons-material";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -81,16 +78,10 @@ const MobileNav = () => {
         ))}
       </motion.ul>
 
-      <div className={navStyles.navSwitch}>
-        <Tooltip title={`${theme} mode`}>
-          <Switch
-            checked={isDark}
-            onChange={(evt: ChangeEvent<HTMLInputElement>) => {
-              setIsMobileOpen()
-              setTheme(evt.target.checked ? 'dark' : 'light')
-            }}
-          />
-        </Tooltip>
+      <div className={navStyles.navSwitchMobile}>
+        <span className={navStyles.navSwitch} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+          {isDark ? <NightLightIcon /> : <LightModeIcon />}
+        </span>
       </div>
     </div>
   )

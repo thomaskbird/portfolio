@@ -3,19 +3,19 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import IconButton from '@mui/material/IconButton';
-import Switch from "@mui/material/Switch";
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import {Container, Slide, Tooltip, useScrollTrigger} from "@mui/material";
+import {Container, Slide, useScrollTrigger} from "@mui/material";
 import navStyles from './Nav.module.scss';
 import Link from "next/link";
 import MOCK_NAVITEMS from "@/mocks/mockNavigation";
 import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectSetIsMobileOpen, selectSetTheme, selectTheme} from "@/store/selectors/globalStore";
-import {ChangeEvent, ReactElement} from "react";
+import {ReactElement} from "react";
 import Image from 'next/image';
+import {LightMode as LightModeIcon, Nightlight as NightLightIcon} from "@mui/icons-material";
 
 interface Props {
   /**
@@ -100,9 +100,9 @@ const Nav = ({ window, navOnly = false }: Props) => {
                   </Link>
                 ))}
 
-                <Tooltip title={`${theme} mode`}>
-                  <Switch checked={isDark} onChange={(evt: ChangeEvent<HTMLInputElement>) => setTheme(evt.target.checked ? 'dark' : 'light')} />
-                </Tooltip>
+                <span className={navStyles.navSwitch} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+                  {isDark ? <NightLightIcon /> : <LightModeIcon />}
+                </span>
               </Box>
             </Toolbar>
           </Container>
