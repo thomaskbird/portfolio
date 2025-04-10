@@ -17,12 +17,25 @@
 
 .navSwitch {
   cursor: pointer;
+  transition: all ease-in 0.25s;
 
   svg {
-    transform: translateY(5px);
+    transform: translateY(6px);
   }
 }
 
 .navSwitchMobile {
   padding: 0 25px;
+}
+
+.navSwitchDark {
+  &:hover {
+    color: #ffe078;
+  }
+}
+
+.navSwitchLight {
+  &:hover {
+    color: #666;
+  }
 }

@@ -16,6 +16,7 @@ import {selectSetIsMobileOpen, selectSetTheme, selectTheme} from "@/store/select
 import {ReactElement} from "react";
 import Image from 'next/image';
 import {LightMode as LightModeIcon, Nightlight as NightLightIcon} from "@mui/icons-material";
+import cn from "classnames";
 
 interface Props {
   /**
@@ -100,8 +101,8 @@ const Nav = ({ window, navOnly = false }: Props) => {
                   </Link>
                 ))}
 
-                <span className={navStyles.navSwitch} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
-                  {isDark ? <NightLightIcon /> : <LightModeIcon />}
+                <span className={cn(navStyles.navSwitch, isDark ? navStyles.navSwitchDark : navStyles.navSwitchLight)} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+                  {isDark ? <LightModeIcon /> : <NightLightIcon />}
                 </span>
               </Box>
             </Toolbar>

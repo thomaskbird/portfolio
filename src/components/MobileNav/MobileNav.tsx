@@ -79,8 +79,8 @@ const MobileNav = () => {
       </motion.ul>
 
       <div className={navStyles.navSwitchMobile}>
-        <span className={navStyles.navSwitch} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
-          {isDark ? <NightLightIcon /> : <LightModeIcon />}
+        <span className={cn(navStyles.navSwitch, isDark ? navStyles.navSwitchDark : navStyles.navSwitchLight)} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}>
+          {isDark ? <LightModeIcon /> : <NightLightIcon />}
         </span>
       </div>
     </div>
