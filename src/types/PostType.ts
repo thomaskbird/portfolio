@@ -1,21 +1,18 @@
+import { Entry, EntryFieldTypes } from "contentful";
+import { ContentfulAssetType } from "./contentful";
+
 type PostType = {
-  author_id: string;
-  body: string;
-  created_at: string;
-  deleted_at: string | null;
-  description: string;
-  id: string;
-  image?: string;
-  keywords: string;
-  nav_text: string;
-  order: string;
-  parent_id: string;
-  slug: string;
-  status: string;
-  title: string;
-  type: 'post';
-  updated_at: string;
-  version_of: string;
+  contentTypeId: "posts";
+  fields: {
+    title: string;
+    slug: string;
+    description: string;
+    featuredImage: EntryFieldTypes.AssetLink;
+    body: string;
+    keywords: string[];
+    codepen: EntryFieldTypes.RichText;
+    gallery: Entry<ContentfulAssetType>[];
+  };
 };
 
 export default PostType;

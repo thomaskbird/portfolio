@@ -1,27 +1,13 @@
 import client from "@/services/api";
 import useSWR from "swr";
-import { Entry, EntryFieldType, EntryFieldTypes, Asset } from "contentful";
-import { ContentfulAssetType } from "@/store/types/contentful";
+import { Entry } from "contentful";
+import PostType from "@/types/PostType";
 
 type TagTypes = 'blog' | 'work' | 'posts' | 'photography';
 
-type PostSkeleton = {
-  contentTypeId: "posts";
-  fields: {
-    title: string;
-    slug: string;
-    description: string;
-    featuredImage: EntryFieldTypes.AssetLink;
-    body: string;
-    keywords: string[];
-    codepen: EntryFieldTypes.RichText;
-    gallery: Entry<ContentfulAssetType>[];
-  };
-}
-
-const requestPosts = async (tag: TagTypes): Promise<Entry<PostSkeleton>[]> => {
+const requestPosts = async (tag: TagTypes): Promise<Entry<PostType>[]> => {
   try {
-    const res = await client.getEntries<PostSkeleton>({
+    const res = await client.getEntries<PostType>({
       content_type: 'posts',
       'metadata.tags.sys.id[in]': [tag],
       order: ['-sys.createdAt'],
@@ -42,7 +28,7 @@ const requestPosts = async (tag: TagTypes): Promise<Entry<PostSkeleton>[]> => {
 }
 
 const useRetrievePosts = (tag: TagTypes) => {
-  const { data: posts, error, isLoading } = useSWR<Entry<PostSkeleton>[], Error>(tag, requestPosts);
+  const { data: posts, error, isLoading } = useSWR<Entry<PostType>[], Error>(tag, requestPosts);
   
   return {
     isLoading,
