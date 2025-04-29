@@ -1,29 +1,35 @@
 import client from "@/services/api";
 import useSWR from "swr";
+import { Entry } from "contentful";
+import PostType from "@/types/PostType";
 
 type TagTypes = 'blog' | 'work' | 'posts' | 'photography';
 
-const requestPosts = async (tag: TagTypes) => {
+const requestPosts = async (tag: TagTypes): Promise<Entry<PostType>[]> => {
   try {
-    const res = await client.getEntries({
+    const res = await client.getEntries<PostType>({
       content_type: 'posts',
       'metadata.tags.sys.id[in]': [tag],
-      order: '-sys.createdAt',
-    } as any);
+      order: ['-sys.createdAt'],
+    });
 
     if(res.total) {
       return res.items;
     } else {
       throw new Error('No content found...')
     }
-  } catch (e) {
-    throw new Error(e as any);
+  } catch (error) {
+    // Preserve the error stack trace and type information
+    if (error instanceof Error) {
+      throw error;
+    }
+    throw new Error('An unknown error occurred while fetching posts');
   }
 }
 
 const useRetrievePosts = (tag: TagTypes) => {
-  const {data: posts, error, isLoading } = useSWR(tag, requestPosts)
-
+  const { data: posts, error, isLoading } = useSWR<Entry<PostType>[], Error>(tag, requestPosts);
+  
   return {
     isLoading,
     posts,

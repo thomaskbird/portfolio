@@ -1,7 +1,7 @@
-import {MutableRefObject, useEffect, useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 const useIntervalHook = (total: number, duration: number, startAt: number) => {
-  const interval: MutableRefObject<any> = useRef();
+  const interval = useRef<NodeJS.Timeout>();
   const [activeIndex, setActiveIndex] = useState<number>(startAt ?? 0);
 
   useEffect(() => {
@@ -16,8 +16,12 @@ const useIntervalHook = (total: number, duration: number, startAt: number) => {
       })
     }, duration);
 
-    return () => clearInterval(interval.current);
-  });
+    return () => {
+      if (interval.current) {
+        clearInterval(interval.current);
+      }
+    };
+  }, []);
 
   return {
     activeIndex,

@@ -92,15 +92,13 @@ const Home = () => {
           />
         ))}
       </SectionContainer>
-      <Container maxWidth={false} disableGutters
-                 className={isDark ? styles.photographyWrapperDark : styles.photographyWrapperLight}>
+      <Container maxWidth={false} disableGutters className={isDark ? styles.photographyWrapperDark : styles.photographyWrapperLight}>
         <Container>
           <PageSectionTitle title="Photography" subtitle="Capturing moments, freezing time!"/>
           <PhotoScroller/>
         </Container>
       </Container>
-      <Container maxWidth={false} disableGutters
-                 className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
+      <Container maxWidth={false} disableGutters className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
         <Container>
           <PageSectionTitle title="People Are Talking" subtitle="See What They've Got To Say"/>
           <Slider items={testimonials}/>
