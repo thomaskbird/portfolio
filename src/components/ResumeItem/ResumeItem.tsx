@@ -39,9 +39,8 @@ const ResumeItem = ({
     return () => scrollYProgress.destroy();
   }, [scrollYProgress]);
 
-  const date = new Date();
   const endAtMoment = moment(item.fields.to);
-  const endDate = item.fields.to ? endAtMoment.format("MMM, YYYY") : 'Present';
+  const endDate = endAtMoment.isAfter(moment.now()) ? 'Present' : endAtMoment.format("MMM, YYYY");
 
   return (
     <div
@@ -67,7 +66,6 @@ const ResumeItem = ({
 
           <h2>{item.fields.company}</h2>
           <h4>{item.fields.title} <span className={styles.subtitle}>{item.type}</span></h4>
-
 
           <ul>
             {item.fields.content.map((content: any, idx: number) => (

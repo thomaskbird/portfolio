@@ -5,7 +5,7 @@ const requestExperiences = async () => {
   try {
     const res = await client.getEntries({
       content_type: 'workExperience',
-      order: 'sys.createdAt'
+      order: '-fields.to'
     } as any);
 
     if(res.total) {
