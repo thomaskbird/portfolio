@@ -7,6 +7,7 @@ import {useGlobalStore} from "@/store/useGlobalStore";
 import {selectTheme} from "@/store/selectors/globalStore";
 import cn from "classnames";
 import useRetrieveSkills from "@/hooks/useRetrieveSkills";
+import useShuffle from "@/hooks/useShuffle";
 
 type SkillsType = {
 };
@@ -15,7 +16,7 @@ const Skills = ({}: SkillsType) => {
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
   const { skills, error, isLoading } = useRetrieveSkills();
-
+  const shuffledSkills = useShuffle(skills ?? []);
   const [vertical, setVertical] = useState(0);
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const { scrollYProgress } = useScroll({
@@ -38,7 +39,7 @@ const Skills = ({}: SkillsType) => {
       className={styles.container}
       style={{ transform: `translateY(${vertical}px)` }}
     >
-      {(skills ?? []).map(skill => (
+      {shuffledSkills.map(skill => (
         <motion.div
           key={skill.sys.id}
           className={cn(styles.chip, isDark ? styles.chipDark : styles.chipLight)}
