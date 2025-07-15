@@ -14,9 +14,9 @@ import {usePathname} from "next/navigation";
 import GlobalCssPriority from "@/components/GlobalCssPriority/GlobalCssPriority";
 import { source_sans } from "@/app/fonts";
 import cn from "classnames";
-import { GoogleAnalytics } from '@next/third-parties/google'
 import {ReactNode, Suspense} from "react";
 import MobileNav from "@/components/MobileNav/MobileNav";
+import Script from "next/script";
 
 const pagesWithScrollToTop = ['/', '/work', '/blog', '/resume'];
 
@@ -34,6 +34,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(source_sans.variable, theme, isMobileOpen ? styles.locked : '')} suppressHydrationWarning={true}>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-B75MXB0NDX"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+        >
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments)}
+          gtag('js', new Date());
+  
+          gtag('config', 'G-B75MXB0NDX');
+          `}
+        </Script>
         <Suspense>
           <GlobalCssPriority>
             <ThemeProvider theme={theme === 'dark' ? themeDark : themeLight}>
@@ -71,7 +87,6 @@ export default function RootLayout({
           </GlobalCssPriority>
         </Suspense>
       </body>
-      <GoogleAnalytics gaId="G-B75MXB0NDX" />
     </html>
   )
 }
