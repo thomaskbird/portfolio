@@ -26,6 +26,8 @@ const Post = ({
   const isDark = theme === 'dark';
 
   const featuredImage = (post.fields.featuredImage as any)?.fields;
+  const published = (post.fields?.publishedAt ? post.fields?.publishedAt : post.sys.createdAt) as unknown as string;
+  console.log('post', published);
 
   return (
     <div className={styles.listItemWrapperBorder}>
@@ -34,7 +36,7 @@ const Post = ({
           <Link href={`/page/${post.fields.slug}`}>
             <Typography variant="h5">{post.fields.title as string}</Typography>
           </Link>
-          <span className={styles.listItemPosted}>Posted: {post.sys.createdAt.substring(0, 10)}</span>
+          <span className={styles.listItemPosted}>Posted: {published.substring(0, 10)}</span>
         </div>
 
         {featuredImage && (

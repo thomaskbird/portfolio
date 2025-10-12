@@ -1,6 +1,11 @@
 import client from "@/services/api";
 import useSWR from "swr";
-import { Entry } from "contentful";
+import {
+  Entry,
+  EntrySkeletonType,
+  EntryFieldTypes,
+  AssetLink
+} from "contentful";
 import PostType from "@/types/PostType";
 
 type TagTypes = 'blog' | 'work' | 'posts' | 'photography';
@@ -10,7 +15,7 @@ const requestPosts = async (tag: TagTypes): Promise<Entry<PostType>[]> => {
     const res = await client.getEntries<PostType>({
       content_type: 'posts',
       'metadata.tags.sys.id[in]': [tag],
-      order: ['-sys.createdAt'],
+      order: ['-fields.publishedAt', '-sys.createdAt'],
     });
 
     if(res.total) {
@@ -29,7 +34,7 @@ const requestPosts = async (tag: TagTypes): Promise<Entry<PostType>[]> => {
 
 const useRetrievePosts = (tag: TagTypes) => {
   const { data: posts, error, isLoading } = useSWR<Entry<PostType>[], Error>(tag, requestPosts);
-  
+
   return {
     isLoading,
     posts,

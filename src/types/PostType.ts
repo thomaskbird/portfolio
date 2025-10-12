@@ -12,6 +12,7 @@ type PostType = {
     keywords: string[];
     codepen: EntryFieldTypes.RichText;
     gallery: Entry<ContentfulAssetType>[];
+    publishedAt: EntryFieldTypes.Date;
   };
 };
 
