@@ -45,7 +45,8 @@ em {
 }
 
 pre,
-code {
+code,
+blockquote {
   font-size: 16px;
 
   font-family: "JetBrains Mono", serif!important;
@@ -93,6 +94,18 @@ p, .body2 {
 
 .body3 {
   font-size: 16px;
+}
+
+blockquote {
+  margin: 0;
+  padding: 20px 60px;
+  background-image: url('/quote-trans.png');
+  background-repeat: no-repeat;
+  background-position: 90% center;
+}
+
+blockquote p {
+  font-size: 16px !important;
 }
 
 .page-content {
@@ -152,6 +165,10 @@ p, .body2 {
 
   code {
     color: #5999da;
+  }
+
+  blockquote {
+    background-color: #f8f8f8;
   }
 
   p code {
@@ -248,13 +265,17 @@ p, .body2 {
     opacity: 0.5;
   }
 
-  pre {
+  pre,
+  code {
     color: #5999da;
-    background: #111;
+  }
+
+  blockquote {
+    background-color: #111;
   }
 
   code {
-    color: #5999da;
+    background: #111;
   }
 
   p code {
