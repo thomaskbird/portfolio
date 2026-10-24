@@ -39,8 +39,12 @@ const ResumeItem = ({
     return () => scrollYProgress.destroy();
   }, [scrollYProgress]);
 
-  const endAtMoment = moment(item.fields.to);
-  const endDate = endAtMoment.isAfter(moment.now()) ? 'Present' : endAtMoment.format("MMM, YYYY");
+  // An ongoing role is represented either by an absent `to` date or by a
+  // future-dated sentinel in Contentful; both render as "Present".
+  const endAtMoment = item.fields.to ? moment(item.fields.to) : null;
+  const endDate = !endAtMoment || endAtMoment.isAfter(moment.now()) ? 'Present' : endAtMoment.format("MMM, YYYY");
+  const employmentType = item.fields.type as string | undefined;
+  const skills: string[] = item.fields.skills ?? [];
 
   return (
     <div
@@ -65,7 +69,7 @@ const ResumeItem = ({
           <p className={styles.smallDates}>{moment(item.fields.from).format("MMM, YYYY")} to {endDate}</p>
 
           <h2>{item.fields.company}</h2>
-          <h4>{item.fields.title} <span className={styles.subtitle}>{item.type}</span></h4>
+          <h4>{item.fields.title} {employmentType && <span className={styles.subtitle}>({employmentType})</span>}</h4>
 
           <ul>
             {item.fields.content.map((content: any, idx: number) => (
@@ -73,7 +77,7 @@ const ResumeItem = ({
             ))}
           </ul>
 
-          <p><b>Skills:</b> {item.fields.skills.join(', ')}</p>
+          {skills.length > 0 && <p><b>Skills:</b> {skills.join(', ')}</p>}
         </motion.div>
         <div className={styles.indicator}>
           <div className={cn(

@@ -12,7 +12,7 @@ const Work = () => {
     <>
       <HelmetComponent>
         <title>{config.meta.title} | Work</title>
-        <meta property="description" content={config.meta.description} />
+        <meta property="description" content={config.meta.pages.work} />
       </HelmetComponent>
 
       <Listings

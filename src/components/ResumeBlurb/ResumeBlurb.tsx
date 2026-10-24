@@ -38,22 +38,22 @@ const ResumeBlurb = ({}: ResumeBlurbType) => {
       </Typography>
 
       <Typography variant="body2">
-        I&apos;m a <em>passionate</em> Engineer who loves to tinker, a genuine curiosity keeps me invigorated with
-        the work I do. <em>Driven</em> and <em>relentless</em>, I’m the type of person who encounters problems and
-        just doesn’t know the words “Give up”. I’m extremely collaborative, concise and attentive throughout all
-        that I do with a special focus on attention to detail.
+        I&apos;m an <em>Applied AI architect</em> and <em>engineering leader</em> with 15+ years of experience
+        turning ambiguous business problems into reliable, scalable software. Today I architect production AI
+        platforms: agent orchestration, retrieval-augmented generation, evaluation, and the observability that
+        makes AI trustworthy in regulated, high-stakes environments.
       </Typography>
 
       <Typography variant="body2">
-        I&apos;ve had a <em>diverse</em> background in many industries, sizes of companies and roles. This has
-        given me a top notch ability to anticipate and deliver on a higher level by being ready for what’s coming
-        next. It gives me a <em>strong intuition</em> that helps prepare me for future problems and the inevitable
-        curve balls.
+        I&apos;ve sat in the <em>CTO chair</em>, grown an engineering organization from a handful of people to more
+        than fifty, and built the project management, product, QA, and DevOps functions that made delivery
+        predictable. I still design systems, debug hard problems, and <em>ship code alongside the team</em>.
       </Typography>
 
       <Typography variant="body2">
-        My <em>passion</em> is building and creating <em>amazing</em> pieces of software that are not only cool,
-        but make my clients and customers lives better!
+        I&apos;ve led teams and shipped products for Betco, NBC Sports, OpenAI, Livegistics, and Powerley across
+        AI, media, healthcare, IoT, fintech, and logistics. I lead with <em>outcomes</em> first: revenue,
+        reliability, delivery speed, and customer value. Then I choose the technology that earns its place.
       </Typography>
 
       <Typography variant="h3" sx={{margin: '50px 0'}}>Skills</Typography>

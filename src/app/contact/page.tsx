@@ -14,19 +14,27 @@ import Link from "next/link";
 import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
 import Image from "next/image";
 import logos from "@/mocks/mockLogos";
+import useMisc from "@/hooks/useMisc";
 
 // todo: https://www.frontend.fyi/v/staggered-text-animations-with-framer-motion
 // todo: https://codesandbox.io/p/sandbox/text-typing-animation-forked-mgzgdj
 
+// Fallback shown until the Contentful `misc` entry `message-form-text` loads.
+const defaultMessageFormText = "Hiring for a Staff or Principal Applied AI role, building an engineering leadership team, or need an architect to take an AI initiative from idea to production? I'd like to hear from you. Consulting and advisory conversations are welcome.";
+
 const Contact = () => {
   const theme = useGlobalStore(selectTheme);
   const isDark = theme === 'dark';
+  const { findField } = useMisc();
+
+  const messageFormText = (findField('message-form-text') as string | undefined) ?? defaultMessageFormText;
+  const email = (findField('email') as string | undefined) ?? config.contact.email;
 
   return (
     <>
       <HelmetComponent>
         <title>{config.meta.title} | Contact</title>
-        <meta property="description" content={config.meta.description}/>
+        <meta property="description" content={config.meta.pages.contact}/>
       </HelmetComponent>
 
       <div className={cn(
@@ -50,34 +58,33 @@ const Contact = () => {
         <Grid container spacing={2}>
           <Grid item xs={12} md={8}>
             <WordSlider
-              sentence="What am I?"
+              sentence="I am"
               slideWords={[
-                'Bold',
-                'Creative',
-                'Collaborative',
-                'Driven',
-                'Relentless',
-                'Curious',
+                'an AI Architect',
+                'an Engineering Leader',
+                'a Systems Thinker',
+                'a Hands-on Builder',
+                'Pragmatic',
                 'Analytical',
-                'Attentive',
+                'Collaborative',
+                'Outcome-driven',
               ]}
             />
 
             <Typography variant="body2" color="secondary" sx={{marginBottom: '20px'}}>
-              I&apos;m an engineer with a <em>passion</em> for working with people and creating <em>amazing
-              products</em>, my goal is to find a team working with the <em>latest</em> and greatest
-              technology, that fosters <em>creative thinking</em> and embraces <em>new ideas</em>.
+              I&apos;m an <em>Applied AI architect</em> and <em>engineering leader</em>. I build
+              <em> production AI systems</em>, lead engineering teams, and turn complex business problems
+              into <em>measurable outcomes</em>.
             </Typography>
             <Typography variant="body2" color="secondary">
-              I&apos;m looking for a company that understands its only as good as the culture it creates!
+              {messageFormText}
             </Typography>
           </Grid>
 
           <Grid item xs={12} md={4}>
             <Typography variant="h5" sx={{marginBottom: '20px', marginTop: '50px'}}>Send a message</Typography>
 
-            <Typography variant="body2"><Link target="_blank"
-                                              href="mailto:thomaskbird@icloud.com">Thomaskbird@icloud.com</Link></Typography>
+            <Typography variant="body2"><Link target="_blank" href={`mailto:${email}`}>{email}</Link></Typography>
           </Grid>
         </Grid>
       </SectionContainer>

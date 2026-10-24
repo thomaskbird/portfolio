@@ -23,7 +23,7 @@ const Resume = () => {
     <SectionContainer styleName={cn(styles.insideContainer, isDark ? styles.insideContainerDark : styles.insideContainerLight)}>
       <HelmetComponent>
         <title>{config.meta.title} | Resume</title>
-        <meta property="description" content={config.meta.description} />
+        <meta property="description" content={config.meta.pages.resume} />
       </HelmetComponent>
 
       <ResumeBlurb />

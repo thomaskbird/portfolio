@@ -12,7 +12,7 @@ const Blog = () => {
     <>
       <HelmetComponent>
         <title>{config.meta.title} | Blog</title>
-        <meta property="description" content={config.meta.description} />
+        <meta property="description" content={config.meta.pages.blog} />
       </HelmetComponent>
 
       <Listings

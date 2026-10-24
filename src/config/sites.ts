@@ -3,9 +3,24 @@ type SiteTypes = {
   momentFormat: string;
   momentFormatWoTimestamp: string;
   dayFormat: string;
+  url: string;
+  contact: {
+    email: string;
+  };
   meta: {
     title: string;
+    headline: string;
     description: string;
+    ogImage: string;
+    pages: {
+      home: string;
+      resume: string;
+      work: string;
+      blog: string;
+      photography: string;
+      contact: string;
+      search: string;
+    };
   }
 };
 
@@ -14,9 +29,25 @@ const config: SiteTypes = {
   momentFormat: "YYYY-MM-DD hh:mm:ss",
   momentFormatWoTimestamp: "YYYY-MM-DD",
   dayFormat: "ddd",
+  url: 'https://thomaskbird.com',
+  contact: {
+    // Canonical public contact address. Keep in sync with the Contentful `misc` entry `email`.
+    email: 'thomaskbird@icloud.com',
+  },
   meta: {
     title: 'Thomas K Bird',
-    description: "I'm a passionate Engineer who loves to tinker, a genuine curiosity keeps me invigorated with the work I do. Driven and relentless, I'm the type of person who encounters problems and just doesn't know the words \"Give up\". I'm extremely collaborative, concise and attentive throughout all that I do with a special focus on attention to detail. I've had a diverse background in many industries, sizes of companies and roles. This has given me a top notch ability to anticipate and deliver on a higher level by being ready for what's coming next. It gives me a strong intuition that helps prepare me for future problems and the inevitable curve balls. My passion is building and creating amazing pieces of software that are not only cool, but make my clients and customers lives better!",
+    headline: 'Applied AI Architect & Engineering Leader',
+    description: "Thomas Bird is an Applied AI architect and engineering leader who builds production AI systems (agent platforms, RAG, evaluation, observability), leads engineering teams, and turns complex business problems into measurable outcomes. Former CTO, NBC Sports and OpenAI contributor.",
+    ogImage: '/og-banner.png',
+    pages: {
+      home: "Applied AI architect and engineering leader. I build production AI systems, lead engineering teams, and turn complex business problems into measurable outcomes.",
+      resume: "Career history of Thomas Bird: Solutions Architect at Betco, former CTO at Livegistics, technical lead at NBC Sports, contract engineer at OpenAI, and 15+ years of full-stack delivery and engineering leadership.",
+      work: "Case studies and project write-ups covering production AI architecture, agent platforms, RAG, platform engineering, and engineering leadership.",
+      blog: "Writing on production AI and context engineering, architecture and engineering judgment, technical leadership, and honest lessons from the job market.",
+      photography: "Photography by Thomas Bird. A separate creative interest alongside engineering work.",
+      contact: "Get in touch about Staff/Principal Applied AI engineering, engineering leadership roles, architecture consulting, and advisory work.",
+      search: "Search articles, case studies, and notes on thomaskbird.com.",
+    },
   },
 };
 

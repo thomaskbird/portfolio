@@ -44,8 +44,8 @@ const Testimony = () => {
   return (
     <Container maxWidth={false} disableGutters>
       <HelmetComponent>
-        <title>{`${config.meta.title} | Blog`}</title>
-        <meta property="description" content="Search website"/>
+        <title>{`${config.meta.title} | Search`}</title>
+        <meta property="description" content={config.meta.pages.search}/>
         <meta property="keywords" content="search, site, site search" />
       </HelmetComponent>
 

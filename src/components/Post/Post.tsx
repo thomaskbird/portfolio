@@ -27,7 +27,6 @@ const Post = ({
 
   const featuredImage = (post.fields.featuredImage as any)?.fields;
   const published = (post.fields?.publishedAt ? post.fields?.publishedAt : post.sys.createdAt) as unknown as string;
-  console.log('post', published);
 
   return (
     <div className={styles.listItemWrapperBorder}>

@@ -27,6 +27,8 @@ const Footer = ({}: FooterType) => {
   const { findField } = useMisc()
 
   const postsLimited = posts ? posts.slice(0, 5) : [];
+  const phone = findField('phone') as string | undefined;
+  const email = findField('email') as string | undefined;
 
   return (
     <Container maxWidth={false} disableGutters className={isDark ? styles.footerWrapperDark : styles.footerWrapperLight}>
@@ -40,19 +42,23 @@ const Footer = ({}: FooterType) => {
               </div>
             </div>
 
-            <div className={styles.blurb}>
-              <PhoneIcon fontSize={iconSize} className={cn(styles.blurbIcon, isDark ? styles.blurbIconDark : styles.blurbIconLight)}/>
-              <div className={styles.blurbText}>
-                <h5>Phone</h5>
-                <p><Link href={`mailto:${findField('phone')}`}>{findField('phone') as ReactNode}</Link></p>
+            {/* The phone blurb only renders when a `phone` misc entry is published, so the
+                number can be withdrawn from the CMS without leaving an empty column. */}
+            {phone && (
+              <div className={styles.blurb}>
+                <PhoneIcon fontSize={iconSize} className={cn(styles.blurbIcon, isDark ? styles.blurbIconDark : styles.blurbIconLight)}/>
+                <div className={styles.blurbText}>
+                  <h5>Phone</h5>
+                  <p><Link href={`tel:${phone.replace(/[^+\d]/g, '')}`}>{phone}</Link></p>
+                </div>
               </div>
-            </div>
+            )}
 
             <div className={styles.blurb}>
               <EmailIcon fontSize={iconSize} className={cn(styles.blurbIcon, isDark ? styles.blurbIconDark : styles.blurbIconLight)}/>
               <div className={styles.blurbText}>
                 <h5>Email:</h5>
-                <p><Link href={`mailto:${findField('email')}`}>{findField('email') as ReactNode}</Link></p>
+                <p>{email && <Link href={`mailto:${email}`}>{email}</Link>}</p>
               </div>
             </div>
           </div>

@@ -7,6 +7,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import EventIcon from "@mui/icons-material/Event";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import XIcon from "@mui/icons-material/X";
+import config from "@/config/sites";
 
 export type SocialItem = {
   id: number;
@@ -32,7 +33,7 @@ const socialItems: SocialItem[] = [
     id: 3,
     title: 'Contact me',
     icon: <MailOutlineIcon />,
-    url: 'mailto:thomaskbird@icloud.com',
+    url: `mailto:${config.contact.email}`,
   },
   {
     id: 4,

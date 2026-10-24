@@ -34,14 +34,14 @@ const Home = () => {
   return (
     <Container className={styles.overallWrapper} maxWidth={false} disableGutters>
       <HelmetComponent>
-        <title>Thomas K Bird | Home</title>
-        <meta property="description" content={config.meta.description}/>
+        <title>{`${config.meta.title} | ${config.meta.headline}`}</title>
+        <meta property="description" content={config.meta.pages.home}/>
       </HelmetComponent>
 
       <Hero/>
 
       <SectionContainer styleName={isDark ? styles.aboutContainerDark : styles.aboutContainerLight}>
-        <PageSectionTitle title="What I do?" subtitle="Get A Deeper Look At What Drives Me"/>
+        <PageSectionTitle title="What I Do" subtitle="Production AI, Architecture, and Engineering Leadership"/>
         <div style={{marginBottom: 0}}>
           {homeHero ? (
             <Fader items={homeHero} duration={10000}/>
@@ -56,12 +56,12 @@ const Home = () => {
       </SectionContainer>
 
       <SectionContainer styleName={isDark ? styles.skillsContainerDark : styles.skillsContainerLight}>
-        <PageSectionTitle title="Skills" subtitle="Acquired through years of professional work"/>
+        <PageSectionTitle title="Skills" subtitle="Built across 15+ years of shipping software and leading teams"/>
         <Skills/>
       </SectionContainer>
 
       <SectionContainer styleName={isDark ? styles.mainContentDark : styles.mainContentLight}>
-        <PageSectionTitle title="Brands" subtitle="I've Had The Pleasure To Work With"/>
+        <PageSectionTitle title="Brands" subtitle="Employers and clients I've built for, directly and through agencies"/>
         <ScrollSnapper>
           {logos.map(logo => (
             <Image
@@ -79,7 +79,7 @@ const Home = () => {
 
       <SectionContainer styleName={isDark ? styles.skillsContainerDark : styles.skillsContainerLight}>
 
-        <PageSectionTitle title="Project Work" subtitle="Projects I've been blessed to be a part of"/>
+        <PageSectionTitle title="Project Work" subtitle="Selected work and the outcomes behind it"/>
 
         {heros && heros?.map((project, idx) => (
           <ProjectSection
@@ -100,7 +100,7 @@ const Home = () => {
       </Container>
       <Container maxWidth={false} disableGutters className={isDark ? styles.testimonialWrapperDark : styles.testimonialWrapperLight}>
         <Container>
-          <PageSectionTitle title="People Are Talking" subtitle="See What They've Got To Say"/>
+          <PageSectionTitle title="People Are Talking" subtitle="What colleagues and leaders say about working with me"/>
           <Slider items={testimonials}/>
         </Container>
       </Container>

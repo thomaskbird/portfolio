@@ -38,7 +38,7 @@ const Testimony = ({ params }: PageType) => {
     <SectionContainer styleName={styles.insideContainer} innerStyles={styles.insideInnerContainer}>
       <HelmetComponent>
         <title>{config.meta.title} | Testimony {name as ReactNode}</title>
-        <meta property="description" content={config.meta.description}/>
+        <meta property="description" content={config.meta.pages.home}/>
       </HelmetComponent>
 
       <Grid container className={styles.pageHeader}>

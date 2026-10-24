@@ -11,8 +11,8 @@ const Photography = () => {
   return (
     <>
       <HelmetComponent>
-        <title>{config.meta.title} | Blog</title>
-        <meta property="description" content={config.meta.description} />
+        <title>{config.meta.title} | Photography</title>
+        <meta property="description" content={config.meta.pages.photography} />
       </HelmetComponent>
 
       <Listings

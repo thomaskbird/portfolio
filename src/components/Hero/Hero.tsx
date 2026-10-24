@@ -41,7 +41,9 @@ const imageTransition = {
   })
 }
 
-const headline = "I'm Tom, Nice to meet you!".split(' ');
+// Fallback copy used until the Contentful `misc` entries load (or if the
+// `tag-subheading` entry does not exist yet).
+const defaultSubheading = "I build production AI systems, lead engineering teams, and turn complex business problems into measurable outcomes.";
 
 const Hero = ({ navOnly = false }: HeroType) => {
   const theme = useGlobalStore(selectTheme);
@@ -50,6 +52,7 @@ const Hero = ({ navOnly = false }: HeroType) => {
   const { findField } = useMisc()
 
   const headline = ((findField('tag-heading') ?? '') as string).split(' ');
+  const subheading = (findField('tag-subheading') as string | undefined) ?? defaultSubheading;
 
   return (
     <Container maxWidth={false} disableGutters className={isDark ? styles.heroDark : styles.heroLight}>
@@ -96,7 +99,7 @@ const Hero = ({ navOnly = false }: HeroType) => {
                   variants={items}
                 >
                   <Typography variant="body2" color="white" className={styles.heroSubText}>
-                    I am a <em>passionate</em> engineer and people <em>leader</em> who <em>thrives</em> in <em>fast paced</em> and <em>collaborative</em> environments!
+                    {subheading}
                   </Typography>
                 </motion.div>
 
