@@ -1,7 +1,7 @@
 import styles from './Sidebar.module.scss';
 import Link from "next/link";
 import {ReactNode} from "react";
-import useSearch from "@/hooks/useSearch";
+import useRelatedPosts, {getTopicTagIds, useLatestPosts} from "@/hooks/useRelatedPosts";
 import useTags from "@/hooks/useTags";
 import {Chip} from "@mui/material";
 import {redirect} from "next/navigation";
@@ -11,11 +11,29 @@ type SidebarType = {
   page: any;
 }
 
+const RELATED_POSTS_MAX = 5;
+
 const Sidebar = ({ page }: SidebarType) => {
+  const topicTagIds = getTopicTagIds(page);
+
   const {
-    isLoading: isSearchLoading,
-    posts,
-  } = useSearch('posts', 'css');
+    isLoading: isLoadingRelated,
+    posts: relatedPosts,
+  } = useRelatedPosts(topicTagIds);
+
+  const relatedItems = relatedPosts?.filter(p => p.sys.id !== page?.sys.id) ?? [];
+
+  // Fall back to the latest posts once the page is known and either it has no
+  // topic tags or the tag query returned nothing beyond the current post.
+  const needsFallback = !!page && (
+    topicTagIds.length === 0 || (!isLoadingRelated && relatedItems.length === 0)
+  );
+
+  const { posts: latestPosts } = useLatestPosts(needsFallback);
+
+  const posts = relatedItems.length > 0
+    ? relatedItems
+    : latestPosts?.filter(p => p.sys.id !== page?.sys.id);
 
   const {
     tags,
@@ -30,13 +48,13 @@ const Sidebar = ({ page }: SidebarType) => {
           <Divider />
 
           <ul>
-            {posts?.filter(p => p.sys.id !== page?.sys.id).map(post => (
+            {posts.slice(0, RELATED_POSTS_MAX).map(post => (
               <li key={post.sys.id}>
                 <Link
                   className={styles.footerLinks}
                   href={`/page/${post.fields.slug}`}
                 >
-                  {post.fields.title as ReactNode}
+                  {post.fields.title as unknown as ReactNode}
                 </Link>
               </li>
             ))}
