@@ -32,7 +32,7 @@ const config: SiteTypes = {
   url: 'https://thomaskbird.com',
   contact: {
     // Canonical public contact address. Keep in sync with the Contentful `misc` entry `email`.
-    email: 'thomaskbird@icloud.com',
+    email: 'thomas.bird1984@gmail.com',
   },
   meta: {
     title: 'Thomas K Bird',
