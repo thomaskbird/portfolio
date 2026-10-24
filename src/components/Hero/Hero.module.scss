@@ -84,14 +84,14 @@
       background: linear-gradient(160deg,#fff,#aaa);
     }
 
-    // The MUI h1 carries its own 74px size, so the breakpoint must target it directly.
+    // The MUI h1 carries its own 74px size, so the breakpoint must target the element (class names in this module are hashed).
     @media(max-width: 900px) {
-      .MuiTypography-h1 { font-size: 56px; }
+      h1 { font-size: 56px; }
     }
 
     @media(max-width: 600px) {
       font-size: 44px;
-      .MuiTypography-h1 { font-size: 44px; }
+      h1 { font-size: 44px; }
     }
   }
 
@@ -157,12 +157,12 @@
     text-shadow: 0 5px 15px rgba(0,0,0,.15);
 
     @media(max-width: 900px) {
-      .MuiTypography-h1 { font-size: 56px; }
+      h1 { font-size: 56px; }
     }
 
     @media(max-width: 600px) {
       font-size: 44px;
-      .MuiTypography-h1 { font-size: 44px; }
+      h1 { font-size: 44px; }
     }
   }
 
