@@ -1,5 +1,5 @@
 import {createTheme} from "@mui/material";
-import {Theme} from "@mui/system";
+import {Theme} from "@mui/material/styles";
 import {CSSProperties} from "react";
 
 declare module '@mui/material/styles' {
