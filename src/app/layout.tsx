@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     siteName: 'Thomas K Bird',
     title: siteTitle,
     description: config.meta.pages.home,
-    images: [{ url: config.meta.ogImage, width: 1584, height: 396, alt: 'Production AI. Strong Engineering Teams. Measurable Outcomes.' }],
+    images: [{ url: config.meta.ogImage, width: 1200, height: 630, alt: 'Production AI. Strong Engineering Teams. Measurable Outcomes.' }],
   },
   twitter: {
     card: 'summary_large_image',

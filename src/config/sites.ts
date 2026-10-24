@@ -38,7 +38,7 @@ const config: SiteTypes = {
     title: 'Thomas K Bird',
     headline: 'Applied AI Architect & Engineering Leader',
     description: "Thomas Bird is an Applied AI architect and engineering leader who builds production AI systems (agent platforms, RAG, evaluation, observability), leads engineering teams, and turns complex business problems into measurable outcomes. Former CTO, NBC Sports and OpenAI contributor.",
-    ogImage: '/og-banner.png',
+    ogImage: '/og-image.png',
     pages: {
       home: "Applied AI architect and engineering leader. I build production AI systems, lead engineering teams, and turn complex business problems into measurable outcomes.",
       resume: "Career history of Thomas Bird: Solutions Architect at Betco, former CTO at Livegistics, technical lead at NBC Sports, contract engineer at OpenAI, and 15+ years of full-stack delivery and engineering leadership.",
