@@ -65,32 +65,32 @@ export const themeDark: Theme = createTheme({
   },
   typography: {
     h1: {
-      fontSize: '74px',
+      fontSize: '62px',
       fontFamily: 'var(--font-source-sans-3)',
       fontWeight: '700'
     },
     h2: {
-      fontSize: '64px',
-      fontFamily: 'var(--font-source-sans-3)',
-      fontWeight: '700'
-    },
-    h3: {
       fontSize: '54px',
       fontFamily: 'var(--font-source-sans-3)',
       fontWeight: '700'
     },
+    h3: {
+      fontSize: '45px',
+      fontFamily: 'var(--font-source-sans-3)',
+      fontWeight: '700'
+    },
     h4: {
-      fontSize: '44px',
+      fontSize: '37px',
       fontFamily: 'var(--font-source-sans-3)',
       fontWeight: '700'
     },
     h5: {
-      fontSize: '32px',
+      fontSize: '27px',
       fontFamily: 'var(--font-source-sans-3)',
       fontWeight: '700'
     },
     h6: {
-      fontSize: '26px',
+      fontSize: '22px',
       fontFamily: 'var(--font-source-sans-3)',
       fontWeight: '700'
     },
@@ -327,32 +327,32 @@ export const themeLight: Theme = createTheme({
   },
   typography: {
     h1: {
-      fontSize: '74px',
+      fontSize: '62px',
       fontFamily: 'var(--font-source-sans-3)',
       fontWeight: '700'
     },
     h2: {
-      fontSize: '64px',
-      fontFamily: 'var(--font-source-sans-3)',
-      fontWeight: '700'
-    },
-    h3: {
       fontSize: '54px',
       fontFamily: 'var(--font-source-sans-3)',
       fontWeight: '700'
     },
+    h3: {
+      fontSize: '45px',
+      fontFamily: 'var(--font-source-sans-3)',
+      fontWeight: '700'
+    },
     h4: {
-      fontSize: '44px',
+      fontSize: '37px',
       fontFamily: 'var(--font-source-sans-3)',
       fontWeight: '700'
     },
     h5: {
-      fontSize: '32px',
+      fontSize: '27px',
       fontFamily: 'var(--font-source-sans-3)',
       fontWeight: '700'
     },
     h6: {
-      fontSize: '26px',
+      fontSize: '22px',
       fontFamily: 'var(--font-source-sans-3)',
       fontWeight: '700'
     },
