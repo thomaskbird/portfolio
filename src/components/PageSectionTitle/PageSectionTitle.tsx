@@ -32,13 +32,13 @@ const PageSectionTitle = ({
       amount: 0.5
     }}
   >
-    <motion.h1
+    <motion.h2
       custom={2}
       variants={item}
       className={styles.title}
     >
       {title}
-    </motion.h1>
+    </motion.h2>
     {subtitle && (
       <motion.h5
         custom={3}

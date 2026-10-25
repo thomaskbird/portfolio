@@ -62,14 +62,14 @@ const ProjectSection = ({
             />
           )}
           <Grid item xs={12} md={6} className={classes}>
-            <motion.h1
+            <motion.h3
               style={{
                 transform: `translate(${isLeft ? '' : '-'}${scrollValueCalculated * .25}px, 0)`,
                 opacity: opacity
               }}
             >
               {title}
-            </motion.h1>
+            </motion.h3>
 
             <motion.h4
               style={{

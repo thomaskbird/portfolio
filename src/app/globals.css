@@ -33,6 +33,15 @@ h6 {
   line-height: 150%;
 }
 
+/* Plain heading elements (no MUI variant) used to inherit the browser defaults off the 24px body
+   (48/36/28/24/20/16px). These are those defaults scaled by 62/74 to match the theme's heading scale. */
+h1 { font-size: 40px; }
+h2 { font-size: 30px; }
+h3 { font-size: 24px; }
+h4 { font-size: 20px; }
+h5 { font-size: 17px; }
+h6 { font-size: 13px; }
+
 em {
   font-style: normal;
   font-weight: 600;

@@ -9,6 +9,7 @@
 
 .title {
   margin: 0;
+  font-size: 40px; // rendered as an h2 for document outline; sized like the former h1
   line-height: 100%;
   text-transform: capitalize;
   color: rgba(33, 57, 87, 1);
