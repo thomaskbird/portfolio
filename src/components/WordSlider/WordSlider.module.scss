@@ -1,6 +1,8 @@
 .wrapper {
 
-  h3 {
+  h1 {
+    // The contact page's only heading; rendered as h1 for the document outline, sized like the former h3.
+    font-size: 24px;
     display: flex;
     color: #aaa;
     margin: 0 0 10px;

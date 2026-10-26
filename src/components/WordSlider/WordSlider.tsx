@@ -49,7 +49,7 @@ const WordSlider = ({
 
   return (
     <div className={styles.wrapper}>
-      <h3>
+      <h1>
         <span className={styles.sentence}>{sentence}&nbsp;</span>
         <span className={styles.mask}>
           {(slideWords ?? []).map((word, idx) => (
@@ -64,7 +64,7 @@ const WordSlider = ({
             </span>
           ))}
         </span>
-      </h3>
+      </h1>
     </div>
   )
 }
