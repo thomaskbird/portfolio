@@ -17,6 +17,7 @@ import cn from "classnames";
 import {ReactNode, Suspense} from "react";
 import MobileNav from "@/components/MobileNav/MobileNav";
 import Script from "next/script";
+import AnalyticsEvents from "@/components/AnalyticsEvents/AnalyticsEvents";
 
 const pagesWithScrollToTop = ['/', '/work', '/blog', '/resume'];
 
@@ -47,9 +48,17 @@ const AppShell = ({ children }: { children: ReactNode }) => {
         function gtag(){dataLayer.push(arguments)}
         gtag('js', new Date());
 
+        // Label automated browsers (webdriver flag or headless/crawler user agents) so the
+        // GA4 "Automated traffic" data filter (traffic_type = automated) can exclude them.
+        var ua = navigator.userAgent || '';
+        if (navigator.webdriver === true || /HeadlessChrome|Lighthouse|PageSpeed|Puppeteer|Playwright|(bot|crawler|spider)[\\/;\\s)]/i.test(ua)) {
+          gtag('set', { traffic_type: 'automated' });
+        }
+
         gtag('config', 'G-B75MXB0NDX');
         `}
       </Script>
+      <AnalyticsEvents />
       <Suspense>
         <GlobalCssPriority>
           <ThemeProvider theme={theme === 'dark' ? themeDark : themeLight}>

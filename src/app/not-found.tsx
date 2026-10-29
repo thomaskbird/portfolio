@@ -10,8 +10,18 @@ import searchFormSchema, {SearchFormType} from "@/app/search/searchFormSchema";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {redirect} from "next/navigation";
+import {useEffect} from "react";
+import {trackEvent} from "@/lib/analytics";
 
 const NotFound = () => {
+  // Record the missing path so broken inbound links (old posts, renamed slugs) show up in GA4.
+  useEffect(() => {
+    trackEvent('page_not_found', {
+      missing_path: window.location.pathname,
+      referrer_host: document.referrer ? new URL(document.referrer).hostname : '(none)',
+    });
+  }, []);
+
   const defaultVals: SearchFormType = {
     query: '',
   }

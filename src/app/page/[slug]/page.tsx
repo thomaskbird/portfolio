@@ -19,6 +19,7 @@ import MediaGallery from "@/components/MediaGallery/MediaGallery";
 import HelmetComponent from "@/components/HelmetComponent/HelmetComponent";
 import Sidebar from "@/components/Sidebar/Sidebar";
 import {Gallery, Item} from "react-photoswipe-gallery";
+import useReadTracking from "@/hooks/useReadTracking";
 
 // todo: figure out how to render a video element instead of the video being rendered into an image tag
 //    possible solution rehype raw: https://stackoverflow.com/questions/75358080/how-can-i-embed-a-youtube-video-in-reactjs-markdown-with-react-markdown
@@ -32,6 +33,7 @@ type PageType = {
 const InsidePage = ({ params }: PageType) => {
   const [hasAppendedScript, setHasAppendedScript] = useState(false);
   const codepenRef = useRef<any>(null);
+  const bodyRef = useRef<HTMLDivElement | null>(null);
   const { slug } = use(params);
   const { page, isLoading } = useRetrievePage(slug);
 
@@ -50,6 +52,8 @@ const InsidePage = ({ params }: PageType) => {
   const desc: string = page ? (page.fields.description as string) : '';
   const imageField: any = page && ((page?.fields as any).featuredImage as any)?.fields;
   const pageFields = page?.fields as any;
+  const isCaseStudy = !!page?.metadata.tags?.some(tag => tag.sys.id === 'work');
+  useReadTracking(bodyRef, slug, isCaseStudy, !!page);
 
   return (
     <HelmetProvider>
@@ -95,7 +99,7 @@ const InsidePage = ({ params }: PageType) => {
           <div className={pageStyles.contentWrapper}>
             <div className={pageStyles.left}>
               {page && (
-                <Box className={pageStyles.pageContent}>
+                <Box className={pageStyles.pageContent} ref={bodyRef}>
                   <Markdown rehypePlugins={[rehypeHighlight]}>{pageFields.body}</Markdown>
                   {page.fields.codepen && (
                     <div dangerouslySetInnerHTML={{__html: (page.fields.codepen as any).content[0].content[0].value}}/>

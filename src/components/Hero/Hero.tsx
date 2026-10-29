@@ -103,7 +103,7 @@ const Hero = ({ navOnly = false }: HeroType) => {
                   </Typography>
                 </motion.div>
 
-                <div className={styles.heroCtas}>
+                <div className={styles.heroCtas} data-track-location="hero">
                   <motion.div custom={3} variants={items}>
                     <Link href="/contact">
                       <Button

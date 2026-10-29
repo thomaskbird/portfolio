@@ -12,10 +12,10 @@ const Socials = () => {
 
   return (
     <Grid container className={styles.socialWrap}>
-      <div className={styles.socials}>
+      <div className={styles.socials} data-track-location="socials">
         {socialItems.map(social => (
           <Tooltip key={social.id} title={social.title}>
-            <Link href={social.url} target="_blank">
+            <Link href={social.url} target="_blank" aria-label={social.title}>
               <IconButton className={cn(styles.icons, isDark ? styles.iconsDark : styles.iconsLight)}>
                 {social.icon}
               </IconButton>
