@@ -31,7 +31,7 @@ const Footer = ({}: FooterType) => {
   const email = findField('email') as string | undefined;
 
   return (
-    <Container maxWidth={false} disableGutters className={isDark ? styles.footerWrapperDark : styles.footerWrapperLight}>
+    <Container component="footer" data-track-location="footer" maxWidth={false} disableGutters className={isDark ? styles.footerWrapperDark : styles.footerWrapperLight}>
       <Container className={styles.footerInnerWrap}>
           <div className={styles.blurbs}>
             <div className={styles.blurb}>
@@ -73,7 +73,7 @@ const Footer = ({}: FooterType) => {
                 alt="Thomas K Bird"
                 className={styles.footerLogo}
               />
-              <p className={styles.copyright}>&copy; {new Date().getFullYear()} All Rights Reserved</p>
+              <p className={styles.copyright}>&copy; {new Date().getFullYear()} All Rights Reserved &middot; <Link className={styles.footerLinks} href="/privacy">Privacy</Link></p>
             </div>
             <div className={styles.footerMainColumn}>
               <h5>Blog Posts</h5>

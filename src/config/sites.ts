@@ -20,6 +20,7 @@ type SiteTypes = {
       photography: string;
       contact: string;
       search: string;
+      privacy: string;
     };
   }
 };
@@ -47,6 +48,7 @@ const config: SiteTypes = {
       photography: "Photography by Thomas Bird. A separate creative interest alongside engineering work.",
       contact: "Get in touch about Staff/Principal Applied AI engineering, engineering leadership roles, architecture consulting, and advisory work.",
       search: "Search articles, case studies, and notes on thomaskbird.com.",
+      privacy: "How thomaskbird.com uses Google Analytics, what is measured, and how to opt out.",
     },
   },
 };
