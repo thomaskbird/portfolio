@@ -1,0 +1,9 @@
+# Build settings stay in the Netlify UI; this file only adds redirects.
+
+# Send the Netlify subdomain to the real domain so visitors, crawlers and analytics
+# are not split across two addresses. Deploy previews (deploy-preview-N--…) are unaffected.
+[[redirects]]
+  from = "https://thomaskbird.netlify.app/*"
+  to = "https://thomaskbird.com/:splat"
+  status = 301
+  force = true
