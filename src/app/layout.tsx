@@ -35,6 +35,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  // Google Search Console ownership; keep it, or Search Console loses verification.
+  verification: {
+    google: '6ykj4Bc_9yN9tmTt7Hss001L9FhTMU7vmn1l_XvtTO0',
+  },
 };
 
 // Structured data describing the person behind the site. Every value here is
